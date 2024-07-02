@@ -7,6 +7,8 @@ import { Layout } from './Layout';
 // import { Gallery } from './Gallery';
 // import { SubBreeds } from './SubBreeds';
 
+// import Dropdown from 'pages/Dropdown';
+const Dropdown = lazy(() => import('../pages/Dropdown'))
 const Home = lazy(() => import('../pages/Home'));
 const Dogs = lazy(() => import('../pages/Dogs'));
 const DogDetails = lazy(() => import('../pages/DogDetails'));
@@ -25,6 +27,8 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+
+          <Route path="dropdown" element={<Dropdown />} />
           <Route path="dogs" element={<Dogs />} />
           <Route path="dogs/:dogId" element={<DogDetails />}>
             <Route path="subbreeds" element={<SubBreeds />} />

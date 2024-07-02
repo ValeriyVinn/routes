@@ -1,13 +1,13 @@
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StyledLink = styled(NavLink)`
-color: black;
+  color: black;
 
-&.active {
-  color: red
-}
+  &.active {
+    color: red;
+  }
 `;
 
 export const Layout = () => {
@@ -19,6 +19,9 @@ export const Layout = () => {
             <StyledLink to="/">Домашня</StyledLink>
           </li>
           <li>
+            <StyledLink to="/dropdown">Реакт-компоненти</StyledLink>
+          </li>
+          <li>
             <StyledLink to="/dogs">Колекція</StyledLink>
           </li>
         </ul>
@@ -28,7 +31,6 @@ export const Layout = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
-        
       </main>
     </div>
   );
