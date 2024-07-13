@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkroutes=self.webpackChunkroutes||[]).push([[266],{266:function(e,u,n){n.r(u);var r=n(184);u.default=function(){return(0,r.jsx)("div",{children:"\u0414\u043e\u043c\u0430\u0448\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430"})}}}]);
+//# sourceMappingURL=266.24fdcf0a.chunk.js.map
