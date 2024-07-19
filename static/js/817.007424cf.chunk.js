@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkroutes=self.webpackChunkroutes||[]).push([[817],{817:function(e,s,u){u.r(s);var r=u(184),n=u(87).useParams;s.default=function(){var e=n().dogId;return(0,r.jsxs)("div",{children:["SubBreeds: ",e]})}}}]);
-//# sourceMappingURL=817.007424cf.chunk.js.map
