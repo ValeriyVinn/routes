@@ -1,0 +1,15 @@
+.list {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+  }
+
+  .main {
+
+    min-height: 500px;
+  }
+
+  .footer {
+    height: 20px;
+    background-color: aqua;
+  }

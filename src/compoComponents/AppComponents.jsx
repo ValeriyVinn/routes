@@ -1,21 +1,21 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import JavaScript from 'pagesComponents/PagesJavaScript';
 import MarkUp from 'pagesComponents/PagesMarkup';
 import React from 'pagesComponents/PagesReact';
-import Layout from './LayoutComponents';
+import LayoutComponents from './LayoutComponents';
 import ComponentsHome from 'pagesComponents/ComponentsHome';
-import css from '../compoComponents/AppComponents.module.css';
+// import css from '../compoComponents/AppComponents.module.css';
 
 const AppComponents = () => {
   return (
     <div>
-      <nav>
+      {/* <nav>
         <ul className={css.list}>
         <li>
             <NavLink to="/" className={css.color}>Home</NavLink>
           </li>
           <li>
-            <NavLink to="markup">Mark Up</NavLink>
+            <NavLink to="markup">HTML CSS</NavLink>
           </li>
           <li>
             <NavLink to="javascript">Java Script</NavLink>
@@ -24,10 +24,10 @@ const AppComponents = () => {
             <NavLink to="react">React</NavLink>
           </li>
         </ul>
-      </nav>
+      </nav> */}
 
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<LayoutComponents />}>
           <Route index element={<ComponentsHome />} />
           <Route path="markup" element={<MarkUp />} />
           <Route path="javascript" element={<JavaScript />} />

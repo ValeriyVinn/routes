@@ -1,4 +1,4 @@
 const MarkUp = () => {
-    return <h1>Mark Up</h1>
+    return <h1>HTML CSS</h1>
 }
 export default MarkUp
