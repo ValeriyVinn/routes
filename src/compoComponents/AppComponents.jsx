@@ -1,6 +1,6 @@
 import { Routes, Route} from 'react-router-dom';
 import JavaScript from 'pagesComponents/PagesJavaScript';
-import MarkUp from 'pagesComponents/PagesMarkup';
+import MarkUp from 'pagesComponents/PagesMarkUp';
 import React from 'pagesComponents/PagesReact';
 import LayoutComponents from './LayoutComponents';
 import ComponentsHome from 'pagesComponents/ComponentsHome';
@@ -37,5 +37,4 @@ const AppComponents = () => {
     </div>
   );
 };
-
 export default AppComponents;
