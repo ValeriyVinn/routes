@@ -9,22 +9,7 @@ import ComponentsHome from 'pagesComponents/ComponentsHome';
 const AppComponents = () => {
   return (
     <div>
-      {/* <nav>
-        <ul className={css.list}>
-        <li>
-            <NavLink to="/" className={css.color}>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="markup">HTML CSS</NavLink>
-          </li>
-          <li>
-            <NavLink to="javascript">Java Script</NavLink>
-          </li>
-          <li>
-            <NavLink to="react">React</NavLink>
-          </li>
-        </ul>
-      </nav> */}
+     
 
       <Routes>
         <Route path="/" element={<LayoutComponents />}>
