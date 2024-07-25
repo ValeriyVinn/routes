@@ -21,7 +21,7 @@ const LayoutComponents = () => {
             <NavLink to="react">React</NavLink>
           </li>
         </ul>
-        {/* <ul className={css.test__list}>
+        <ul className={css.test__list}>
           <li className={css.name__menu}>
             Abstract
             <ul className={`${css.hidden__menu} ${css.dropdown}`}>
@@ -32,7 +32,7 @@ const LayoutComponents = () => {
           </li>
           <li>Workout</li>
           <li>Blackboard</li>
-        </ul> */}
+        </ul>
       </header>
       <main className={css.main}>
         <Outlet />
