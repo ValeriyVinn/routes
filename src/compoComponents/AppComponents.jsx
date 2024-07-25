@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import JavaScript from 'pagesComponents/PagesJavaScript';
-import MarkUp from 'pagesComponents/PagesMarkUp';
+import MarkUp from 'pagesComponents/PagesMark';
 import React from 'pagesComponents/PagesReact';
 import LayoutComponents from './LayoutComponents';
 import ComponentsHome from 'pagesComponents/ComponentsHome';
