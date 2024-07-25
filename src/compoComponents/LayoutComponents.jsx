@@ -22,7 +22,8 @@ const LayoutComponents = () => {
           </li>
         </ul>
         <ul className={css.test__list}>
-          <li className={css.name__menu }>Abstract
+          <li className={css.name__menu}>
+            Abstract
             <ul className={`${css.hidden__menu} ${css.dropdown}`}>
               <li>Html</li>
               <li>Css</li>
