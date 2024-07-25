@@ -1,4 +1,4 @@
-// import MarkUp from 'pagesComponents/PagesMarkUp';
+import MarkUp from 'pagesComponents/PagesMarkUp';
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import css from '../compoComponents/LayoutComponents.module.css';
@@ -12,7 +12,7 @@ const LayoutComponents = () => {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="markup">MarkUp</NavLink>
+            <NavLink to="markup"><MarkUp/></NavLink>
           </li>
           <li>
             <NavLink to="javascript">Java Script</NavLink>
