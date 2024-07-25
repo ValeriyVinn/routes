@@ -1,4 +1,4 @@
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import JavaScript from 'pagesComponents/PagesJavaScript';
 import MarkUp from 'pagesComponents/PagesMarkUp';
 import React from 'pagesComponents/PagesReact';
@@ -9,8 +9,6 @@ import ComponentsHome from 'pagesComponents/ComponentsHome';
 const AppComponents = () => {
   return (
     <div>
-     
-
       <Routes>
         <Route path="/" element={<LayoutComponents />}>
           <Route index element={<ComponentsHome />} />
