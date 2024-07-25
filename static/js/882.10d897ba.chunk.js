@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkroutes=self.webpackChunkroutes||[]).push([[882],{882:function(e,r,s){s.r(r);var u=s(184),a=s(87).useParams;r.default=function(){var e=a().dogId;return(0,u.jsxs)("div",{children:["Image Gallery: ",e]})}}}]);
+//# sourceMappingURL=882.10d897ba.chunk.js.map
