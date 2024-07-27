@@ -4,6 +4,7 @@ import MarkUp from 'pagesComponents/PagesMark';
 import React from 'pagesComponents/PagesReact';
 import LayoutComponents from './LayoutComponents';
 import ComponentsHome from 'pagesComponents/ComponentsHome';
+import NotFound from 'pagesComponents/PagesNotFound'
 // import css from '../compoComponents/AppComponents.module.css';
 
 const AppComponents = () => {
@@ -15,6 +16,7 @@ const AppComponents = () => {
           <Route path="markup" element={<MarkUp />} />
           <Route path="javascript" element={<JavaScript />} />
           <Route path="react" element={<React />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </div>

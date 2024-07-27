@@ -15,8 +15,8 @@ const LayoutComponents = () => {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <li className={css.name__menu}>
-            <NavLink to="markup">MarkUp</NavLink>
+          <li className={`${css.name__menu} ${css.menu__style}`}>
+            MarkUp
             <DropdownMarkup/>
           </li>
           <li className={css.name__menu}>
