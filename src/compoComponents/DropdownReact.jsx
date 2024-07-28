@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 import css from '../compoComponents/LayoutComponents.module.css';
 
@@ -7,32 +7,32 @@ const DropdownReact = () => {
     <div>
       <ul className={css.hidden__menu}>
         <li>
-          <NavLink className={`${css.nav__link} ${css.react}`}>
+          <Link className={css.nav__link }>
             Компоненти та коллекції. Стилізація
-          </NavLink>
+          </Link>
         </li>
         <li>
-          <NavLink>Події та стан. Форми</NavLink>
+          <Link>Події та стан. Форми</Link>
         </li>
         <li>
-          <NavLink>Життєвий цикл компонента. Робота з REST API</NavLink>
+          <Link>Життєвий цикл компонента. Робота з REST API</Link>
         </li>
         <li>
-          <NavLink>Хуки</NavLink>
+          <Link>Хуки</Link>
         </li>
         <li>
-          <NavLink>React Router. React Router та поділ коду</NavLink>
+          <Link to='react/router'>React Router. React Router та поділ коду</Link>
         </li>
         <li>
-          <NavLink>
+          <Link>
             Основи Redux. Бібліотека Redux Toolkit та React-redux хуки
-          </NavLink>
+          </Link>
         </li>
         <li>
-          <NavLink>Асинхронний Redux. Сектори та бібліотека Reselect</NavLink>
+          <Link>Асинхронний Redux. Сектори та бібліотека Reselect</Link>
         </li>
         <li>
-          <NavLink>Реєстрація та логін користувача</NavLink>
+          <Link>Реєстрація та логін користувача</Link>
         </li>
       </ul>
     </div>
@@ -40,3 +40,4 @@ const DropdownReact = () => {
 };
 
 export default DropdownReact;
+

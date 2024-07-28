@@ -19,17 +19,18 @@ const LayoutComponents = () => {
             MarkUp
             <DropdownMarkup/>
           </li>
-          <li className={css.name__menu}>
+          <li className={`${css.name__menu} ${css.menu__style}`}>
             <NavLink to="javascript">Java Script</NavLink>
             <DropdownJavaScript/>
           </li>
-          <li className={css.name__menu}>
+          <li className={`${css.name__menu} ${css.menu__style}`}>
             <NavLink to="react">React</NavLink>
             <DropdownReact/>
+            
           </li>
         </ul>
-        
       </header>
+
       <main className={css.main}>
         <Outlet />
       </main>
