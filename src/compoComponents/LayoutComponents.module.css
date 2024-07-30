@@ -54,3 +54,23 @@ text-align: left;
 }
 
 /* ----- */
+
+.generalbox {
+  display: flex;
+}
+
+.leftbox {
+  min-width: 300px;
+  /* background-color: aliceblue; */
+}
+
+.rightbox {
+  color: blueviolet;
+}
+
+/* section in paintings */
+.beautyIsNear {
+  text-transform: uppercase;
+  color: rgb(227, 19, 19);
+  margin-bottom: 40px;
+}

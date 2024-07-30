@@ -1,14 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import css from '../../../compoComponents/LayoutComponents.module.css'
 
 const RouterComponent = () => {
   return (
-    <div>
-      <ul>
+    <div className={css.generalbox}>
+      <ul className={css.leftbox}>
         <li>
-          <Link>1</Link>
+          <Link to='first-react-component'>1</Link>
         </li>
         <li>
-          <Link>2</Link>
+          <Link to='second-react-component'>2</Link>
         </li>
         <li>
           <Link>3</Link>
@@ -29,6 +30,7 @@ const RouterComponent = () => {
           <Link>8</Link>
         </li>
       </ul>
+      <div className={css.rightbox}><Outlet/></div>
     </div>
   );
 };
