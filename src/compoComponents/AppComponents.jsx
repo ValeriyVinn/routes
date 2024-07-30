@@ -9,11 +9,15 @@ import RouterComponent from './React/Module5/Router';
 import FirstReactComponent from './React/Module5/FirstReactComponent/FirstReactComponent';
 import SecondReactComponent from './React/Module5/SecondReactComponent/SecondReactComponent';
 import Module1 from './React/Module1/Module1';
-// import Paintings from './React/Module1/Paintings';
 import PaintingList from './React/Module1/Paintings/PaintingList';
 import Section from './React/Module1/Paintings/Section';
 import paintingsData from './React/Module1/Paintings/PaintingsData.json';
-import Stylization from './React/Module1/Second/Stylisation';
+import PageTitle from './React/Module1/Stylization/PageTitle';
+import upcomingEvents from './React/Module1/Stylization/upcoming-events.json';
+import EventBoard from './React/Module1/Stylization/EventBoard';
+
+import StackOfFiles from './React/Module1/Zero/StackOfFiles';
+import cars from './React/Module1/Zero/list-of-files';
 
 // import css from '../compoComponents/AppComponents.module.css';
 
@@ -35,7 +39,16 @@ const AppComponents = () => {
                   </Section>
                 }
               />
-              <Route path="stylization" element={<Stylization />} />
+              <Route
+                path="stylization"
+                element={
+                  <>
+                    <PageTitle text={'24 core worlds coalition conference'} />
+                    <EventBoard events={upcomingEvents} />
+                  </>
+                }
+              />
+              <Route path="zero" element={<StackOfFiles cars={cars} />} />
             </Route>
             <Route path="router" element={<RouterComponent />}>
               <Route

@@ -9,10 +9,10 @@ const Module1 = () => {
           <Link to='paintings'>Paintings</Link>
         </li>
         <li>
-          <Link to='stylization'>2</Link>
+          <Link to='stylization'>Stylization</Link>
         </li>
         <li>
-          <Link>3</Link>
+          <Link to='emotion-library'>Emotion library</Link>
         </li>
         <li>
           <Link>4</Link>
@@ -27,7 +27,7 @@ const Module1 = () => {
           <Link>7</Link>
         </li>
         <li>
-          <Link>8</Link>
+          <Link to='zero'>Zero</Link>
         </li>
       </ul>
       <div className={css.rightbox}><Outlet/></div>

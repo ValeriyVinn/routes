@@ -1,0 +1,27 @@
+[
+    {
+      "brand": "Toyota Camry",
+      "color": "білий",
+      "price": 25000
+    },
+    {
+      "brand": "Honda Civic",
+      "color": "чорний",
+      "price": 22000
+    },
+    {
+      "brand": "Ford Focus",
+      "color": "синій",
+      "price": 20000
+    },
+    {
+      "brand": "BMW 3 Series",
+      "color": "сірий",
+      "price": 35000
+    },
+    {
+      "brand": "Audi A4",
+      "color": "червоний",
+      "price": 37000
+    }
+  ]
