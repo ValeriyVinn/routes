@@ -1,7 +1,7 @@
 import css from './File.module.css'
 
-const File = ({example: {brand, color, price} }) => {
-//   const { brand, color, price } = example;
+const File = ({example}) => {
+  const { brand, color, price } = example;
 
   return (
     <div className={css.cards}>

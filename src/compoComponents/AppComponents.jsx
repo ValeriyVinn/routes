@@ -15,15 +15,16 @@ import paintingsData from './React/Module1/Paintings/PaintingsData.json';
 import PageTitle from './React/Module1/Stylization/PageTitle';
 import upcomingEvents from './React/Module1/Stylization/upcoming-events.json';
 import EventBoard from './React/Module1/Stylization/EventBoard';
-
+import EmotionPageTitle from './React/Module1/Emotion/EmotionPageTitle';
+import EmotionEventBoard from './React/Module1/Emotion/EmotionEventBoard';
 import StackOfFiles from './React/Module1/Zero/StackOfFiles';
 import cars from './React/Module1/Zero/list-of-files';
 
 // import css from '../compoComponents/AppComponents.module.css';
-
+import { Container } from './AppComponents.styled';
 const AppComponents = () => {
   return (
-    <div>
+    <Container>
       <Routes>
         <Route path="/" element={<LayoutComponents />}>
           <Route index element={<ComponentsHome />} />
@@ -43,8 +44,17 @@ const AppComponents = () => {
                 path="stylization"
                 element={
                   <>
-                    <PageTitle text={'24 core worlds coalition conference'} />
+                    <PageTitle text={'24 core worlds coalition conference stylization'} />
                     <EventBoard events={upcomingEvents} />
+                  </>
+                }
+              />
+              <Route
+                path="emotion-library"
+                element={
+                  <>
+                    <EmotionPageTitle text={'24 core worlds conference on emotion library'} />
+                    <EmotionEventBoard events={upcomingEvents} />
                   </>
                 }
               />
@@ -64,7 +74,7 @@ const AppComponents = () => {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </div>
+    </Container>
   );
 };
 export default AppComponents;

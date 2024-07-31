@@ -1,6 +1,7 @@
 .cards {
-    border: 1px solid red;
+    border: 1px solid rgb(255, 217, 65);
     border-radius: 5px;
+    background-color:cornsilk;
     padding: 10px;
     margin-right: 5px;
 }
