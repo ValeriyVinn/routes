@@ -1,5 +1,5 @@
 import { formatEventDuration, formatEventStart } from './utils';
-import css from './EmotionEvent.module.css';
+// import css from './EmotionEvent.module.css';
 import { Card, EventName, Info, Chip } from './EmotionEvent.styled';
 import {
   FaMapMarkerAlt,
@@ -17,19 +17,19 @@ const EmotionEvent = ({ name, location, speaker, type, start, end }) => {
     <Card>
       <EventName>{name}</EventName>
       <Info>
-        <FaMapMarkerAlt className={css.icon} size={iconSize.sm} />
+        <FaMapMarkerAlt size={iconSize.sm} />
         {location}
       </Info>
       <Info>
-        <FaUserAlt className={css.icon} size={iconSize.sm} />
+        <FaUserAlt size={iconSize.sm} />
         {speaker}
       </Info>
       <Info>
-        <FaCalendarAlt className={css.icon} size={iconSize.sm} />
+        <FaCalendarAlt size={iconSize.sm} />
         {formattedStart}
       </Info>
       <Info>
-        <FaClock className={css.icon} size={iconSize.sm} />
+        <FaClock size={iconSize.sm} />
         {duration}
       </Info>
       <Chip eventType={type}>{type}</Chip>
