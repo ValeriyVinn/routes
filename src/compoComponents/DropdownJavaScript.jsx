@@ -8,7 +8,7 @@ const DropdownJavaScript = () => {
     <div>
       <ul className={css.hidden__menu}>
         <li>
-          <NavLink className={css.nav__link}>Змінні та типи. Розгалуження. Цикли</NavLink>
+          <NavLink className={css.nav__link} to='javascript/module-one-variables-branching-loops'>Змінні та типи. Розгалуження. Цикли</NavLink>
         </li>
         <li>
           <NavLink>Масиви. Функції</NavLink>
@@ -23,7 +23,7 @@ const DropdownJavaScript = () => {
           <NavLink>Ключове слово this. Прототипи та класи</NavLink>
         </li>
         <li>
-          <NavLink>DOM та події</NavLink>
+          <NavLink to='javascript/module-six-events'>DOM та події</NavLink>
         </li>
         <li>
           <NavLink>Паттерни та оптимізація подій</NavLink>

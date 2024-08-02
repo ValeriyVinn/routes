@@ -12,7 +12,7 @@ const DropdownReact = () => {
           </Link>
         </li>
         <li>
-          <Link>Події та стан. Форми</Link>
+          <Link to='react/module-two-components' >Події та стан. Форми</Link>
         </li>
         <li>
           <Link>Життєвий цикл компонента. Робота з REST API</Link>

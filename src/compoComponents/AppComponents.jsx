@@ -1,27 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import JavaScript from 'pagesComponents/PagesJavaScript';
-import MarkUp from 'pagesComponents/PagesMark';
-import ReactComponent from 'pagesComponents/PagesReact';
-import LayoutComponents from './LayoutComponents';
-import ComponentsHome from 'pagesComponents/ComponentsHome';
-import NotFound from 'pagesComponents/PagesNotFound';
-import RouterComponent from './React/Module5/Router';
-import FirstReactComponent from './React/Module5/FirstReactComponent/FirstReactComponent';
-import SecondReactComponent from './React/Module5/SecondReactComponent/SecondReactComponent';
-import Module1 from './React/Module1/Module1';
-import PaintingList from './React/Module1/Paintings/PaintingList';
-import Section from './React/Module1/Paintings/Section';
-import paintingsData from './React/Module1/Paintings/PaintingsData.json';
-import PageTitle from './React/Module1/Stylization/PageTitle';
-import upcomingEvents from './React/Module1/Stylization/upcoming-events.json';
-import EventBoard from './React/Module1/Stylization/EventBoard';
-import EmotionPageTitle from './React/Module1/Emotion/EmotionPageTitle';
-import EmotionEventBoard from './React/Module1/Emotion/EmotionEventBoard';
-import StackOfFiles from './React/Module1/Zero/StackOfFiles';
-import cars from './React/Module1/Zero/list-of-files';
 
+import { 
+  JavaScript, MarkUp, ReactComponent, LayoutComponents, ComponentsHome, 
+  NotFound, Module1JS, TechInterview, Module6JS, HomeWorkJs6, Module1, 
+  PaintingList, Section, paintingsData, PageTitle, upcomingEvents, EventBoard, 
+  EmotionPageTitle, EmotionEventBoard, StackOfFiles, cars, ListOfComponentsReact2, 
+  Counter, RouterComponent, FirstReactComponent, SecondReactComponent, Container 
+} from '../compoComponents/Imports/Imports';
+import Dropdown from './React/Module2/Dropdown/Dropdown';
 // import css from '../compoComponents/AppComponents.module.css';
-import { Container } from './AppComponents.styled';
+
+
 const AppComponents = () => {
   return (
     <Container>
@@ -29,7 +18,18 @@ const AppComponents = () => {
         <Route path="/" element={<LayoutComponents />}>
           <Route index element={<ComponentsHome />} />
           <Route path="markup" element={<MarkUp />} />
-          <Route path="javascript" element={<JavaScript />} />
+          <Route path="javascript" element={<JavaScript />}>
+            <Route
+              path="module-one-variables-branching-loops"
+              element={<Module1JS />}
+            >
+              <Route path="technical-interview" element={<TechInterview />} />
+            </Route>
+            <Route path="module-six-events" element={<Module6JS />}>
+              <Route path="hw-js6" element={<HomeWorkJs6 />} />
+            </Route>
+          </Route>
+
           <Route path="react" element={<ReactComponent />}>
             <Route path="module-one-components" element={<Module1 />}>
               <Route
@@ -44,7 +44,9 @@ const AppComponents = () => {
                 path="stylization"
                 element={
                   <>
-                    <PageTitle text={'24 core worlds coalition conference stylization'} />
+                    <PageTitle
+                      text={'24 core worlds coalition conference stylization'}
+                    />
                     <EventBoard events={upcomingEvents} />
                   </>
                 }
@@ -53,12 +55,18 @@ const AppComponents = () => {
                 path="emotion-library"
                 element={
                   <>
-                    <EmotionPageTitle text={'24 core worlds conference on emotion library'} />
+                    <EmotionPageTitle
+                      text={'24 core worlds conference on emotion library'}
+                    />
                     <EmotionEventBoard events={upcomingEvents} />
                   </>
                 }
               />
               <Route path="zero" element={<StackOfFiles cars={cars} />} />
+            </Route>
+            <Route path='module-two-components' element={<ListOfComponentsReact2/>}>
+              <Route path='counter' element={<Counter />}/>
+              <Route path='dropdown' element={<Dropdown />}/>
             </Route>
             <Route path="router" element={<RouterComponent />}>
               <Route
