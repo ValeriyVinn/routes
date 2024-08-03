@@ -13,14 +13,6 @@ body {
   line-height: 1.5;
 }
 
-ul, li {
-  list-style-type: none;
-}
-
-img {
-  display: block;
-}
-
 input {
   padding: 8px;
   font: inherit;
@@ -30,40 +22,3 @@ button {
   padding: 8px 12px;
   cursor: pointer;
 }
-/* task 1 -----------------------*/
-/* task 2 -----------------------*/
-
-/* task 3 -----------------------*/
-
-.three-gallery {
-  display: flex;
-  /* gap: 10px; */
-}
-
-.three-gallery-item {
-  margin-right: 10px;
-  border: 2px solid yellowgreen;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.three-gallery-item:hover {
-  border: 2px solid yellow;
-
-}
-
-/* task 4 ------------------------*/
-
-
-/* task 5 */
-/* task 6 */
-/* task 7 */
-/* task 8 */
-/* task 9 */
-/* task 10 */
-
-
-
-
-
-
