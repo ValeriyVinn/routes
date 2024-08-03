@@ -1,41 +1,113 @@
-// import Home from 'pages/Home';
-import { lazy } from 'react';
-// import Dogs from 'pages/Dogs';
-// import DogDetails from 'pages/DogDetails';
-import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
-// import { Gallery } from './Gallery';
-// import { SubBreeds } from './SubBreeds';
+import { Routes, Route } from 'react-router-dom';
 
-// import Dropdown from 'pages/Dropdown';
-const Dropdown = lazy(() => import('../pages/Dropdown'))
-const Home = lazy(() => import('../pages/Home'));
-const Dogs = lazy(() => import('../pages/Dogs'));
-const DogDetails = lazy(() => import('../pages/DogDetails'));
-const Gallery = lazy(() => import('../components/Gallery'));
-// const SubBreeds = lazy(() => import('../components/SubBreeds'))
-const SubBreeds = lazy(() =>
-  import('./SubBreeds').then(module => ({
-    ...module,
-    default: module.SubBreeds,
-  }))
-);
+import {
+  JavaScript,
+  MarkUp,
+  ReactComponent,
+  LayoutComponents,
+  ComponentsHome,
+  NotFound,
+  Module1JS,
+  TechInterview,
+  Module6JS,
+  HomeWorkJs6,
+  Module1,
+  PaintingList,
+  Section,
+  paintingsData,
+  PageTitle,
+  upcomingEvents,
+  EventBoard,
+  EmotionPageTitle,
+  EmotionEventBoard,
+  StackOfFiles,
+  cars,
+  ListOfComponentsReact2,
+  Counter,
+  RouterComponent,
+  FirstReactComponent,
+  SecondReactComponent,
+  Container,
+  Dropdown,
+} from './Imports/Imports';
 
-export const App = () => {
+// import css from '../compoComponents/AppComponents.module.css';
+
+const App = () => {
   return (
-    <div>
+    <Container>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-
-          <Route path="dropdown" element={<Dropdown />} />
-          <Route path="dogs" element={<Dogs />} />
-          <Route path="dogs/:dogId" element={<DogDetails />}>
-            <Route path="subbreeds" element={<SubBreeds />} />
-            <Route path="gallery" element={<Gallery />} />
+        <Route path="/" element={<LayoutComponents />}>
+          <Route index element={<ComponentsHome />} />
+          <Route path="markup" element={<MarkUp />} />
+          <Route path="javascript" element={<JavaScript />}>
+            <Route
+              path="module-one-variables-branching-loops"
+              element={<Module1JS />}
+            >
+              <Route path="technical-interview" element={<TechInterview />} />
+            </Route>
+            <Route path="module-six-events" element={<Module6JS />}>
+              <Route path="hw-js6" element={<HomeWorkJs6 />} />
+            </Route>
           </Route>
+
+          <Route path="react" element={<ReactComponent />}>
+            <Route path="module-one-components" element={<Module1 />}>
+              <Route
+                path="paintings"
+                element={
+                  <Section title="The beautiful is near">
+                    <PaintingList items={paintingsData} />
+                  </Section>
+                }
+              />
+              <Route
+                path="stylization"
+                element={
+                  <>
+                    <PageTitle
+                      text={'24 core worlds coalition conference stylization'}
+                    />
+                    <EventBoard events={upcomingEvents} />
+                  </>
+                }
+              />
+              <Route
+                path="emotion-library"
+                element={
+                  <>
+                    <EmotionPageTitle
+                      text={'24 core worlds conference on emotion library'}
+                    />
+                    <EmotionEventBoard events={upcomingEvents} />
+                  </>
+                }
+              />
+              <Route path="zero" element={<StackOfFiles cars={cars} />} />
+            </Route>
+            <Route
+              path="module-two-components"
+              element={<ListOfComponentsReact2 />}
+            >
+              <Route path="counter" element={<Counter />} />
+              <Route path="dropdown" element={<Dropdown />} />
+            </Route>
+            <Route path="router" element={<RouterComponent />}>
+              <Route
+                path="first-react-component"
+                element={<FirstReactComponent />}
+              />
+              <Route
+                path="second-react-component"
+                element={<SecondReactComponent />}
+              />
+            </Route>
+          </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </div>
+    </Container>
   );
 };
+export default App;
