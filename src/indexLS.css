@@ -3,8 +3,14 @@ li {
   list-style-type: none;
 }
 
+ul, li, p, h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
   display: flex;
+  padding: 20px;
 }
 
 .logo {
@@ -23,4 +29,17 @@ li {
 
 .link {
   color: rgb(127, 127, 127);
+
+}
+
+.main-header {
+  margin: 20px 10px;
+
+}
+
+.list-module {
+  outline: 1px solid tomato;
+  padding: 5px 20px;
+  margin-bottom: 5px;
+
 }
