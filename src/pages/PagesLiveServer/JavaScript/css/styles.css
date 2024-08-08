@@ -19,6 +19,10 @@ h5 {
   color: #006400;
 }
 
+.practice-header {
+  color: rgb(50, 80, 180);
+}
+
 .section {
   outline: 1px solid #008000;
   padding: 5px 10px;
