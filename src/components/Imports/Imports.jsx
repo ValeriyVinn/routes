@@ -28,3 +28,8 @@ export { default as FirstReactComponent } from '../JavaScript/Module5/FirstReact
 export { default as SecondReactComponent } from '../JavaScript/Module5/SecondReactComponent/SecondReactComponent';
 export { Container } from '../../components/AppComponents.styled';
 export { default as Dropdown } from '../React/Module2/Dropdown/Dropdown';
+export { default as ColorPicker} from '../React/Module2/ColorPicker/ColorPicker'
+export {default as colorPickerOptions} from '../React/Module2/ColorPicker/ColorPickerData.json'
+
+
+

@@ -29,6 +29,8 @@ import {
   SecondReactComponent,
   Container,
   Dropdown,
+  ColorPicker, 
+  colorPickerOptions
 } from './Imports/Imports';
 
 // import css from '../compoComponents/AppComponents.module.css';
@@ -92,6 +94,7 @@ const App = () => {
             >
               <Route path="counter" element={<Counter />} />
               <Route path="dropdown" element={<Dropdown />} />
+              <Route path='color-picker' element={<ColorPicker options={colorPickerOptions}/>}/>
             </Route>
             <Route path="router" element={<RouterComponent />}>
               <Route
