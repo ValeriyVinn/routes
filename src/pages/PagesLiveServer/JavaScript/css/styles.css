@@ -53,15 +53,16 @@ pre {
 
 .accordion {
   display: block;
-  background-color: rgb(209, 219, 228);
-  color: royalblue;
-  font-size: 18px;
+  background-color: rgb(240, 235, 255);
+  color: darkblue;
+  font-size: 14px;
   font-weight: 600;
   cursor: text;
-  padding: 18px;
+  padding: 10px;
   width: 100%;
   text-align: left;
   border: none;
+  border-radius: 3px;
   transition: 0.4s;
   user-select: text;
 }
@@ -70,6 +71,7 @@ pre {
 .active,
 .accordion:hover {
   background-color: aliceblue;
+  outline: 1px solid darkblue;
 }
 
 /* Style the accordion panel. Note: hidden by default */
@@ -86,10 +88,13 @@ pre {
   content: '\2796'; /* Unicode character for "minus" sign (-) */
 }
 .panel {
-  padding: 0 18px;
-  background-color: aliceblue;
+  font-size: 16px;
+  padding:  0px;
+  background-color: rgb(230, 235, 255);  
+  border-radius: 3px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   margin-bottom: 10px;
 }
+/* --------------------- */
