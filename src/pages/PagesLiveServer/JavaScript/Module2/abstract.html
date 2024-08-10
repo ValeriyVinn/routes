@@ -177,15 +177,912 @@ console.log(`Число більше за ${threshold}: ${numbers[i]}`);
       >
     </section>
     <section class="section">
-      <h3>Заголовок</h3>
+      <h3>Присвоєння за посиланням і за значенням</h3>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
-        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
-        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
-        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
-        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
-        quos doloremque repellendus quis assumenda deserunt!
+        Фундаментальною відмінністю складних типів від примітивів є те, як вони
+        зберігаються і копіюються. Примітиви:
+        <strong>рядки, числа, булі, null і undefined</strong> , під час
+        присвоєння повністю копіюються за значенням
+        <strong>(by value)</strong> . Зі складними типами - все по-іншому. У
+        змінній, якій присвоєно масив або об'єкт, зберігається не саме значення,
+        а адреса його місця в пам'яті, іншими словами - посилання (вказівник) на
+        нього і вони передаються <strong>за посиланням (by reference)</strong> .
+      </p>
+      <p>
+        За умови передачі за значенням, змінним виділяється нова комірка пам'яті
+        і в неї копіюються дані. За умови передачі за посиланням, замість
+        створення нового об'єкта, змінній присвоюється посилання (вказівник) на
+        вже існуючий об'єкт, тобто на його місце в пам'яті. Таким чином,
+        декілька змінних можуть вказувати на один і той самий об'єкт.
+      </p>
+      <p>
+        Усі <strong>примітивні типи</strong> присвоюються за значенням, тобто
+        створюється копія.
+      </p>
+      <pre class="code">
+let a = 5;
+// Присвоєння за значенням, в пам'яті буде створена ще
+// одна комірка, в яку буде скопійоване значення 5
+let b = a;
+console.log(a); // 5
+console.log(b); // 5
+       
+// Змінимо значення a
+a = 10;
+console.log(a); // 10
+// Значення b не змінилося, оскільки це окрема копія
+console.log(b); // 5
+</pre
+      >
+      <p>
+        <strong>Складні типи</strong> - об'єкти, масиви, функції присвоюються за
+        посиланням, тобто змінна просто отримує посилання на вже існуючий
+        об'єкт.
+      </p>
+      <pre class="code">
+const a = ["Mango"];
+// Оскільки a - це масив, в b записується посилання на вже існуючий
+// масив в пам'яті. Тепер a і b вказують на той самий масив.
+const b = a;
+console.log(a); // ["Mango"]
+console.log(b); // ["Mango"]
+        
+// Змінимо масив, додавши ще один елемент, використовуючи вказівник з a
+a.push("Poly");
+console.log(a); // ["Mango", "Poly"]
+        
+// b також змінилось, тому що b, як і a,
+// просто містить посилання на те ж саме місце в пам'яті
+console.log(b); // ["Mango", "Poly"]
+        
+// Результат повторюється
+b.push("Ajax");
+console.log(a); // ["Mango", "Poly", "Ajax"]
+console.log(b); // ["Mango", "Poly", "Ajax"]
+</pre
+      >
+    </section>
+    <section class="section">
+      <h3>Методи масиву</h3>
+      <h4>Методи split() і join()​</h4>
+      <p>
+        <strong>Метод split(delimiter) </strong> перетворює рядок в масив,
+        «розбиваючи» його роздільником delimiter. Якщо роздільник - це порожній
+        рядок, то створиться масив окремих символів. Роздільником може бути один
+        або декілька символів.
+      </p>
+      <pre class="code">
+const name = "Mango";
+console.log(name.split("")); // ["M", "a", "n", "g", "o"]
+        
+const message = "JavaScript - це цікаво";
+console.log(message.split(" ")); // ["JavaScript", "-", "це", "цікаво"]
+        </pre
+      >
+      <p>
+        <strong>Метод join(delimiter)</strong> об'єднує елементи масиву у рядок.
+        У рядку елементи будуть розділені символом або групою символів,
+        зазначених в delimiter. Тобто ця операція протилежна методу рядків
+        split(delimiter).
+      </p>
+      <pre class="code">
+const words = ["JavaScript", "це", "цікаво"];
+console.log(words.join("")); // "JavaScriptцецікаво"
+console.log(words.join(" ")); // "JavaScript це цікаво"
+console.log(words.join("-")); // "JavaScript-це-цікаво"
+</pre
+      >
+      <h4>Метод indexOf()​</h4>
+      <p>
+        <strong>indexOf(value)</strong> повертає перший індекс, в якому елемент
+        зі значенням value був знайдений в масиві, або число -1, якщо такий
+        елемент відсутній. Використовуйте indexOf тоді, коли необхідно отримати
+        сам індекс елемента.
+      </p>
+      <pre class="code">
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.indexOf("Poly")); // 2
+console.log(clients.indexOf("Monkong")); // -1
+</pre
+      >
+      <h4>Метод includes()​</h4>
+      <p>
+        <strong>includes(value)</strong> перевіряє, чи містить масив елемент зі
+        значенням value і повертає true або false відповідно. Застосування цього
+        методу корисне в ситуаціях, коли необхідно перевірити, чи є елемент в
+        масиві і не важлива його позиція (індекс).
+      </p>
+      <pre class="code">
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.includes("Poly")); // true
+console.log(clients.includes("Monkong")); // false
+</pre
+      >
+      <p>Перевірка багатьох умов з includes()​</p>
+      <pre class="code">
+// Виносимо варіанти в масив
+const redFruits = ["apple", "strawberry", "cherry", "cranberries"];
+const fruit = "cherry";
+// Перевіряємо присутність елемента
+const hasFruit = redFruits.includes(fruit);
+  
+if (hasFruit) {
+  console.log(`${fruit} is a red fruit!`);
+}
+</pre
+      >
+      <h4>Методи push() і pop()​</h4>
+      <p>
+        Додають або видаляють крайні елементи масиву. Працюють тільки з крайнім
+        лівим і крайнім правим елементом, і не можуть вставити або видалити
+        елемент з довільної позиції.
+      </p>
+      <p>
+        <strong>Метод push()</strong> додає один або декілька елементів
+        наприкінці масиву, без необхідності зазначати індекси елементів, що
+        додаються. Повертає довжину масиву після додавання елементів.
+      </p>
+      <pre class="code">
+const numbers = [];
+
+numbers.push(1);
+console.log(numbers); // [1]
+  
+numbers.push(2);
+console.log(numbers); // [1, 2]
+  
+numbers.push(3);
+console.log(numbers); // [1, 2, 3]
+  
+numbers.push(4);
+console.log(numbers); // [1, 2, 3, 4]
+  
+numbers.push(5);
+console.log(numbers); // [1, 2, 3, 4, 5]
+  </pre
+      >
+      <p>
+        Метод pop() видаляє останній елемент з кінця масиву і повертає видалений
+        елемент. Якщо масив порожній, метод повертає undefined.
+      </p>
+      <pre class="code">
+const numbers = [1, 2, 3, 4, 5];
+
+console.log(numbers.pop()); //  5
+console.log(numbers); // [1, 2, 3, 4]
+  
+console.log(numbers.pop()); //  4
+console.log(numbers); // [1, 2, 3]
+  
+console.log(numbers.pop()); //  3
+console.log(numbers); // [1, 2]
+  
+console.log(numbers.pop()); //  2
+console.log(numbers); // [1]
+  
+console.log(numbers.pop()); //  1
+console.log(numbers); // []
+</pre
+      >
+      <h4>Метод slice()​</h4>
+      <p>
+        <strong>slice(begin, end)</strong> повертає новий масив, що містить
+        копію частини вихідного масиву, не змінюючи його. Копія створюється з
+        begin і до, але не включно, end - індекси елементів вихідного масиву.
+      </p>
+      <pre class="code">
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.slice(1, 3)); // ["Ajax", "Poly"]
+</pre
+      >
+      <p>
+        Якщо begin і end не зазначені, буде створена повна копія вихідного
+        масиву.
+      </p>
+      <pre class="code">
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.slice()); // ["Mango", Ajax", "Poly", "Kiwi"]
+  </pre
+      >
+      <p>
+        Якщо не зазначено end, копіювання буде зі start і до кінця вихідного
+        масиву.
+      </p>
+      <pre class="code">
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.slice(1)); // ["Ajax", "Poly", "Kiwi"]
+console.log(clients.slice(2)); // ["Poly", "Kiwi"]
+</pre
+      >
+      <p>
+        Якщо значення start від'ємне, а end не зазначено - будуть скопійовані
+        останні start елементи
+      </p>
+      <pre class="code">
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.slice(-2)); // ["Poly", "Kiwi"]
+</pre
+      >
+      <h4>Метод splice()​</h4>
+      <p>
+        Швейцарський ніж для роботи з масивами, якщо вихідний масив необхідно
+        змінити. Видаляє, додає і замінює елементи у довільному місці масиву.
+      </p>
+
+      <h5>Видалення​</h5>
+      <p>Щоб видалити елементи в масиві, передаються два аргументи.</p>
+
+      <pre class="code">
+splice(position, num)
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          position - вказує на позицію (індекс) першого елемента для видалення
+        </li>
+        <li>
+          position - вказує на позицію (індекс) першого елемента для видалення
+        </li>
+      </ul>
+      <p>
+        <strong>Метод splice</strong> змінює вихідний масив і повертає масив, що
+        містить видалені елементи. Наприклад, у нас є масив оцінок, який містить
+        п'ять чисел від 1 до 5.
+      </p>
+      <pre class="code">
+const scores = [1, 2, 3, 4, 5];
+
+// Видаляємо три елементи масиву, починаючи з першого елемента (індекс 0)
+const deletedScores = scores.splice(0, 3);
+        
+// Тепер масив scores містить два елементи
+console.log(scores); // [4, 5]
+        
+// А масив deletedScores містить три видалені елементи
+console.log(deletedScores); // [1, 2, 3]
+</pre
+      >
+      <h5>Додавання</h5>
+      <p>
+        Для того, щоб додати один або декілька елементів в масив, необхідно
+        передати три або більше аргументи, за такої умови, другий аргумент
+        повинен дорівнювати нулю.
+      </p>
+      <pre class="code">
+splice(position, 0, new_element_1, new_element_2, ...)
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          Аргумент position вказує початкову позицію в масиві, куди будуть
+          вставлені нові елементи.
+        </li>
+        <li>
+          Другий аргумент - це нуль, він говорить методу не видаляти елементи в
+          місці додавання нових.
+        </li>
+        <li>
+          Третій, четвертий і всі наступні аргументи - це нові елементи, які
+          додаються в масив.
+        </li>
+      </ul>
+      <p>
+        Наприклад, у нас є масив з назвами кольорів у вигляді рядків. Додамо
+        новий колір перед елементом з індексом 2.
+      </p>
+      <pre class="code">
+const colors = ["red", "green", "blue"];
+
+colors.splice(2, 0, "purple");
+console.log(colors); // ["red", "green", "purple", "blue"]
+</pre
+      >
+      <p>
+        Можна додати довільну кількість елементів, передавши четвертий, п'ятий
+        аргумент тощо.
+      </p>
+      <pre class="code">
+const colors = ["red", "green", "blue"];
+
+colors.splice(1, 0, "yellow", "pink");
+console.log(colors); // ["red", "yellow", "pink", "green", "blue"]
+</pre
+      >
+      <h5>Заміна</h5>
+      <p>
+        <strong>Заміна</strong> - це операція додавання, в якій видаляються
+        елементи в місці додавання нових. Для цього необхідно передати мінімум
+        три аргументи. Кількість елементів, що видаляються і додаються, може не
+        збігатися.
+      </p>
+      <pre class="code">
+splice(position, num, new_element_1, new_element_2, ...)
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          <strong>position</strong> - вказує на позицію (індекс) першого
+          елемента для видалення
+        </li>
+        <li>
+          <strong>num</strong> - визначає кількість елементів, що видаляються
+        </li>
+        <li>
+          Третій, четвертий і всі наступні аргументи - це нові елементи, які
+          додаються в масив.
+        </li>
+      </ul>
+      <p>Наприклад, у нас є масив мов програмування з чотирьох елементів.</p>
+      <pre class="code">
+const languages = ["C", "C++", "Java", "JavaScript"];
+
+// Заміняємо елемент з індексом 1 на новий
+languages.splice(1, 1, "Python");
+console.log(languages); // ["C", "Python", "Java", "JavaScript"]
+  
+// Заміняємо один елемент (з індексом 2) на декілька
+languages.splice(2, 1, "C#", "Swift", "Go");
+console.log(languages); // ["C", "Python", "C#", "Swift", "Go", "JavaScript"]
+</pre
+      >
+      <h5>Метод concat()​</h5>
+      <p>
+        Об'єднує два або більше масивів в один. Він не змінює масив, на якому
+        викликається, а повертає новий. Порядок аргументів методу впливає на
+        порядок елементів нового масиву.
+      </p>
+      <pre class="code">
+const oldClients = ["Mango", "Ajax", "Poly", "Kiwi"];
+const newClients = ["Monkong", "Singu"];
+  
+const allClientsWithOldFirst = oldClients.concat(newClients);
+console.log(allClientsWithOldFirst); // ["Mango", "Ajax", "Poly", "Kiwi", "Monkong", "Singu"]
+  
+const allClientsWithNewFirst = newClients.concat(oldClients);
+console.log(allClientsWithNewFirst); // ["Monkong", "Singu", "Mango", "Ajax", "Poly", "Kiwi"]
+  
+console.log(oldClients); // ["Mango", "Ajax", "Poly", "Kiwi"]
+console.log(newClients); // ["Monkong", "Singu"]
+</pre
+      >
+    </section>
+    <h2>Функції</h2>
+
+    <section class="section">
+      <p>
+        <strong>Функція</strong> - це підпрограма, незалежна частина коду,
+        призначена для багаторазового виконання конкретної задачі з різними
+        початковими значеннями. Функції дозволяють структурувати великі
+        програми, зменшують повторення та ізолюють код.
+      </p>
+      <h4>Function declaration</h4>
+      <p>
+        <strong>Оголошення функції (function declaration)</strong> починається з
+        ключового слова function, після якого стоїть ім'я - дієслово, що
+        відповідає на запитання «Що зробити?» і пара круглих дужок. Тіло функції
+        береться у фігурні дужки {} і містить інструкції, які необхідно виконати
+        на момент її виклику. Потім, коли необхідно, функція викликається за
+        допомогою імені і пари круглих дужок.
+      </p>
+      <h5>Параметри та аргументи</h5>
+      <p>
+        В круглих дужках після імені функції зазначаються параметри - перелік
+        даних, які функція очікує на момент виклику.
+      </p>
+      <pre class="code">
+// Оголошення параметрів x, y, z
+function multiply(x, y, z) {
+  console.log(`Результат множення дорівнює ${x * y * z}`);
+}
+</pre
+      >
+      <p>
+        <strong>Параметри</strong> - це локальні змінні, доступні тільки у тілі
+        функції. Вони розділяються комами. Параметрів може бути декілька, або
+        взагалі не бути, у такому випадку записуються просто порожні круглі
+        дужки. Параметри будуть створюватися кожного разу під час виконання
+        функції, і їх окремі інкарнації жодним чином один з одним не пов'язані.
+      </p>
+      <p>
+        На момент виклику функції, в круглих дужках можна передати
+        <strong>аргументи</strong> - значення для оголошених параметрів функції.
+      </p>
+      <pre class="code">
+// 1. Оголошення параметрів x, y, z
+function multiply(x, y, z) {
+  console.log(`Результат множення дорівнює ${x * y * z}`);
+}
+        
+// 2. Передача аргументів
+multiply(2, 3, 5); // Результат множення дорівнює 30
+multiply(4, 8, 12); // Результат множення дорівнює 384
+multiply(17, 6, 25); // Результат множення дорівнює 2550
+</pre
+      >
+      <p>
+        Порядок передачі аргументів повинен відповідати порядку оголошених
+        параметрів: значення першого аргументу буде присвоєно першому параметру,
+        другого аргументу - другому параметру тощо. Якщо параметрів буде більше,
+        ніж аргументів, то параметрам без значень буде присвоєно undefined.
+      </p>
+      <h5>Повернення значення</h5>
+      <p>
+        Оператор <strong>return</strong> використовується для передачі значення
+        з тіла функції у зовнішній код. Коли інтерпретатор зустрічає
+        <strong>return</strong>, він відразу ж виходить з функції (припиняє її
+        виконання), і повертає вказане значення у те місце коду, де була
+        викликана функція.
+      </p>
+      <pre class="code">
+function multiply(x, y, z) {
+  console.log("Код до return виконується звичайним чином");
+
+  // Повертаємо результат виразу множення
+  return x * y * z;
+
+  console.log("Цей лог ніколи не виконається, він стоїть після return");
+}
+
+// Результат роботи функції можна зберегти у змінну
+let result = multiply(2, 3, 5);
+console.log(result); // 30
+
+result = multiply(4, 8, 12);
+console.log(result); // 384
+
+result = multiply(17, 6, 25);
+console.log(result); // 2550
+</pre
+      >
+      <p>
+        Оператор return без явно вказаного значення повертає спеціальне значення
+        undefined. За відсутності return в тілі функції, вона все одно поверне
+        undefined.
+      </p>
+
+      <h5>Порядок виконання коду</h5>
+      <p>
+        Коли інтерпретатор зустрічає виклик функції (або методу), він призупиняє
+        виконання поточного коду і починає виконувати код з тіла функції. Після
+        того як увесь код функції буде виконаний, інтерпретатор виходить з тіла
+        функції, повертаючись у те місце, звідки прийшов, і продовжує виконувати
+        код, наступний після виклику функції.
+      </p>
+      <pre class="code">
+function multiply(x, y, z) {
+  console.log(`Результат множення дорівнює ${x * y * z}`);
+}
+
+console.log("Лог до виклику функції multiply");
+multiply(2, 3, 5); // Результат множення дорівнює 30
+console.log("Лог після виклику функції multiply");
+
+// Послідовність логів в консолі
+// "Лог до виклику функції multiply"
+// "Результат множення дорівнює 30"
+// "Лог після виклику функції multiply"
+</pre
+      >
+      <h5>Параметри за замовчуванням</h5>
+      <p>
+        Іноді необхідно оголосити функцію, у параметрів якої будуть значення,
+        відмінні від <strong>undefined</strong> , навіть якщо для них не
+        передали аргументи. Це робиться дуже простим та очевидним чином -
+        достатньо вказати значення за замовчуванням безпосередньо на момент
+        оголошення параметрів у підписі функції. У випадку такого запису, якщо
+        для параметра не було передано значення аргументу, використовується
+        значення за замовчуванням.
+      </p>
+      <pre class="code">
+function count(countFrom = 0, countTo = 10, step = 1) {
+  console.log(`countFrom = ${countFrom}, countTo = ${countTo}, step = ${step}`);
+
+  for (let i = countFrom; i <= countTo; i += step) {
+    console.log(i);
+  }
+}
+
+count(1, 5); // countFrom = 1, countTo = 5, step = 1
+count(2); // countFrom = 2, countTo = 10, step = 1
+count(); // countFrom = 0, countTo = 10, step = 1
+</pre
+      >
+      <h5>Псевдомасив arguments​</h5>
+      <p>
+        Доступ до списку всіх аргументів можна отримати за допомогою спеціальної
+        змінної <strong>arguments</strong> , яка доступна тільки всередині
+        функції і зберігає всі аргументи у якості псевдомасиву.
+
+        <strong>Псевдомасив</strong> - колекція з властивістю
+        <strong>length</strong> і можливістю звернутися до елементу за індексом,
+        але відсутністю більшості методів для роботи з масивом. Розглянемо
+        приклад використання arguments у функції, яка множить будь-яку кількість
+        аргументів:
+      </p>
+      <pre class="code">
+function multiply() {
+  let total = 1;
+
+  for (const argument of arguments) {
+    total *= argument;
+  }
+
+  return total;
+}
+
+console.log(multiply(1, 2, 3)); //  6
+console.log(multiply(1, 2, 3, 4)); //  24
+console.log(multiply(1, 2, 3, 4, 5)); //  120
+</pre
+      >
+
+      <h5>Перетворення псевдомасиву</h5>
+      <p>
+        Зазвичай псевдомасив необхідно перетворити у повноцінний масив, оскільки
+        у псевдомасиву відсутні методи масиву, наприклад
+        <strong>slice()</strong> або <strong>includes()</strong>. На практиці
+        застосовують декілька основних способів. Використовуючи метод
+        <strong>Array.from()</strong>, який створить масив із псевдомасиву.
+      </p>
+      <pre class="code">
+function fn() {
+  // Змінна args буде містити повноцінний масив
+  const args = Array.from(arguments);
+}
+</pre
+      >
+      <p>
+        Використовуючи операцію <strong>... (rest)</strong>, вона дозволяє
+        зібрати будь-яку кількість елементів, у нашому випадку аргументів, в
+        масив, і зберегти його в змінну. Збираємо всі аргументи, використовуючи
+        операцію <strong>rest</strong>
+        безпосередньо в підписі функції.
+      </p>
+      <pre class="code">
+function fn(...args) {
+  // Змінна args буде містити повноцінний масив
+}
+</pre
+      >
+      <h5>Патерн «Раннє повернення»</h5>
+      <p>
+        Оператор <strong>if...else</strong> - це основний спосіб створення
+        розгалужень. Проте, складні вкладені розгалуження роблять код заплутаним
+        для розуміння. Створимо функцію, яка обробляє зняття коштів з особистого
+        рахунку в банку. Вона отримує суму для зняття і поточний баланс рахунку,
+        після чого, залежно від умови, виконує необхідний блок коду.
+      </p>
+      <pre class="code">
+function withdraw(amount, balance) {
+  if (amount === 0) {
+    console.log("Для проведення операції введіть суму більшу за нуль");
+  } else if (amount > balance) {
+    console.log("Недостатньо коштів на рахунку");
+  } else {
+    console.log("Операція зняття коштів проведена успішно");
+  }
+}
+
+withdraw(0, 300); // "Для проведення операції введіть суму більшу за нуль"
+withdraw(500, 300); // "Недостатньо коштів на рахунку"
+withdraw(100, 300); // "Операція зняття коштів проведена успішно"
+</pre
+      >
+      <p>
+        Навіть у такому простому прикладі є група вкладених умовних операторів,
+        серед яких не одразу можна зрозуміти логіку виконання коду. У функції
+        може бути більше одного оператора return. Головне пам'ятати, що
+        виконання функції переривається, коли інтерпретатор зустрічає
+        повернення, і увесь код після нього буде проігнорований в поточному
+        виконанні функції.
+
+        <strong>Патерн «Раннє повернення»</strong> - це спосіб використовувати
+        можливість дострокового повернення з функції за допомогою оператора
+        return. Використовуючи цей прийом, ми отримуємо чистіший, плоскіший і
+        зрозуміліший код, який простіше рефакторити. Виділимо всі перевірки умов
+        в окремі оператори <strong>if</strong>, після чого додамо код, що
+        знаходиться в тілі <strong>else</strong>. В ідеальному випадку, повинен
+        вийти плоский список умовних операторів, що йдуть один за одним, а в
+        кінці - блок, який виконається тільки у тому випадку, якщо не
+        виконається жоден <strong>if</strong>.
+      </p>
+      <pre class="code">
+function withdraw(amount, balance) {
+  // Якщо умова виконується, викликається console.log
+  // і вихід із функції. Код після тіла if не виконається.
+  if (amount === 0) {
+    console.log("Для проведення операції введіть суму більшу за нуль");
+    return;
+  }
+
+  // Якщо умова першого if не виконалась, його тіло пропускається
+  // та інтерпретатор доходе до другого if.
+  // Якщо умова виконується, викликається console.log і вихід із функції.
+  // Код, що знаходиться після тіла if, не виконається.
+  if (amount > balance) {
+    console.log("Недостатньо коштів на рахунку");
+    return;
+  }
+
+  // Якщо жоден із попередніх if не виконався,
+  // інтерпретатор доходить до цього коду і виконує його.
+  console.log("Операція зняття коштів проведена");
+}
+
+withdraw(0, 300); // "Для проведення операції введіть суму більшу за нуль"
+withdraw(500, 300); // "Недостатньо коштів на рахунку"
+withdraw(100, 300); // "Операція зняття коштів проведена"
+</pre
+      >
+      <h4>Функціональний вираз</h4>
+      <p>
+        <strong>Функціональний вираз (function expression)</strong> - звичайне
+        оголошення змінної, значенням якої буде функція. Альтернативний спосіб
+        оголошення функції.
+      </p>
+      <pre class="code">
+// Оголошення функції (function declaration)
+  function multiply(x, y, z) {
+    console.log(`Результат множення дорівнює ${x * y * z}`);
+  }
+  
+  // Функціональний вираз (function expression)
+  const multiply = function (x, y, z) {
+    console.log(`Результат множення дорівнює ${x * y * z}`);
+  };
+  </pre
+      >
+      <p>
+        Різниця в тому, що функціональний вираз не можна викликати до місця його
+        створення, тільки після нього, тому що це буквально оголошення const
+        змінної.
+      </p>
+      <pre class="code">
+// ❌ Помилка! Не працює виклик до оголошення
+  multiply(1, 2, 3);
+  
+  const multiply = function (x, y, z) {
+    console.log(`Результат множення дорівнює ${x * y * z}`);
+  };
+  
+  // ✅ Працює виклик після оголошення
+  multiply(4, 5, 6);
+  </pre
+      >
+      <p>A оголошення функції можна викликати до місця її створення в коді.</p>
+      <pre class="code">
+// ✅ Працює виклик до оголошення
+  multiply(1, 2, 3);
+  
+  function multiply(x, y, z) {
+    console.log(`Результат множення дорівнює ${x * y * z}`);
+  }
+  
+  // ✅ Працює виклик після оголошення
+  multiply(4, 5, 6);
+  </pre
+      >
+      <p>
+        Не важливо, який синтаксис використовувати, важливо, щоб код в проекті
+        був однорідним. Тобто необхідно намагатися не змішувати оголошення
+        функції з функціональними виразами.
+      </p>
+    </section>
+    <section class="section">
+      <h3>Область видимості</h3>
+      <p>
+        <strong>Область видимості (scope)</strong> - механізм, який визначає
+        доступність змінних у коді, що виконується. Ланцюжок областей видимості
+        (scope chain) - області видимості утворюють ієрархію, за якою дочірні
+        області мають доступ до змінних з батьківських областей, але не навпаки.
+        Змінну видно для коду, що виконується, якщо вона є у поточній області
+        видимості або в ланцюжку областей видимості.
+      </p>
+      <h4>Глобальна область видимості</h4>
+      <p>
+        Змінні, оголошені на найвищому рівні, тобто за межами будь-яких
+        конструкцій на зразок if, while, for і функцій, знаходяться в
+        <strong>глобальній області видимості</strong> і доступні всюди після їх
+        оголошення.
+      </p>
+      <pre class="code">
+const globalValue = 10;
+
+  console.log(globalValue); // 10
+  
+  function foo() {
+    console.log(globalValue); // 10
+  }
+  
+  for (let i = 0; i < 5; i++) {
+    console.log(globalValue); // 10
+  
+    if (i === 2) {
+      console.log(globalValue); // 10
+    }
+  }
+  </pre
+      >
+      <h4>Блокова область видимості</h4>
+      <p>
+        Змінні, оголошені всередині інструкцій if, for, функцій та інших блоків
+        коду, взятих у фігурні дужки {}, знаходяться в
+        <strong>блоковій області видимості</strong> і доступні тільки всередині
+        цього блоку коду або у блоках, вкладених в нього.
+      </p>
+      <pre class="code">
+function foo() {
+  const a = 20;
+  console.log(a); // 20
+
+  for (let i = 0; i < 5; i++) {
+    console.log(a); // 20
+
+    if (i === 2) {
+      console.log(a); // 20
+    }
+  }
+}
+
+// ❌ Помилка! Змінна a - недоступна у глобальній області видимості
+console.log(a);
+
+for (let i = 0; i < 3; i++) {
+  // ❌ Помилка! Змінна a - недоступна в цій області видимості
+  console.log(a);
+}
+</pre
+      >
+      <p>
+        Це можна уявити у вигляді будинку з кімнатами. Будинок знаходиться в
+        глобальній області видимості. Кожна функція і блок створюють нову
+        кімнату, вкладену всередину будинку. Змінні, оголошені всередині цих
+        кімнат, доступні тільки тоді, коли ви знаходитесь всередині цієї
+        кімнати. За межами кімнати ці змінні - недоступні.
+      </p>
+      <pre class="code">
+for (let i = 0; i < 5; i++) {
+  const a = 20;
+  console.log(a); // 20
+
+  if (i === 2) {
+    const b = 30;
+    console.log(a); // 20
+    console.log(b); // 30
+  }
+
+  if (i === 3) {
+    console.log(a); // 20
+
+    // ❌ Помилка! Змінна b - недоступна в цій області видимості
+    console.log(b);
+  }
+}
+</pre
+      >
+      <h4>Пошук за ланцюжком областей видимості</h4>
+      <p>
+        Інтерпретатор намагається спочатку знайти змінну в тій області
+        видимості, в якій до неї звернулися. Якщо така змінна у локальній
+        області видимості - відсутня, то він виходить назовні, на один рівень за
+        одну спробу, доки не знайде значення або не дійде до найвищої області
+        видимості (глобальної) і зрозуміє, що змінну з таким ідентифікатором
+        неможливо знайти, тому що її просто не існує, у такому випадку виникне
+        помилка того, що змінна не оголошена.
+      </p>
+      <img src="./img/scope-chain-search.png" alt="scope" width="480" />
+    </section>
+    <section class="section">
+      <h3>Стек викликів</h3>
+      <p>
+        На момент виклику функції, всередині її тіла можуть викликатися інші
+        функції, а в них - інші тощо. JavaScript - однопотокова мова, тобто за
+        одну одиницю часу може виконуватись лише одна інструкція. Це означає, що
+        викликані функції, які не завершили своє виконання, повинні чекати
+        виконання функцій, викликаних всередині них, для того, щоб продовжити
+        свою роботу.
+      </p>
+      <pre class="code">
+function fnA() {
+  console.log("Лог всередині функції fnA до виклику fnB");
+  fnB();
+  console.log("Лог всередині функції fnA після виклику fnB");
+}
+
+function fnB() {
+  console.log("Лог всередині функції fnB");
+}
+
+console.log("Лог до виклику fnA");
+fnA();
+console.log("Лог після виклику fnA");
+
+// "Лог до виклику fnA"
+// "Лог всередині функції fnA до виклику fnB"
+// "Лог всередині функції fnB"
+// "Лог всередині функції fnA після виклику fnB"
+// "Лог після виклику fnA"
+</pre
+      >
+      <p>
+        Потрібен механізм зберігання списку функцій, які були викликані, але ще
+        не завершили своє виконання, і механізм керування порядком виконання цих
+        функцій - саме за це відповідає стек викликів (call stack).
+      </p>
+      <h4>Стек</h4>
+      <p>
+        <strong>Стек</strong> - структура даних, яка працює за принципом LIFO
+        (Last-In-First-Out), тобто останнім прийшов - першим пішов. Останнє, що
+        додається у стек, буде видалено з нього першим, - тому можна додати або
+        видалити елементи тільки з верхівки стека. Уявіть стек у вигляді масиву,
+        у якого є тільки методи pop і push, тобто можна додати або видалити
+        тільки елемент в кінці колекції.
+      </p>
+      <img src="./img/stack.png" alt="stack" width="320" />
+      <h4>Стек викликів</h4>
+      <p>
+        <strong>Стек викликів (call stack)</strong> - це механізм для
+        відстеження поточного місцезнаходження інтерпретатора в коді, який
+        викликає декілька функцій. Яка із функцій виконується на цей момент, які
+        функції викликаються всередині функції, що виконується, яка функція буде
+        викликана наступною тощо.
+      </p>
+      <ul class="section-list">
+        <li>
+          Коли скрипт викликає функцію, інтерпретатор додає її в стек викликів і
+          починає виконання.
+        </li>
+        <li>
+          Будь-які функції, викликані функцією, що виконується, додаються у стек
+          викликів і виконуються, щойно відбувається їх виклик.
+        </li>
+        <li>
+          Коли виконання функції завершено, інтерпретатор знімає її зі стека
+          викликів і відновлює виконання коду з тієї точки, де зупинився до
+          цього. Тобто починає виконуватися функція, запис якої наступний у
+          стеку.
+        </li>
+      </ul>
+      <p>
+        Stack frame (кадр стека, запис стека) - структура, яка додається у стек
+        на момент виклику функції. Зберігає службову інформацію, наприклад, ім'я
+        функції і номер рядка, в якому був виклик.
+      </p>
+      <pre class="code">
+function bar() {
+  console.log("bar");
+}
+
+function baz() {
+  console.log("baz");
+}
+
+function foo() {
+  console.log("foo");
+  bar();
+  baz();
+}
+
+foo();
+</pre
+      >
+      <p>
+        Коли виконується цей код, спочатку викликається <strong>foo()</strong> ,
+        потім всередині <strong>foo()</strong> викликається
+        <strong>bar()</strong>, а потім - <strong>baz()</strong>. Виклики
+        <strong>console.log()</strong> так само враховуються, адже - це функція.
+        На ілюстрації нижче, для прикладу, покроково зображений стек викликів.
+      </p>
+      <img src="./img/call-stack.png" alt="call-stack" width="640" />
+      <h4>Переповнення стека викликів</h4>
+      <p>
+        Стек викликів - не безмежний, йому відводиться кінцевий об'єм пам'яті.
+        Іноді в консолі можна побачити помилку "Uncaught RangeError: Maximum
+        call stack size exceeded" - переповнення стека (stack overflow). Це може
+        статися у випадку неправильного використання рекурсії або зациклення
+        викликів функцій, тобто, якщо відбуваються нескінченні виклики функцій і
+        результат не повертається, - стек збільшується. Така помилка виникне
+        після досягнення ліміту кількості записів стека, і скрипт «падає».
       </p>
     </section>
     <section class="section">
@@ -272,54 +1169,7 @@ console.log(`Число більше за ${threshold}: ${numbers[i]}`);
         quos doloremque repellendus quis assumenda deserunt!
       </p>
     </section>
-    <section class="section">
-      <h3>Заголовок</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
-        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
-        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
-        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
-        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
-        quos doloremque repellendus quis assumenda deserunt!
-      </p>
-    </section>
-    <section class="section">
-      <h3>Заголовок</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
-        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
-        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
-        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
-        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
-        quos doloremque repellendus quis assumenda deserunt!
-      </p>
-    </section>
-    <section class="section">
-      <h3>Заголовок</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
-        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
-        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
-        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
-        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
-        quos doloremque repellendus quis assumenda deserunt!
-      </p>
-    </section>
-    <section class="section">
-      <h3>Заголовок</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
-        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
-        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
-        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
-        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
-        quos doloremque repellendus quis assumenda deserunt!
-      </p>
-    </section>
+
     <section class="section">
       <h3>Заголовок</h3>
       <p>
