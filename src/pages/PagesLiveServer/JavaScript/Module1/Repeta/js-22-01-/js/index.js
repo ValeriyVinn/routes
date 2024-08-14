@@ -25,8 +25,8 @@
  */
 
 // console.log('До');
-// alert('qweqweqwe');
-// console.log('После');
+// alert('Тисни');
+// console.log('Після');
 
 /*
  * - Ввод пользовователя
@@ -40,6 +40,7 @@
 // quantity = Number(quantity);
 // console.log(quantity);
 // console.log(typeof quantity);
+
 
 /*
  * Парс числа с Number.parseInt() и Number.parseFloat()
@@ -118,18 +119,16 @@
 
 // console.log(result);
 
-// const colors = ['tomato', 'teal', 'orange', 'deeppink', 'skyblue'];
-// const max = colors.length - 1;
-// const min = 0;
+
+// const colors = ['lightcoral', 'palegreen', 'lightpink', 'lightcyan', 'lemonchiffon', 'lavender', 'lightblue', 'wheat', 'white', 'red', 'blue', 'pink', 'green', 'grey', 'gold', 'teal']
+// const max = colors.length-1
+// const min = 0
 
 // const index = Math.round(Math.random() * (max - min) + min);
+// const color = colors[index]
+// console.log(color)
 
-// const color = colors[index];
-
-// console.log(color);
-
-// document.body.style.backgroundColor = color;
-
+// document.body.style.backgroundColor = color
 
 /*
  * Длина строки, свойство length

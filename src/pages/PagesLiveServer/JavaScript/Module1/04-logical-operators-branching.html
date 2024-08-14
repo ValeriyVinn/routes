@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <title>Logical operators. Branching</title>
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+
+    <h2>Логічні оператори. Розгалуження</h2>
+    <section class="section">
+      <p>
+        Логічні оператори використовуються для перевірки умов з багатьма
+        виразами, наприклад в операціях порівняння.
+      </p>
+      <h3>Приведення типів</h3>
+      <p>
+        У логічних операціях здійснюється приведення типів операндів до true або
+        false. Приведення відбувається, якщо в коді виявлений логічний оператор.
+        <br />
+
+        <strong>Truthy і Falsy</strong> - терміни, які використовуються для тих
+        значень, які в логічній операції приводяться до true або false, хоча
+        спочатку не були булями. <br />
+        <strong class="remember">Запам'ятайте:</strong> 6 хибних (falsy)
+        значень, що приводяться до false у логічному перетворенні: 0, NaN, null,
+        undefined, порожній рядок і false. Абсолютно все інше приводиться до
+        true.
+      </p>
+      <h4>Логічні оператори</h4>
+      <p>
+        Існує три логічні оператори, які використовуються для перевірки
+        виконання множинних виразів.
+      </p>
+      <img
+        src="./img/boolean-operators.png"
+        alt="boolean-operators"
+        width="320"
+      />
+      <h5>Логічне «І»​</h5>
+      <p>
+        Оператор && приводить всі операнди до буля і повертає значення одного з
+        них. Лівий операнд - якщо його можна привести до false, і правий - в
+        інших випадках. Тобто, логічне «І» зупиняється на хибному і повертає те,
+        на чому зупинилось, або останній операнд.
+      </p>
+      <p class="code">
+        console.log(1 && 5); // true && true -> 5 <br />
+        console.log(5 && 1); // true && true -> 1<br />
+        console.log(0 && 2); // false && true -> 0<br />
+        console.log(2 && 0); // true && false -> 0<br />
+        console.log("" && "Mango"); // false && true -> ""<br />
+        console.log("Mango" && ""); // true && false -> ""<br />
+        console.log("Mango" && "Poly"); // true && true -> "Poly"<br />
+        console.log("Poly" && "Mango"); // true && true -> "Mango"
+      </p>
+      <p>
+        Виконуючи логічне «І», правий операнд може не обчислюватися у випадку,
+        якщо лівий був приведений до false.
+      </p>
+      <h5>Логічне «АБО»​</h5>
+      <p>
+        Оператор || приводить всі операнди до буля і повертає значення одного з
+        них. Лівий операнд - якщо його можна привести до true, і правий - в
+        інших випадках. Тобто, логічне «АБО» зупиняється на правді і повертає
+        те, на чому зупинилося або останній операнд.
+      </p>
+      <p class="code">
+        console.log(true || false); // true<br />
+        console.log(false || true); // true<br />
+        console.log(true || true); // true<br />
+        console.log(3 || false); // 3<br />
+        console.log(false || 3); // 3<br />
+        console.log(3 || true); // 3<br />
+        console.log(true || 3); // true<br />
+      </p>
+      <p>
+        Виконуючи логічне «АБО», правий операнд може не обчислюватися у випадку,
+        якщо лівий був приведений до true.
+      </p>
+      <h5>Логічне «НЕ»​</h5>
+      <p>
+        Логічне «НЕ» - це унарний оператор, який виконує операцію над одним
+        операндом з правої сторони. Оператор ! приводить операнд до буля, якщо
+        необхідно, а потім робить інверсію - змінює його на протилежний true ->
+        false або false -> true.
+      </p>
+      <p class="code">
+        console.log(!true); // false<br />
+        console.log(!false); // true<br />
+        console.log(!3); // !3 -> !true -> false<br />
+        console.log(!"Mango"); // !"Mango" -> !true -> false<br />
+        console.log(!0); // !0 -> !false -> true<br />
+        console.log(!""); // !"" -> !false -> true<br />
+        const isOnline = true; const isNotOnline = !isOnline; // !isOnline ->
+        !true -> false
+      </p>
+    </section>
+
+    <section class="section">
+      <h3>Розгалуження</h3>
+      <p>
+        Розгалуження використовуються для виконання різноманітного коду, залежно
+        від умови. Принцип роботи простий - результат умови приводиться до буля
+        true або false, після чого потік програми спрямовується в ту або іншу
+        гілку.
+      </p>
+      <h4>Інструкція if​</h4>
+      <img src="./img/if.svg" alt="if" width="320" />
+
+      <p>
+        Вхідні дані, які приводяться до буля, називаються умовою. Умова
+        ставиться після оператора if в круглих дужках. Якщо умова приводиться до
+        true, то виконується код у фігурних дужках тіла if.
+      </p>
+      <pre class="code">
+let cost = 0;
+const subscription = "pro";
+
+if (subscription === "pro") {
+  cost = 100;
+}
+
+console.log(cost); // 100
+</pre
+      >
+      <p>
+        Якщо умова приводиться до false, код у фігурних дужках буде пропущений.
+      </p>
+      <pre class="code">
+let cost = 0;
+const subscription = "free";
+
+if (subscription === "pro") {
+  cost = 100;
+}
+
+console.log(cost); // 0
+</pre
+      >
+      <h4>Інструкція if...else​</h4>
+      <img src="./img/if-else.svg" alt="if-else" width="320" />
+      <p>
+        Розширює синтаксис if таким чином, що якщо умова приводиться до false,
+        виконається код у фігурних дужках після оператора else.
+      </p>
+      <pre class="code">
+let cost;
+const subscription = "free";
+
+if (subscription === "pro") {
+  cost = 100;
+} else {
+  cost = 0;
+}
+
+console.log(cost); // 0
+</pre
+      >
+      <p>Якщо умова приводиться до true, тіло блока else ігнорується.</p>
+      <pre class="code">
+let cost;
+const subscription = "pro";
+
+if (subscription === "pro") {
+  cost = 100;
+} else {
+  cost = 0;
+}
+
+console.log(cost); // 100
+</pre
+      >
+
+      <h4>Інструкція else...if​</h4>
+      <img src="./img/else-if.svg" alt="else-if" width="320" />
+      <p>
+        Блок else...if дозволяє додати після else ще один оператор if з умовою.
+        В кінці ланцюжка може бути класичний блок else, який виконається лише у
+        тому випадку, якщо жодна умова не приведеться до true.
+      </p>
+      <pre class="code">
+let cost;
+const subscription = "premium";
+
+if (subscription === "free") {
+  cost = 0;
+} else if (subscription === "pro") {
+  cost = 100;
+} else if (subscription === "premium") {
+  cost = 500;
+} else {
+  console.log("Invalid subscription type");
+}
+
+console.log(cost); // 500
+</pre
+      >
+    </section>
+    <section class="section">
+      <h3>Тернарний оператор</h3>
+      <p>
+        Тернарний оператор використовується у якості синтаксично коротшої заміни
+        інструкції if...else, коли одній і тій самій змінній необхідно присвоїти
+        різні значення за умовою.
+      </p>
+      <p class="code">
+        <умова> ? <вираз_якщо_умова_правдива> : <вираз_якщо_умова_хибна>
+      </p>
+      <h4>Працює за наступною схемою:</h4>
+      <ul class="section-list">
+        <li>Обчислюється умова.</li>
+        <li>
+          Якщо умова правдива, тобто приводиться до true, обчислюється вираз
+          після ?.
+        </li>
+        <li>
+          Якщо умова хибна, тобто приводиться до false, обчислюється вираз після
+          :.
+        </li>
+        <li>
+          Значення обчисленого виразу повертається у якості результату роботи
+          тернарного оператора.
+        </li>
+      </ul>
+      <p class="code">
+        const num1 = 5; <br />
+        const num2 = 10;<br />
+        const biggerNumber = num1 > num2 ? num1 : num2;<br />
+        console.log(biggerNumber); // 10<br />
+      </p>
+    </section>
+    <section class="section">
+      <h3>Інструкція switch</h3>
+      <p>
+        Межі застосування switch обмежені задачами з одним загальним запитанням
+        (що порівнювати) і рядом варіантів відповідей (з чим порівнювати).
+      </p>
+      <img src="./img/switch.svg" alt="switch" width="320" />
+      <p>
+        Його синтаксис складається із блоку <strong>switch(значення)</strong> -
+        що потрібно порівняти і набору окремих випадків case значення - з чим
+        потрібно порівняти. Для порівняння використовується оператор строгої
+        рівності ===. Тобто, не можна порівняти більше або менше, лише рівність.
+        Значення в блоці <strong>switch(значення)</strong> - рядок або число,
+        яке порівнюється щодо строгої рівності з усіма значеннями в блоках
+        <strong>case</strong> значення по черзі, зверху вниз. Оператор
+        <strong>break</strong> в кінці кожного блоку
+        <strong>case </strong> необхідний, щоб перервати подальші перевірки і
+        одразу перейти до коду за <strong>switch</strong> у тому випадку, коли
+        перевірка рівності повернула <strong>true</strong>. Якщо жодного збігу
+        значень не відбулося, необхідно виконати код за замовчуванням, як і в
+        блоці <strong>else</strong> для інструкції <strong>if...else</strong>.
+        Для цього, після усіх блоків <strong>case</strong> додається блок
+        <strong>default</strong>. Оператор <strong>break</strong> після блоку
+        <strong>default</strong> не потрібен, тому що це вже остання операція,
+        яка буде виконана в <strong>switch</strong> і управління буде передано
+        коду після нього.
+      </p>
+
+      <pre class="code">
+let cost;
+const subscription = "premium";
+
+switch (subscription) {
+  case "free":
+    cost = 0;
+    break;
+
+  case "pro":
+    cost = 100;
+    break;
+
+  case "premium":
+    cost = 500;
+    break;
+
+  default:
+    console.log("Invalid subscription type");
+}
+
+console.log(cost); // 500
+</pre
+      >
+    </section>
+    <h2 class="practice-header">Логічні оператори</h2>
+
+    <!-- ! -->
+    <button class="accordion">
+      Написати скрипт для вивчення "Truthy-Falsy" виразів
+    </button>
+    <div class="panel">
+      <pre><code class="language-js">function shuffleArray(array) {
+  // Копіюємо вхідний масив, щоб не змінювати оригінальний
+  let shuffledArray = array.slice();
+
+  // Алгоритм Fisher-Yates
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+
+  return shuffledArray;
+}
+
+function addOperatorsAfterOddIndices(array) {
+  let resultArray = [];
+
+  for (let i = 1; i < array.length; i += 1) {
+    resultArray.push(array[i]);
+
+    // Перевіряємо, чи індекс непарний
+    if (i !== 0 && i !== array.length - 1) {
+      // Випадковим чином додаємо ' && ' або ' || '
+      let randomOperator = Math.random() > 0.5 ? ' && ' : ' || ';
+      resultArray.push(randomOperator);
+    }
+  }
+
+  return resultArray.join('');
+}
+
+let arr = [0, NaN, 'null', 'undefined', false, 7, 0, 9, 1];
+let shuffledArr = shuffleArray(arr);
+let modifiedArr = addOperatorsAfterOddIndices(shuffledArr);
+console.log(shuffledArr);
+console.log(modifiedArr);
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <h2 class="practice-header">
+      Розгалуження. Інструкції if, if...else​, else...if. Тернарний оператор.
+      Інструкція switch.​
+    </h2>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+
+
+    <script src="../Module1/js/script.js" type="module"></script>
+
+  </body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <title>Basic operators. Numbers</title>
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+    <h2>Основні оператори. Числа</h2>
+    <section class="section">
+      <h3>Основні оператори</h3>
+      <h4>Математичні оператори</h4>
+      <p>
+        Призначення, функціонал і пріоритет (порядок) операцій нічим не
+        відрізняються від шкільного курсу алгебри. Оператори повертають значення
+        у вигляді результату виразу.
+      </p>
+      <h4>Оператори порівняння</h4>
+      <p>
+        Використовуються для порівняння двох значень. Результатом свого
+        виконання повертають буль - true або false, тобто «так» або «ні».
+      </p>
+
+      <ul class="section-list">
+        <li>a > b і a < b - більше/менше</li>
+        <li>a >= b і a <= b - більше/менше або дорівнює</li>
+        <li>a == b - рівність</li>
+        <li>a != b - нерівність</li>
+        <li>a === b - строга рівність</li>
+        <li>a !== b - строга нерівність</li>
+      </ul>
+      <h4>Оператори рівності</h4>
+      <p>
+        «Нестрогі» оператори рівності == і != виконують перетворення типів
+        порівнюваних значень у число, що може призвести до помилок, особливо у
+        початківців.
+      </p>
+      <p>
+        Тому для перевірки рівності або нерівності двох значень,
+        використовуються тільки оператори === (строга рівність) і !== (строга
+        нерівність), які не виконують приведення типів операндів. У такому
+        випадку, все дорівнює собі. Перед оцінкою нічого не перетворюється.
+      </p>
+    </section>
+    <section class="section">
+      <h3>Числа</h3>
+      <p>
+        Усі числа в JavaScript, як цілі, так і дробові, мають тип Number і їх
+        можна записувати не тільки в десятковій системі числення.
+      </p>
+      <h4>Приведення до числа</h4>
+      <p>
+        Більшість арифметичних операцій і математичних функцій перетворюють
+        значення у число автоматично. Для того, щоб зробити це явно,
+        використовуйте функцію Number(val), передаючи їй у val те, що потрібно
+        привести до числа. Якщо значення привести до числа неможливо,
+        результатом буде спеціальне числове значення NaN (Not a Number).
+        Аналогічним чином відбувається перетворення і в інших математичних
+        операторах і функціях. <br />
+      </p>
+      <p class="code">
+        const valueA = "5";<br />
+        console.log(Number(valueA)); // 5 <br />
+        console.log(typeof Number(valueA)); // "number" <br />
+        const valueB = "random string"; <br />
+        console.log(Number(valueB)); // NaN <br />
+        console.log(typeof Number(valueB)); // "number"
+      </p>
+      <p>
+        Методи Number.parseInt() і Number.parseFloat()​ Перетворюють рядок
+        символ за символом, доки це можливо. У разі виникнення помилки
+        повертається підсумкове число. Метод Number.parseInt() парсить з рядка
+        ціле число.
+      </p>
+      <p class="code">
+        console.log(Number.parseInt("5px")); // 5 <br />
+        console.log(Number.parseInt("12qwe74")); // 12<br />
+        console.log(Number.parseInt("12.46qwe79")); // 12<br />
+        console.log(Number.parseInt("qweqwe")); // NaN
+      </p>
+      <p>Метод Number.parseFloat() парсить з рядка дробове число.</p>
+      <p class="code">
+        console.log(Number.parseFloat("5px")); // 5<br />
+        console.log(Number.parseFloat("12qwe74")); // 12<br />
+        console.log(Number.parseFloat("12.46qwe79")); // 12.46<br />
+        console.log(Number.parseFloat("qweqwe")); // NaN
+      </p>
+      <h4>Перевірка на число</h4>
+      <p>
+        Для перевірки на число можна використовувати метод Number.isNaN(val).
+        Він перевіряє, чи вказане значення є NaN. Метод відповідає на запитання
+        "Це Not A Number?" і повертає:
+      </p>
+      <ul class="section-list">
+        <li>true - якщо значення val - NaN</li>
+        <li>false - якщо значення val - не NaN</li>
+      </ul>
+      <p>
+        Для всіх значень val, крім NaN, при передачі в Number.isNaN(val) поверне
+        false. Цей метод не намагається перетворити val в число, а просто
+        виконує перевірку на NaN.
+      </p>
+      <p class="code">
+        const validNumber = Number("51"); // 51<br />
+        console.log(Number.isNaN(validNumber)); // false<br />
+        const invalidNumber = Number("qweqwe"); // NaN<br />
+        console.log(Number.isNaN(invalidNumber)); // true<br />
+      </p>
+      <h4>Клас Math​</h4>
+      <p>
+        Один із вбудованих класів, який надає набір методів для роботи з
+        числами. Знання всіх методів напам'ять не вимагається, тільки деяких,
+        найбільш корисних.
+      </p>
+      <p class="code">
+        // Math.floor(num) - повертає найменше ціле число, // менше, або яке
+        дорівнює зазначеному числу<br />
+        console.log(Math.floor(1.7)); // 1<br />
+
+        // Math.ceil(num) - повертає найбільше ціле число, більше, або яке
+        дорівнює зазначеному числу.<br />
+        console.log(Math.ceil(1.2)); // 2<br />
+
+        // Math.round(num) - повертає значення числа, округленого до найближчого
+        цілого<br />
+        console.log(Math.round(1.2)); // 1<br />
+        console.log(Math.round(1.5)); // 2<br />
+
+        // Math.max(num1, num2, ...) - повертає найбільше ціле число з набору<br />
+        console.log(Math.max(20, 10, 50, 40)); // 50<br />
+
+        // Math.min(num1, num2, ...) - повертає найменше ціле число з набору<br />
+        console.log(Math.min(20, 10, 50, 40)); // 10<br />
+
+        // Math.pow(base, exponent) - піднесення до степеня<br />
+        console.log(Math.pow(2, 4)); // 16<br />
+
+        // Math.random() - повертає псевдовипадкове число в діапазоні (0, 1)<br />
+        console.log(Math.random()); // випадкове число між 0 і 1<br />
+        console.log(Math.random() * (10 - 1) + 1); // псевдовипадкове число від
+        1 до 10<br />
+      </p>
+    </section>
+    <h2 class="practice-header">Оператори</h2>
+    <!-- ! -->
+
+    <button class="accordion">
+      Написати скрипт для вивчення пріоритету операторів
+    </button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+    </code></pre>
+    </div>
+    <!-- ! -->
+
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+    </code></pre>
+    </div>
+    <!-- ! -->
+
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+    </code></pre>
+    </div>
+    <!-- ! -->
+
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+    </code></pre>
+    </div>
+
+    <h2 class="practice-header">Числа. Клас Math​</h2>
+    <!-- ! -->
+    <button class="accordion">
+      Завдання на Number.parseInt() і Number.parseFloat()
+    </button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+    </code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання на .toFixed</button>
+    <div class="panel">
+      <pre><code class="language-js">Метод toFixed() для значень Number повертає рядок, що представляє це число за допомогою нотації з фіксованою комою з указаною кількістю знаків після коми.
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Math.random()</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Math.random() = (max - min) + min
+    </code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">
+      Маємо масив з кольорами. Написати скрипт який, при перезавантажені
+      сторінки, призначає колір фону з кольорів масиву.
+    </button>
+    <div class="panel">
+      <pre><code class="language-js">const colors = ['lightcoral', 'palegreen', 'lightpink', 'lightcyan', 'lemonchiffon', 'lavender', 'lightblue', 'wheat', 'white', 'red', 'blue', 'pink', 'green', 'grey', 'gold', 'teal']
+const max = colors.length-1
+const min = 0
+
+const index = Math.round(Math.random() * (max - min) + min);
+const color = colors[index]
+console.log(color)
+
+document.body.style.backgroundColor = color
+    </code></pre>
+    </div>
+
+    <!-- ! -->
+    <button class="accordion">
+      Дано число, потрібно зробити його негативним. Але, може, число вже
+      негативне?
+    </button>
+    <div class="panel">
+      <pre><code class="language-js">
+function makeNegative (num) {
+  return -Math.abs(num)
+}
+</code></pre>
+    </div>
+
+    <!-- ! -->
+    <button class="accordion rule">Глобальна властивість NaN є значенням, що становить не число (Not-A-Number). У програмах NaN використовується доволі рідко. Це значення, що повертається в ситуаціях, коли математичні (Math) функції не спрацьовують належним чином (наприклад, при виклику Math.sqrt(-1)) або коли функція, яка намагається вважати число з рядка, зазнає невдачі через те, що в рядку не число (parseInt('blabla')).</button>
+    <div class="panel rule">
+      <pre><code class="language-js">
+    Відповідь
+    </code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+
+
+    <script src="../Module1/js/script.js" type="module"></script>
+
+  </body>
+</html>

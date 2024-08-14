@@ -7,6 +7,13 @@
     <title>Practice JS Module 1</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <!-- <link rel="stylesheet" href="../css/prism/prism-coy.css" /> -->
+
+    <style>
+      .rule {
+        color: darkred;
+      }
+
+    </style>
   </head>
   <body>
     <a href="../../../../indexLS.html">Home</a>
@@ -136,7 +143,9 @@
     <h2 class="practice-header">Оператори</h2>
     <!-- ! -->
 
-    <button class="accordion">Завдання</button>
+    <button class="accordion">
+      Написати скрипт для вивчення пріоритету операторів
+    </button>
     <div class="panel">
       <pre><code class="language-js">
 Відповідь
@@ -169,32 +178,63 @@
 
     <h2 class="practice-header">Числа. Клас Math​</h2>
     <!-- ! -->
-    <button class="accordion">Завдання</button>
+    <button class="accordion">
+      Завдання на Number.parseInt() і Number.parseFloat()
+    </button>
     <div class="panel">
       <pre><code class="language-js">
 Відповідь
     </code></pre>
     </div>
     <!-- ! -->
-    <button class="accordion">Завдання</button>
+    <button class="accordion">Завдання на .toFixed</button>
+    <div class="panel">
+      <pre><code class="language-js">Метод toFixed() для значень Number повертає рядок, що представляє це число за допомогою нотації з фіксованою комою з указаною кількістю знаків після коми.
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Math.random()</button>
     <div class="panel">
       <pre><code class="language-js">
-Відповідь
+Math.random() = (max - min) + min
+    </code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">
+      Маємо масив з кольорами. Написати скрипт який, при перезавантажені
+      сторінки, призначає колір фону з кольорів масиву.
+    </button>
+    <div class="panel">
+      <pre><code class="language-js">const colors = ['lightcoral', 'palegreen', 'lightpink', 'lightcyan', 'lemonchiffon', 'lavender', 'lightblue', 'wheat', 'white', 'red', 'blue', 'pink', 'green', 'grey', 'gold', 'teal']
+const max = colors.length-1
+const min = 0
+
+const index = Math.round(Math.random() * (max - min) + min);
+const color = colors[index]
+console.log(color)
+
+document.body.style.backgroundColor = color
     </code></pre>
     </div>
 
     <!-- ! -->
-    <button class="accordion">Завдання</button>
+    <button class="accordion">
+      Дано число, потрібно зробити його негативним. Але, може, число вже
+      негативне?
+    </button>
     <div class="panel">
       <pre><code class="language-js">
-Відповідь
-    </code></pre>
+function makeNegative (num) {
+  return -Math.abs(num)
+}
+</code></pre>
     </div>
+
     <!-- ! -->
-    <button class="accordion">Завдання</button>
-    <div class="panel">
+    <button class="accordion rule">Глобальна властивість NaN є значенням, що становить не число (Not-A-Number). У програмах NaN використовується доволі рідко. Це значення, що повертається в ситуаціях, коли математичні (Math) функції не спрацьовують належним чином (наприклад, при виклику Math.sqrt(-1)) або коли функція, яка намагається вважати число з рядка, зазнає невдачі через те, що в рядку не число (parseInt('blabla')).</button>
+    <div class="panel rule">
       <pre><code class="language-js">
-Відповідь
+    Відповідь
     </code></pre>
     </div>
     <!-- ! -->
@@ -204,6 +244,14 @@
 Відповідь
 </code></pre>
     </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
 
     <h2 class="practice-header">
       Рядки. Шаблонні рядки. Властивості і методи рядків
@@ -247,10 +295,45 @@
     <h2 class="practice-header">Логічні оператори</h2>
 
     <!-- ! -->
-    <button class="accordion">Завдання</button>
+    <button class="accordion">
+      Написати скрипт для вивчення "Truthy-Falsy" виразів
+    </button>
     <div class="panel">
-      <pre><code class="language-js">
-Відповідь
+      <pre><code class="language-js">function shuffleArray(array) {
+  // Копіюємо вхідний масив, щоб не змінювати оригінальний
+  let shuffledArray = array.slice();
+
+  // Алгоритм Fisher-Yates
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+
+  return shuffledArray;
+}
+
+function addOperatorsAfterOddIndices(array) {
+  let resultArray = [];
+
+  for (let i = 1; i < array.length; i += 1) {
+    resultArray.push(array[i]);
+
+    // Перевіряємо, чи індекс непарний
+    if (i !== 0 && i !== array.length - 1) {
+      // Випадковим чином додаємо ' && ' або ' || '
+      let randomOperator = Math.random() > 0.5 ? ' && ' : ' || ';
+      resultArray.push(randomOperator);
+    }
+  }
+
+  return resultArray.join('');
+}
+
+let arr = [0, NaN, 'null', 'undefined', false, 7, 0, 9, 1];
+let shuffledArr = shuffleArray(arr);
+let modifiedArr = addOperatorsAfterOddIndices(shuffledArr);
+console.log(shuffledArr);
+console.log(modifiedArr);
 </code></pre>
     </div>
     <!-- ! -->
@@ -282,7 +365,10 @@
 </code></pre>
     </div>
 
-    <h2 class="practice-header">Розгалуження. Інструкції if, if...else​, else...if. Тернарний оператор. Інструкція switch.​</h2>
+    <h2 class="practice-header">
+      Розгалуження. Інструкції if, if...else​, else...if. Тернарний оператор.
+      Інструкція switch.​
+    </h2>
 
     <!-- ! -->
     <button class="accordion">Завдання</button>

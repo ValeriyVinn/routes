@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <title>String</title>
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+    <h2>Рядки</h2>
+
+    <section class="section">
+      <p>
+        <strong>Рядок</strong> - це індексований набір з нуля або більше
+        символів, взятих в одинарні або подвійні лапки. Вміст рядка не можна
+        змінити, лише прочитати. Тобто, не можна взяти будь-який символ і
+        замінити його, як тільки рядок створений - він такий назавжди. Можна
+        лише створити повністю новий рядок і присвоїти у змінну замість старого.
+      </p>
+      <h4>Конкатенація рядків</h4>
+      <p>
+        Якщо застосувати оператор + до рядка і будь-якого іншого типу даних,
+        результатом операції «додавання» буде рядок. Ця операція називається
+        конкатенація, або додавання рядків. Під час конкатенації, будь-який тип
+        даних приводиться до рядка і зшивається з рядком.
+      </p>
+      <p class="code">
+        console.log(1 + "2"); // "12"<br />
+        console.log(1 + "2" + 4); // "124"<br />
+        console.log(1 + 2 + "4"); // "34"<br />
+      </p>
+      <h4>Шаблонні рядки</h4>
+      <p>
+        Шаблонні рядки - це альтернатива конкатенації зі зручнішим синтаксисом.
+        Шаблонний рядок береться у зворотні (косі) лапки, замість подвійних або
+        одинарних, і може містити заповнювачі місця, які позначаються знаком
+        долара і фігурними дужками - ${вираз}.
+      </p>
+      <p class="code">
+        const guestName = "Манго";<br />
+        const roomNumber = 207;<br />
+        const greeting = `Welcome ${guestName}, your room number is
+        ${roomNumber}!`;<br />
+        console.log(greeting); // "Welcome Mango, your room number is 207!"
+      </p>
+      <h4>Властивості і методи рядків</h4>
+      <h5>Властивість length.</h5>
+      <p class="code">
+        const message = "Welcome to Bahamas!";<br />
+        console.log(message.length); // 19<br />
+        console.log("There is nothing impossible to him who will try".length);
+        // 47
+      </p>
+      <h5>Методи toLowerCase() і toUpperCase()​</h5>
+      <p>
+        Повертають новий рядок у відповідному регістрі, не змінюючи оригінальний
+        рядок.
+      </p>
+      <p class="code">
+        const message = "Welcome to Bahamas!";<br />
+        console.log(message.toLowerCase()); // "welcome to bahamas!"<br />
+        console.log(message.toUpperCase()); // "WELCOME TO BAHAMAS!"<br />
+        console.log(message); // "Welcome to Bahamas!"
+      </p>
+      <h5>Метод indexOf()​</h5>
+      <p>
+        Повертає позицію (індекс), на якій знаходиться перший збіг підрядка або
+        -1, якщо нічого не знайдено.
+      </p>
+      <p class="code">
+        const message = "Welcome to Bahamas!";<br />
+        console.log(message.indexOf("to")); // 8<br />
+        console.log(message.indexOf("hello")); // -1
+      </p>
+      <h5>Метод includes()​</h5>
+      <p>
+        Перевіряє, чи міститься підрядок в рядку, повертає буль - true, якщо
+        міститься, і false - в іншому випадку. Регістр символів в рядку і
+        підрядку має значення, оскільки, наприклад, літера "a" не дорівнює
+        літері "А".
+      </p>
+      <p class="code">
+        const productName = "Ремонтний дроїд";<br />
+        console.log(productName.includes("н")); // true<br />
+        console.log(productName.includes("Н")); // false<br />
+        console.log(productName.includes("дроїд")); // true<br />
+        console.log(productName.includes("Дроїд")); // false<br />
+        console.log(productName.includes("Ремонтний")); // true<br />
+        console.log(productName.includes("ремонтний")); // false
+      </p>
+      <h5>Метод endsWith()​</h5>
+      <p>
+        Дозволяє визначити, чи завершується рядок символами (підрядком),
+        зазначеними в дужках, повертаючи true або false.
+      </p>
+      <p class="code">
+        const jsFileName = "script.js";<br />
+        console.log(jsFileName.endsWith(".js")); // true<br />
+        const cssFileName = "styles.css";<br />
+        console.log(cssFileName.endsWith(".js")); // false
+      </p>
+      <h5>Методи replace() і replaceAll()</h5>
+      <p>
+        Повертає новий рядок, в якому перше (replace) або усі збіги (replaceAll)
+        підрядка замінені на вказане значення.
+      </p>
+      <p class="code">
+        const jsFileName = "script.js";<br />
+        const minifiedJsFileName = jsFileName.replace(".js", ".min.js");<br />
+        console.log(minifiedJsFileName); // "script.min.js"<br />
+        const cssFileNames = "styles.css, about.css, portfolio.css";<br />
+        const minifiedCssFileNames = cssFileNames.replaceAll(".css",
+        ".min.css");<br />
+        console.log(minifiedCssFileNames); // "styles.min.css, about.min.css,
+        portfolio.min.css"
+      </p>
+      <h5>Метод slice()​</h5>
+      <p>
+        Метод рядків slice (startIndex, endIndex) використовується для створення
+        копії частини або всього рядка. Він робить копію елементів рядка від
+        startIndex і до, але не включно endIndex і повертає новий рядок, не
+        змінюючи оригінал.
+      </p>
+      <p class="code">
+        const productName = "Repair droid";<br />
+        console.log(productName.slice(0, 4)); // "Repa"<br />
+        console.log(productName.slice(3, 9)); // "air dr"<br />
+        console.log(productName.slice(0, productName.length)); // "Repair
+        droid"<br />
+        console.log(productName.slice(7, productName.length)); // "droid"
+      </p>
+    </section>
+    <h2 class="practice-header">
+        Рядки. Шаблонні рядки. Властивості і методи рядків
+      </h2>
+      <!-- ! -->
+      <button class="accordion">Завдання</button>
+      <div class="panel">
+        <pre><code class="language-js">
+  Відповідь
+  </code></pre>
+      </div>
+      <!-- ! -->
+      <button class="accordion">Завдання</button>
+      <div class="panel">
+        <pre><code class="language-js">
+  Відповідь
+  </code></pre>
+      </div>
+      <!-- ! -->
+      <button class="accordion">Завдання</button>
+      <div class="panel">
+        <pre><code class="language-js">
+  Відповідь
+  </code></pre>
+      </div>
+      <!-- ! -->
+      <button class="accordion">Завдання</button>
+      <div class="panel">
+        <pre><code class="language-js">
+  Відповідь
+  </code></pre>
+      </div>
+      <!-- ! -->
+      <button class="accordion">Завдання</button>
+      <div class="panel">
+        <pre><code class="language-js">
+  Відповідь
+  </code></pre>
+      </div>
+
+      <script src="../Module1/js/script.js" type="module"></script>
+
+  </body>
+</html>

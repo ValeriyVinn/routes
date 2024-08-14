@@ -49,6 +49,7 @@ pre {
   color: #ff0000;
 }
 
+
 /* accordeon -------------*/
 
 .accordion {
@@ -97,4 +98,5 @@ pre {
   transition: max-height 0.2s ease-out;
   margin-bottom: 10px;
 }
+
 /* --------------------- */

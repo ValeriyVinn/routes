@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <title>Scope. Loops</title>
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+    <h2>Область видимості. Цикли</h2>
+    <section class="section">
+      <h3>Область видимості</h3>
+      <p>
+        Область видимості змінних <strong>(variable scope)</strong> -
+        доступність змінних в певному місці коду. Глобальна область видимості
+        використовується за замовчуванням. Кожен має доступ до змінних,
+        оголошених в ній. Наприклад, змінна value оголошена у глобальній області
+        видимості, тобто поза будь-яким блоком, і доступна в будь-якому місці
+        після оголошення.
+      </p>
+      <pre class="code">
+  const value = 5;
+  
+  if (true) {
+    console.log("Block scope: ", value); // 5
+  }
+  
+  console.log("Global scope: ", value); // 5
+  </pre
+      >
+      <p>
+        Будь-яка конструкція, яка використовує фігурні дужки {} (умови, цикли,
+        функції тощо), створює нову локальну область видимості, і змінні,
+        оголошені в цій області видимості, з використанням let або const, -
+        недоступні за межами цього блоку.
+      </p>
+      <pre class="code">
+  if (true) {
+    const value = 5;
+    console.log("Block scope: ", value); // 5
+  }
+  
+  console.log("Global scope: ", value); // ReferenceError: value is not defined
+  </pre
+      >
+      <p>
+        Глибина вкладеності областей видимості - необмежена, і всі вони будуть
+        працювати за одним принципом - область видимості має доступ до всіх
+        змінних, оголошених вище по ієрархії вкладеності, але не може отримати
+        доступ до змінних, оголошених у вкладених областях видимості. Створимо
+        декілька областей видимості і дамо їм імена для наочності.
+      </p>
+      <img src="./img/scope.jpg" alt="scope" width="640" />
+      <ul class="section-list">
+        <li>Глобальна область вже присутня, створимо в ній змінну global</li>
+        <li>
+          Потім, використовуючи оператор if, створимо блочну область видимості
+          block A
+        </li>
+        <li>
+          Всередині області видимості block A поставимо ще один оператор if,
+          який створить вкладену область видимості block B
+        </li>
+        <li>
+          На одному рівні з block A, створимо область видимості block C, так
+          само використовуючи оператор if
+        </li>
+      </ul>
+      <pre class="code">
+  const global = "global";
+  
+  if (true) {
+    const blockA = "block A";
+  
+    // Бачимо глобальну + локальну A
+    console.log(global); // 'global'
+    console.log(blockA); // block A
+  
+    // Змінні blockB і blockC не знайдені в доступних областях видимості.
+    // Буде помилка звернення до змінної.
+    console.log(blockB); // ReferenceError: blockB is not defined
+    console.log(blockC); // ReferenceError: blockC is not defined
+    
+  
+    if (true) {
+      const blockB = "block B";
+  
+      // Бачимо глобальну + зовнішню A + локальну B
+      console.log(global); // global
+      console.log(blockA); // block A
+      console.log(blockB); // block B
+  
+      // Змінна blockC не знайдена в доступних областях видимості.
+      // Буде помилка звернення до змінної.
+      console.log(blockC); // ReferenceError: blockC is not defined
+    }
+  }
+  
+  if (true) {
+    const blockC = "block C";
+  
+    // Бачимо глобальну + локальну C
+    console.log(global); // global
+    console.log(blockC); // block C
+  
+    // Змінні blockA і blockB не знайдені в доступних областях видимості.
+    // Буде помилка звернення до змінної.
+    console.log(blockA); // ReferenceError: blockA is not defined
+    console.log(blockB); // ReferenceError: blockB is not defined
+  }
+  
+  // Бачимо лише глобальну
+  console.log(global); // global
+  
+  // Змінні blockA, blockB і blockC не знайдені в доступних областях видимості.
+  // Буде помилка звернення до змінної.
+  console.log(blockA); // ReferenceError: blockA is not defined
+  console.log(blockB); // ReferenceError: blockB is not defined
+  console.log(blockC); // ReferenceError: blockC is not defined
+  </pre
+      >
+    </section>
+    <h2>Цикли</h2>
+    <section class="section">
+      <p>
+        Часте завдання програмування - багаторазове виконання однотипної дії.
+        Наприклад, вивести клієнтів зі списку один за одним, або перебрати суми
+        зарплат, і для кожної виконати однаковий код. Саме для таких цілей -
+        багаторазового повторення однієї частини коду, використовуються цикли.
+      </p>
+      <ul class="section-list">
+        <li>
+          <strong>Цикл</strong> - керуюча конструкція у високорівневих мовах
+          програмування, призначена для організації багаторазового виконання
+          набору інструкцій.
+        </li>
+        <li>
+          <strong>Тіло циклу</strong> - послідовність інструкцій, призначена для
+          багаторазового виконання.
+        </li>
+        <li><strong>Ітерація</strong> - одноразове виконання тіла циклу.</li>
+        <li>
+          <strong>Умова виходу</strong> - вираз, що визначає, чи буде в черговий
+          раз виконуватися ітерація, або цикл завершиться.
+        </li>
+        <li>
+          <strong>Лічильник</strong> - змінна, що зберігає поточний номер
+          ітерації. Цикл не обов'язково містить лічильник, і він не повинен бути
+          один, умова виходу з циклу може залежати від декількох змінних, що
+          змінюються в циклі.
+        </li>
+      </ul>
+      <h3>Цикл while​</h3>
+      <h4>Цикл з передумовою</h4>
+      <p>
+        Цикл, який виконується, доки правдива якась умова, зазначена до його
+        початку. Ця умова перевіряється до виконання тіла циклу, тому тіло може
+        не виконатися жодного разу, якщо умова від самого початку - хибна.
+      </p>
+      <img src="./img/while.png" alt="while" width="320" />
+      <pre class="code">
+  let counter = 0;
+  
+  while (counter < 10) {
+    console.log("counter: ", counter);
+    counter += 1;
+  }</pre
+      >
+      <h3>Цикл do...while​​</h3>
+      <h4>Цикл з постумовою</h4>
+      <p>
+        Цикл, в якому умова перевіряється після виконання тіла циклу. З цього
+        випливає, що тіло завжди виконується хоча б один раз. Всередині циклу
+        потрібно внести зміни в деяку змінну, щоб переконатися, що вираз
+        дорівнює false після ітерацій. Інакше буде нескінченний цикл.
+      </p>
+      <img src="./img/do-while.png" alt="do-while" width="320" />
+      <pre class="code">
+  let password = "";
+  
+  do {
+    password = prompt("Введіть пароль довший 4-х символів", "");
+  } while (password.length < 5);
+          
+  console.log("Ввели пароль: ", password);</pre
+      >
+      <h3>Цикл for​</h3>
+      <h4>Цикл з лічильником</h4>
+      <p>
+        Цикл, в якому певна змінна змінює своє значення із заданого початкового
+        до кінцевого значення з деяким кроком, і для кожного значення цієї
+        змінної тіло циклу виконується один раз. В більшості процедурних мов
+        програмування реалізується конструкцією for, в якій зазначається
+        лічильник, необхідна кількість ітерацій і крок, з яким змінюється
+        лічильник.
+      </p>
+      <h5>Алгоритм виконання циклу for:</h5>
+      <ul class="section-list">
+        <li>
+          Ініціалізація (initialization) - виконується один раз до початку
+          циклу. Використовується для створення змінної-лічильника і зазначення
+          її початкового значення.
+        </li>
+        <li>
+          Умова (condition) - вираз, що оцінюється перед кожною ітерацією
+          (повторенням) циклу. Тіло циклу виконується тільки тоді, коли вираз
+          приводиться до true. Цикл завершується, якщо значення буде false.
+        </li>
+        <li>
+          Тіло (statements) - набір інструкцій для виконання на кожному
+          повторенні. Виконується, якщо вираз умови приводиться до true.
+        </li>
+        <li>
+          Пост-вираз (post-expression) - виконується в кінці кожного повторення
+          циклу, до перевірки умови. Використовується для оновлення
+          змінної-лічильника.
+        </li>
+      </ul>
+      <p>Змінні-лічильники, за традицією, називаються літерами i, j і k.</p>
+      <pre class="code">
+  for (let i = 0; i <= 20; i += 5) {
+    console.log(i);
+  }
+  </pre
+      >
+      <pre class="code">
+  const max = 10;
+    for (let i = 0; i < max; i += 1) {
+      console.log(`${max} % ${i} = `, max % i);
+    }</pre
+      >
+      <h5>Оператор break​</h5>
+      <p>
+        Перервати виконання циклу можна в будь-який момент. Для цього існує
+        оператор break, який повністю припиняє виконання циклу і передає
+        управління на рядок після його тіла. Знайдемо число 3. Щойно виконається
+        умова if, цикл припинить своє виконання (буде перерваний).
+      </p>
+      <pre class="code">
+  for (let i = 0; i <= 5; i += 1) {
+    console.log(i);
+  
+    if (i === 3) {
+      console.log("Знайшли число 3, перериваємо виконання циклу");
+      break;
+    }
+  }
+  
+  console.log("Лог після циклу");
+  </pre
+      >
+      <h5>Оператор continue​</h5>
+      <p>
+        Перериває не увесь цикл, а тільки виконання поточної ітерації. Його
+        використовують, якщо зрозуміло, що на поточній ітерації циклу більше
+        немає що робити або взагалі не потрібно нічого робити, і час переходити
+        до наступної ітерації. Використовуємо цикл для введення тільки непарних
+        чисел. Для парних i спрацьовує continue, виконання тіла припиняється і
+        управління передається до наступної ітерації.
+      </p>
+      <pre class="code">
+  const number = 10;
+  
+    for (let i = 0; i < number; i += 1) {
+      if (i % 2 === 0) {
+        continue;
+      }
+    
+      console.log("Непарне i: ", i); // 1, 3, 5, 7, 9
+    }</pre
+      >
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <h2 class="practice-header">Область видимості</h2>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <h2 class="practice-header">Цикли</h2>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+
+    <script src="../Module1/js/script.js" type="module"></script>
+
+  </body>
+</html>

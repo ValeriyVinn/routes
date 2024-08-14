@@ -8,6 +8,10 @@ ul, li, p, h1, h2, h3, h4 {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 .header {
   display: flex;
   padding: 20px;
@@ -42,4 +46,8 @@ ul, li, p, h1, h2, h3, h4 {
   padding: 5px 20px;
   margin-bottom: 5px;
 
+}
+
+.abstract-list {
+  padding-left: 10px;
 }
