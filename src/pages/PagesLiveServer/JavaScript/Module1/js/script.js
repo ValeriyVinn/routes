@@ -59,20 +59,20 @@ for (i = 0; i < acc.length; i++) {
 // });
 
 // ! slider ------------------
-// const slideElements = document.querySelectorAll('.slider-slide');
-// const menuItems = document.querySelectorAll('.slider-dropdown-content h4');
-// const sliderMenuTittle = document.querySelector('.slider-menu-title');
+const slideElements = document.querySelectorAll('.slider-slide');
+const menuItems = document.querySelectorAll('.slider-dropdown-content h4');
+const sliderMenuTittle = document.querySelector('.slider-menu-title');
 
-// menuItems.forEach((item, index) => {
-//   item.addEventListener('click', () => {
-//     const clickedText = event.target.textContent;
+menuItems.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    const clickedText = event.target.textContent;
 
-//     slideElements.forEach(slide => slide.classList.remove('visible'));
-//     slideElements[index].classList.add('visible');
+    slideElements.forEach(slide => slide.classList.remove('visible'));
+    slideElements[index].classList.add('visible');
     
-//     sliderMenuTittle.textContent = clickedText;
-//   });
-// });
+    sliderMenuTittle.textContent = clickedText;
+  });
+});
 
-// // Встановлюємо перший слайд активним за замовчуванням
-// slideElements[0].classList.add('visible');
+// Встановлюємо перший слайд активним за замовчуванням
+slideElements[0].classList.add('visible');
