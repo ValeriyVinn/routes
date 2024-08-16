@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Патерн Об'єкт параметрів</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+
+    <h2>Патерн «Об'єкт параметрів»</h2>
+    <section class="section">
+      <p>
+        Якщо функція приймає більше двох-трьох аргументів, дуже просто
+        заплутатись, в якій послідовності і що передавати. В результаті виходить
+        дуже неочевидний код в місці її виклику.
+      </p>
+      <pre class="code">
+function doStuffWithBook(title, numberOfPages, downloads, rating, public) {
+    // Робимо щось з параметрами
+    console.log(title);
+    console.log(numberOfPages);
+    // І так далі
+  
+  // ❌ Що таке 736? Що таке 10283? Що таке true?
+  doStuffWithBook("The Last Kingdom", 736, 10283, 8.38, true);
+</pre
+      >
+      <p>
+        Патерн «Об'єкт параметрів» допомагає вирішити цю проблему, замінюючи
+        набір параметрів всього одним об'єктом з іменованими властивостями.
+      </p>
+      <pre class="code">
+function doStuffWithBook(book) {
+    // Робимо щось з властивостями об'єкта
+    console.log(book.title);
+    console.log(book.numberOfPages);
+    // І так далі
+  }
+</pre
+      >
+      <p>
+        У такому випадку, під час її виклику передаємо один об'єкт з необхідними
+        властивостями.
+      </p>
+      <pre class="code">
+// ✅ Все зрозуміло
+    doStuffWithBook({
+      title: "The Last Kingdom",
+      numberOfPages: 736,
+      downloads: 10283,
+      rating: 8.38,
+      isPublic: true,
+    });
+</pre
+      >
+      <p>
+        Ще один плюс у тому, що можна деструктуризувати об'єкт в параметрі book.
+        Це можна зробити в тілі функції.
+      </p>
+      <pre class="code">
+function doStuffWithBook(book) {
+    const { title, numberOfPages, downloads, rating, isPublic } = book;
+    console.log(title);
+    console.log(numberOfPages);
+    // І так далі
+  }
+</pre
+      >
+      <p>Або відразу в сигнатурі (підписі) функції - немає різниці.</p>
+      <pre class="code">
+function doStuffWithBook({
+    title,
+    numberOfPages,
+    downloads,
+    rating,
+    isPublic,
+  }) {
+    console.log(title);
+    console.log(numberOfPages);
+    // І так далі
+  }
+</pre
+      >
+    </section>
+
+    <!-- ! -->
+
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <script src="../Module1/js/script.js" type="module"></script>
+  </body>
+</html>

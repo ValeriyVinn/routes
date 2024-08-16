@@ -32,3 +32,44 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+// ----Slider -------------
+// const slides = document.querySelector('.slides');
+// const slideElements = document.querySelectorAll('.slide');
+// const prevButton = document.querySelector('.prev');
+// const nextButton = document.querySelector('.next');
+
+// let currentIndex = 0;
+
+// function showSlide(index) {
+//     const offset = -index * 100;
+//     slides.style.transform = `translateX(${offset}%)`;
+// }
+
+// prevButton.addEventListener('click', () => {
+//     currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideElements.length - 1;
+//     showSlide(currentIndex);
+// });
+
+// nextButton.addEventListener('click', () => {
+//     currentIndex = (currentIndex < slideElements.length - 1) ? currentIndex + 1 : 0;
+//     showSlide(currentIndex);
+// });
+
+const slideElements = document.querySelectorAll('.slider-slide');
+const menuItems = document.querySelectorAll('.slider-dropdown-content h4');
+const sliderMenuTittle = document.querySelector('.slider-menu-title');
+
+menuItems.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    const clickedText = event.target.textContent;
+
+    slideElements.forEach(slide => slide.classList.remove('visible'));
+    slideElements[index].classList.add('visible');
+    
+    sliderMenuTittle.textContent = clickedText;
+  });
+});
+
+// Встановлюємо перший слайд активним за замовчуванням
+// slideElements[0].classList.add('visible');

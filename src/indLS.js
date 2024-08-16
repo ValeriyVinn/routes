@@ -33,6 +33,21 @@ let shuffledArr = shuffleArray(arr);
 let modifiedArr = addOperatorsAfterOddIndices(shuffledArr);
 console.log(shuffledArr);
 console.log(modifiedArr);
+
+// if(confirm('Хочеш перейти дорогу?') ) {
+//   console.log('Пішли')
+// }else{
+//   console.log('Повертаймося!')
+// }
+
+
+
+// const confirmation = confirm('Хочеш перейти дорогу?') 
+// acrossTheStreet(confirmation)
+
+// function acrossTheStreet () {
+//   console.log (confirmation)
+// }
 // console.log(eval(modifiedArr));
 
 // const studyAlert = alert("Do you want to study?")

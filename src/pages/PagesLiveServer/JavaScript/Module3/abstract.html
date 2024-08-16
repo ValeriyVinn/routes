@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module 2 Abstract</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+    <h1>Abstract Модуль 3 – Об'єкти. Операції rest та spread</h1>
+    <h2>Об'єкти</h2>
+
+    <section class="section">
+      <p>
+        Об'єкти дозволяють описати і згрупувати характеристики певної сутності -
+        користувача, книги, продукту в магазині, чого завгодно. Об'єкти ще
+        називають словниками, тобто вони містять терміни (властивості) та їх
+        визначення (значення).
+      </p>
+      <h4>Створення об'єкта​</h4>
+      <p>Для оголошення використовуються фігурні дужки {} - літерал об'єкта.</p>
+      <pre class="code">
+const book = {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["historical prose", "adventure"],
+    isPublic: true,
+    rating: 8.38,
+  };</pre
+      >
+
+      <p>
+        Під час створення об'єкта можна додати властивості, кожна з яких
+        описується парами ключ:значення. Ключ ще називають ім'ям властивості і
+        це завжди рядок. Значенням властивості можуть бути будь-які типи:
+        примітиви, масиви, об'єкти, булі, функції тощо. Властивості розділяються
+        комою.
+      </p>
+      <p>Правила іменування ключів - прості:</p>
+      <ul class="section-list">
+        <li>Якщо ключ взятий в лапки, то це може бути довільний рядок.</li>
+        <li>
+          Якщо лапок немає, то є обмеження - ім'я без пробілів, починається
+          літерою або символами _ і $.
+        </li>
+      </ul>
+      <h4>Вкладені властивості​</h4>
+      <p>
+        Значенням властивості може бути інший об'єкт, для того, щоб зберігати
+        вкладені і згруповані дані. Наприклад, статистика користувача соціальної
+        мережі складається з кількості відстежувачів, переглядів і лайків, і
+        зберігати ці дані найзручніше у вигляді об'єкта. Те саме з місцем
+        розташування - окремо країна і місто.
+      </p>
+      <pre class="code">
+const user = {
+    name: "Jacques Gluke",
+    tag: "jgluke",
+    location: {
+      country: "Jamaica",
+      city: "Ocho Rios",
+    },
+    stats: {
+      followers: 5603,
+      views: 4827,
+      likes: 1308,
+    },
+  };
+</pre
+      >
+
+      <p>
+        У майбутньому це можна буде використовувати для пошуку користувачів за
+        країною, містом, мінімальною або максимальною кількістю відстежувачів
+        тощо. Звернення до властивостей через крапку
+      </p>
+      <p>
+        Перший спосіб отримати доступ до властивості об'єкта - це синтаксис
+        об'єкт.ім'я_властивості. Синтаксис «через крапку» використовується у
+        більшості випадків і доречний тоді, коли ми заздалегідь знаємо ім'я
+        (ключ) властивості, до якої хочемо отримати доступ.
+      </p>
+      <ul>
+        <li>
+          На місці звернення буде повернуто значення властивості з таким ім'ям.
+        </li>
+        <li>
+          Якщо об'єкт не містить властивості з таким ім'ям, на місці звернення
+          повернеться <strong>undefined</strong> .
+        </li>
+      </ul>
+      <pre class="code">
+const book = {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["historical prose", "adventure"],
+    isPublic: true,
+    rating: 8.38,
+  };
+  
+  const bookTitle = book.title;
+  console.log(bookTitle); // 'The Last Kingdom'
+  
+  const bookGenres = book.genres;
+  console.log(bookGenres); // ['historical prose', 'adventurs']
+  
+  const bookPrice = book.price;
+  console.log(bookPrice); // undefined
+</pre
+      >
+      <h4>Звернення до вкладених властивостей</h4>
+      <p>
+        Для доступу до вкладених властивостей використовується ланцюжок звернень
+        «через крапку». Наприклад, якщо необхідно отримати значення країни
+        користувача, записуємо user.location.country, де user.location - це
+        звернення (шлях) до об'єкта у властивості location, а
+        user.locaton.country звернення до властивості country у цьому об'єкті.
+        Тобто «крапка» вказує наступну вкладеність.
+      </p>
+      <pre class="code">
+const user = {
+    name: "Jacques Gluke",
+    tag: "jgluke",
+    location: {
+      country: "Jamaica",
+      city: "Ocho Rios",
+    },
+    hobbies: ["swiming", "music", "sci-fi"],
+  };
+  
+  const location = user.location;
+  console.log(location); // Об'єкт location
+  
+  const country = user.location.country;
+  console.log(country); // 'Jamaica'
+</pre
+      >
+      <p>
+        Якщо значення властивості - це масив, тоді у нашому прикладі
+        user.hobbies - звернення до цього масиву. Далі можна отримати доступ до
+        його елементів через квадратні дужки та індекс, або використовувати
+        властивості і методи.
+      </p>
+      <pre class="code">
+const hobbies = user.hobbies;
+console.log(hobbies); // ['swiming', 'music', 'sci-fi']
+    
+const firstHobby = user.hobbies[0];
+console.log(firstHobby); // 'swiming'
+    
+const numberOfHobbies = user.hobbies.length;
+console.log(numberOfHobbies); // 3
+</pre
+      >
+      <h4>Звернення до властивостей через квадратні дужки​</h4>
+      <p>
+        Другий спосіб отримати доступ до властивості об'єкта - це синтаксис
+        об'єкт["ім'я властивості"]. Схоже на звернення до елемента масиву з
+        різницею у тому, що в дужках вказується не індекс елемента, а ім'я
+        властивості у вигляді рядка.
+      </p>
+      <p>
+        Синтаксис «квадратних дужок» використовується значно рідше, у разі, коли
+        ім'я властивості заздалегідь невідоме або зберігається у змінній,
+        наприклад, як значення параметра функції.
+      </p>
+      <ul>
+        <li>
+          На місці звернення буде повернуте значення властивості з таким ім'ям.
+        </li>
+        <li>
+          Якщо в об'єкті відсутня властивість з таким ім'ям, на місці звернення
+          повернеться undefined.
+        </li>
+      </ul>
+      <pre class="code">
+const book = {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["historical prose", "adventure"],
+    isPublic: true,
+    rating: 8.38,
+  };
+  
+  const bookTitle = book["title"];
+  console.log(bookTitle); // 'The Last Kingdom'
+  
+  const bookGenres = book["genres"];
+  console.log(bookGenres); // ['historical prose', 'adventurs']
+  
+  const propKey = "author";
+  const bookAuthor = book[propKey];
+  console.log(bookAuthor); // 'Bernard Cornwell'
+</pre
+      >
+      <h4>Зміна значення властивості​</h4>
+      <p>
+        Після створення об'єкта, значення його властивостей можна змінити. Для
+        цього необхідно звернутися до них за ім'ям, наприклад, «через крапку», і
+        присвоїти нове значення.
+      </p>
+      <pre class="code">
+const book = {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["historical prose", "adventure"],
+    isPublic: true,
+    rating: 8.38,
+  };
+  
+  book.rating = 9;
+  book.isPublic = false;
+  book.genres.push("драма");
+  
+  console.log(book.rating); // 9
+  console.log(book.isPublic); // false
+  console.log(book.genres); // ['historical prose', 'adventures', 'драма']
+</pre
+      >
+      <h4>Додавання властивостей​</h4>
+      <p>
+        Операція додавання нової властивості після створення об'єкта нічим не
+        відрізняється від зміни значення вже існуючої властивості. Якщо під час
+        запису значення за ім'ям, така властивість в об'єкті відсутня, вона буде
+        створена.
+      </p>
+<pre class="code">
+const book = {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["historical prose", "adventure"],
+    isPublic: true,
+    rating: 8.38,
+  };
+  
+  book.pageCount = 836;
+  book.originalLanguage = "en";
+  book.translations = ["ua", "ru"];
+  
+  console.log(book.pageCount); // 836
+  console.log(book.originalLanguage); // 'en'
+  console.log(book.translations); // ['ua', 'ru']
+</pre
+      >
+      <h4>Короткі властивості​</h4>
+      <p>
+        Іноді, під час створення об'єкта значення властивості необхідно взяти зі
+        змінної або параметра функції з таким самим ім'ям, що і у властивості.
+        Синтаксис у наступному прикладі занадто громіздкий, тому що доводиться
+        дублювати ім'я властивості та ім'я змінної, в якій зберігається потрібне
+        значення.
+      </p>
+      <pre class="code">
+const name = "Генрі Сибола";
+    const age = 25;
+    
+    const user = {
+      name: name,
+      age: age,
+    };
+    
+    console.log(user.name); // "Генрі Сибола"
+    console.log(user.age); // 25
+</pre
+      >
+      <p>
+        Синтаксис коротких властивостей (shorthand properties) вирішує цю
+        проблему, дозволяючи використовувати ім'я змінної у якості імені
+        властивості, а її значення - у якості значення властивості.
+      </p>
+      <pre class="code">
+const name = "Генрі Сибола";
+    const age = 25;
+    
+    const user = {
+      name,
+      age,
+    };
+    
+    console.log(user.name); // "Генрі Сибола"
+    console.log(user.age); // 25
+</pre
+      >
+      <p>
+        Тобто, оголошуючи об'єкт, достатньо вказати тільки ім'я властивості, а
+        значення буде взяте зі змінної з аналогічним ім'ям.
+      </p>
+      <h4>Обчислювальні властивості​</h4>
+      <p>
+        Бувають ситуації, коли під час оголошення об'єкта необхідно додати
+        властивість з ім'ям, яке ми заздалегідь не знаємо, тому що воно
+        зберігається у якості значення змінної або у якості результату виконання
+        функції. Раніше для цього необхідно було спочатку створити об'єкт, а
+        потім додавати властивості через квадратні дужки, що не зовсім зручно.
+      </p>
+      <pre class="code">
+const propName = "name";
+    const user = {
+      age: 25,
+    };
+    
+    user[propName] = "Генрі Сибола";
+    console.log(user.name); // 'Генрі Сибола'
+</pre
+      >
+
+      <p>
+        Синтаксис обчислювальних властивостей (computed properties) допомагає
+        уникнути зайвого коду і, в деяких випадках, спростити його. Значенням
+        обчислювальної властивості може бути будь-який валідний вираз.
+      </p>
+      <pre class="code">
+const propName = "name";
+    const user = {
+      age: 25,
+      // Ім'я цієї властивості буде взяте зі значення змінної propName
+      [propName]: "Генрі Сибола",
+    };
+    
+    console.log(user.name); // 'Генрі Сибола'
+</pre
+      >
+      <h4>Методи об'єкта​</h4>
+      <p>
+        Досі ми розглядали об'єкти тільки як сховища взаємопов'язаних даних,
+        наприклад, інформація про книгу тощо. Об'єкти-сховища, зазвичай,
+        знаходяться в масиві таких самих об'єктів, який є колекцією однотипних
+        елементів. Об'єкти можуть зберігати не тільки дані, але і функції для
+        роботи з цими даними - методи. Якщо значення властивості - це функція,
+        така властивість називається методом об'єкта.
+      </p>
+      <pre class="code">
+// ✅ Логічно і синтаксично згруповані сутності
+    const bookShelf = {
+      books: ["The Last Kingdom", "Dream Guardian"],
+      // Це метод об'єкта
+      getBooks() {
+        console.log("Цей метод буде повертати всі книги - властивість books");
+      },
+      // Це метод об'єкта
+      addBook(bookName) {
+        console.log("Цей метод буде додавати нову книгу у властивість books");
+      },
+    };
+    
+    // Виклики методів
+    bookShelf.getBooks();
+    bookShelf.addBook("Нова книга");
+</pre
+      >
+      <p>
+        Такі об'єкти можна назвати «моделями». Вони пов'язують дані і методи для
+        роботи з цими даними. Наприклад, можна було оголосити змінну books і дві
+        функції getBooks() і addBook(bookName), але тоді це були б три незалежні
+        сутності без явного синтаксичного, і зі слабким логічним зв'язком.
+      </p>
+      <pre class="code">
+// ❌ Слабкопозв'язані, незалежні сутності
+    const books = [];
+    function getBooks() {}
+    function addBook() {}
+</pre
+      >
+      <h4>Доступ до властивостей об'єкта в методах​</h4>
+      <p>
+        Методи використовуються для роботи з властивостями об'єкта, їх зміни.
+        Для доступу до об'єкта в методі використовується не ім'я змінної,
+        наприклад bookShelf, а ключове слово this - контекст. Значенням this
+        буде об'єкт перед «крапкою», тобто об'єкт, який викликав цей метод, у
+        нашому випадку - це посилання на об'єкт bookShelf.
+      </p>
+      <pre class="code">
+const bookShelf = {
+    books: ["The Last Kingdom"],
+    getBooks() {
+      console.log(this);
+    },
+  };
+  
+  // Перед крапкою знаходиться об'єкт bookShelf,
+  // тому, викликаючи метод, this буде зберігати посилання на нього.
+  bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
+</pre
+      >
+      <p>
+        Для того, щоб отримати доступ до властивостей об'єкта в методах, ми
+        звертаємось до нього через this і далі, стандартно - «через крапку» до
+        властивостей.
+      </p>
+      <pre class="code">
+const bookShelf = {
+    books: ["The Last Kingdom"],
+    getBooks() {
+      return this.books;
+    },
+    addBook(bookName) {
+      this.books.push(bookName);
+    },
+    removeBook(bookName) {
+      const bookIndex = this.books.indexOf(bookName);
+      this.books.splice(bookIndex, 1);
+    },
+  };
+  
+  console.log(bookShelf.getBooks()); // ["The Last Kingdom"]
+  bookShelf.addBook("The Mist");
+  bookShelf.addBook("Dream Guardian");
+  console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'The Mist', 'Dream Guardian']
+  bookShelf.removeBook("The Mist");
+  console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Dream Guardian']
+</pre
+      >
+      <p>
+        Логічно замислитися - чому б не використовувати ім'я об'єкта у зверненні
+        до властивостей, адже ми явно не збираємося його змінювати. Справа в
+        тому, що ім'я об'єкта - річ ненадійна, методи одного об'єкта можна
+        копіювати в інший (з іншим ім'ям), а в майбутньому дізнаємось, що часто
+        під час створення об'єкта, ми наперед зовсім не знаємо імені.
+        Використання this гарантує, що метод працює саме з тим об'єктом, який
+        його викликав.
+      </p>
+      <img src="./img/this-keyword.jpg" alt="this-keyword" width="640" />
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+    <section class="section">
+      <h3>Заголовок</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+        reprehenderit obcaecati harum, dolor a, itaque deleniti dolorem eaque
+        deserunt sunt dolore ratione culpa, magnam officia quisquam? Harum,
+        eaque ullam! Aperiam. Nisi illum eveniet ad, animi eius rerum.
+        Repudiandae nemo iure fugiat architecto blanditiis dolor consequuntur at
+        explicabo tenetur accusamus mollitia, debitis aliquam aut exercitationem
+        quos doloremque repellendus quis assumenda deserunt!
+      </p>
+    </section>
+  </body>
+</html>
