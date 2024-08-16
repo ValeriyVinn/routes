@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Деструктуризація масивів</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+    <h1>Деструктуризація масивів</h1>
+
+    <section class="section">
+      <p>
+        Деструктуризоване присвоювання можна використовувати і для масивів, але
+        з деякими особливостями.
+      </p>
+      <ul class="section-list">
+        <li>Замість фігурних дужок {} використовуються квадратні [].</li>
+        <li>
+          Змінним, зазначеним у квадратних дужках [], будуть послідовно
+          присвоюватися значення елементів масиву.
+        </li>
+      </ul>
+      <p>
+        Наприклад, є масив кольорів, з якого потрібно отримати значення кожної
+        складової кольору в окремих змінних.
+      </p>
+      <pre class="code">
+const rgb = [200, 255, 100];
+    const [red, green, blue] = rgb;
+    
+    console.log(`R:${red},G:${green},B:${blue}`); // "R:200,G:255,B:100"
+</pre
+      >
+      <p>
+        Після ключового слова const або let ставимо квадратні дужки, як і у
+        випадку з оголошенням масиву. Всередині дужок, через кому, вказуємо
+        імена змінних, в які будуть поміщені значення масиву.
+      </p>
+      <p>
+        Внаслідок такого запису будуть створені 3 змінні, і в них будуть
+        поміщені елементи в нумерованому порядку - від 0 і до кінця масиву. Під
+        час деструктуризації масивів, значення змінної може присвоюватися після
+        її оголошення. На практиці це рідко використовується.
+      </p>
+      <pre class="code">
+const rgb = [200, 255, 100];
+    let red, green, blue;
+    
+    [red, green, blue] = rgb;
+    
+    console.log(`R:${red},G:${green},B:${blue}`); // "R:200,G:255,B:100"
+</pre
+      >
+      <p>
+        Якщо змінних більше, ніж елементів масиву, їм буде присвоєно undefined,
+        тому можна вказувати значення за замовчуванням.
+      </p>
+      <pre class="code">
+const rgb = [200, 100, 255];
+
+    const [red, green, blue, alfa = 0.3] = rgb;
+    
+    console.log(`R:${red},G:${green},B:${blue},Alfa:${alfa}`); // "R:200,G:100,B:255,Alfa:0.3"
+</pre
+      >
+      <p>
+        Іноді з масиву необхідно деструктуризувати тільки перші N елементів, а
+        інші зберегти в одну змінну у вигляді масиву. Деструктуруючи масив,
+        можна розпакувати і присвоїти іншу частину елементів масиву змінної,
+        використовуючи операцію ... (rest).
+      </p>
+      <pre class="code">
+const rgb = [200, 255, 100];
+
+    const [red, ...colors] = rgb;
+    
+    console.log(red); // "200"
+    console.log(colors); // [255, 100]
+</pre
+      >
+      <p>
+        Елементи можна пропускати. Припустимо, з масиву rgb необхідно взяти
+        тільки останнє значення. На практиці ця можливість рідко
+        використовується.
+      </p>
+      <pre class="code">
+const rgb = [200, 100, 255];
+
+    const [, , blue] = rgb;
+    
+    console.log(`Blue: ${blue}`); // "Blue: 255"
+</pre
+      >
+    </section>
+
+    <!-- ! -->
+
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <script src="../Module1/js/script.js" type="module"></script>
+  </body>
+</html>
