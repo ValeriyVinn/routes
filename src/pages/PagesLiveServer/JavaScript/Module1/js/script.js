@@ -64,7 +64,7 @@ const menuItems = document.querySelectorAll('.slider-dropdown-content h4');
 const sliderMenuTittle = document.querySelector('.slider-menu-title');
 
 menuItems.forEach((item, index) => {
-  item.addEventListener('click', () => {
+  item.addEventListener('click', (event) => {
     const clickedText = event.target.textContent;
 
     slideElements.forEach(slide => slide.classList.remove('visible'));
