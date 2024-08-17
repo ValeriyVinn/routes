@@ -150,7 +150,7 @@ pre {
 
 .slider {
   position: relative;
-  height: 200px;
+  min-height: 180px;
   width: 800px;
   overflow: hidden;
   border: 1px solid #97c797;

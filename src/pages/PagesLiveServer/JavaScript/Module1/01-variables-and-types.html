@@ -135,52 +135,86 @@
         <button class="slider-btn next">Наступний</button>
     </div> -->
 
-    <div class="slider">
-      <div class="slider-dropdown">
-          <h3 class="slider-menu-title">Обрати</h3>
+      <div class="slider">
+        <div class="slider-dropdown">
+          <h3 class="slider-menu-title">Меню</h3>
           <div class="slider-dropdown-content">
-              <h4 data-slide="0">Імена змінних в JS</h4>
-              <h4 data-slide="1">CSS-класи</h4>
-              <h4 data-slide="2">Назви таблиць та стовппів в базах даних</h4>
-              <h4 data-slide="3">Назви класів</h4>
-              <h4 data-slide="4">Назви констант</h4>
-              <h4 data-slide="5">Назви ключів і властивостей об'єктів</h4>
-
-
+            <h4 data-slide="0">Імена змінних в JS</h4>
+            <h4 data-slide="1">CSS-класи</h4>
+            <h4 data-slide="2">Назви таблиць та стовппів в базах даних</h4>
+            <h4 data-slide="3">Назви класів</h4>
+            <h4 data-slide="4">Назви констант</h4>
+            <h4 data-slide="5">Назви ключів і властивостей об'єктів</h4>
+            <h4 data-slide="5">Назви файлів в VS Code</h4>
           </div>
-      </div>
-      <div class="slider-slides">
+        </div>
+        <div class="slider-slides">
           <div class="slider-slide">
             <h5>Імена змінних, функцій або класів</h5>
             <p>Для ідентифікаторів прийнято використання camelCase-нотації.</p>
-              <p>Першим символом повинна бути літера a-z або A-Z, символ підкреслення _ або знак долара $.</p>
-              <p>Інші символи можуть бути літерами a-z, A-Z, цифрами 0-9, підкресленнями _ і знаками долара $.</p>
+            <p>
+              Першим символом повинна бути літера a-z або A-Z, символ
+              підкреслення _ або знак долара $.
+            </p>
+            <p>
+              Інші символи можуть бути літерами a-z, A-Z, цифрами 0-9,
+              підкресленнями _ і знаками долара $.
+            </p>
           </div>
           <div class="slider-slide">
-              <p>Для CSS-класів прийнято використання kebab-case нотації, тобто - маленькі літери, розділені дефісом.</p>
-              <p>Також рекомендують використання BEM (Block Element Modifier) методології</p>
-              <p>BEM розділяє назви класів на три частини: блок (block), елемент (element), та модифікатор (modifier).</p>
-              <ul>
-                <li>Блок: menu</li>
-                <li>Елемент: menu__item</li>
-                <li>Модифікатор: menu__item--active</li>
-              </ul>
+            <p>
+              Для CSS-класів прийнято використання kebab-case нотації, тобто -
+              маленькі літери, розділені дефісом.
+            </p>
+            <p>
+              Також рекомендують використання BEM (Block Element Modifier)
+              методології
+            </p>
+            <p>
+              BEM розділяє назви класів на три частини: блок (block), елемент
+              (element), та модифікатор (modifier).
+            </p>
+            <ul>
+              <li>Блок: menu</li>
+              <li>Елемент: menu__item</li>
+              <li>Модифікатор: menu__item--active</li>
+            </ul>
           </div>
           <div class="slider-slide">
-              <p>Використовується snake_case: усі слова пишуться з маленької літери і розділяються підкресленням - my_variable_name, get_user_info</p>
+            <p>
+              Використовується snake_case: усі слова пишуться з маленької літери
+              і розділяються підкресленням - my_variable_name, get_user_info
+            </p>
           </div>
           <div class="slider-slide">
-            <p>Використовується UpperCamelCase: кожне слово починається з великої літери, - MyVariableName</p>
+            <p>
+              Використовується UpperCamelCase: кожне слово починається з великої
+              літери, - MyVariableName
+            </p>
+          </div>
+          <div class="slider-slide">
+            <p>
+              Використовується SCREAMING_SNAKE_CASE: усі слова пишуться великими
+              літерами і розділяються підкресленням, - MY_VARIABLE_NAME,
+              GET_USER_INFO
+            </p>
+          </div>
+          <div class="slider-slide">
+            <p>Використовуються строки</p>
+          </div>
+          <div class="slider-slide">
+            <p>Назви файлів маленькими літерами та у kebab-case нотації є гарною практикою. Це означає, що всі слова в назві файлу розділяються дефісами, і немає використання великих літер.</p>
+          <ul>
+            <li><strong>Цифри:</strong>Використання цифр на початку імені файлу не заборонено, але зазвичай їх уникають, щоб уникнути плутанини або зменшити ризик виникнення помилок.</li>
+            <li><strong>Спеціальні символи:</strong>У назвах файлів не можна використовувати деякі спеціальні символи, такі як /, \, ?, *, :, |, " (подвійні лапки), <, >, і . (крапка на початку назви файлу), оскільки вони можуть викликати помилки в файлових системах або конфліктувати з іншими операціями.</li>
+            <li><strong>Розділювачі:</strong>Для розділення слів у назвах файлів рекомендується використовувати лише дефіс (-) або підкреслення (_).</li>
+            <li><strong>Пропуски:</strong>Уникайте використання пробілів у назвах файлів. Краще замінювати пробіли дефісами або підкресленням.</li>
+            <li><strong>Регістр:</strong>Як правило, всі літери повинні бути малими, щоб уникнути проблем зі сумісністю між різними операційними системами та середовищами розробки, де регістр має значення.</li>
+            <li><strong>Довжина:</strong>Деякі файлові системи обмежують довжину імені файлу. Хоча ці обмеження зараз дуже великі (до 255 символів), краще дотримуватися розумної довжини для зручності.</li>
+          </ul>
+          </div>
         </div>
-        <div class="slider-slide">
-          <p>Використовується SCREAMING_SNAKE_CASE: усі слова пишуться великими літерами і розділяються підкресленням, - MY_VARIABLE_NAME, GET_USER_INFO</p>
       </div>
-      <div class="slider-slide">
-        <p>Використовується строки</p>
-    </div>
-      </div>
-  </div>
-
     </section>
     <section class="section">
       <h3>Змінні let i const. Оголошення змінних</h3>
@@ -340,47 +374,8 @@
         prompt полягає в тому, що незалежно від того, що ввів користувач, завжди
         повернеться рядок.
       </p>
-
     </section>
-    <h2 class="practice-header">Змінні та типи.</h2>
-    <!-- ! -->
-    <button class="accordion">
-      Given a number. Check if it is positive or not. Print this information to
-      the console.
-    </button>
-    <div class="panel">
-      <pre><code class="language-js">
-  <strong>Рішення 1 </strong> 
-  const checkIfPositive = (number) => {console.log(number > 0 ? 'number is positive' : number < 0 ? 'number is negative' : 'number = 0');}
 
-  <strong>Рішення 2</strong>
-  const checkIfPositive = (number) => {
-    switch (Math.sign(number)) {
-      case 1:
-        console.log('number is positive');
-        break;
-      case -1:
-        console.log('number is negative');
-        break;
-      default:
-        console.log('number = 0');
-        break;
-    }
-  }
-</code></pre>
-    </div>
-    <!-- ! -->
-    <button class="accordion">
-      In this simple assignment you are given a number and have to make it
-      negative. But maybe the number is already negative?
-    </button>
-    <div class="panel">
-      <pre><code class="language-js">
- function makeNegative(num) {
-   return -Math.abs(num);
- }
-</code></pre>
-    </div>
     <!-- ! -->
     <button class="accordion">Завдання</button>
     <div class="panel">
@@ -422,8 +417,6 @@
     </div>
     <!-- ! -->
 
-    <h2 class="practice-header">Взаємодія з користувачем</h2>
-
     <button class="accordion">Завдання</button>
     <div class="panel">
       <pre><code class="language-js">
@@ -462,11 +455,8 @@
 Відповідь
     </code></pre>
     </div>
-
-
-
 
     <script src="../Module1/js/script.js" type="module"></script>
-
+    <script src="../Module1/js/trainee-js-one.js" type="module"></script>
   </body>
 </html>

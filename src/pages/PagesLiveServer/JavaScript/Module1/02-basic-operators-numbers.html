@@ -89,6 +89,22 @@
         console.log(Number.parseFloat("12.46qwe79")); // 12.46<br />
         console.log(Number.parseFloat("qweqwe")); // NaN
       </p>
+      <!-- ! -->
+      <button class="accordion">
+        Парс числа с Number.parseInt() и Number.parseFloat()
+      </button>
+      <div class="panel">
+        <pre><code class="language-js">
+let elementWidth = '50px';
+elementWidth = Number.parseInt(elementWidth);
+console.log('elementWidth: ', elementWidth);
+  
+let elementHeight = '200.74px';
+elementHeight = Number.parseFloat(elementHeight);
+console.log('elementHeight: ', elementHeight);
+</code></pre>
+      </div>
+      <!-- !  -->
       <h4>Перевірка на число</h4>
       <p>
         Для перевірки на число можна використовувати метод Number.isNaN(val).
@@ -110,6 +126,26 @@
         const invalidNumber = Number("qweqwe"); // NaN<br />
         console.log(Number.isNaN(invalidNumber)); // true<br />
       </p>
+      <h4>Метод число.toFixed(digits)</h4>
+      <p>
+        Метод toFixed() для значень Number повертає рядок, що представляє це
+        число за допомогою нотації з фіксованою комою з указаною кількістю
+        знаків після коми.
+      </p>
+      <!-- ! -->
+      <button class="accordion">Округли зарплатню до копійок</button>
+      <div class="panel">
+        <pre><code class="language-js">
+let salary = 1300.16472;
+salary = Number(salary.toFixed(2));
+  
+console.log(salary); // 1300.16
+</code></pre>
+      </div>
+
+      <!-- ! -->
+    </section>
+    <section class="section">
       <h4>Клас Math​</h4>
       <p>
         Один із вбудованих класів, який надає набір методів для роботи з
@@ -144,8 +180,38 @@
         console.log(Math.random() * (10 - 1) + 1); // псевдовипадкове число від
         1 до 10<br />
       </p>
+      <!-- ! -->
+
+      <button class="accordion">
+        Напиши скрипт який просить користувача ввести число та ступінь, зводить
+        число в цей ступінь та виводить результат у консоль
+      </button>
+      <div class="panel">
+        <pre><code class="language-js">
+const base = Number(prompt('Give me a base'))
+const power = Number(prompt('Give me a power'))
+console.log(base**power)
+    </code></pre>
+      </div>
+      <!-- ! -->
+      <button class="accordion">
+        Напиши скрипт який, при перезавантажені, призначає виподково
+        вибраний колір кольору фону сторінки з кольорів даного нам масиву.
+      </button>
+      <div class="panel">
+        <pre><code class="language-js">const colors = ['lightcoral', 'palegreen', 'lightpink', 'lightcyan', 'lemonchiffon', 'lavender', 'lightblue', 'wheat', 'white', 'red', 'blue', 'pink', 'green', 'grey', 'gold', 'teal']
+const max = colors.length-1
+const min = 0
+
+const index = Math.round(Math.random() * (max - min) + min);
+const color = colors[index]
+console.log(color)
+
+document.body.style.backgroundColor = color
+    </code></pre>
+      </div>
     </section>
-    <h2 class="practice-header">Оператори</h2>
+    <h2 class="practice-header">Додатково</h2>
     <!-- ! -->
 
     <button class="accordion">
@@ -156,70 +222,32 @@
 Відповідь
     </code></pre>
     </div>
-    <!-- ! -->
 
-    <button class="accordion">Завдання</button>
-    <div class="panel">
-      <pre><code class="language-js">
-Відповідь
-    </code></pre>
-    </div>
-    <!-- ! -->
-
-    <button class="accordion">Завдання</button>
-    <div class="panel">
-      <pre><code class="language-js">
-Відповідь
-    </code></pre>
-    </div>
-    <!-- ! -->
-
-    <button class="accordion">Завдання</button>
-    <div class="panel">
-      <pre><code class="language-js">
-Відповідь
-    </code></pre>
-    </div>
-
-    <h2 class="practice-header">Числа. Клас Math​</h2>
-    <!-- ! -->
+    <!-- !  -->
     <button class="accordion">
-      Завдання на Number.parseInt() і Number.parseFloat()
+      Дано число. Перевірте, позитивне воно чи ні. Виведіть цю інформацію в
+      консоль.
     </button>
     <div class="panel">
       <pre><code class="language-js">
-Відповідь
-    </code></pre>
-    </div>
-    <!-- ! -->
-    <button class="accordion">Завдання на .toFixed</button>
-    <div class="panel">
-      <pre><code class="language-js">Метод toFixed() для значень Number повертає рядок, що представляє це число за допомогою нотації з фіксованою комою з указаною кількістю знаків після коми.
+<strong>Рішення 1 </strong> 
+const checkIfPositive = (number) => {console.log(number > 0 ? 'number is positive' : number < 0 ? 'number is negative' : 'number = 0')}
+        
+<strong>Рішення 2</strong>
+const checkIfPositive = (number) => {
+  switch (Math.sign(number)) {
+    case 1:
+      console.log('number is positive');
+      break;
+    case -1:
+      console.log('number is negative');
+      break;
+    default:
+      console.log('number = 0');
+      break;
+    }
+}
 </code></pre>
-    </div>
-    <!-- ! -->
-    <button class="accordion">Math.random()</button>
-    <div class="panel">
-      <pre><code class="language-js">
-Math.random() = (max - min) + min
-    </code></pre>
-    </div>
-    <!-- ! -->
-    <button class="accordion">
-      Маємо масив з кольорами. Написати скрипт який, при перезавантажені
-      сторінки, призначає колір фону з кольорів масиву.
-    </button>
-    <div class="panel">
-      <pre><code class="language-js">const colors = ['lightcoral', 'palegreen', 'lightpink', 'lightcyan', 'lemonchiffon', 'lavender', 'lightblue', 'wheat', 'white', 'red', 'blue', 'pink', 'green', 'grey', 'gold', 'teal']
-const max = colors.length-1
-const min = 0
-
-const index = Math.round(Math.random() * (max - min) + min);
-const color = colors[index]
-console.log(color)
-
-document.body.style.backgroundColor = color
-    </code></pre>
     </div>
 
     <!-- ! -->
@@ -236,7 +264,7 @@ function makeNegative (num) {
     </div>
 
     <!-- ! -->
-    <button class="accordion rule">Глобальна властивість NaN є значенням, що становить не число (Not-A-Number). У програмах NaN використовується доволі рідко. Це значення, що повертається в ситуаціях, коли математичні (Math) функції не спрацьовують належним чином (наприклад, при виклику Math.sqrt(-1)) або коли функція, яка намагається вважати число з рядка, зазнає невдачі через те, що в рядку не число (parseInt('blabla')).</button>
+    <button class="accordion">Завдання</button>
     <div class="panel rule">
       <pre><code class="language-js">
     Відповідь
@@ -258,8 +286,22 @@ function makeNegative (num) {
     </div>
     <!-- ! -->
 
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+    </code></pre>
+    </div>
+    <!-- ! -->
 
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+    </code></pre>
+    </div>
+
+    <!-- ! -->
     <script src="../Module1/js/script.js" type="module"></script>
-
   </body>
 </html>
