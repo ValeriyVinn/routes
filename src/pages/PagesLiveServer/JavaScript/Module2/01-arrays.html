@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Масиви</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+
+    <h2>Масиви</h2>
+
+    <section class="section">
+      <p>
+        <strong>Масив</strong> - структура даних для зберігання і маніпулювання
+        колекцією індексованих значень
+      </p>
+      <h4>Створення</h4>
+      <p>
+        Масив оголошується і береться у квадратні дужки [] - літералом масиву.
+        Всередині дужок кожен елемент масиву розділяється комою.
+      </p>
+      <p class="code">const clients = ["Mango", "Poly", "Ajax"];</p>
+      <h4>Доступ до елементів</h4>
+      <p>
+        Для доступу до значення елемента масиву використовується синтаксис
+        квадратних дужок масив[індекс]. Між іменем змінної, що зберігає масив, і
+        квадратними дужками не повинно бути пробілу.
+      </p>
+      <pre class="code">
+const clients = ["Mango", "Poly", "Ajax"];
+
+// Зазначаючи в дужках індекс елемента, ми отримуємо його значення
+console.log(clients[0]); // Mango
+console.log(clients[1]); // Poly
+console.log(clients[2]); // Ajax</pre
+      >
+      <h4>Перевизначення</h4>
+      <p>
+        На відміну від рядків, елементи масиву можна змінювати, звернувшись до
+        них за індексом і присвоївши інше значення.
+      </p>
+
+      <pre class="code">
+const clients = ["Mango", "Poly", "Ajax"];
+clients[0] = "Kiwi";
+clients[1] = "Pango";
+console.log(clients); // ["Kiwi", "Pango", "Ajax"]</pre
+      >
+      <h4>Довжина масиву</h4>
+      <p>
+        Довжина масиву, тобто кількість його елементів, зберігається у
+        властивості length. Це динамічна величина, яка змінюється автоматично
+        під час додавання або видалення елементів.
+      </p>
+      <p class="code">
+        const clients = ["Mango", "Poly", "Ajax"]; <br />
+        console.log(clients.length); // 3
+      </p>
+      <h4>Індекс останнього елемента</h4>
+      <p>
+        Довжина масиву завжди на одиницю більша, ніж індекс останнього елемента.
+      </p>
+      <p class="code">
+        const clients = ["Mango", "Poly", "Ajax"];<br />
+        const lastElementIndex = clients.length - 1;<br />
+        console.log(lastElementIndex); // 2<br />
+        console.log(clients[lastElementIndex]); // "Ajax"
+      </p>
+    </section>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <script src="../js/main.js" type="module"></script>
+  </body>
+</html>

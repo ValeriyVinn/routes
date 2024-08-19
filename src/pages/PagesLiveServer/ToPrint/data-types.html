@@ -4,52 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/styles.css" />
-
-    <title>String</title>
+    <title>To print</title>
+    <link rel="stylesheet" href="../JavaScript/css/styles.css" />
   </head>
   <body>
-    <a href="../../../../indexLS.html">Home</a>
-    <h2>Рядки</h2>
+    <a href="../../../indexLS.html">Home</a>
+
+    <h2>Number</h2>
+
+    <p>
+      <span class="span-on">string</span
+      ><span class="span-in">.toLowerCase()</span
+      ><span class="span-out">-new string</span>
+    </p>
+
+    <h3>Властивості і методи рядків</h3>
 
     <section class="section">
-      <p>
-        <strong>Рядок</strong> - це індексований набір з нуля або більше
-        символів, взятих в одинарні або подвійні лапки. Вміст рядка не можна
-        змінити, лише прочитати. Тобто, не можна взяти будь-який символ і
-        замінити його, як тільки рядок створений - він такий назавжди. Можна
-        лише створити повністю новий рядок і присвоїти у змінну замість старого.
-      </p>
-      <h4>Конкатенація рядків</h4>
-      <p>
-        Якщо застосувати оператор + до рядка і будь-якого іншого типу даних,
-        результатом операції «додавання» буде рядок. Ця операція називається
-        конкатенація, або додавання рядків. Під час конкатенації, будь-який тип
-        даних приводиться до рядка і зшивається з рядком.
-      </p>
-      <p class="code">
-        console.log(1 + "2"); // "12"<br />
-        console.log(1 + "2" + 4); // "124"<br />
-        console.log(1 + 2 + "4"); // "34"<br />
-      </p>
-      <h4>Шаблонні рядки</h4>
-      <p>
-        Шаблонні рядки - це альтернатива конкатенації зі зручнішим синтаксисом.
-        Шаблонний рядок береться у зворотні (косі) лапки, замість подвійних або
-        одинарних, і може містити заповнювачі місця, які позначаються знаком
-        долара і фігурними дужками - ${вираз}.
-      </p>
-      <p class="code">
-        const guestName = "Манго";<br />
-        const roomNumber = 207;<br />
-        const greeting = `Welcome ${guestName}, your room number is
-        ${roomNumber}!`;<br />
-        console.log(greeting); // "Welcome Mango, your room number is 207!"
-      </p>
-      </section>
-            <h3>Властивості і методи рядків</h3>
-
-      <section class="section">
       <h5>Властивість length.</h5>
       <p class="code">
         const message = "Welcome to Bahamas!";<br />
@@ -136,46 +107,5 @@
         console.log(productName.slice(7, productName.length)); // "droid"
       </p>
     </section>
-    <h2 class="practice-header">
-        Додатково
-      </h2>
-      <!-- ! -->
-      <button class="accordion">Завдання</button>
-      <div class="panel">
-        <pre><code class="language-js">
-  Відповідь
-  </code></pre>
-      </div>
-      <!-- ! -->
-      <button class="accordion">Завдання</button>
-      <div class="panel">
-        <pre><code class="language-js">
-  Відповідь
-  </code></pre>
-      </div>
-      <!-- ! -->
-      <button class="accordion">Завдання</button>
-      <div class="panel">
-        <pre><code class="language-js">
-  Відповідь
-  </code></pre>
-      </div>
-      <!-- ! -->
-      <button class="accordion">Завдання</button>
-      <div class="panel">
-        <pre><code class="language-js">
-  Відповідь
-  </code></pre>
-      </div>
-      <!-- ! -->
-      <button class="accordion">Завдання</button>
-      <div class="panel">
-        <pre><code class="language-js">
-  Відповідь
-  </code></pre>
-      </div>
-
-      <script src="../js/main.js" type="module"></script>
-
   </body>
 </html>

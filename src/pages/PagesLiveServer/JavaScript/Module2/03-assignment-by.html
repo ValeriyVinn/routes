@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Присвоєння за посиланням і за значенням</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+
+    <h2>Присвоєння за посиланням і за значенням</h2>
+
+    <section class="section">
+      <p>
+        Фундаментальною відмінністю складних типів від примітивів є те, як вони
+        зберігаються і копіюються. Примітиви:
+        <strong>рядки, числа, булі, null і undefined</strong> , під час
+        присвоєння повністю копіюються за значенням
+        <strong>(by value)</strong> . Зі складними типами - все по-іншому. У
+        змінній, якій присвоєно масив або об'єкт, зберігається не саме значення,
+        а адреса його місця в пам'яті, іншими словами - посилання (вказівник) на
+        нього і вони передаються <strong>за посиланням (by reference)</strong> .
+      </p>
+      <p>
+        За умови передачі за значенням, змінним виділяється нова комірка пам'яті
+        і в неї копіюються дані. За умови передачі за посиланням, замість
+        створення нового об'єкта, змінній присвоюється посилання (вказівник) на
+        вже існуючий об'єкт, тобто на його місце в пам'яті. Таким чином,
+        декілька змінних можуть вказувати на один і той самий об'єкт.
+      </p>
+      <p>
+        Усі <strong>примітивні типи</strong> присвоюються за значенням, тобто
+        створюється копія.
+      </p>
+      <pre class="code">
+let a = 5;
+// Присвоєння за значенням, в пам'яті буде створена ще
+// одна комірка, в яку буде скопійоване значення 5
+let b = a;
+console.log(a); // 5
+console.log(b); // 5
+       
+// Змінимо значення a
+a = 10;
+console.log(a); // 10
+// Значення b не змінилося, оскільки це окрема копія
+console.log(b); // 5
+</pre
+      >
+      <p>
+        <strong>Складні типи</strong> - об'єкти, масиви, функції присвоюються за
+        посиланням, тобто змінна просто отримує посилання на вже існуючий
+        об'єкт.
+      </p>
+      <pre class="code">
+const a = ["Mango"];
+// Оскільки a - це масив, в b записується посилання на вже існуючий
+// масив в пам'яті. Тепер a і b вказують на той самий масив.
+const b = a;
+console.log(a); // ["Mango"]
+console.log(b); // ["Mango"]
+        
+// Змінимо масив, додавши ще один елемент, використовуючи вказівник з a
+a.push("Poly");
+console.log(a); // ["Mango", "Poly"]
+        
+// b також змінилось, тому що b, як і a,
+// просто містить посилання на те ж саме місце в пам'яті
+console.log(b); // ["Mango", "Poly"]
+        
+// Результат повторюється
+b.push("Ajax");
+console.log(a); // ["Mango", "Poly", "Ajax"]
+console.log(b); // ["Mango", "Poly", "Ajax"]
+</pre
+      >
+    </section>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <script src="../js/main.js" type="module"></script>
+  </body>
+</html>

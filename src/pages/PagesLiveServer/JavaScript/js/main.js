@@ -75,4 +75,4 @@ menuItems.forEach((item, index) => {
 });
 
 // Встановлюємо перший слайд активним за замовчуванням
-slideElements[0].classList.add('visible');
+// slideElements[0].classList.add('visible');

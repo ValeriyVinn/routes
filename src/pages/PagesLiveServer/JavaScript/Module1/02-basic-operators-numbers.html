@@ -10,9 +10,10 @@
   </head>
   <body>
     <a href="../../../../indexLS.html">Home</a>
-    <h2>Основні оператори. Числа</h2>
+    <h2>Основні оператори. Числа. Клас Math​</h2>
+    <h3>Основні оператори</h3>
+
     <section class="section">
-      <h3>Основні оператори</h3>
       <h4>Математичні оператори</h4>
       <p>
         Призначення, функціонал і пріоритет (порядок) операцій нічим не
@@ -46,8 +47,9 @@
         випадку, все дорівнює собі. Перед оцінкою нічого не перетворюється.
       </p>
     </section>
+    <h3>Числа</h3>
+
     <section class="section">
-      <h3>Числа</h3>
       <p>
         Усі числа в JavaScript, як цілі, так і дробові, мають тип Number і їх
         можна записувати не тільки в десятковій системі числення.
@@ -57,10 +59,7 @@
         Більшість арифметичних операцій і математичних функцій перетворюють
         значення у число автоматично. Для того, щоб зробити це явно,
         використовуйте функцію Number(val), передаючи їй у val те, що потрібно
-        привести до числа. Якщо значення привести до числа неможливо,
-        результатом буде спеціальне числове значення NaN (Not a Number).
-        Аналогічним чином відбувається перетворення і в інших математичних
-        операторах і функціях. <br />
+        привести до числа. <br />
       </p>
       <p class="code">
         const valueA = "5";<br />
@@ -70,6 +69,76 @@
         console.log(Number(valueB)); // NaN <br />
         console.log(typeof Number(valueB)); // "number"
       </p>
+      <h4>NaN</h4>
+      <p>
+        Якщо значення привести до числа неможливо, результатом буде спеціальне
+        числове значення NaN (Not a Number). Аналогічним чином відбувається
+        перетворення і в інших математичних операторах і функціях. Глобальна
+        властивість NaN є значенням, що становить не число (Not-A-Number).
+      </p>
+<p>Функція isNaN() визначає чи є літерал чи змінна нечисловим значенням (NaN) чи ні. Працюючи з функцією необхідно виявляти обережність оскільки вона має свої особливості. В якості альтернативи можна використовувати метод Number.isNaN() з ECMAScript 6, або додатково перевіряти літерал або змінну на нечислове значення за допомогою типу.</p>
+      <pre class="code">
+function sanitise(x) {
+  if (isNaN(x)) {
+    return NaN;
+  }
+    return x;
+}
+  
+console.log(sanitise('1'));
+// Expected output: "1"
+  
+console.log(sanitise('NotANumber'));
+// Expected output: NaN
+    </pre
+      >
+      <h4>Number.isNaN()</h4>
+      <p>
+        Метод Number.isNaN() определяет, является ли переданное значение NaN.
+        Это более надёжная версия оригинальной глобальной функции isNaN().
+      </p>
+      <p>
+        Поскольку оба оператора проверки на равенство, == и ===, вычисляются в
+        false при проверке, что NaN и есть NaN, появляется необходимость в
+        функции Number.isNaN(). Эта ситуация отличается от всех других возможных
+        сравнений в JavaScript.
+      </p>
+      <p>
+        В отличие от глобальной функции isNaN(), Number.isNaN() не имеет
+        проблемы принудительного преобразования параметра в число. Это значит,
+        что в него безопасно передавать значения, которые обычно превращаются в
+        NaN, но на самом деле NaN не являются. Также это значит, что метод
+        возвращает true только для числовых значений, имеющих значение NaN.
+      </p>
+      <pre class="code">
+Number.isNaN(NaN); // true
+Number.isNaN(Number.NaN); // true
+Number.isNaN(0 / 0); // true
+
+// При использовании глобальной функции isNaN() это всё будет true
+Number.isNaN("NaN"); // false
+Number.isNaN(undefined); // false
+Number.isNaN({}); // false
+Number.isNaN("blabla"); // false
+
+// А это всё в любом случае будет false
+Number.isNaN(true);
+Number.isNaN(null);
+Number.isNaN(37);
+Number.isNaN("37");
+Number.isNaN("37.37");
+Number.isNaN("");
+Number.isNaN(" ");
+</pre
+      >
+      <pre class="code"><h5>Поліфіл </h5>Number.isNaN =
+  Number.isNaN ||
+  function (value) {
+    return typeof value === "number" && isNaN(value);
+  };  
+</pre>
+
+      <h4>Методи Number.parseInt() і Number.parseFloat()</h4>
       <p>
         Методи Number.parseInt() і Number.parseFloat()​ Перетворюють рядок
         символ за символом, доки це можливо. У разі виникнення помилки
@@ -145,8 +214,9 @@ console.log(salary); // 1300.16
 
       <!-- ! -->
     </section>
+    <h3>Клас Math​</h3>
+
     <section class="section">
-      <h4>Клас Math​</h4>
       <p>
         Один із вбудованих класів, який надає набір методів для роботи з
         числами. Знання всіх методів напам'ять не вимагається, тільки деяких,
@@ -195,8 +265,8 @@ console.log(base**power)
       </div>
       <!-- ! -->
       <button class="accordion">
-        Напиши скрипт який, при перезавантажені, призначає виподково
-        вибраний колір кольору фону сторінки з кольорів даного нам масиву.
+        Напиши скрипт який, при перезавантажені, призначає виподково вибраний
+        колір кольору фону сторінки з кольорів даного нам масиву.
       </button>
       <div class="panel">
         <pre><code class="language-js">const colors = ['lightcoral', 'palegreen', 'lightpink', 'lightcyan', 'lemonchiffon', 'lavender', 'lightblue', 'wheat', 'white', 'red', 'blue', 'pink', 'green', 'grey', 'gold', 'teal']
@@ -302,6 +372,6 @@ function makeNegative (num) {
     </div>
 
     <!-- ! -->
-    <script src="../Module1/js/script.js" type="module"></script>
+    <script src="../js/main.js" type="module"></script>
   </body>
 </html>

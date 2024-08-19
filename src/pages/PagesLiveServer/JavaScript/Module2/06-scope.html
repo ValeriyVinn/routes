@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Область видимості</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+
+    <h2>Область видимості</h2>
+
+    <section class="section">
+      <p>
+        <strong>Область видимості (scope)</strong> - механізм, який визначає
+        доступність змінних у коді, що виконується. Ланцюжок областей видимості
+        (scope chain) - області видимості утворюють ієрархію, за якою дочірні
+        області мають доступ до змінних з батьківських областей, але не навпаки.
+        Змінну видно для коду, що виконується, якщо вона є у поточній області
+        видимості або в ланцюжку областей видимості.
+      </p>
+      <h4>Глобальна область видимості</h4>
+      <p>
+        Змінні, оголошені на найвищому рівні, тобто за межами будь-яких
+        конструкцій на зразок if, while, for і функцій, знаходяться в
+        <strong>глобальній області видимості</strong> і доступні всюди після їх
+        оголошення.
+      </p>
+      <pre class="code">
+const globalValue = 10;
+
+  console.log(globalValue); // 10
+  
+  function foo() {
+    console.log(globalValue); // 10
+  }
+  
+  for (let i = 0; i < 5; i++) {
+    console.log(globalValue); // 10
+  
+    if (i === 2) {
+      console.log(globalValue); // 10
+    }
+  }
+  </pre
+      >
+      <h4>Блокова область видимості</h4>
+      <p>
+        Змінні, оголошені всередині інструкцій if, for, функцій та інших блоків
+        коду, взятих у фігурні дужки {}, знаходяться в
+        <strong>блоковій області видимості</strong> і доступні тільки всередині
+        цього блоку коду або у блоках, вкладених в нього.
+      </p>
+      <pre class="code">
+function foo() {
+  const a = 20;
+  console.log(a); // 20
+
+  for (let i = 0; i < 5; i++) {
+    console.log(a); // 20
+
+    if (i === 2) {
+      console.log(a); // 20
+    }
+  }
+}
+
+// ❌ Помилка! Змінна a - недоступна у глобальній області видимості
+console.log(a);
+
+for (let i = 0; i < 3; i++) {
+  // ❌ Помилка! Змінна a - недоступна в цій області видимості
+  console.log(a);
+}
+</pre
+      >
+      <p>
+        Це можна уявити у вигляді будинку з кімнатами. Будинок знаходиться в
+        глобальній області видимості. Кожна функція і блок створюють нову
+        кімнату, вкладену всередину будинку. Змінні, оголошені всередині цих
+        кімнат, доступні тільки тоді, коли ви знаходитесь всередині цієї
+        кімнати. За межами кімнати ці змінні - недоступні.
+      </p>
+      <pre class="code">
+for (let i = 0; i < 5; i++) {
+  const a = 20;
+  console.log(a); // 20
+
+  if (i === 2) {
+    const b = 30;
+    console.log(a); // 20
+    console.log(b); // 30
+  }
+
+  if (i === 3) {
+    console.log(a); // 20
+
+    // ❌ Помилка! Змінна b - недоступна в цій області видимості
+    console.log(b);
+  }
+}
+</pre
+      >
+      <h4>Пошук за ланцюжком областей видимості</h4>
+      <p>
+        Інтерпретатор намагається спочатку знайти змінну в тій області
+        видимості, в якій до неї звернулися. Якщо така змінна у локальній
+        області видимості - відсутня, то він виходить назовні, на один рівень за
+        одну спробу, доки не знайде значення або не дійде до найвищої області
+        видимості (глобальної) і зрозуміє, що змінну з таким ідентифікатором
+        неможливо знайти, тому що її просто не існує, у такому випадку виникне
+        помилка того, що змінна не оголошена.
+      </p>
+      <img src="./img/scope-chain-search.png" alt="scope" width="480" />
+    </section>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <script src="../js/main.js" type="module"></script>
+  </body>
+</html>

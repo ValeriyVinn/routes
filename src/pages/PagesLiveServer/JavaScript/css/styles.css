@@ -203,3 +203,15 @@ pre {
 .slider-slide.visible {
   display: block;
 }
+
+/* To Print */
+
+.span-on {
+  color: orange;
+}
+.span-in {
+  color: green;
+}
+.span-out {
+  color: blue;
+}
