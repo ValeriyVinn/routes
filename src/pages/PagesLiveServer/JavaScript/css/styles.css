@@ -215,3 +215,26 @@ pre {
 .span-out {
   color: blue;
 }
+.span-in, .span-on, .span-out {
+  font-size: 18px;
+}
+
+/* Table */
+
+.table {
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 5px;
+  border: 1px solid #2a2a2a;
+}
+
+.th-logical-operators-one,
+.th-logical-operators-two {
+  width: 130px;
+}
+.th-logical-operators-three {
+  width: 600px;
+}

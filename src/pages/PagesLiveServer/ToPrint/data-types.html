@@ -10,36 +10,59 @@
   <body>
     <a href="../../../indexLS.html">Home</a>
 
-    <h2>Number</h2>
-
-    <p>
-      <span class="span-on">string</span
-      ><span class="span-in">.toLowerCase()</span
-      ><span class="span-out">-new string</span>
-    </p>
 
     <h3>Властивості і методи рядків</h3>
 
     <section class="section">
-      <h5>Властивість length.</h5>
+      <h4>Властивість length.</h4>
+      <p>
+        Властивість <strong>length</strong> повертає довжину рядка (число), на
+        якому вона була викликана.
+      </p>
+      <p>
+        Ця властивість повертає кількість кодових значень у рядку. У UTF-16,
+        рядковому форматі, що використовується в JavaScript, для представлення
+        більшості символів використовується одне 16-бітове кодове значення, але
+        для представлення символів, що не так часто використовуються, потрібно
+        два кодових значення, так що цілком може бути так, що значення,
+        повернене властивістю <strong>length</strong> не буде відповідати
+        дійсної кількості символів у рядку.
+      </p>
+      <p>Для порожніх рядків властивість length повертає 0.</p>
+      <p>Статична властивість String.length повертає значення 1.</p>
+      <p>
+        <span class="span-on">string</span><span class="span-in">.lenght</span
+        ><span class="span-out"> = довжина рядка string</span>
+      </p>
       <p class="code">
         const message = "Welcome to Bahamas!";<br />
         console.log(message.length); // 19<br />
         console.log("There is nothing impossible to him who will try".length);
         // 47
       </p>
-      <h5>Методи toLowerCase() і toUpperCase()​</h5>
+      <h4>Методи toLowerCase() і toUpperCase()​</h4>
       <p>
-        Повертають новий рядок у відповідному регістрі, не змінюючи оригінальний
-        рядок.
+        Повертають значення рядка, на якому вони були викликані, перетворене на
+        відповідний регістр, не змінюючи оригінальний рядок.
       </p>
+      <p>
+        <span class="span-on">string</span
+        ><span class="span-in">.toLowerCase()</span
+        ><span class="span-out"> = new string</span>
+      </p>
+      <p>
+        <span class="span-on">string</span
+        ><span class="span-in">.toUpperCase()</span
+        ><span class="span-out"> = new string</span>
+      </p>
+
       <p class="code">
         const message = "Welcome to Bahamas!";<br />
         console.log(message.toLowerCase()); // "welcome to bahamas!"<br />
         console.log(message.toUpperCase()); // "WELCOME TO BAHAMAS!"<br />
         console.log(message); // "Welcome to Bahamas!"
       </p>
-      <h5>Метод indexOf()​</h5>
+      <h4>Метод indexOf()​</h4>
       <p>
         Повертає позицію (індекс), на якій знаходиться перший збіг підрядка або
         -1, якщо нічого не знайдено.
@@ -49,7 +72,7 @@
         console.log(message.indexOf("to")); // 8<br />
         console.log(message.indexOf("hello")); // -1
       </p>
-      <h5>Метод includes()​</h5>
+      <h4>Метод includes()​</h4>
       <p>
         Перевіряє, чи міститься підрядок в рядку, повертає буль - true, якщо
         міститься, і false - в іншому випадку. Регістр символів в рядку і
@@ -65,7 +88,7 @@
         console.log(productName.includes("Ремонтний")); // true<br />
         console.log(productName.includes("ремонтний")); // false
       </p>
-      <h5>Метод endsWith()​</h5>
+      <h4>Метод endsWith()​</h4>
       <p>
         Дозволяє визначити, чи завершується рядок символами (підрядком),
         зазначеними в дужках, повертаючи true або false.
@@ -76,7 +99,7 @@
         const cssFileName = "styles.css";<br />
         console.log(cssFileName.endsWith(".js")); // false
       </p>
-      <h5>Методи replace() і replaceAll()</h5>
+      <h4>Методи replace() і replaceAll()</h4>
       <p>
         Повертає новий рядок, в якому перше (replace) або усі збіги (replaceAll)
         підрядка замінені на вказане значення.
@@ -91,7 +114,7 @@
         console.log(minifiedCssFileNames); // "styles.min.css, about.min.css,
         portfolio.min.css"
       </p>
-      <h5>Метод slice()​</h5>
+      <h4>Метод slice()​</h4>
       <p>
         Метод рядків slice (startIndex, endIndex) використовується для створення
         копії частини або всього рядка. Він робить копію елементів рядка від
