@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Метод sort()</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+
+    <h3>Метод sort()</h3>
+    <section class="section">
+      <p>
+        Метод sort() сортує елементи масиву, але на відміну від інших методів
+        перебирання, він сортує вихідний масив.
+      </p>
+      <ul class="section-list">
+        <li>Сортує і змінює вихідний масив.</li>
+        <li>
+          Повертає змінений масив, тобто посилання на відсортований вихідний.
+        </li>
+        <li>За замовчуванням сортує за зростанням.</li>
+        <li>
+          Сортування відбувається шляхом приведення значень до рядка і
+          порівняння порядкових номерів у таблиці Unicode.
+        </li>
+      </ul>
+      <p>Такий масив чисел буде відсортований за зростанням.</p>
+      <pre class="code">
+const scores = [61, 19, 74, 35, 92, 56];
+scores.sort();
+console.log(scores); // [19, 35, 56, 61, 74, 92]
+</pre
+      >
+      <p>
+        Але, оскільки за замовчуванням значення приводяться до рядка, стандартне
+        сортування чисел працює незвично. Тому, у наступній вправі ми розглянемо
+        як задавати свій порядок сортування.
+      </p>
+      <pre class="code">
+const scores = [27, 2, 41, 4, 7, 3, 75];
+scores.sort();
+console.log(scores); // [2, 27, 3, 4, 41, 7, 75]
+</pre
+      >
+      <p>Масив рядків сортується за алфавітом.</p>
+      <pre class="code">
+const students = ["Віка", "Андрій", "Олег", "Юля", "Борис", "Катя"];
+students.sort();
+console.log(students); // [ 'Андрій', 'Борис', 'Віка', 'Катя', 'Олег', 'Юля' ]
+</pre
+      >
+      <p>Водночас порядковий номер великих літер менший, ніж у малих.</p>
+      <pre class="code">
+const letters = ["b", "B", "a", "A", "c", "C"];
+letters.sort();
+console.log(letters); // ['A', 'B', 'C', 'a', 'b', 'c']
+</pre
+      >
+      <p>
+        Через те, що сортується вихідний масив, порушується принцип чистоти
+        функцій і не можна зручно створити декілька похідних колекцій на основі
+        вихідної. Наприклад, створити колекцію, відсортовану за зростанням, а
+        іншу - за спаданням. Тому перед сортуванням роблять повну копію
+        вихідного масиву і сортують вже її.
+      </p>
+      <pre class="code">
+const scores = [61, 19, 74, 35, 92, 56];
+const ascendingScores = [...scores].sort();
+  
+console.log(scores); // [61, 19, 74, 35, 92, 56]
+console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+</pre
+      >
+
+      <h4>Свій порядок сортування чисел​</h4>
+      <p>
+        Для зазначення свого порядку сортування методу sort(compareFunction)
+        потрібно передати колбек-функцію з двома параметрами. Це функція
+        порівняння (compare function), порядок сортування залежить від її
+        результату. Метод sort() буде викликати її для двох довільних елементів.
+      </p>
+      <pre class="code">
+массив.sort((a, b) => {
+// Тіло колбек-функції
+});
+</pre
+      >
+      <ul class="section-list">
+        <li>a - перший елемент для порівняння.</li>
+        <li>b - другий елемент для порівняння.</li>
+      </ul>
+      <p>
+        Якщо виклик compareFunction(a, b) повертає будь-яке від'ємне значення,
+        тобто a менше b, сортування поставить a перед b. Це сортування за
+        зростанням.
+      </p>
+      <pre class="code">
+const scores = [61, 19, 74, 35, 92, 56];
+const ascendingScores = [...scores].sort((a, b) => a - b);
+console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+</pre
+      >
+      <p>
+        Якщо виклик compareFunction(a, b) повертає будь-яке додатне значення
+        більше нуля, тобто b більше a, сортування поставить b перед a. Це
+        сортування за спаданням.
+      </p>
+      <pre class="code">
+const scores = [61, 19, 74, 35, 92, 56];
+const descendingScores = [...scores].sort((a, b) => b - a);
+console.log(descendingScores); // [92, 74, 61, 56, 35, 19]
+</pre
+      >
+      <p>
+        Якщо виклик compareFunction(a, b) поверне 0, сортування залишить a і b
+        незмінними по відношенню один до одного, але відсортує їх по відношенню
+        до всіх інших елементів. Але взагалі неважливо, що повертати, якщо їх
+        взаємний порядок не має значення.
+      </p>
+      <h4>Свій порядок сортування рядків​</h4>
+      <p>
+        Для сортування рядків в алфавітному порядку, за зростанням або
+        спаданням, використовується метод рядків localeCompare().
+      </p>
+      <pre class="code">
+firstString.localeCompare(secondString)
+</pre
+      >
+      <p>
+        Він викликається на рядку, який потрібно порівняти (firstString) з тим,
+        що був переданий йому як аргумент (secondString).
+      </p>
+      <pre class="code">
+"a".localeCompare("b"); // -1
+"b".localeCompare("a"); // 1
+"a".localeCompare("a"); // 0
+"b".localeCompare("b"); // 0
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          Повертає від'ємне значення, якщо firstString повинен бути перед
+          secondString.
+        </li>
+        <li>
+          Повертає додатне значення більше нуля, якщо firstString повинен бути
+          після secondString.
+        </li>
+        <li>Якщо рядки однакові, повертається нуль.</li>
+      </ul>
+      <p>
+        Це зручно використовувати для сортування рядків, оскільки метод sort()
+        очікує такі самі значення від колбек-функції.
+      </p>
+      <pre class="code">
+const students = ["Віка", "Андрій", "Олег", "Юля", "Борис", "Катя"];
+
+const inAlphabetOrder = [...students].sort((a, b) => a.localeCompare(b));
+console.log(inAlphabetOrder); // ['Андрій', 'Борис', 'Віка', 'Катя', 'Олег', 'Юля']
+    
+const inReversedOrder = [...students].sort((a, b) => b.localeCompare(a));
+console.log(inReversedOrder); // ['Юля', 'Олег', 'Катя', 'Віка', 'Борис', 'Андрій']
+</pre
+      >
+      <h4>Сортування об'єктів​</h4>
+      <p>
+        Під час роботи з масивом об'єктів, сортування виконується за числовим
+        або рядковим значенням певної властивості. Наприклад, у нас є група
+        студентів з балами за тест. Необхідно відсортувати масив об'єктів за
+        зростанням і спаданням кількості балів, і за ім'ям студента.
+      </p>
+      <pre class="code">
+const students = [
+  { name: "Манго", score: 83 },
+  { name: "Полі", score: 59 },
+  { name: "Аякс", score: 37 },
+  { name: "Ківі", score: 94 },
+];
+  
+const inAscendingScoreOrder = students.sort(
+  (firstStudent, secondStudent) => firstStudent.score - secondStudent.score
+);
+  
+const inDescendingScoreOrder = students.sort(
+  (firstStudent, secondStudent) => secondStudent.score - firstStudent.score
+);
+  
+const inAlphabeticalOrder = students.sort((firstStudent, secondStudent) =>
+  firstStudent.name.localeCompare(secondStudent.name)
+);
+</pre
+      >
+    </section>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <script src="../js/main.js" type="module"></script>
+  </body>
+</html>

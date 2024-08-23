@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ланцюжки методів</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a href="../../../../indexLS.html">Home</a>
+
+    <h3>Ланцюжки методів</h3>
+    <section class="section">
+      <p>
+        У нас є масив об'єктів з іменами, балами і відвідуваними предметами
+        кожного студента.
+      </p>
+      <pre class="code">
+const students = [
+  { name: "Манго", score: 83, courses: ["математика", "фізика"] },
+  { name: "Полі", score: 59, courses: ["інформатика", "математика"] },
+  { name: "Аякс", score: 37, courses: ["фізика", "біологія"] },
+  { name: "Ківі", score: 94, courses: ["література", "інформатика"] },
+];
+</pre
+      >
+      <p>
+        Необхідно отримати масив їхніх імен, відсортованих за зростанням балів
+        за тест. З цією метою ми відсортуємо копію масиву методом sort(), після
+        чого методом map() створимо масив значень властивості name з
+        відсортованого масиву.
+      </p>
+      <pre class="code">
+const sortedByAscendingScore = [...students].sort((a, b) => a.score - b.score);
+const names = sortedByAscendingScore.map(student => student.name);
+    
+console.log(names); // ['Аякс', 'Полі', 'Манго', 'Ківі']
+</pre
+      >
+      <p>
+        Проблема в тому, що у нас з'являються проміжні змінні після кожної
+        операції, крім фінальної. Змінна sortedByAscendingScore - зайва і
+        необхідна тільки для зберігання проміжного результату.
+      </p>
+      <p>
+        Позбутися таких «мертвих» змінних можна за допомогою групування викликів
+        методів у ланцюжку. Кожний наступний метод буде виконуватися на основі
+        результату роботи попереднього.
+      </p>
+      <pre class="code">
+const names = [...students].sort((a, b) => a.score - b.score).map(student => student.name);
+  
+console.log(names); // ['Аякс', 'Полі', 'Манго', 'Ківі']
+</pre
+      >
+      <ul class="section-list">
+        <li>Робимо копію вихідного масиву перед сортуванням.</li>
+        <li>На копії викликаємо метод sort().</li>
+        <li>До результату роботи методу sort() застосовуємо метод map().</li>
+        <li>Змінній names присвоюється результат роботи методу map().</li>
+      </ul>
+      <p>
+        Отримаємо масив унікальних відвідуваних предметів, відсортований за
+        алфавітом.
+      </p>
+      <pre class="code">
+const uniqueSortedCourses = students.flatMap(student => student.courses).filter((course, index, array) => array.indexOf(course) === index).sort((a, b) => a.localeCompare(b));
+  
+console.log(uniqueSortedCourses); // ['біологія', 'інформатика', 'література', 'математика', 'фізика']
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          На вихідному масиві викликаємо flatMap() і робимо розгладжений масив
+          усіх курсів.
+        </li>
+        <li>
+          До результату методу flatMap() застосовуємо метод filter() для
+          фільтрації унікальних елементів.
+        </li>
+        <li>На результаті методу filter() викликаємо sort().</li>
+        <li>
+          Змінній uniqueSortedCourses присвоюється результат роботи методу
+          sort().
+        </li>
+      </ul>
+      <p>
+        Ланцюжок методів може бути довільної довжини, але, зазвичай, не більше
+        2-3 операцій. По-перше, перебираючі методи використовуються для
+        порівняно простих операцій над колекцією. По-друге, виклик кожного
+        наступного методу - це додаткове перебирання масиву, що за великої
+        кількості, може позначитися на продуктивності.
+      </p>
+    </section>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+    <!-- ! -->
+    <button class="accordion">Завдання</button>
+    <div class="panel">
+      <pre><code class="language-js">
+Відповідь
+</code></pre>
+    </div>
+
+    <script src="../js/main.js" type="module"></script>
+  </body>
+</html>

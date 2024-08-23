@@ -41,6 +41,7 @@ pre {
   border-radius: 5px;
   padding: 5px;
   background-color: #dbfff3;
+  outline: 1px solid #9affdd;
   color: #008000;
   margin-bottom: 5px;
 }
@@ -238,3 +239,12 @@ pre {
 .th-logical-operators-three {
   width: 600px;
 }
+/* Codepen */
+.codepen {
+  width: 500px;
+}
+
+/* .div {
+  color: red;
+  width: 1000px;
+} */

@@ -10,9 +10,57 @@
   <body>
     <a href="../../../../indexLS.html">Home</a>
 
-    <h2>Метод find()</h2>
+    <h3>Методи find() і findIndex()</h3>
     <section class="section">
+      <h4>Метод find()</h4>
+<p>Якщо метод filter(callback) використовується для пошуку всіх елементів, що задовольняють умову, то метод find(callback) дозволяє знайти і повернути перший відповідний елемент, після чого перебирання масиву припиняється. Тобто він шукає до першого збігу.</p>
+<pre class="code">масив.find((element, index, array) => {
+  // Тіло колбек-функції
+});
+</pre>
+<ul class="section-list">
+  <li>Не змінює оригінальний масив.</li>
+  <li>Поелементо перебирає оригінальний масив.</li>
+  <li>Повертає перший елемент, що задовольняє умову, тобто коли колбек повертає true.</li>
+  <li>Якщо жоден елемент не задовольнив умову, тобто для всіх елементів колбек повернув false, метод повертає undefined.</li>
+</ul>
+<p>Метод find() використовується для одного завдання - пошуку елемента за унікальним значенням властивості. Наприклад, пошук користувача за поштою, автомобіля - за серійним номером, книги - за назвою тощо.</p>
+<pre class="code">const colorPickerOptions = [
+  { label: "red", color: "#F44336" },
+  { label: "green", color: "#4CAF50" },
+  { label: "blue", color: "#2196F3" },
+  { label: "pink", color: "#E91E63" },
+  { label: "indigo", color: "#3F51B5" },
+];
 
+colorPickerOptions.find(option => option.label === "blue"); // { label: 'blue', color: '#2196F3' }
+colorPickerOptions.find(option => option.label === "pink"); // { label: 'pink', color: '#E91E63' }
+colorPickerOptions.find(option => option.label === "white"); // undefined
+</pre>
+<h4>Метод findIndex()</h4>
+<p>Метод findIndex(callback) - це сучасна заміна методу indexOf(). Дозволяє виконувати пошук за складнішими умовами, ніж просто рівність. Використовується як для пошуку у масиві примітивів, так і в масиві об'єктів.</p>
+<pre class="code">масив.findIndex((element, index, array) => {
+  // Тіло колбек-функції
+});
+</pre>
+<ul class="section-list">
+  <li>Не змінює оригінальний масив.</li>
+  <li>Поелементо перебирає оригінальний масив.</li>
+  <li>Повертає індекс першого елемента, що задовольняє умову, тобто, коли колбек повертає true.</li>
+  <li>Якщо жоден елемент не задовольняє умову, тобто для всіх елементів колбек повернув false, метод повертає -1.</li>
+</ul>
+<pre class="code">const colorPickerOptions = [
+  { label: "red", color: "#F44336" },
+  { label: "green", color: "#4CAF50" },
+  { label: "blue", color: "#2196F3" },
+  { label: "pink", color: "#E91E63" },
+  { label: "indigo", color: "#3F51B5" },
+];
+
+colorPickerOptions.findIndex(option => option.label === "blue"); // 2
+colorPickerOptions.findIndex(option => option.label === "pink"); // 3
+colorPickerOptions.findIndex(option => option.label === "white"); // -1
+</pre>
     </section>
 
     <!-- ! -->

@@ -7,6 +7,9 @@ ul, li, p, h1, h2, h3, h4 {
   margin: 0;
   padding: 0;
 }
+h2 {
+  font-size: 20px;
+}
 
 a {
   text-decoration: none;
@@ -14,7 +17,7 @@ a {
 
 .header {
   display: flex;
-  padding: 20px;
+  padding: 10px 20px 15px;
 }
 
 .logo {
@@ -31,9 +34,20 @@ a {
   margin-right: 100px;
 }
 
+.face {
+  padding: 10px;
+  border: 1px solid tomato;
+  border-radius: 50%;
+}
+
+.back,
+.logo  {
+  padding: 10px;
+
+}
+
 .link {
   color: rgb(127, 127, 127);
-
 }
 
 .main-header {
@@ -50,4 +64,54 @@ a {
 
 .abstract-list {
   padding-left: 10px;
+}
+
+
+/* Accordeon */
+.accordion {
+  display: block;
+  background-color: white;
+  padding: 10px 20px;
+  /* color: darkblue; */
+  font-size: 17px;
+  font-weight: 600;
+  cursor: text;
+  /* padding: 10px; */
+  width: 100%;
+  text-align: left;
+  border: none;
+  /* border-radius: 3px; */
+  transition: 0.4s;
+  user-select: text;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+  background-color: white;
+  /* outline: 1px solid darkblue; */
+}
+
+/* Style the accordion panel. Note: hidden by default */
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: tomato;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: '\2796'; /* Unicode character for "minus" sign (-) */
+}
+.panel {
+  font-size: 16px;
+  padding: 0px 20px;
+  background-color: white;  
+  /* border-radius: 3px; */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  margin-bottom: 5px;
 }
