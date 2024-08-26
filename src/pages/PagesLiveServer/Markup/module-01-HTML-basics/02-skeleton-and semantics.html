@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Скелет HTML-документа. Семантика</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Скелет HTML-документа. Семантика</h2>
+    <section class="section">
+      <p>
+        HTML-документ складається з «дерева» тегів. Далі наведений мінімально
+        необхідний набір тегів, який слугує основою будь-якого HTML-документа,
+        як фундамент для будинку.
+      </p>
+      <img src="./img/dom-tree.png" alt="dom-tree" width="580" />
+
+      <p class="code">
+        &lt;!DOCTYPE&nbsp;html&gt;
+        <br />&lt;html&nbsp;lang=&quot;uk&quot;&gt;
+        <br />&nbsp;&nbsp;&lt;head&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Службова&nbsp;інформація&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;/head&gt; <br />&nbsp;&nbsp;&lt;body&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Зміст&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;/body&gt; <br />&lt;/html&gt;
+      </p>
+      <h3>Оголошення типу документа</h3>
+      <p>
+        &lt;!DOCTYPE&nbsp;&gt; - це не тег, а обов'язкова інструкція оголошення
+        типу документа. Вона потрібна для того, щоб повідомити браузеру, в якій
+        версії HTML написаний документ.
+      </p>
+      <p>
+        На підставі доктайпу браузер визначає версію HTML і правильно відображає
+        сторінку. Оголошення типу документа повинно бути найпершим, що бачить
+        браузер під час обробки HTML-документа.
+      </p>
+      <p class="code">
+        &lt;!--&nbsp;Вказує&nbsp;на&nbsp;те,&nbsp;що&nbsp;документ&nbsp;написаний&nbsp;за&nbsp;специфікацією&nbsp;HTML&nbsp;Living&nbsp;Standard&nbsp;--&gt;
+        <br />&lt;!DOCTYPE&nbsp;html&gt;
+      </p>
+      <p class="interested">
+        Раніше в HTML були версії, остання - це HTML5. Зараз HTML Living
+        Standard - це єдина специфікація мови HTML, в якій відмовилися від
+        версій, вона просто оновлюється. Якщо говорять про HTML5, то це те саме,
+        що «сучасний HTML» або HTML Living Standard, тільки коротше.
+      </p>
+      <h3>Елементи верхнього рівня</h3>
+      <p>
+        Призначені для формування основної структури веб-сторінки і визначають
+        розділи заголовка і тіла документа.
+      </p>
+      <h4>Тег &lt;html&gt;</h4>
+      <p>
+        Кореневий елемент документа як контейнер, який містить в собі увесь
+        вміст сторінки. Все, що знаходиться за його межами, не сприймається
+        браузером як HTML-код і не обробляється.
+      </p>
+      <p class="code">
+        &lt;!DOCTYPE&nbsp;html&gt;
+        <br />&lt;html&nbsp;lang=&quot;ru&quot;&gt;&lt;/html&gt;
+      </p>
+      <p>
+        Атрибут lang вказує, якою мовою написаний текст сторінки. Це необхідно
+        для допоміжних технологій, таких як скрінрідери тощо.
+      </p>
+      <h4>Тег &lt;head&gt;</h4>
+      <p>
+        Призначений для зберігання службової інформації про сторінку: заголовок,
+        опис, кодування тощо. Вся ця інформація не відображається у вікні
+        браузера, однак, містить дані, які вказують браузеру, яким чином
+        потрібно обробляти сторінку.
+      </p>
+      <p class="code">
+        &lt;!DOCTYPE&nbsp;html&gt;
+        <br />&lt;html&nbsp;lang=&quot;uk&quot;&gt;
+        <br />&nbsp;&nbsp;&lt;head&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Службова&nbsp;інформація&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;/head&gt; <br />&lt;/html&gt;
+      </p>
+      <h4>Тег &lt;body&gt;</h4>
+      <p>
+        Містить вміст майбутньої веб-сторінки. Контент, який повинен
+        відображатися на сторінці, варто розташовувати саме всередині цього
+        тегу.
+      </p>
+      <p class="code">
+        &lt;!DOCTYPE&nbsp;html&gt;
+        <br />&lt;html&nbsp;lang=&quot;uk&quot;&gt;
+        <br />&nbsp;&nbsp;&lt;head&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Службова&nbsp;інформація&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;/head&gt; <br />&nbsp;&nbsp;&lt;body&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Зміст&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;/body&gt; <br />&lt;/html&gt;&nbsp;&nbsp;
+      </p>
+      <h3>Теги заголовка документа</h3>
+      <p>
+        Група службових тегів, які розташовуються в шапці документа. Більшість з
+        них безпосередньо не відображаються у вікні браузера.
+      </p>
+      <h4>Заголовок сторінки</h4>
+      <p>
+        Текст, розміщений всередині тегу &lt;title&gt;, відображається у вкладці
+        браузера. Довжина заголовка повинна бути не більше 60 символів, щоб
+        повністю поміститися у заголовку. Текст заголовка повинен містити
+        короткий опис вмісту веб-сторінки.
+      </p>
+      <p class="code">
+        &lt;!DOCTYPE&nbsp;html&gt;
+        <br />&lt;html&nbsp;lang=&quot;uk&quot;&gt;
+        <br />&nbsp;&nbsp;&lt;head&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;HTML5&nbsp;це&nbsp;просто!&lt;/title&gt;
+        <br />&nbsp;&nbsp;&lt;/head&gt; <br />&nbsp;&nbsp;&lt;body&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Зміст&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;/body&gt; <br />&lt;/html&gt;&nbsp;&nbsp;
+      </p>
+      <h4>Метадані</h4>
+      <p>
+        Тег &lt;meta&gt; використовується для зберігання інформації, призначеної
+        для браузера і пошукових систем: встановлення кодування документа,
+        передача інформації пошуковим системам і багато іншого. Мета-тегів може
+        бути кілька, тому що, залежно від використаних атрибутів, вони несуть
+        різну інформацію.
+      </p>
+      <p>
+        Кодування сторінки необхідно вказати для того, щоб браузер коректно
+        відобразив текст. Якщо цього не зробити, або задати невірне кодування,
+        замість символів браузер може відобразити ієрогліфи.
+      </p>
+      <p class="code">
+        <!DOCTYPE html>
+        &lt;html&nbsp;lang=&quot;uk&quot;&gt;
+        <br />&nbsp;&nbsp;&lt;head&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;utf-8&nbsp;-&nbsp;найпоширеніше&nbsp;кодування&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;charset=&quot;utf-8&quot;&nbsp;/&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;HTML5&nbsp;це&nbsp;просто!&lt;/title&gt;
+        <br />&nbsp;&nbsp;&lt;/head&gt; <br />&nbsp;&nbsp;&lt;body&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Зміст&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;/body&gt; <br />&lt;/html&gt;&nbsp;&nbsp;
+      </p>
+      <p>
+        Короткий опис змісту допомагає пошуковим системам краще проіндексувати
+        сторінку.
+      </p>
+      <p class="code">
+        &lt;!DOCTYPE&nbsp;html&gt;
+        <br />&lt;html&nbsp;lang=&quot;uk&quot;&gt;
+        <br />&nbsp;&nbsp;&lt;head&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;charset=&quot;utf-8&quot;&nbsp;/&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;name=&quot;description&quot;&nbsp;content=&quot;Вивчення&nbsp;основ&nbsp;HTML5&nbsp;для&nbsp;новачків&quot;&nbsp;/&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;HTML5&nbsp;-&nbsp;це&nbsp;просто!&lt;/title&gt;
+        <br />&nbsp;&nbsp;&lt;/head&gt; <br />&nbsp;&nbsp;&lt;body&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Зміст&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;/body&gt; <br />&lt;/html&gt;&nbsp;&nbsp;
+      </p>
+      <a
+        href="https://developers.google.com/search/docs/crawling-indexing/special-tags?visit_id=638601986003344190-287727259&rd=1"
+        >Мета-теги, які розуміє Google</a
+      >
+      <h3>Потік документа</h3>
+      <p>
+        Потік - це вертикальний і горизонтальний порядок відображення елементів
+        на сторінці. Вертикально потік йде зверху вниз, і, за замовчуванням,
+        елементи відображаються на сторінці в тому порядку, в якому вони вказані
+        в HTML-документі. Горизонтально потік йде зліва направо (або справа
+        наліво для східних країн).
+      </p>
+      <p>
+        Всі без винятку елементи - це прямокутні області, які займають певне
+        місце у так званих «рядках», як слова в реченні на аркуші в лінійку.
+        Існує два основних типи елементів - блокові і рядкові.
+      </p>
+      <p class="code">
+        &lt;!--&nbsp;Абзац&nbsp;-&nbsp;це&nbsp;блоковий&nbsp;елемент&nbsp;--&gt;
+        <br />&lt;p&gt;Блоковий&nbsp;елемент&nbsp;1&lt;/p&gt;
+        <br />&lt;p&gt;Блоковий&nbsp;елемент&nbsp;2&lt;/p&gt;
+        <br />&lt;p&gt;Блоковий&nbsp;елемент&nbsp;3&lt;/p&gt;
+        <br />
+        <br />&lt;!--&nbsp;Посилання&nbsp;-&nbsp;це&nbsp;рядковий&nbsp;елемент&nbsp;--&gt;
+        <br />&lt;a&nbsp;href=&quot;&quot;&gt;Рядковий&nbsp;елемент&nbsp;1&lt;/a&gt;
+        <br />&lt;a&nbsp;href=&quot;&quot;&gt;Рядковий&nbsp;елемент&nbsp;2&lt;/a&gt;
+        <br />&lt;a&nbsp;href=&quot;&quot;&gt;Рядковий&nbsp;елемент&nbsp;3&lt;/a&gt;&nbsp;
+      </p>
+      <p>
+        <b>Блоковий елемент (block-level element)</b> - займає повністю увесь
+        рядок, незалежно від обсягу його контенту, тому кілька блокових
+        елементів візуально йдуть один за одним зверху вниз.
+      </p>
+      <img src="./img/block-elements.png" alt="block-elements" width="420" />
+      <p>
+        <b>Рядковий елемент (inline element)</b> - займає місце по своєму
+        вмісту, тому кілька малих елементів можуть розташовуватися на одному
+        рядку. Якщо в рядку не вистачає місця для вміщення рядкового елемента,
+        він переноситься на новий рядок.
+      </p>
+      <img src="./img/inline-elements.png" alt="inline-elements" width="420" />
+    </section>
+    <h2>Семантика</h2>
+    <section class="section">
+      <p>
+        Розмітка майбутньої веб-сторінки повинна мати смислове значення, як
+        сторінка газети або журналу. На сторінці є секції, заголовки, списки,
+        зображення, абзаци тексту тощо. Для опису всього цього багатства типів
+        контенту існують відповідні теги. Тобто семантика спочатку є частиною
+        HTML, але вона марна, якщо реалізована неправильно.
+      </p>
+      <p>
+        <b>Семантична розмітка</b> - підхід до створення HTML-розмітки
+        ґрунтується на використанні тегів за їх призначенням відповідно до
+        специфікації і, які відповідають типу контенту, що розмічується.
+      </p>
+      <img src="./img/semantics.jpg" alt="semantics" width="480" />
+      <p>
+        Здебільшого семантична розмітка - це просто використання здорового
+        глузду. Під час розмітки абзацу тексту ми використовуємо тег &lt;p&gt;,
+        для розмітки посилання існує тег &lt;a&gt;, контентне зображення
+        представлено тегом &lt;img&gt; тощо.
+      </p>
+      <p>
+        Тобто семантична розмітка означає, що теги <b>не вибираються</b> на
+        підставі того, як вони відображаються в браузері - вони вибираються на
+        підставі типу та структури контенту, який розмічується.
+      </p>
+    </section>
+
+    <section class="section"></section>
+    <section class="section"></section>
+    <section class="section"></section>
+    <section class="section"></section>
+    <section class="section"></section>
+  </body>
+</html>

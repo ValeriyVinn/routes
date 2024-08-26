@@ -1,0 +1,146 @@
+/* ul,
+li {
+  list-style-type: none;
+} */
+
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  padding: 10px 20px 15px;
+}
+
+.logo {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.nav-list {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-item:not(:last-child) {
+  margin-left: 300px;
+  margin-right: 100px;
+}
+
+.face {
+  padding: 10px;
+  border: 1px solid tomato;
+  border-radius: 50%;
+}
+
+.back,
+.logo {
+  padding: 10px;
+}
+
+.link {
+  color: rgb(127, 127, 127);
+}
+
+.main-header {
+  margin: 20px 10px;
+}
+
+.list-module {
+  outline: 1px solid tomato;
+  padding: 5px 20px;
+  margin-bottom: 5px;
+}
+
+.abstract-list {
+  padding-left: 10px;
+}
+
+.section {
+  outline: 1px solid royalblue;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+
+.code {
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(200, 220, 255);
+  outline: 1px solid rgb(190, 190, 255);
+  color: navy;
+  margin-bottom: 5px;
+  overflow-x: auto;
+}
+
+.section-list {
+  margin-left: 20px;
+}
+
+.codepen {
+  /* outline: 1px solid royalblue; */
+  padding: 0px 10px;
+}
+
+/* Accordeon */
+.accordion {
+  display: block;
+  background-color: white;
+  padding: 10px 20px;
+  /* color: darkblue; */
+  font-size: 17px;
+  font-weight: 600;
+  cursor: text;
+  /* padding: 10px; */
+  width: 100%;
+  text-align: left;
+  border: none;
+  /* border-radius: 3px; */
+  transition: 0.4s;
+  user-select: text;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+  background-color: white;
+  /* outline: 1px solid darkblue; */
+}
+
+/* Style the accordion panel. Note: hidden by default */
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: tomato;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: '\2796'; /* Unicode character for "minus" sign (-) */
+}
+.panel {
+  font-size: 16px;
+  padding: 0px 20px;
+  background-color: white;
+  /* border-radius: 3px; */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  margin-bottom: 5px;
+}
