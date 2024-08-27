@@ -11,13 +11,256 @@
     <a href="../markup.html">Markup</a>
     <h2>Структурна розмітка</h2>
     <section class="section">
-      
+      <p>
+        Існує цілий набір семантичних тегів для розмітки великих логічних
+        розділів і поліпшення структурної семантики сторінки. Кожен з них може
+        бути використаний за певних умов. Це впливає на роботу асистивних
+        технологій, індексування сторінки та її рейтинг видачі у пошуку.
+      </p>
+      <h3>Потоковий вміст</h3>
+      <h4>Тег &lt;header&gt;</h4>
+      <p>
+        Шапка (хедер) виділяє вступну частину всієї сторінки, складної секції
+        або статті. Як правило, містить логотип, навігацію, вступний текст,
+        складний заголовок. Може бути кілька на сторінці.
+      </p>
+      <p class="code">
+        &lt;body&gt;
+        <br />&nbsp;&nbsp;&lt;!--&nbsp;Шапка&nbsp;сторінки&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;header&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;/&quot;&gt;Логотип&nbsp;сайту&lt;/a&gt;
+        <br />
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Меню&nbsp;навігації&nbsp;по&nbsp;інших&nbsp;сторінках
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+        <br />&nbsp;&nbsp;&lt;/header&gt; <br />&lt;/body&gt;&nbsp;&nbsp;
+      </p>
+      <a
+        href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element"
+        >Посилання на специфікацію</a
+      >
+      <h4>Тег &lt;footer&gt;</h4>
+      <p>
+        Підвал (футер) - це фінальна частина всієї сторінки, її розділу або
+        статті. Часто містить копірайт, список посилань на соціальні мережі,
+        контактну інформацію і таке інше. Може бути кілька на сторінці.
+      </p>
+      <p class="code">
+        &lt;body&gt;
+        <br />&nbsp;&nbsp;&lt;!--&nbsp;Шапка&nbsp;сторінки&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;header&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;/&quot;&gt;Логотип&nbsp;сайту&lt;/a&gt;
+        <br />
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Меню&nbsp;навігації&nbsp;по&nbsp;інших&nbsp;сторінках
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+        <br />&nbsp;&nbsp;&lt;/header&gt;
+        <br />
+        <br />&nbsp;&nbsp;&lt;!--&nbsp;Підвал&nbsp;сторінки&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;footer&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Копірайт&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Всі&nbsp;права&nbsp;захищені&nbsp;&amp;copy;lpj.dev&lt;/p&gt;
+        <br />
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Посилання&nbsp;на&nbsp;соцмережі&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&gt;Instagram&lt;/a&gt;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+        <br />&nbsp;&nbsp;&lt;/footer&gt; <br />&lt;/body&gt;
+      </p>
+      <a
+        href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element"
+        >Посилання на специфікацію</a
+      >
+      <h4>Тег &lt;main&gt;</h4>
+      <p>
+        Основний (унікальний) вміст, що не повторюється на інших сторінках
+        сайту. Може бути тільки один на сторінці.
+      </p>
+      <p class="code">
+        &lt;body&gt;
+        <br />&nbsp;&nbsp;&lt;!--&nbsp;Шапка&nbsp;сторінки&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;header&gt;&lt;/header&gt;
+        <br />
+        <br />&nbsp;&nbsp;&lt;!--&nbsp;Унікальний&nbsp;контент&nbsp;сторінки&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;main&gt;&lt;/main&gt;
+        <br />
+        <br />&nbsp;&nbsp;&lt;!--&nbsp;Підвал&nbsp;сторінки&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;footer&gt;&lt;/footer&gt; <br />&lt;/body&gt;
+      </p>
+      <a
+        href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element"
+        >Посилання на специфікацію</a
+      >
+      <h3>Смислові розділи</h3>
+      <h4>Тег &lt;nav&gt;</h4>
+      <p>
+        Визначає розділ основної навігації з посиланнями на секції поточної або
+        інших сторінок. Використовується тільки для основної навігації, а не для
+        будь-якої групи посилань в документі.
+      </p>
+      <p class="code">
+        &lt;body&gt;
+        <br />&nbsp;&nbsp;&lt;!--&nbsp;Шапка&nbsp;сторінки&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;header&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;/&quot;&gt;Логотип&nbsp;сайту&lt;/a&gt;
+        <br />
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;nav&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Навігація&nbsp;на&nbsp;інші&nbsp;сторінки&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;/contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;/about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/nav&gt;
+        <br />&nbsp;&nbsp;&lt;/header&gt;
+        <br />
+        <br />&nbsp;&nbsp;&lt;!--&nbsp;Унікальний&nbsp;контент&nbsp;сторінки&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;main&gt;&lt;/main&gt;
+        <br />
+        <br />&nbsp;&nbsp;&lt;!--&nbsp;Підвал&nbsp;сторінки&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;footer&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;⚠️&nbsp;Посилання&nbsp;на&nbsp;соцмережі,&nbsp;не&nbsp;nav&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&gt;Instagram&lt;/a&gt;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+        <br />&nbsp;&nbsp;&lt;/footer&gt; <br />&lt;/body&gt;
+      </p>
+      <a
+        href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element"
+        >Посилання на специфікацію</a
+      >
+      <h4>Тег &lt;article&gt;</h4>
+      <p>
+        Незалежна, відокремлювана, і така, що має самостійне значення, частина
+        документа. Наприклад пост на форумі, твіт, стаття в блозі, віджет з
+        рекламою, інстраграм історія, картка товару в магазині.
+      </p>
+      <p class="code">
+        &lt;article&gt;
+        <br />&nbsp;&nbsp;&lt;h1&gt;Солодкий&nbsp;пиріжок&lt;/h1&gt;
+        <br />&nbsp;&nbsp;&lt;img&nbsp;src=&quot;посилання&nbsp;на&nbsp;зображення&nbsp;пиріжка&quot;&nbsp;alt=&quot;пиріжок&quot;&nbsp;/&gt;
+        <br />&nbsp;&nbsp;&lt;p&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;Дуже&nbsp;смачний&nbsp;печений&nbsp;пиріжок&nbsp;з&nbsp;різними&nbsp;наповнювачами:&nbsp;вишнею,&nbsp;персиком
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;сливою&nbsp;або&nbsp;полуницею.
+        <br />&nbsp;&nbsp;&lt;/p&gt;
+        <br />&nbsp;&nbsp;&lt;p&gt;Ціна:&nbsp;50&nbsp;кредитів&lt;/p&gt;
+        <br />&lt;/article&gt;
+      </p>
+      <p class="usefull">
+        Якщо розділу документа можна дати назву, винести його за межі сайту і
+        він буде мати смислове значення - це &lt;article&gt;. Обов'язковий
+        заголовок.
+      </p>
+      <a
+        href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element"
+        >Посилання на специфікацію</a
+      >
+      <h4>Тег &lt;section&gt;</h4>
+      <p>
+        Великий розділ, що об'єднує вміст за смисловим значенням. Не
+        відокремлюється від основного документа. Наприклад секція списку
+        товарів, блок особистої інформації в профілі користувача, розділ
+        контактної інформації.
+      </p>
+      <p class="code">
+        &lt;section&gt;
+        <br />&nbsp;&nbsp;&lt;h1&gt;Найпопулярніші&nbsp;пиріжки&nbsp;цього&nbsp;тижня&lt;/h1&gt;
+        <br />
+        <br />&nbsp;&nbsp;&lt;!--&nbsp;Всередині&nbsp;кожного&nbsp;&lt;li&gt;&nbsp;може&nbsp;бути&nbsp;картка&nbsp;пиріжка&nbsp;з&nbsp;секції&nbsp;«Тег&nbsp;&lt;article&gt;»&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;ul&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Смажений&nbsp;з&nbsp;грибами&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Смажений&nbsp;з&nbsp;м&#39;ясом&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Печений&nbsp;з&nbsp;яблуками&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Печений&nbsp;з&nbsp;сиром&lt;/li&gt;
+        <br />&nbsp;&nbsp;&lt;/ul&gt; <br />&lt;/section&gt;
+      </p>
+      <p class="usefull">
+        Якщо розділу документа можна дати назву, але за межами сайту він не
+        матиме смислового значення - це &lt;section&gt;. Бажаний заголовок.
+      </p>
+      <a
+        href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element"
+        >Посилання на специфікацію</a
+      >
+      <h4>Тег &lt;div&gt;</h4>
+      <p>
+        Універсальний контейнер без семантичного значення. Використовується як
+        блок-обгортка для подальшої стилізації контенту.
+      </p>
+      <p class="usefull">
+        Якщо не виходить дати групі контенту смислову назву (не "права колонка",
+        а така, що має сенс) - це &lt;div&gt; і, швидше за все, вам просто
+        потрібен загальний контейнер для оформлення.
+      </p>
+      <a
+        href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element"
+        >Посилання на специфікацію</a
+      >
+      <h3>Алгоритм вибору тегу</h3>
+      <p>
+        Не тільки новачкам буває важко вирішити, який тег використовувати для
+        розмітки блоку контенту, ґрунтуючись на його семантичному значенні.
+        Скористайтесь цим алгоритмом для визначення відповідного тегу.
+      </p>
+      <img src="./img/algorithm.jpeg" alt="algorithm" width="520" />
+      <h3>Розмітка сторінки</h3>
+      <p>
+        Використовуючи всі розглянуті теги, створимо розмітку простої сторінки
+        починаючої веб-студії.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="ExPmoKE"
+          data-pen-title="lesson-01-sectioning-example"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/ExPmoKE">
+              lesson-01-sectioning-example</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        У прикладі не вистачає розмітки скелета документа, тому що його
+        автоматично додає інтерактивний майданчик codepen.io. Для повноти
+        картини запишемо базову розмітку документа.
+      </p>
+      <p class="code">
+        &lt;!DOCTYPE&nbsp;html&gt;
+        <br />&lt;html&nbsp;lang=&quot;ru&quot;&gt;
+        <br />&nbsp;&nbsp;&lt;head&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;charset=&quot;UTF-8&quot;&nbsp;/&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Веб&nbsp;студія&nbsp;mango.dev&lt;/title&gt;
+        <br />&nbsp;&nbsp;&lt;/head&gt; <br />&nbsp;&nbsp;&lt;body&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Вся&nbsp;розмітка&nbsp;з&nbsp;живого&nbsp;прикладу&nbsp;--&gt;
+        <br />&nbsp;&nbsp;&lt;/body&gt; <br />&lt;/html&gt;
+      </p>
     </section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
   </body>
 </html>
