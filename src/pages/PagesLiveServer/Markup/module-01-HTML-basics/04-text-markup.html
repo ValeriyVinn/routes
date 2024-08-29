@@ -11,13 +11,586 @@
     <a href="../markup.html">Markup</a>
     <h2>Розмітка тексту</h2>
     <section class="section">
-      
+      <h3>Абзац</h3>
+      <p>
+        Тег &lt;p&gt; - універсальний контейнер для групування дрібних фразових
+        елементів, відокремлення їх один від одного, і подальшої стилізації. За
+        замовчуванням абзац - це блоковий елемент, тобто він починається з
+        нового рядка і має вертикальні відступи, які можна буде змінити в CSS.
+      </p>
+      <p class="code">
+        &lt;p&gt;
+        <br />&nbsp;&nbsp;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Neque&nbsp;eligendi,&nbsp;a
+        <br />&nbsp;&nbsp;eaque,&nbsp;esse&nbsp;itaque&nbsp;porro&nbsp;non&nbsp;exercitationem&nbsp;odio&nbsp;earum&nbsp;quos&nbsp;perferendis!
+        <br />&lt;/p&gt;
+        <br />
+        <br />&lt;p&gt;
+        <br />&nbsp;&nbsp;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Illo,&nbsp;totam&nbsp;velit
+        <br />&nbsp;&nbsp;asperiores&nbsp;non&nbsp;temporibus&nbsp;ut&nbsp;nisi&nbsp;minima?
+        <br />&lt;/p&gt;
+      </p>
+      <p>
+        Часто необхідно заповнити тег текстом-"рибою", якщо самого тексту, який
+        буде розміщуватися на сайті, ще немає. Для цього використовують
+        спеціальний заповнювач (текст-"риба").
+      </p>
+      <p class="useful">
+        <b>Корисно:</b> В редакторі VSCode, в HTML-документі можна набрати код
+        lorem10, після чого натиснути клавішу Tab. Це створить масив тексту з 10
+        слів. Замість 10 можна поставити будь-яке число.
+      </p>
+      <h3>Заголовки</h3>
+      <p>
+        Група тегів &lt;h1&gt;...&lt;h6&gt; - визначає текстові заголовки
+        смислових розділів різного рівня, які вказують на важливість секції
+        контенту, розташованого після них. Це інструмент структурування
+        текстового контенту.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="mdVZepj"
+          data-pen-title="lesson-01-headings"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/mdVZepj">
+              lesson-01-headings</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Тег &lt;h1&gt; найчастіше використовується тільки один раз, як основний
+        заголовок сторінки. Решта заголовків можуть використовуватися скільки
+        завгодно разів, але їх завжди слід застосовувати правильно, дотримуючись
+        ієрархії.
+      </p>
+      <p class="useful">
+        <b>Корисно:</b> Пошукові системи звертають особливу увагу на заголовки,
+        тому коректне використання цієї групи тегів вкрай важливе. Не визначайте
+        рівень заголовка за розміром тексту на макеті. Не весь великий текст -
+        заголовки. Заголовок - це те, що за змістом озаглавлює секцію контенту.
+      </p>
+      <h3>Списки</h3>
+      <p>
+        Списки дозволяють упорядкувати колекції і представити їх в наочному і
+        зручному для користувача вигляді. Список - це контейнер, дітьми якого
+        можуть бути тільки елементи списку - теги &lt;li&gt;.
+      </p>
+      <p>
+        Тег <b>&lt;ol&gt;</b> - створює нумерований (упорядкований) список,
+        тобто кожен елемент списку пронумерований. Браузер автоматично нумерує
+        елементи по порядку і, якщо видалити один або кілька елементів такого
+        списку, інші номери будуть автоматично перераховані. Нумерацією
+        елементів можна управляти за допомогою спеціальних атрибутів списку.
+      </p>
+      <p>
+        Використовується для перерахування дій в певному порядку, наприклад
+        рецепт.
+      </p>
+      <p class="code">
+        &lt;h1&gt;Як&nbsp;заварити&nbsp;чай&lt;/h1&gt;
+        <br />&lt;p&gt;Покрокова&nbsp;інструкція&nbsp;для&nbsp;чайників,&nbsp;просто&nbsp;повтори&nbsp;і&nbsp;у&nbsp;тебе&nbsp;все&nbsp;вийде!&lt;/p&gt;
+        <br />
+        <br />&lt;ol&gt;
+        <br />&nbsp;&nbsp;&lt;li&gt;Закип&#39;ятити&nbsp;воду&lt;/li&gt;
+        <br />&nbsp;&nbsp;&lt;li&gt;Засипати&nbsp;чай&nbsp;в&nbsp;чашку&lt;/li&gt;
+        <br />&nbsp;&nbsp;&lt;li&gt;Налити&nbsp;в&nbsp;чашку&nbsp;окріп&lt;/li&gt;
+        <br />&nbsp;&nbsp;&lt;li&gt;Чекати&nbsp;10&nbsp;хвилин,&nbsp;після&nbsp;чого&nbsp;можна&nbsp;пити&lt;/li&gt;
+        <br />&lt;/ol&gt;
+      </p>
+      <p>
+        Тег &lt;ul&gt; - створює маркований (невпорядкований) список, кожен
+        елемент якого починається з невеликого символу (маркера). За допомогою
+        CSS маркер можна прибрати або замінити.
+      </p>
+      <p>
+        Використовується для перелічення набору у довільному порядку, наприклад
+        список курортів.
+      </p>
+      <p class="code">
+        &lt;h1&gt;Найгарячіші&nbsp;курорти&lt;/h1&gt;
+        <br />&lt;p&gt;Цього&nbsp;року&nbsp;експерти&nbsp;рекомендують&nbsp;відвідати&nbsp;наступні&nbsp;локації.&lt;/p&gt;
+        <br />
+        <br />&lt;ul&gt; <br />&nbsp;&nbsp;&lt;li&gt;Туніс&lt;/li&gt;
+        <br />&nbsp;&nbsp;&lt;li&gt;Туреччина&lt;/li&gt;
+        <br />&nbsp;&nbsp;&lt;li&gt;Греція&lt;/li&gt;
+        <br />&nbsp;&nbsp;&lt;li&gt;Єгипет&lt;/li&gt; <br />&lt;/ul&gt;
+      </p>
+      <p class="attention">
+        <b>Увага:</b> За специфікацією в теги &lt;ul&gt; і &lt;ol&gt; можна
+        вкладати тільки елементи списку - теги &lt;li&gt;. Водночас, всередині
+        тегів &lt;li&gt; можуть бути вкладені інші довільні теги.
+      </p>
+      <h4>Вкладені списки</h4>
+      <p>
+        Зробити багаторівневий список просто - вкладаємо в елемент списку ще
+        один список. Це часто застосовується для створення багаторівневих меню.
+      </p>
+      <p class="code">
+        &lt;ul&gt;
+        <br />&nbsp;&nbsp;&lt;li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;Комп&#39;ютери&nbsp;та&nbsp;комплектуючі
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Процесори&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Монітори&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Відеокарти&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt; <br />&nbsp;&nbsp;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&lt;li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;Побутова&nbsp;техніка
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Холодильники&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Телевізори&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Пральні&nbsp;машини&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt; <br />&nbsp;&nbsp;&lt;/li&gt;
+        <br />&nbsp;&nbsp;&lt;li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;Товари&nbsp;для&nbsp;дому
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Крісла&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Матраци&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Електрокаміни&lt;/li&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt; <br />&nbsp;&nbsp;&lt;/li&gt;
+        <br />&lt;/ul&gt;
+      </p>
+      <h3>Посилання</h3>
+      <p>
+        Тег &lt;a&gt; - призначений для створення посилань, тексту, клікаючи на
+        який, переходимо на іншу сторінку, завантажуємо файл тощо. Текст
+        посилання відображається в браузері з підкресленням, колір шрифту синій,
+        при наведенні на посилання, курсор миші змінює вигляд.
+      </p>
+      <p>
+        Адреса посилання задається в обов'язковому атрибуті href="адреса".
+        Адреса - це URL,яка може вказувати на сторінку, файл, будь-який ресурс.
+      </p>
+      <p class="code">
+        &lt;a&nbsp;href=&quot;https://google.com&quot;&gt;Посилання&nbsp;на&nbsp;головну&nbsp;сторінку&nbsp;Google&lt;/a&gt;
+      </p>
+      <h4>
+        Атрибути <span class="span-code">target</span> і
+        <span class="span-code">rel</span>
+      </h4>
+      <p>
+        За замовчуванням посилання відкривається в поточній вкладці браузера.
+        Атрибут target="значення" визначає те, в який вкладці повинен
+        відкриватися документ, на який веде посилання. Якщо значення - _blank,
+        сторінка відкривається у новій вкладці браузера.
+      </p>
+      <p>
+        Атрибут rel доповнює атрибут href інформацією про відношення між
+        поточним і пов'язаним документом, і використовується в парі з
+        target="_blank".
+      </p>
+      <p class="code">
+        &lt;!--&nbsp;Посилання&nbsp;на&nbsp;зовнішній&nbsp;ресурс,&nbsp;відкриється&nbsp;в&nbsp;поточній&nbsp;вкладці&nbsp;--&gt;
+        <br />&lt;a&nbsp;href=&quot;https://www.facebook.com/&quot;&gt;Facebook&lt;/a&gt;
+        <br />
+        <br />&lt;!--&nbsp;Посилання&nbsp;на&nbsp;зовнішній&nbsp;ресурс,&nbsp;відкриється&nbsp;у&nbsp;новій&nbsp;вкладці&nbsp;--&gt;
+        <br />&lt;a&nbsp;href=&quot;https://www.facebook.com/&quot;&nbsp;target=&quot;_blank&quot;&nbsp;rel=&quot;noreferrer&nbsp;noopener&quot;&gt;
+        <br />&nbsp;&nbsp;Facebook <br />&lt;/a&gt;
+      </p>
+      <h4>Атрибут <span class="span-code">download</span></h4>
+      <p>
+        Якщо в <span class="span-code">href</span> посиланні зазначений шлях до
+        файлу, браузер спробує його відкрити у поточному вікні, якщо вміє
+        обробляти файли цього типу. Зазвичай так відбувається з зображеннями і
+        PDF-файлами.
+      </p>
+      <p>
+        Атрибут <span class="span-code">download="ім'я файлу"</span> повідомляє
+        браузеру, що зазначений ресурс не повинен відкриватися, а
+        завантажуватися в момент, коли користувач клікне на посилання. Значення
+        атрибута задає ім'я файлу, що завантажується, тобто можна змінити ім'я
+        під час завантаження. Атрибут можна використовувати без вказівки
+        значення, тоді буде використано ім'я оригінального файлу.
+      </p>
+      <p class="code">
+        &lt;!--&nbsp;Посилання&nbsp;на&nbsp;завантаження&nbsp;файлу&nbsp;--&gt;
+        <br />&lt;a&nbsp;href=&quot;/путь/к/cv.pdf&quot;&nbsp;download&gt;Завантажити&nbsp;резюме&lt;/a&gt;
+      </p>
+      <h4>Спеціальні значення <span class="span-code">href</span></h4>
+      <p>
+        Посилання мають можливість не тільки переходити на інші сторінки і
+        завантажувати файли, але й здійснювати дзвінки на телефони, відправляти
+        повідомлення або телефонувати по скайпу.
+      </p>
+      <p class="code">
+        &lt;!--&nbsp;Посилання&nbsp;на&nbsp;телефонний&nbsp;номер&nbsp;--&gt;
+        <br />&lt;a&nbsp;href=&quot;tel:+14251234563&quot;&gt;+1&nbsp;(425)&nbsp;123-45-63&lt;/a&gt;
+        <br />
+        <br />&lt;!--&nbsp;Посилання&nbsp;на&nbsp;адресу&nbsp;електронної&nbsp;пошти&nbsp;&nbsp;--&gt;
+        <br />&lt;a&nbsp;href=&quot;mailto:example@mail.ua&quot;&gt;example@mail.ua&lt;/a&gt;
+      </p>
+      <h4>Посилання-якір</h4>
+      <p>
+        Посилання з якорем використовується для створення навігації по поточній
+        сторінці. Наприклад, для швидкого переходу до якоїсь секції (як у цих
+        матеріалах). Під час кліку на таке посиланню, браузер проскролить
+        сторінку до якоря без її перезавантаження.
+      </p>
+      <p>
+        Для створення якоря необхідно додати тег, до якого ми хочемо проскролити
+        сторінку, атрибут <span class="span-code">id</span> - унікальний
+        ідентифікатор. А атрибуту <span class="span-code">href</span> у
+        посилання задати значення, що починається з символу
+        <span class="span-code">#</span>, після якого вказаний ідентифікатор
+        елемента.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="WNrqQzV"
+          data-pen-title="lesson-01-anchor-links"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/WNrqQzV">
+              lesson-01-anchor-links</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Кнопка</h3>
+      <p>
+        Інтерактивний елемент, який оживляється за допомогою JavaScript.
+        Наприклад, кнопка відкриття і закриття спливаючого вікна, перемикання
+        мобільного меню або відправлення форми. Необхідно явно вказувати атрибут
+        <span class="span-code">type</span> . Його значення за замовчуванням -
+        <span class="span-code">submit</span>, але, найчастіше потрібне значення
+        <span class="span-code">button</span>. Так, кнопка типу «кнопка» - така
+        особливість.
+      </p>
+      <p class="code">
+        &lt;button&nbsp;type=&quot;button&quot;&gt;Відкрити&nbsp;модальне&nbsp;вікно&lt;/button&gt;
+      </p>
+      <p class="useful">
+        <b>Корисно:</b> Важливо не плутати посилання і кнопку. Якщо по кліку на
+        елемент інтерфейсу відбувається перехід за якоюсь адресою, тобто
+        присутній <span class="span-code">href</span> , то це посилання. Якщо ж
+        по кліку відбувається щось без перезавантаження або перенаправлення
+        сторінки - це гарантовано кнопка.
+      </p>
+      <h3>Атрибут <span class="span-code">lang</span></h3>
+      <p>
+        Якщо сторінка містить текст різними мовами, для того щоб зробити її
+        доступнішою для допоміжних технологій, можна задавати атрибут
+        <span class="span-code">lang</span> не тільки всьому документу, а й
+        окремим тегами.
+      </p>
+      <p class="code">
+        &lt;!DOCTYPE&nbsp;html&gt;
+        <br />&lt;html&nbsp;lang=&quot;uk&quot;&gt;
+        <br />&nbsp;&nbsp;&lt;head&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;charset=&quot;utf-8&quot;&nbsp;/&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;name=&quot;description&quot;&nbsp;content=&quot;Інструкція&nbsp;по&nbsp;експлуатації&nbsp;пиріжків&quot;&nbsp;/&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Пиріжки&nbsp;-&nbsp;це&nbsp;смачно!&lt;/title&gt;
+        <br />&nbsp;&nbsp;&lt;/head&gt; <br />&nbsp;&nbsp;&lt;body&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Інструкція&nbsp;з&nbsp;експлуатації&lt;/p&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;lang=&quot;en&quot;&gt;Operating&nbsp;instructions&lt;/p&gt;
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;lang=&quot;fr&quot;&gt;Manuel&nbsp;d&#39;utilisation&lt;/p&gt;
+        <br />&nbsp;&nbsp;&lt;/body&gt; <br />&lt;/html&gt;
+      </p>
+      <p class="attention">
+        <b>Увага:</b> Це можливість, рекомендація, а не обов'язкова вимога.
+        Верстка з урахуванням підтримки асистивних технологій виконується тільки
+        на вимогу замовника.
+      </p>
+
+      <h3>Тег &lt;dl&gt;</h3>
+      <p>
+        <b>Тег &lt;dl&gt; (description list) </b> - це контейнер для списку пар
+        термінів та їх описів, тобто словник. Для розмітки термінів існує тег
+        &lt;dt&gt;, а для описів - &lt;dd&gt;. Використовується для розмітки
+        списку визначень, наприклад для створення глосарію, телефонного
+        довідника тощо.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="mdEbJNK"
+          data-pen-title="lesson-02-description-list"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/mdEbJNK">
+              lesson-02-description-list</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Тег &lt;span&gt;</h3>
+      <p>
+        Універсальний контейнер для дрібного текстового контенту, наприклад
+        окремих слів, частин слів або цілих фраз всередині текстового масиву.
+        Аналогічно тегу &lt;div&gt;, не має жодного семантичного значення і
+        використовується для додаткової стилізації.
+      </p>
+      <p class="code">
+        &lt;p&gt;
+        <br />&nbsp;&nbsp;Тег&nbsp;&lt;span&nbsp;class=&quot;accent&quot;&gt;span&lt;/span&gt;&nbsp;-&nbsp;це&nbsp;універсальний&nbsp;контейнер&nbsp;для&nbsp;дрібного
+        <br />&nbsp;&nbsp;текстового&nbsp;контенту. <br />&lt;/p&gt;
+      </p>
+      <p class="note">
+        <b>Цікаво:</b>
+        Спану с атрибутом <span class="span-code">class="accent"</span> за
+        допомогою CSS можна буде додати стилі, наприклад інший колір тексту,
+        його розмір тощо.
+      </p>
+      <h3>Тег &lt;pre&gt;</h3>
+      <p>
+        За замовчуванням браузер ігнорує перенесення рядків і більше одного
+        пробілу підряд. Цей тег дозволяє додати переформатований текст з
+        примусовими перенесеннями рядків. Наприклад, розмітка тексту пісні або
+        вірша.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="vYKBNLr"
+          data-pen-title="lesson-02-pre"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/vYKBNLr">
+              lesson-02-pre</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>Теги &lt;sup&gt; і &lt;sub&gt;</h4>
+      <p>
+        Призначені для відображення символів у верхньому (&lt;sup&gt;, скорочено
+        від superscript) і нижньому (&lt;sub&gt;, скорочено від subscript)
+        індексі. Наприклад, для розмітки нескладних математичних або хімічних
+        формул.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="WNxeQxe"
+          data-pen-title="lesson-02-subsup"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/WNxeQxe">
+              lesson-02-subsup</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Тег &lt;time&gt;</h3>
+      <p>
+        Дату і час можна написати просто текстом, але краще використовувати
+        спеціальний тег &lt;time&gt;. Дата для людини - це текст всередині тегу,
+        а для машини - значення атрибута
+        <span class="span-code">datetime</span> у форматі
+        <a href="https://ru.wikipedia.org/wiki/ISO_8601">ISO 8601</a> .
+      </p>
+      <p class="code">
+        &lt;p&gt;Останні&nbsp;новини&nbsp;на&nbsp;&lt;time&nbsp;datetime=&quot;2019-12-14&quot;&gt;14&nbsp;грудня&nbsp;2019&nbsp;року&lt;/time&gt;.&lt;/p&gt;
+        <br />
+        <br />&lt;p&gt;
+        <br />&nbsp;&nbsp;Засідання&nbsp;відбулося&nbsp;об&nbsp;&lt;time&nbsp;datetime=&quot;2018-07-14T11:30&quot;&gt;11:30&nbsp;ранку&lt;/time&gt;.
+        <br />&lt;/p&gt;
+      </p>
+      <p>
+        Браузер відобразить тільки текст всередині тегу. Людина побачить
+        зрозумілий текст, а асистивна технологія прочитає атрибут
+        <span class="span-code">datetime</span> і отримає точне значення у
+        потрібному форматі.
+      </p>
+      <h3>Тег &lt;address&gt;</h3>
+      <p>
+        Призначений для зберігання контактної інформації про автора статті,
+        блоку інформації або веб-сторінки загалом. Контактна інформація може
+        бути в будь-який відповідній формі, наприклад, фізична адреса, адреса
+        електронної пошти, посилання на сайт, номер телефону, тег соцмережі.
+      </p>
+      <p class="code">
+        &lt;address&gt;
+        <br />&nbsp;&nbsp;м.&nbsp;Київ,&nbsp;&lt;br&nbsp;/&gt;
+        <br />&nbsp;&nbsp;Бульвар&nbsp;Лесі&nbsp;Українки,&nbsp;б.&nbsp;26,&nbsp;&lt;br&nbsp;/&gt;
+        <br />&nbsp;&nbsp;4й&nbsp;поверх&nbsp;офіс&nbsp;427
+        <br />&lt;/address&gt;
+        <br />
+        <br />&lt;address&gt;
+        <br />&nbsp;&nbsp;&lt;a&nbsp;href=&quot;mailto:mango@mail.pig&quot;&gt;mango@mail.pig&lt;/a&gt;
+        <br />&nbsp;&nbsp;&lt;a&nbsp;href=&quot;tel:+1112223344&quot;&gt;(111)&nbsp;222-33-44&lt;/a&gt;
+        <br />&lt;/address&gt;
+      </p>
+      <p>
+        Зверніть увагу на тег <br />, він використовується для розмітки масиву
+        тексту з примусовими перенесеннями рядків для візуального форматування.
+        Наприклад, розмітка одного рядка адреси на декілька рядків.
+      </p>
+      <p class="attention">
+        <b>Увага:</b>
+        Тег &lt;br/&gt; (скорочено від line break) не використовується для того,
+        щоб примусово додати розриви рядка між тегами або розбити масив тексту
+        на абзаци.
+      </p>
+      <h3>Теги &lt;strong&gt; і &lt;b&gt;</h3>
+      <p>
+        Використовуються для виділення важливого слова або цілої фрази всередині
+        тексту. Візуально обидва теги роблять текст жирним, і на перший погляд
+        різниці між ними немає, але це не так.
+      </p>
+      <p>
+        Тег &lt;strong&gt; семантично підкреслює текст як важливий і вказує, що
+        це важливе слово або фраза. Наприклад, виділити попередження або
+        будь-яку частину тексту, на яку користувач повинен насамперед звернути
+        увагу.
+      </p>
+      <p class="code">
+        &lt;p&gt;
+        <br />&nbsp;&nbsp;&lt;strong&gt;Увага!&lt;/strong&gt;&nbsp;Завершується&nbsp;термін&nbsp;підписки.
+        <br />&nbsp;&nbsp;&lt;strong&gt;Обліковий&nbsp;запис&nbsp;буде&nbsp;призупинений.&lt;/strong&gt;&nbsp;Будь-ласка,&nbsp;продовжіть
+        <br />&nbsp;&nbsp;підписку&nbsp;або&nbsp;зв&#39;яжіться&nbsp;зі&nbsp;службою&nbsp;підтримки.
+        <br />&lt;/p&gt;
+      </p>
+      <p>
+        Тег &lt;b&gt; (скорочено від bold) робить текст тільки візуально жирним,
+        привертаючи увагу, але не надаючи особливої важливості.
+      </p>
+      <p class="note">
+        <strong>Цікаво:</strong>
+
+        Для асистивних технологій, наприклад скрінрідера, текст обгорнутий в
+        &lt;strong&gt; має особливу важливість і буде додатково виділений
+        інтонацією.
+      </p>
+      <h3>Теги &lt;em&gt; і &lt;i&gt;</h3>
+      <p>
+        Використовуються для акцентування уваги на частини тексту. Візуально
+        обидва теги роблять текст курсивним, і на перший погляд різниці між ними
+        немає, але це не так.
+      </p>
+      <p>
+        Тег &lt;em&gt; (скорочено від emphasis) семантично виділяє текст, на
+        який зроблений особливий акцент, що змінює зміст фрази. Наприклад, можна
+        виділити сарказм.
+      </p>
+      <p class="code">
+        &lt;p&gt;Я&nbsp;&lt;em&gt;в&nbsp;повному&nbsp;захваті&lt;/em&gt;,&nbsp;коли&nbsp;затримують&nbsp;зарплату!&lt;/p&gt;
+      </p>
+      <p>
+        Тег &lt;i&gt; (скорочено від italic) робить текст тільки візуально
+        курсивним, привертаючи увагу, але не надаючи особливої важливості.
+        Наприклад, виділити терміни в реченні.
+      </p>
+      <p class="note">
+        <strong>Цікаво:</strong>
+
+        Для асистивних технологій, наприклад скрінрідера, текст обгорнутий в
+        &lt;em&gt; має особливий акцент і буде додатково виділений інтонацією.
+      </p>
     </section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
+    <div>+</div>
+    <div>+</div>
+    <div>+</div>
+    <div>+</div>
+    <div>+</div> 
+
   </body>
 </html>

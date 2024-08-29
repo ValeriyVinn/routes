@@ -4,13 +4,16 @@ li {
 } */
 
 ul,
-li,
+li {
+  margin: 0;
+  padding: 0;
+}
 p,
 h1,
 h2,
 h3,
 h4 {
-  margin: 0;
+  margin: 0px 0px 5px 0px;
   padding: 0;
 }
 h2 {
@@ -85,6 +88,42 @@ a {
   color: navy;
   margin-bottom: 5px;
   overflow-x: auto;
+}
+
+.span-code {
+  background-color: lightgray;
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 0px 5px;
+  font-style: normal;
+}
+
+.note {
+  color: darkorchid;
+  background-color: rgb(242, 215, 255);
+  padding: 5px;
+  border: 1px solid darkorchid;
+  border-radius: 5px;
+  font-style: italic;
+}
+
+
+.useful {
+  background-color: rgb(207, 255, 255);
+  color: teal;
+  padding: 5px;
+  border: 1px solid teal;
+  border-radius: 5px;
+  font-style: italic;
+}
+
+.attention {
+  background-color: rgb(255, 218, 218);
+  padding: 5px;
+  border: 1px solid crimson;
+  border-radius: 5px;
+  color:crimson;
+  font-style: italic;
 }
 
 .section-list {
