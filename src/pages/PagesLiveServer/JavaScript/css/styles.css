@@ -19,6 +19,21 @@ h5 {
   color: #006400;
 }
 
+p,
+ul,
+.codepen,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0px 0px 5px 0px;
+  padding: 0;
+}
+
+.green {
+  color: green;
+}
+
 .practice-header {
   color: rgb(50, 80, 180);
 }
@@ -26,7 +41,7 @@ h5 {
 .header {
   color: green;
   font-size: 22px;
-  border: 1px solid gray;
+  border: 1px solid green;
   border-radius: 4px;
   padding: 5px 10px; 
 }
@@ -38,7 +53,7 @@ h5 {
 .footer {
   color: green;
   font-size: 22px;
-  border: 1px solid gray;
+  border: 1px solid green;
   border-radius: 4px;
   padding: 5px 10px;
 }
@@ -295,10 +310,8 @@ pre {
 }
 /* Codepen */
 .codepen {
-  width: 500px;
+  border: 1px solid green;
+  border-radius: 2px;
+  padding: 1px;
+  
 }
-
-/* .div {
-  color: red;
-  width: 1000px;
-} */

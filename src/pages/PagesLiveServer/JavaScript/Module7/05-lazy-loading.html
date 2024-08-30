@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Відкладене завантаження</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <main class="main">
+      <h1>Відкладене завантаження</h1>
+      <section class="section">
+        <p>
+          Веб-сторінки містять велику кількість зображень, які збільшують розмір
+          сторінок і впливають на швидкість їх завантаження. Більшість зображень
+          знаходяться за межами першого екрану (за кадром, below the fold), тому
+          користувач побачить їх тільки після прокручування сторінки. Це
+          означає, що ви, можливо, завантажуєте те, що користувач ніколи не
+          побачить, але витратить на це час і, можливо, гроші. Завантаження
+          некритичного контенту також розряджає акумулятор мобільних пристроїв
+          та витрачає інші системні ресурси.
+        </p>
+        <img src="./img/page-fold.png" alt="page-fold" width="420" />
+        <p>
+          Терміни «above the fold» (в кадрі) і «below the fold» (за кадром)
+          прийшли з часів до появи цифрових технологій. Якщо ви коли-небудь
+          купували газету в кіоску, їх, як правило, складають навпіл, щоб
+          перехожі могли бачити тільки верхню половину першої сторінки. Якщо їм
+          не сподобається те, що вони побачать, вони пройдуть повз, і продажі
+          впадуть. Ось чому так важливо розміщати найбільш цікавий контент у
+          верхній частині сторінки.
+        </p>
+        <p>
+          Відкладене завантаження (lazy-loading) - це прийом, який відкладає
+          завантаження некритичних ресурсів під час завантаження сторінки.
+          Замість цього, ці некритичні ресурси завантажуються лише у разі
+          потреби. Це знижує початкову вагу ресурсів, які необхідно завантажити
+          для відображення сторінки, використання системних ресурсів підвищує
+          час її завантаження та наступного рендеру. Все це позитивно
+          позначається на продуктивності.
+        </p>
+        <p>
+          Ви, напевно, вже бачили в дії ледаче завантаження. Воно виглядає
+          приблизно так:
+        </p>
+        <ul class="section-list">
+          <li>
+            Ви потрапляєте на сторінку і починаєте прокручувати її, читаючи
+            вміст.
+          </li>
+          <li>
+            У якийсь момент ви прокручуєте сторінку до зображення-заглушки.
+          </li>
+          <li>
+            Зображення-заглушка раптово змінюється на справжнє зображення.
+          </li>
+        </ul>
+        <h3>Атрибут loading​</h3>
+        <p>
+          Раніше розробникам доводилося покладатися тільки на можливості
+          JavaScript. Сучасні браузери вміють робити це без JavaScript, але, на
+          жаль, не всі. HTML-атрибут loading тегу &lt;img&gt; підтримується
+          нативно у всіх сучасних браузерах, крім Safari, і дозволяє браузеру
+          відкласти завантаження зображень за кадром доти, доки користувач не
+          прокрутить до них сторінку.
+        </p>
+        <p class="code">
+          &lt;img&nbsp;src=&quot;my-image.jpg&quot;&nbsp;loading=&quot;lazy&quot;&nbsp;alt=&quot;Image&nbsp;description&quot;&nbsp;/&gt;
+        </p>
+        <p>Підтримує три значення:</p>
+        <ul class="section-list">
+          <li>lazy - браузер виконає відкладене завантаження зображення.</li>
+          <li>
+            eager - зображення буде завантажене за першої нагоди, тобто без
+            відкладеного завантаження.
+          </li>
+          <li>
+            auto - браузер сам визначає - виконувати відкладене завантаження чи
+            ні. Значення за замовчуванням.
+          </li>
+        </ul>
+        <p>
+          Ми не можемо дізнатися або змінити поведінку і механізм визначення
+          часу відкладеного завантаження зображення браузером. Головне, що
+          браузер завантажить такі зображення незадовго до того, як вони
+          потраплять в область перегляду.
+        </p>
+        <p>
+          Відкрийте вкладку Network в інструментах розробника і виберіть фільтр
+          Img, щоб відображалось лише завантаження зображень. Після цього
+          прокручуйте приклад і спостерігайте як будуть довантажуватися
+          закадрові зображення котів. Браузери, що підтримують атрибут loading,
+          будуть завантажувати зображення відкладено, а браузери без підтримки -
+          завантажать усі зображення відразу.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="qBryJej"
+            data-pen-title="lesson-14-browser-lazy-load"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/qBryJej">
+                lesson-14-browser-lazy-load</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Бібліотека lazysizes​</h3>
+        <p>
+          Щоб забезпечити кросбраузерність, тобто сумісність зі старішими
+          браузерами, або такими, які ще не підтримують це нативно, можна
+          використовувати ряд існуючих JavaScript бібліотек. Одні з
+          найпопулярніших - це lazysizes, vanilla-lazyload і lozad.js. Вибір
+          бібліотеки зводиться до набору можливостей і особистих вподобань. Ми
+          розберемо бібліотеку lazysizes.
+        </p>
+        <p class="note">
+          ЦІКАВО: Нативна підтримка краща і продуктивніша, ніж використання
+          бібліотек, але вони гарантовано працюють у всіх браузерах і можуть
+          надавати розширені можливості відкладеного завантаження, які ще
+          відсутні у стандарті.
+        </p>
+        <p>
+          Перше, що необхідно зробити - це підключити бібліотеку до проекту,
+          використовуючи сервіс cdnjs.com. Тег з посиланням на скрипт додається
+          в кінець &lt;body&gt;, так само як ми це робили для бібліотеки Lodash.
+        </p>
+        <h4>index.html</h4>
+        <pre class="code">
+&lt;body&gt;
+<br>&nbsp;&nbsp;&lt;!--&nbsp;HTML-markup&nbsp;--&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;!--&nbsp;Lazysizes&nbsp;library&nbsp;script&nbsp;file&nbsp;--&gt;
+<br>&nbsp;&nbsp;&lt;script
+<br>&nbsp;&nbsp;&nbsp;&nbsp;src=&quot;https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js&quot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;integrity=&quot;sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==&quot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;crossorigin=&quot;anonymous&quot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;referrerpolicy=&quot;no-referrer&quot;
+<br>&nbsp;&nbsp;&gt;&lt;/script&gt;
+<br>&nbsp;&nbsp;&lt;!--&nbsp;Your&nbsp;script&nbsp;file&nbsp;--&gt;
+<br>&nbsp;&nbsp;&lt;script&nbsp;defer&nbsp;src=&quot;path/to/script.js&quot;&gt;&lt;/script&gt;
+<br>&lt;/body&gt;
+</pre>
+        <p class="note">
+          ЦІКАВО: Бібліотека lazysizes самоініціалізується при завантаженні на
+          сторінку. Тобто для базового використання в JavaScript нічого робити
+          непотрібно. Повний список її можливостей наведений в документації.
+        </p>
+        <p>
+          Усім зображенням, які необхідно завантажувати відкладено, задаємо клас
+          lazyload і замінюємо атрибут src на data-src. Це необхідно бібліотеці
+          lazysizes для правильної роботи.
+        </p>
+        <h4>index.html</h4>
+        <pre class="code">
+&lt;img&nbsp;class=&quot;lazyload&quot;&nbsp;data-src=&quot;path/to/my-image.jpg&quot;&nbsp;alt=&quot;Generic&nbsp;alt&quot;&nbsp;/&gt;
+</pre
+        >
+        <p>
+          Доки зображення завантажується можна показувати заповнювач низької
+          якості. Ця техніка називається LQIP (Low Quality Image Placeholder).
+          Існує багато варіантів реалізації LQIP, але для початку достатньо буде
+          показувати один стандартний заповнювач, замість усіх зображень. Для
+          цього додаємо атрибут src, значенням якого буде посилання на це
+          зображення-заповнювач.
+        </p>
+        <h4>index.html</h4>
+        <pre class="code">
+&lt;img
+<br>&nbsp;&nbsp;class=&quot;lazyload&quot;
+<br>&nbsp;&nbsp;src=&quot;path/to/lqip-placeholder.jpg&quot;
+<br>&nbsp;&nbsp;data-src=&quot;path/to/my-image.jpg&quot;
+<br>&nbsp;&nbsp;alt=&quot;Generic&nbsp;alt&quot;
+<br>/&gt;
+</pre>
+        <p>
+          Коли зображення було завантажене, бібліотека lazysizes додає елементу
+          клас lazyloaded. Це можна використовувати для застосування CSS-ефектів
+          в момент завантаження зображення.
+        </p>
+        <h4>styles.css</h4>
+        <pre class="code">
+.blur-up {
+  filter: blur(5px);
+  transition: filter 400ms;
+}
+
+.blur-up.lazyloaded {
+  filter: blur(0);
+}
+</pre
+        >
+        <p>Після оголошення стилів, додаємо клас blur-up тегам &lt;img&gt;.</p>
+        <h4>index.html</h4>
+        <pre class="code">
+&lt;img
+<br>&nbsp;&nbsp;class=&quot;lazyload&nbsp;blur-up&quot;
+<br>&nbsp;&nbsp;src=&quot;path/to/lqip-placeholder.jpg&quot;
+<br>&nbsp;&nbsp;data-src=&quot;path/to/my-image.jpg&quot;
+<br>&nbsp;&nbsp;alt=&quot;Generic&nbsp;alt&quot;
+<br>/&gt;
+</pre>
+        <p>
+          Застосуємо всі ці кроки на прикладі, додавши кросбраузерну підтримку
+          відкладеного завантаження зображень до нашого сайту про котів. Тепер
+          навіть Safari виконує відкладене завантаження зображень.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="BaWPbOB"
+            data-pen-title="lesson-14-lazysizes-library"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/BaWPbOB">
+                lesson-14-lazysizes-library</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
+
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
+</html>

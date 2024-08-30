@@ -1,25 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Пошук елементів</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
     <header class="header">
-        <a href="../../../../indexLS.html">Home</a>
-      </header>
-          <h1>Пошук елементів</h1>
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <h1>Пошук елементів</h1>
 
-      <main class="main">
-        <section class="section"></section>
-      </main>
-      <footer class="footer">Це футер</footer>
+    <main class="main">
+      <section class="section">
+        <p>
+          Отже, ми вже знаємо що DOM-елемент - це об'єкт з властивостями і
+          методами. Саме час навчитися швидко знаходити елемент за довільним
+          CSS-селектором. Група методів elem.querySelector* - це сучасний
+          стандарт для пошуку елементів. Вони дозволяють знайти елемент або
+          групу елементів за CSS-селектором будь-якої складності.
+        </p>
+        <p class="code">element.querySelector(selector);</p>
+        <p>
+          Використовується, якщо необхідно знайти тільки один, найчастіше
+          унікальний елемент.
+        </p>
+        <ul class="section-list">
+          <li>
+            Повертає перший знайдений елемент всередині element, що відповідає
+            CSS-селектору selector.
+          </li>
+          <li>Якщо нічого не знайдено, поверне null.</li>
+        </ul>
+        <p class="code">element.querySelectorAll(selector);</p>
+        <p>
+          Використовується, якщо необхідно знайти колекцію елементів, тобто
+          отримати масив посилань на елементи з однаковим селектором. Наприклад,
+          всі елементи списку з класом menu-item.
+        </p>
 
+        <ul class="section-list">
+          <li>
+            Повертає псевдомасив всіх елементів всередині element, які
+            відповідають CSS-селектору selector.
+          </li>
+          <li>Якщо нічого не знайдено, поверне порожній масив.</li>
+        </ul>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="wvJmGbG"
+            data-pen-title="lesson-11-querySelector*"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/wvJmGbG">
+                lesson-11-querySelector*</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
 
-
-
-    <script src="./pages/PagesLiveServer/JavaScript/js/main.js" type="module"></script></body>
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
 </html>

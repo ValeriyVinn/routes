@@ -6,21 +6,321 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homework 6</title>
     <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
   </head>
   <body>
-    <a href="../../../../../indexLS.html">Home</a>
+    <header class="header">
+      <a href="../../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <h1>HW JS 6</h1>
 
-    <ul>
-      <li><a href="task-01.html">Task 1</a></li>
-      <li><a href="task-02.html">Task 2</a></li>
-      <li><a href="task-03.html">Task 3</a></li>
-      <li><a href="task-04.html">Task 4</a></li>
-      <li><a href="task-05.html">Task 5</a></li>
-      <li><a href="task-06.html">Task 6</a></li>
-      <li><a href="task-07.html">Task 7</a></li>
-      <li><a href="task-08.html">Task 8</a></li>
-      <li><a href="task-09.html">Task 9</a></li>
-      <li><a href="task-10.html">Task 10 (optional)</a></li>
-    </ul>
+    <main class="main">
+      <section class="section">
+        <h2><a href="task-01.html" class="green">Завдання 1</a></h2>
+        <p>
+          HTML містить список категорій
+          <span class="span-code">ul#categories</span> .
+        </p>
+        <p class="code">
+          &lt;ul&nbsp;id=&quot;categories&quot;&gt;<br />&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Animals&lt;/h2&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Cat&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Hamster&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Horse&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Parrot&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br />&nbsp;&nbsp;&lt;/li&gt;<br />&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Products&lt;/h2&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Bread&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Prasley&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Cheese&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br />&nbsp;&nbsp;&lt;/li&gt;<br />&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Technologies&lt;/h2&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;HTML&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;CSS&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;JavaScript&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;React&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Node.js&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br />&nbsp;&nbsp;&lt;/li&gt;<br />&lt;/ul&gt;
+        </p>
+        <p>Напиши скрипт, який:</p>
+        <ul class="section-list">
+          <li>
+            Порахує і виведе в консоль кількість категорій в ul#categories,
+            тобто елементів li.item.
+          </li>
+          <li>
+            Для кожного элемента li.item у списку ul#categories, знайде і виведе
+            в консоль текст заголовку елемента (тегу &lt;h2&gt;) і кількість
+            елементів в категорії (усіх &lt;li&gt;, вкладених в нього).
+          </li>
+        </ul>
+        <p>
+          Для виконання цього завдання потрібно використати метод forEach() і
+          властивості навігації по DOM.
+        </p>
+        <p>В результаті, в консолі будуть виведені наступні повідомлення.</p>
+        <pre class="code">
+Number of categories: 3
+
+Category: Animals
+Elements: 4
+
+Category: Products
+Elements: 3
+
+Category: Technologies
+Elements: 5            
+</pre
+        >
+      </section>
+
+      <section class="section">
+        <h2><a href="task-02.html" class="green">Завдання 2</a></h2>
+        <p>HTML містить порожній список ul#ingredients.</p>
+        <p class="code">
+          &lt;ul&nbsp;id=&quot;ingredients&quot;&gt;&lt;/ul&gt;
+        </p>
+        <p>JavaScript містить масив рядків.</p>
+        <pre class="code">
+const ingredients = [
+  "Potatoes",
+  "Mushrooms",
+  "Garlic",
+  "Tomatos",
+  "Herbs",
+  "Condiments",
+];  
+</pre
+        >
+        <p>Напиши скрипт, який для кожного елемента масиву ingredients:</p>
+        <ul class="section-list">
+          <li>
+            Створить окремий елемент &lt;li&gt;. Обов'язково використовуй метод
+            document.createElement().
+          </li>
+          <li>Додасть назву інгредієнта як його текстовий вміст.</li>
+          <li>Додасть елементу клас item.</li>
+          <li>
+            Після чого, вставить усі &lt;li&gt; за одну операцію у список
+            ul#ingredients.
+          </li>
+        </ul>
+      </section>
+      <section class="section">
+        <h2><a href="task-03.html" class="green">Завдання 3</a></h2>
+        <p>
+          Напиши скрипт для створення галереї зображень на підставі масиву
+          даних. HTML містить список ul.gallery.
+        </p>
+        <p class="code">&lt;ul&nbsp;class=&quot;gallery&quot;&gt;&lt;/ul&gt;</p>
+        <p>
+          Використовуй масив об'єктів images для створення елементів
+          &lt;img&gt;, вкладених в &lt;li&gt;. Для створення розмітки
+          використовуй шаблонні рядки і метод insertAdjacentHTML().
+        </p>
+        <ul class="section-list">
+          <li>
+            Усі елементи галереї повинні додаватися в DOM за одну операцію
+            додавання.
+          </li>
+          <li>
+            Додай мінімальне оформлення галереї флексбоксами або грідами через
+            CSS класи.
+          </li>
+        </ul>
+        <pre class="code">
+const images = [
+  {
+    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
+    alt: "White and Black Long Fur Cat",
+  },
+  {
+    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
+    alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+  },
+  {
+    url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
+    alt: "Group of Horses Running",
+  },
+];  
+</pre
+        >
+      </section>
+      <section class="section">
+        <h2><a href="task-04.html" class="green">Завдання 4</a></h2>
+        <p>
+          Лічильник складається зі спану і кнопок, які по кліку повинні
+          збільшувати і зменшувати його значення на одиницю.
+        </p>
+        <p class="code">
+          &lt;div&nbsp;id=&quot;counter&quot;&gt;<br />&nbsp;&nbsp;&lt;button&nbsp;type=&quot;button&quot;&nbsp;data-action=&quot;decrement&quot;&gt;-1&lt;/button&gt;<br />&nbsp;&nbsp;&lt;span&nbsp;id=&quot;value&quot;&gt;0&lt;/span&gt;<br />&nbsp;&nbsp;&lt;button&nbsp;type=&quot;button&quot;&nbsp;data-action=&quot;increment&quot;&gt;+1&lt;/button&gt;<br />&lt;/div&gt;
+        </p>
+        <ul class="section-list">
+          <li>
+            Створи змінну counterValue, в якій буде зберігатися поточне значення
+            лічильника та ініціалізуй її значенням 0.
+          </li>
+          <li>
+            Додай слухачів кліків до кнопок, всередині яких збільшуй або зменшуй
+            значення лічильника.
+          </li>
+          <li>Оновлюй інтерфейс новим значенням змінної counterValue.</li>
+        </ul>
+      </section>
+      <section class="section">
+        <h2><a href="task-05.html" class="green">Завдання 5</a></h2>
+        <p>
+          Напиши скрипт, який під час набору тексту в інпуті input#name-input
+          (подія input), підставляє його поточне значення в span#name-output.
+          Якщо інпут порожній, у спані повинен відображатися рядок "Anonymous".
+        </p>
+        <p class="code">
+          &lt;input&nbsp;type=&quot;text&quot;&nbsp;id=&quot;name-input&quot;&nbsp;placeholder=&quot;Please&nbsp;enter&nbsp;your&nbsp;name&quot;&nbsp;/&gt;<br />&lt;h1&gt;Hello,&nbsp;&lt;span&nbsp;id=&quot;name-output&quot;&gt;Anonymous&lt;/span&gt;!&lt;/h1&gt;
+        </p>
+      </section>
+      <section class="section">
+        <h2><a href="task-06.html" class="green">Завдання 6</a></h2>
+        <p>
+          Напиши скрипт, який під час втрати фокусу на інпуті (подія blur),
+          перевіряє його вміст щодо правильної кількості введених символів.
+        </p>
+        <p class="code">
+          &lt;input<br />&nbsp;&nbsp;type=&quot;text&quot;<br />&nbsp;&nbsp;id=&quot;validation-input&quot;<br />&nbsp;&nbsp;data-length=&quot;6&quot;<br />&nbsp;&nbsp;placeholder=&quot;Please&nbsp;enter&nbsp;6&nbsp;symbols&quot;<br />/&gt;
+        </p>
+        <ul class="section-list">
+          <li>
+            Яка кількість символів повинна бути в інпуті, зазначається в його
+            атрибуті data-length.
+          </li>
+          <li>
+            Якщо введена правильна кількість символів, то border інпуту стає
+            зеленим, якщо неправильна кількість - червоним.
+          </li>
+        </ul>
+        <p>
+          Для додавання стилів використовуй CSS-класи valid і invalid, які ми
+          вже додали у вихідні файли завдання.
+        </p>
+        <pre class="code">
+#validation-input {
+  border: 3px solid #bdbdbd;
+}
+
+#validation-input.valid {
+  border-color: #4caf50;
+}
+
+#validation-input.invalid {
+  border-color: #f44336;
+}  
+</pre
+        >
+      </section>
+      <section class="section">
+        <h2><a href="task-07.html" class="green">Завдання 7</a></h2>
+        <p>
+          Напиши скрипт, який реагує на зміну значення input#font-size-control
+          (подія input) і змінює інлайн-стиль span#text, оновлюючи властивість
+          font-size. В результаті, перетягуючи повзунок, буде змінюватися розмір
+          тексту.
+        </p>
+        <p class="code">
+          &lt;input&nbsp;id=&quot;font-size-control&quot;&nbsp;type=&quot;range&quot;&nbsp;min=&quot;16&quot;&nbsp;max=&quot;96&quot;&nbsp;/&gt;<br />&lt;br&nbsp;/&gt;<br />&lt;span&nbsp;id=&quot;text&quot;&gt;Abracadabra!&lt;/span&gt;
+        </p>
+      </section>
+      <section class="section">
+        <h2><a href="task-08.html" class="green">Завдання 8</a></h2>
+        <p>Напиши скрипт управління формою логіна.</p>
+        <p class="code">
+          &lt;form&nbsp;class=&quot;login-form&quot;&gt;<br />&nbsp;&nbsp;&lt;label&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Email<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;email&quot;&nbsp;name=&quot;email&quot;&nbsp;/&gt;<br />&nbsp;&nbsp;&lt;/label&gt;<br />&nbsp;&nbsp;&lt;label&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Password<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;password&quot;&nbsp;name=&quot;password&quot;&nbsp;/&gt;<br />&nbsp;&nbsp;&lt;/label&gt;<br />&nbsp;&nbsp;&lt;button&nbsp;type=&quot;submit&quot;&gt;Login&lt;/button&gt;<br />&lt;/form&gt;
+        </p>
+        <ul class="section-list">
+          <li>
+            Обробка відправлення форми form.login-form повинна відбуватися
+            відповідно до події submit.
+          </li>
+          <li>
+            Під час відправлення форми сторінка не повинна перезавантажуватися.
+          </li>
+          <li>
+            Якщо у формі є незаповнені поля, виводь alert з попередженням про
+            те, що всі поля повинні бути заповнені.
+          </li>
+          <li>
+            Якщо користувач заповнив усі поля і відправив форму, збери значення
+            полів в об'єкт, де ім'я поля буде ім'ям властивості, а значення поля
+            - значенням властивості. Для доступу до елементів форми використовуй
+            властивість elements.
+          </li>
+          <li>
+            Виведи об'єкт із введеними даними в консоль і очисти значення полів
+            форми методом reset.
+          </li>
+        </ul>
+      </section>
+      <section class="section">
+        <h2><a href="task-09.html" class="green">Завдання 9</a></h2>
+        <p>
+          Напиши скрипт, який змінює кольори фону елемента &lt;body&gt; через
+          інлайн-стиль по кліку на button.change-color і виводить значення
+          кольору в span.color.
+        </p>
+        <p class="code">
+          &lt;div&nbsp;class=&quot;widget&quot;&gt;<br />&nbsp;&nbsp;&lt;p&gt;Background&nbsp;color:&nbsp;&lt;span&nbsp;class=&quot;color&quot;&gt;-&lt;/span&gt;&lt;/p&gt;<br />&nbsp;&nbsp;&lt;button&nbsp;type=&quot;button&quot;&nbsp;class=&quot;change-color&quot;&gt;Change&nbsp;color&lt;/button&gt;<br />&lt;/div&gt;
+        </p>
+        <p>
+          Для генерування випадкового кольору використовуй функцію
+          getRandomHexColor.
+        </p>
+        <pre class="code">
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}  
+</pre
+        >
+      </section>
+      <section class="section">
+        <h2>
+          <a href="task-10.html" class="green">Завдання 10 (необов'язкове)</a>
+        </h2>
+        <p>
+          Напиши скрипт створення і очищення колекції елементів. Користувач
+          вводить кількість елементів в input і натискає кнопку Створити, після
+          чого рендериться колекція. Натисненням на кнопку Очистити, колекція
+          елементів очищається.
+        </p>
+        <p class="code">
+          &lt;div&nbsp;id=&quot;controls&quot;&gt;<br />&nbsp;&nbsp;&lt;input&nbsp;type=&quot;number&quot;&nbsp;min=&quot;1&quot;&nbsp;max=&quot;100&quot;&nbsp;step=&quot;1&quot;&nbsp;/&gt;<br />&nbsp;&nbsp;&lt;button&nbsp;type=&quot;button&quot;&nbsp;data-create&gt;Create&lt;/button&gt;<br />&nbsp;&nbsp;&lt;button&nbsp;type=&quot;button&quot;&nbsp;data-destroy&gt;Destroy&lt;/button&gt;<br />&lt;/div&gt;<br /><br />&lt;div&nbsp;id=&quot;boxes&quot;&gt;&lt;/div&gt;
+        </p>
+        <p>
+          Створи функцію createBoxes(amount), яка приймає один параметр - число.
+          Функція створює стільки &lt;div&gt;, скільки вказано в amount і додає
+          їх у div#boxes.
+        </p>
+        <ul class="section-list">
+          <li>Розміри найпершого &lt;div&gt; - 30px на 30px.</li>
+          <li>
+            Кожен елемент після першого повинен бути ширшим і вищим від
+            попереднього на 10px.
+          </li>
+          <li>
+            Всі елементи повинні мати випадковий колір фону у форматі HEX.
+            Використовуй готову функцію getRandomHexColor для отримання кольору.
+          </li>
+        </ul>
+        <pre class="code">
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}  
+</pre
+        >
+        <p>
+          Створи функцію destroyBoxes(), яка очищає вміст div#boxes, у такий
+          спосіб видаляючи всі створені елементи.
+        </p>
+      </section>
+
+      <section class="section">
+        <ul class="section-list">
+          <li><a href="task-01.html">Task 1</a></li>
+          <li><a href="task-02.html">Task 2</a></li>
+          <li><a href="task-03.html">Task 3</a></li>
+          <li><a href="task-04.html">Task 4</a></li>
+          <li><a href="task-05.html">Task 5</a></li>
+          <li><a href="task-06.html">Task 6</a></li>
+          <li><a href="task-07.html">Task 7</a></li>
+          <li><a href="task-08.html">Task 8</a></li>
+          <li><a href="task-09.html">Task 9</a></li>
+          <li><a href="task-10.html">Task 10 (optional)</a></li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
   </body>
 </html>

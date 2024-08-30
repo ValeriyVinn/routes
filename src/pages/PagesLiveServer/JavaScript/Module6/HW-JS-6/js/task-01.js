@@ -1,13 +1,13 @@
 // ? ======= 1 варіант ========================================
 
-// const numberOfCategories = document.querySelectorAll(".item");
+const numberOfCategories = document.querySelectorAll(".item");
 
-// console.log(`Number of categories: ${numberOfCategories.length}`);
+console.log(`Number of categories: ${numberOfCategories.length}`);
 
-// numberOfCategories.forEach((elem) => {
-//   console.log(`Category: ${elem.firstElementChild.textContent}`);
-//   console.log(`Elements: ${elem.lastElementChild.children.length}`);
-// });
+numberOfCategories.forEach((elem) => {
+  console.log(`Category: ${elem.firstElementChild.textContent}`);
+  console.log(`Elements: ${elem.lastElementChild.children.length}`);
+});
 
 
 // ? ======= 2 варіант ========================================
@@ -34,20 +34,23 @@
 
 // ? ======= 4 варіант ========================================
 
-const categories = document.querySelectorAll(".item");
-console.log(`Number of categories: ${categories.length}`);
-console.log(" ");
-categories.forEach((category) => {
-  const group = [...category.children];
-  group.forEach((element) => {
-    if (element.tagName === "H2") {
-      console.log(`Elements: ${element.textContent}`);
-    }
-  });
-  group.forEach((element) => {
-    if (element.tagName === "UL") {
-      console.log(`Elements: ${element.children.length}`);
-    }
-  });
-  console.log(" ");
-});
+// const categories = document.querySelectorAll(".item");
+// console.log(`Number of categories: ${categories.length}`);
+// console.log(" ");
+// categories.forEach((category) => {
+//   const group = [...category.children];
+//   group.forEach((element) => {
+//     if (element.tagName === "H2") {
+//       console.log(`Elements: ${element.textContent}`);
+//     }
+//   });
+//   group.forEach((element) => {
+//     if (element.tagName === "UL") {
+//       console.log(`Elements: ${element.children.length}`);
+//     }
+//   });
+//   console.log(" ");
+// });
+
+
+

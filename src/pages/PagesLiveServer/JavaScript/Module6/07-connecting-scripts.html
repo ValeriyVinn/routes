@@ -9,12 +9,33 @@
 </head>
 <body>
     <header class="header">
-        <a href="../../../../indexLS.html">Home</a>
+        <a href="../../../../indexLS.html" class="green">Home</a>
       </header>
           <h1>Підключення скриптів</h1>
 
       <main class="main">
-        <section class="section"></section>
+        <section class="section">
+<p>Завантаження і виконання скрипта, зазначеного в тезі &lt;script&gt; без будь-яких атрибутів, блокують обробку HTML-документа і побудову DOM. Це проблема.</p>
+<p class="code">
+&lt;script&nbsp;src=&quot;path-to-script.js&quot;&gt;&lt;/script&gt;
+
+</p>
+<p>Коли аналізатор зустрічає такий тег, обробка HTML-документа припиняється і починається завантаження файлу скрипта, зазначеного в атрибуті src. Після завантаження скрипт виконується, і тільки потім відновлюється обробка HTML. Це називається «блокуючий» скрипт.</p>
+<p><b>Атрибути defer та async</b> були введені, щоб дати розробникам можливість краще контролювати спосіб завантаження скриптів, і коли саме їх виконувати.</p>
+<h4>Атрибут defer​</h4>
+<p class="code">
+&lt;script&nbsp;defer&nbsp;src=&quot;path-to-script.js&quot;&gt;&lt;/script&gt;
+<br>
+</p>
+<p><b>Атрибут defer</b> вказує браузеру завантажувати файл скрипта у фоновому режимі, паралельно обробці HTML-документа і побудові DOM. Скрипт буде виконаний тільки після того, як HTML-документ був оброблений, а DOM побудований. Такі скрипти не блокують побудову DOM-дерева і гарантовано виконуються у тому порядку, в якому вказані в HTML-документі.</p>
+<img src="./img/defer.png" alt="defer" width="420">
+<h4>Атрибут async​</h4>
+<p class="code">
+&lt;script&nbsp;async&nbsp;src=&quot;path-to-script.js&quot;&gt;&lt;/script&gt;
+<br></p>
+<p>Завантаження скрипта з атрибутом async не блокує побудову DOM, але він виконується відразу після завантаження. Це означає, що такі скрипти можуть заблокувати побудову DOM, і виконуються у довільному порядку.</p>
+<img src="./img/async.png" alt="async" width="420">          
+        </section>
       </main>
       <footer class="footer">Це футер</footer>
 

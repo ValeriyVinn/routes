@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Делегування подій</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <main class="main">
+      <h1>Делегування подій</h1>
+      <section class="section">
+        <p>
+          Спливання дозволяє реалізувати один із найкорисніших прийомів -
+          делегування подій (event delegation). Він полягає у тому, що, якщо є
+          група елементів, події яких потрібно обробляти однаково, то додається
+          один обробник на їх загального предка, замість того, щоб додавати
+          обробник до кожного елемента. Використовуючи властивість event.target,
+          можна отримати посилання на цільовий елемент, зрозуміти, на якому саме
+          дочірньому елементі відбулася подія, і обробити її.
+        </p>
+        <p>
+          Розглянемо делегування на прикладі. Створюємо елемент &lt;div&gt;,
+          додаємо до нього будь-яку кількість кнопок, наприклад 100, і
+          реєструємо кожній слухача події кліку з функцією handleButtonClick.
+        </p>
+        <img
+          src="./img/before-delegation.png"
+          alt="before-delegation"
+          width="540"
+        />
+        <p>
+          Проблема у тому, що у нас є сто слухачів подій. Всі вони вказують на
+          одну і ту саму функцію слухача, але слухачів 100. Що буде, якщо ми
+          перемістимо усіх слухачів на спільного предка - елемент &lt;div&gt;?
+        </p>
+        <img
+          src="./img/after-delegation.png"
+          alt="after-delegation"
+          width="540"
+        />
+        <p>
+          Тепер є тільки один обробник події кліку і браузеру не потрібно
+          зберігати у пам'яті сто різних слухачів. Тобто делегування зводиться
+          до трьох простих кроків.
+        </p>
+        <ul class="section-list">
+          <li>
+            Визначити спільного предка групи елементів для відстеження подій.
+          </li>
+          <li>
+            Зареєструвати на елементі-предку обробник події, яку ми хочемо
+            відловлювати з групи елементів.
+          </li>
+          <li>
+            В обробнику використовувати event.target для вибору цільового
+            елемента.
+          </li>
+        </ul>
+        <p>
+          Такий підхід спрощує ініціалізацію слухачів однотипних елементів.
+          Можна додавати, видаляти або змінювати елементи, при цьому, не
+          потрібно вручну додавати або видаляти обробники подій.
+        </p>
+        <h3>Палітра кольорів​</h3>
+        <p>
+          Будемо створювати палітру кольорів з можливістю вибрати колір по кліку
+          і відображенням обраного кольору. Замість того, щоб призначати
+          обробник кожному елементу палітри, яких може бути дуже багато,
+          повісимо один слухач на загального предка div.color-palette. В
+          обробнику події кліка використовуємо event.target, щоб отримати
+          елемент, на якому відбулася подія і пов'язаний з ним колір, який
+          будемо зберігати в атрибуті data-color.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="GRWBodN"
+            data-pen-title="lesson-13-color-palette"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/GRWBodN">
+                lesson-13-color-palette</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: Обов'язково перевіряємо мету кліка, щоб це точно була кнопка,
+          тому що ми не хочемо обробляти кліки в елемент-контейнері. Для
+          перевірки типу елемента використовуємо властивість nodeName.
+        </p>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
+
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
+</html>

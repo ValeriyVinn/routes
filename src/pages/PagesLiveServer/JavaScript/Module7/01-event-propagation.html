@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Поширення подій</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <main class="main">
+      <h1>Поширення подій</h1>
+      <section class="section">
+        <p>
+          <b>Поширення подій (event propagation)</b> - це термін, що описує
+          життєвий цикл події, який має три етапи: занурення, таргетинг і
+          спливання. На практиці найчастіше використовують тільки фазу
+          спливання.
+        </p>
+        <img src="./img/event-flow.png" alt="event-flow" width="360" />
+        <p>
+          Під час настання події, вона проходить через три обов'язкові фази:
+        </p>
+        <ul class="section-list">
+          <li>
+            <b>Capturing phase (занурення)</b> - подія починається на window і
+            тоне (проходить через усі елементи-предки) до найглибшого цільового
+            елемента, на якому відбулася дія, наприклад, клік.
+          </li>
+          <li>
+            <b>Target phase (таргетинг)</b> - подія дійшла до цільового
+            елемента. Цей етап містить тільки повідомлення елемента про те, що
+            на ньому відбулася дія.
+          </li>
+          <li>
+            <b>Bubbling phase (спливання)</b> - кінцева фаза, подія спливає від
+            найглибшого, цільового елемента, через усі елементи-предки до
+            window.
+          </li>
+        </ul>
+        <p class="note">
+          ЦІКАВО: Поширення часто неправильно використовується як синонім стадії
+          спливання. Щоразу, коли відбувається подія, відбувається її поширення.
+        </p>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
+
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
+</html>

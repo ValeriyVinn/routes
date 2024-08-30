@@ -9,12 +9,63 @@
   </head>
   <body>
     <header class="header">
-      <a href="../../../../indexLS.html">Home</a>
+      <a href="../../../../indexLS.html" class="green">Home</a>
     </header>
     <h1>Події клавіатури</h1>
 
     <main class="main">
-      <section class="section"></section>
+      <section class="section">
+<p>Існує дві основні події клавіатури: keydown і keyup. На відміну від інших, події клавіатури обробляються на документі, а не на конкретному елементі. Об'єкти подій клавіатури походять від базового класу KeyboardEvent.</p>
+<pre class="code">
+document.addEventListener("keydown", event => {
+  console.log("Keydown: ", event);
+});
+
+document.addEventListener("keyup", event => {
+  console.log("Keyup: ", event);
+});
+</pre>
+<p>Натискаючи клавішу, спочатку відбувається keydown, після чого - keyup, коли клавішу відпустили. На практиці переважно обробляють тільки подію keydown, оскільки вона відбувається швидше за keyup, і користувач раніше бачить результат натискання. Події keydown і keyup спрацьовують при натисканні будь-якої клавіші, включно зі службовими (Ctrl, Shift, Alt, Escape тощо).</p>
+<p class="note">
+  ЦІКАВО:
+
+  Раніше була ще одна подія клавіатури - keypress. Більшість постів на форумах і блогах все ще можуть її використовувати, але будьте обережні - вона застаріла і підтримка у нових браузерах може припинитися в будь-який момент.  
+</p>
+<h4>Властивості key і code​</h4>
+<p>Властивість key повертає символ, згенерований натисканням клавіші, враховуючи стан клавіш-модифікаторів, наприклад, Shift, а також поточну мову. Властивість code повертає код фізичної клавіші на клавіатурі і не залежить від мови.</p>
+<pre class="code">
+document.addEventListener("keydown", event => {
+  console.log("key: ", event.key);
+  console.log("code: ", event.code);
+});
+</pre>
+<p>Наведіть фокус у вікно прикладу, клікнувши по ньому мишкою, відстеження подій клавіатури знаходиться на елементі document. Надрукуйте щось на клавіатурі і подивіться результат.</p>
+<div class="codepen">
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="ZEeRxaJ" data-pen-title="lesson-12-keyboard-events" data-user="goit-academy" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/goit-academy/pen/ZEeRxaJ">
+  lesson-12-keyboard-events</a> by goit-academy (<a href="https://codepen.io/goit-academy">@goit-academy</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>  
+</div>
+<h4>Клавіші-модифікатори​</h4>
+<p>Для обробки комбінації клавіш, наприклад Ctrl + s або будь-якої іншої, на об'єкті події є властивості ctrlKey, altKey, shiftkey і metaKey, що зберігають булеве значення, яке сигналізує про те, чи була затиснута клавіша-модифікатор.</p>
+<pre class="code">
+document.addEventListener("keydown", event => {
+  event.preventDefault();
+
+  if ((event.ctrlKey || event.metaKey) && event.code === "KeyS") {
+    console.log("«Ctrl + s» or «Command + s» combo");
+  }
+});
+</pre>
+<p>Деякі комбінації клавіш можуть конфліктувати з поведінкою браузера за замовчуванням. Наприклад, Ctrl + d або Command + d робить закладку. Потрібно намагатися проектувати систему комбінацій сторінки таким чином, щоб вона не перетиналася із вбудованою у браузері. Але, у крайньому разі, поведінку за замовчуванням можна скасувати, викликавши метод event.preventDefault().</p>
+<p class="note">
+ЦІКАВО:
+
+Не так давно, замість властивостей key і code, використовували властивість keyCode. Більшість постів на форумах і блогах все ще можуть використовувати її, але будьте обережні - вона застаріла, не використовуйте властивість keyCode.  
+</p>     
+      </section>
     </main>
     <footer class="footer">Це футер</footer>
 

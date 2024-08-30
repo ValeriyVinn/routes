@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Throttle і Debounce</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <main class="main">
+      <h1>Throttle і Debounce</h1>
+      <section class="section">
+        <p>
+          Досить часто необхідно обробити зміну розміру вікна, скрол,
+          переміщення миші або текстове введення користувача. Це може бути
+          сортування колекції і відображення результатів, анімація елемента,
+          маніпуляції з DOM-деревом та інше. Все це покращує UX (user
+          experience), але, на жаль, має велике навантаження на браузер,
+          оскільки обробники подій спрацьовують надто часто. Такі події
+          неофіційно називають «chatty events».
+        </p>
+        <p>
+          Наприклад, якщо додати слухача події до скролу, то під час
+          прокручування сторінки мишкою можна викликати близько 30 подій на
+          секунду. Повільне прокручування (свайп) у смартфоні може викликати до
+          100 подій на секунду. Якщо обробник події скролу виконує важкі
+          обчислення та інші DOM-маніпуляції, гарантовано виникнуть проблеми з
+          продуктивністю.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="LYWBxzr"
+            data-pen-title="lesson-14-scroll-event"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/LYWBxzr">
+                lesson-14-scroll-event</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p>
+          <b>Throttle і Debounce</b> - це два схожих, але різних за поведінкою
+          прийоми, що дозволяють контролювати кількість разів, яку ми дозволяємо
+          виконувати функції з часом. Використовуємо їх реалізацію з бібліотеки
+          Lodash.
+        </p>
+        <h3>Підключення бібліотеки​</h3>
+        <p>
+          CDN (Content Delivery Network) - це географічно розподілена мережева
+          інфраструктура, що забезпечує швидку доставку контенту користувачам
+          веб-сервісів і сайтів. Сервери, що входять до складу CDN, географічно
+          розташовуються таким чином, щоб зробити час відповіді для користувачів
+          сайту/сервісу мінімальним.
+        </p>
+        <p>
+          Підключимо до проекту бібліотеку Lodash через CDN. Для цього
+          використаємо сервіс cdnjs.com і додамо посилання на скрипт бібліотеки
+          в кінці HTML-документа, як показано в прикладі.
+        </p>
+        <h4>index.html</h4>
+        <pre class="code">
+&lt;!DOCTYPE&nbsp;html&gt;
+<br>&lt;html&nbsp;lang=&quot;en&quot;&gt;
+<br>&nbsp;&nbsp;&lt;head&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;charset=&quot;UTF-8&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Document&nbsp;title&lt;/title&gt;
+<br>&nbsp;&nbsp;&lt;/head&gt;
+<br>&nbsp;&nbsp;&lt;body&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;HTML-markup&nbsp;--&gt;
+<br>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Lodash&nbsp;library&nbsp;script&nbsp;file&nbsp;--&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;script
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;async
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src=&quot;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js&quot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integrity=&quot;sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==&quot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crossorigin=&quot;anonymous&quot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;referrerpolicy=&quot;no-referrer&quot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/script&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;Your&nbsp;script&nbsp;file&nbsp;--&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;defer&nbsp;src=&quot;path/to/script.js&quot;&gt;&lt;/script&gt;
+<br>&nbsp;&nbsp;&lt;/body&gt;
+<br>&lt;/html&gt;
+</pre>
+        <p>
+          Тепер ми можемо отримати доступ до бібліотеки у нашому скрипті. При
+          підключенні бібліотек через CDN, до об'єкта window додається
+          властивість, в якій зберігається те, що надає бібліотека. Ім'я цієї
+          властивості унікальне для бібліотеки та описане в її документації. Для
+          Lodash - це символ нижнього підкреслення _. Для перевірки
+          використовуємо метод add, який просто додає два числа.
+        </p>
+        <h4>script.js</h4>
+        <pre class="code">
+const result = _.add(2, 3);
+console.log(result); // 5
+</pre
+        >
+        <h3>Throttle​</h3>
+        <p>
+          Прийом throttle контролює кількість разів, яку функція може бути
+          викликана протягом певного проміжку часу. Тобто дозволяє викликати
+          функцію не частіше одного разу за N мілісекунд, гарантуючи її
+          регулярне виконання.
+        </p>
+        <img src="./img/throttle.png" alt="throttle" width="720" />
+        <p>
+          Використовуючи throttle, ми не контролюємо, як часто браузер буде
+          генерувати події. Ми всього-на-всього беремо контроль над частотою
+          виконання функції обробника події.
+        </p>
+        <pre class="code">
+document.addEventListener(
+  "scroll",
+  _.throttle(() => {
+    console.log("Scroll handler call every 300ms");
+  }, 300)
+);  
+</pre
+        >
+        <p>
+          Реалізація з бібліотеки Lodash очікує першим аргументом функцію, яку
+          необхідно «загальмувати», а другим - кількість мілісекунд. Повертає
+          нову функцію для передачі в слухач події.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="YzZjNBM"
+            data-pen-title="lesson-14-throttle"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/YzZjNBM">
+                lesson-14-throttle</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+
+        <h3>Debounce​</h3>
+        <p>
+          Прийом debounce гарантує, що функція буде викликана лише у тому разі,
+          якщо між подіями буде пауза N мілісекунд. Наприклад, доки користувач
+          скролить сторінку функція не буде викликана, але щойно він перестав
+          скролити, функція буде викликана через 300 мілісекунд. Якщо скрол
+          відновиться раніше, ніж через 300 мілісекунд після паузи, функція не
+          буде викликана.
+        </p>
+        <img
+          src="./img/cc066424-fcc7-4e85-a160-5e1c94957f47image.png"
+          alt="leading-debounce"
+          width="720"
+        />
+        <p>
+          Використовуючи debounce, ми не управляємо тим, як часто браузер буде
+          генерувати події, а всього лише беремо контроль над частотою виконання
+          функції обробника події.
+        </p>
+        <pre class="code">
+document.addEventListener(
+  "scroll",
+  _.debounce(() => {
+    console.log("Scroll handler call after 300ms pause");
+  }, 300)
+);
+</pre
+        >
+        <p>
+          Реалізація з бібліотеки Lodash очікує першим аргументом функцію, а
+          другим - кількість мілісекунд. Повертає нову функцію для передачі в
+          слухач події.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="rNyryZP"
+            data-pen-title="lesson-14-debounce"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/rNyryZP">
+                lesson-14-debounce</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+
+        <h3>Режими методу debounce​</h3>
+        <p>
+          За замовчуванням метод debounce працює у режимі, коли функція
+          викликається через N мілісекунд після паузи між потоками подій. Цей
+          режим називається trailing edge (в кінці). Існують завдання, коли
+          функцію потрібно викликати відразу під час настання першої події в
+          потоці, а потім ігнорувати усі наступні події до паузи між ними,
+          наприклад, - 300 мілісекунд. На старті наступного потоку подій ця
+          поведінка повторюється. Такий режим називається leading edge (на
+          початку).
+        </p>
+        <img
+          src="./img/leading-debounce.png"
+          alt="leading-debounce"
+          width="720"
+        />
+        <p>
+          Методу debounce бібліотеки Lodash можна передати необов'язковий третій
+          аргумент - об'єкт параметрів, який містить дві властивості leading (за
+          замовчуванням false) і trailing (за замовчуванням true). Ці
+          налаштування змінюють режим і вказують, чи повинна функція запускатися
+          на початку потоку подій або в кінці після паузи.
+        </p>
+        <pre class="code">
+document.addEventListener(
+  "scroll",
+  _.debounce(
+    () => {
+      console.log("Scroll handler call on every event stream start");
+    },
+    300,
+    {
+      leading: true,
+      trailing: false,
+    }
+  )
+);
+</pre
+        >
+        <p>
+          На практиці режим leading може застосовуватись, наприклад, у разі,
+          коли необхідно виконати функцію відправлення запиту на сервер при
+          першому натисканні кнопки, після чого, ігнорувати всі наступні кліки
+          до паузи. У прикладі реалізований debounce в обох режимах для події
+          scroll.
+        </p>
+
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="KKWBqjm"
+            data-pen-title="lesson-14-leading-debounce"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/KKWBqjm">
+                lesson-14-leading-debounce</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
+
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
+</html>

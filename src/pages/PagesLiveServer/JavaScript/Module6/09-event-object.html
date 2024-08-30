@@ -1,25 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Об'єкт події</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
     <header class="header">
-        <a href="../../../../indexLS.html">Home</a>
-      </header>
-          <h1>Об'єкт події</h1>
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <h1>Об'єкт події</h1>
 
-      <main class="main">
-        <section class="section"></section>
-      </main>
-      <footer class="footer">Це футер</footer>
+    <main class="main">
+      <section class="section">
+        <p>
+          Щоб обробити подію - недостатньо знати про те, що це клік або
+          натискання клавіші, можуть знадобитися деталі. Наприклад, поточне
+          значення текстового поля, елемент, на якому відбулася подія, вбудовані
+          методи та інші.
+        </p>
+        <p>
+          Кожна подія - це об'єкт, який містить інформацію про деталі події та
+          автоматично передається першим аргументом в обробник події. Всі події
+          відбуваються з базового класу Event.
+        </p>
+        <pre class="code">
+const handleClick = event => {
+  console.log(event);
+};
 
+button.addEventListener("click", handleClick);
+</pre
+        >
+        <p>
+          Параметр event - це і є об'єкт події, який автоматично передається
+          першим аргументом під час виклику колбек-функції. Ми можемо називати
+          його як завгодно, але, як правило, його оголошують як e, evt або
+          event.
+        </p>
+        <p>Деякі властивості об'єкта події:</p>
+        <ul class="section-list">
+          <li>event.type - тип події.</li>
+          <li>
+            event.currentTarget - елемент, на якому виконується обробник події.
+          </li>
+        </ul>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="MWpXraG"
+            data-pen-title="lesson-12-event-object"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/MWpXraG">
+                lesson-12-event-object</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h4>Дії браузера за замовчуванням​</h4>
+        <p>
+          Деякі події викликають дію браузера, вбудовану за замовчуванням як
+          реакція на певний тип події. Наприклад, клік на посиланні ініціює
+          перехід на нову адресу, зазначену в href, а відправлення форми
+          перезавантажує сторінку. Найчастіше ця поведінка небажана і її
+          необхідно скасувати.
+        </p>
+        <p>
+          Для скасування дії браузера за замовчуванням в об'єкта події є
+          стандартний метод preventDefault().
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="wvJXprr"
+            data-pen-title="lesson-12-prevent-default"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/wvJXprr">
+                lesson-12-prevent-default</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
 
-
-
-    <script src="./pages/PagesLiveServer/JavaScript/js/main.js" type="module"></script></body>
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
 </html>

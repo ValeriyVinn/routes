@@ -9,11 +9,70 @@
 </head>
 <body>
     <header class="header">
-        <a href="../../../../indexLS.html">Home</a>
+        <a href="../../../../indexLS.html" class="green">Home</a>
       </header>
       <main class="main">
         <h1>Події елементів форм</h1>
-        <section class="section"></section>
+        <section class="section">
+<h4>Подія submit​</h4>
+<p>Відправлення форми відбувається під час кліку по кнопці з атрибутом type="submit" або натискання клавіші Enter, перебуваючи в будь-якому її текстовому полі. Подію submit можна застосувати для валідації (перевірки) форми перед відправленням, оскільки на об'єкті події існує багато корисних властивостей, пов'язаних з елементами форми. Сабміт форми перезавантажує сторінку, тому не забувайте скасовувати дію за замовчуванням методом preventDefault().</p>
+
+<div class="codepen">
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="oNZydVL" data-pen-title="lesson-12-form-submit" data-user="goit-academy" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/goit-academy/pen/oNZydVL">
+  lesson-12-form-submit</a> by goit-academy (<a href="https://codepen.io/goit-academy">@goit-academy</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>  
+</div>
+<p class="note">
+ЦІКАВО:
+
+Властивість elements DOM-елемента форми містить об'єкт з посиланнями на усі її елементи, які мають атрибут name. Тому в прикладі ми отримуємо значення полів, звертаючись до login.value і password.value.  
+</p>
+<h4>Подія change​</h4>
+<p>Відбувається після зміни елемента форми. Для текстових полів або textarea подія відбудеться не на кожному введенні символу, а після втрати фокусу, що не завжди зручно. Наприклад, доки ви набираєте щось у текстовому полі - подія відсутня, але як тільки фокус пропав, відбудеться подія change. Для інших елементів, наприклад, select, чекбоксів і радіо-кнопок, подія change спрацьовує відразу під час вибору значення.</p>
+<div class="codepen">
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="gOmKKvj" data-pen-title="lesson-12-change-event" data-user="goit-academy" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/goit-academy/pen/gOmKKvj">
+  lesson-12-change-event</a> by goit-academy (<a href="https://codepen.io/goit-academy">@goit-academy</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script> 
+</div>
+<p class="note">
+ЦІКАВО:
+
+Зверніть увагу на корисні властивості при роботі з елементом &lt;select&gt; в прикладі. Розберіться, що зберігається у властивостях value, selectedIndex і options.  
+</p>
+<h4>Подія input​</h4>
+<p>Відбувається тільки на текстових полях і textarea, і створюється щоразу при зміні значення елемента, не чекаючи втрати фокусу. На практиці input - це найголовніша подія для роботи з текстовими полями форми.</p>
+<div class="codepen">
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="jOBKpNP" data-pen-title="lesson-12-input-event" data-user="goit-academy" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/goit-academy/pen/jOBKpNP">
+  lesson-12-input-event</a> by goit-academy (<a href="https://codepen.io/goit-academy">@goit-academy</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>  
+</div>
+<h4>Подія focus і blur​</h4>
+<p>Елемент отримує фокус під час кліку миші або переходу клавішею Tab. Момент отримання і втрати фокусу - дуже важливий, отримуючи фокус, ми можемо завантажити дані для автозаповнення, почати відстежувати зміни тощо. Під час втрати фокусу - перевірити введені дані.</p>
+<p>Під час фокусування елемента відбувається подія focus, а коли фокус зникає, наприклад, користувач клікає в іншому місці екрана, відбувається подія blur. Активувати або скасувати фокус можна програмно, викликавши в коді для елемента однойменні методи focus() і blur().</p>
+<div class="codepen">
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="JjWZBdM" data-pen-title="lesson-12-focus-events" data-user="goit-academy" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/goit-academy/pen/JjWZBdM">
+  lesson-12-focus-events</a> by goit-academy (<a href="https://codepen.io/goit-academy">@goit-academy</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>  
+</div>
+<p>Фокус може бути тільки на одному елементі сторінки за одиницю часу, і поточний елемент, на якому знаходиться фокус, доступний як document.activeElement.</p>
+<p class="note">
+ЦІКАВО:
+
+Багато елементів не можуть отримати фокус. Наприклад, якщо клікнути по &lt;div&gt;, то фокусування на ньому не відбудеться, тому що це не інтерактивний елемент. 
+</p>      
+        </section>
       </main>
       <footer class="footer">Це футер</footer>
     

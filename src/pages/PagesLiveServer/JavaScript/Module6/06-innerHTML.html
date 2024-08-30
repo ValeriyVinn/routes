@@ -1,25 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Властивість innerHTML</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
     <header class="header">
-        <a href="../../../../indexLS.html">Home</a>
-      </header>
-          <h1>Властивість innerHTML</h1>
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <h1>Властивість innerHTML</h1>
 
-      <main class="main">
-        <section class="section"></section>
-      </main>
-      <footer class="footer">Це футер</footer>
+    <main class="main">
+      <section class="section">
+        <p>
+          Ще один спосіб створити DOM-елементи і помістити їх в дерево - це
+          використовувати рядки з тегами і дозволити браузеру зробити всю важку
+          роботу. У такого підходу є свої плюси і мінуси.
+        </p>
+        <h3>Читання​</h3>
+        <p>
+          Властивість innerHTML зберігає вміст елемента, включно з тегами, у
+          вигляді рядка. Значення, що повертається, - це завжди валідний
+          HTML-код.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="ZEeRegd"
+            data-pen-title="lesson-11-innerhtml-read"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/ZEeRegd">
+                lesson-11-innerhtml-read</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Зміна</h3>
+        <p>
+          Властивість innerHTML доступна і для читання, і для запису. Якщо
+          записати в неї рядок з HTML-тегами, то браузер під час парсингу рядка
+          перетворить їх у валідні елементи і додасть в DOM-дерево.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="JjWZNKb"
+            data-pen-title="lesson-11-innerhtml-write"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/JjWZNKb">
+                lesson-11-innerhtml-write</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: Якщо у властивість innerHTML записати порожній рядок, то вміст
+          елемента буде очищено. Це простий і швидкий спосіб видалення всього
+          вмісту.
+        </p>
+        <p>
+          За такого підходу, на відміну від document.createElement(), ми не
+          отримуємо посилання на створений DOM-елемент. Це перший крок на шляху
+          до шаблонізації - створення великої кількості однотипної розмітки з
+          різними даними за наперед визначеним шаблоном. Наприклад, як у списку
+          товарів інтернет магазину тощо.
+        </p>
+        <p>
+          Однотипна (шаблонна) розмітка створюється із масиву даних. Прийом
+          полягає у перебиранні цього масиву і складанні одного рядка з
+          HTML-тегами, який потім записуємо в innerHTML елемента.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="qBrKmJP"
+            data-pen-title="lesson-11-innerhtml-multiinsert"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/qBrKmJP">
+                lesson-11-innerhtml-multiinsert</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Додавання​</h3>
+        <p>
+          Зміна elem.innerHTML повністю видалить і повторно створить всі нащадки
+          елемента elem. Якщо елемент спочатку не був порожній, то виникнуть
+          додаткові витрати на серіалізацію вже існуючої розмітки, а це погано.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="QWpxvqR"
+            data-pen-title="lesson-11-innerhtml-update"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/QWpxvqR">
+                lesson-11-innerhtml-update</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: Використовуйте властивість elem.innerHTML для додавання тільки
+          тоді, коли елемент elem - порожній, або якщо потрібно повністю
+          замінити його вміст.
+        </p>
+        <h3>Метод insertAdjacentHTML()​</h3>
+        <p>
+          Сучасний метод для додавання рядка з HTML-тегами перед, після або
+          всередину елемента. Вирішує проблему innerHTML з повторною
+          серіалізацією вмісту елемента під час додавання розмітки до вже
+          існуючої.
+        </p>
+        <p class="code">elem.insertAdjacentHTML(position, string);</p>
+        <p>
+          Аргумент position - це рядок, позиція щодо елемента elem. Приймає одне
+          з чотирьох значень.
+        </p>
+        <ul>
+          <li>"beforebegin" - перед elem</li>
+          <li>"afterbegin" - всередині elem, перед усіма дітьми</li>
+          <li>"beforeend" - всередині elem, після усіх дітей</li>
+          <li>"afterend" - після elem</li>
+          <div class="codepen">
+            <p
+              class="codepen"
+              data-height="300"
+              data-default-tab="html,result"
+              data-slug-hash="mdWKMOE"
+              data-pen-title="lesson-11-insert-adjacent-html"
+              data-user="goit-academy"
+              style="
+                height: 300px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              "
+            >
+              <span
+                >See the Pen
+                <a href="https://codepen.io/goit-academy/pen/mdWKMOE">
+                  lesson-11-insert-adjacent-html</a
+                >
+                by goit-academy (<a href="https://codepen.io/goit-academy"
+                  >@goit-academy</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+            <script
+              async
+              src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+            ></script>
+          </div>
+          <p class="note">
+            ЦІКАВО: "beforebegin" і "afterend" працюють тільки тоді, коли elem
+            вже знаходиться в DOM-дереві.
+          </p>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
 
-
-
-
-    <script src="./pages/PagesLiveServer/JavaScript/js/main.js" type="module"></script></body>
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
 </html>

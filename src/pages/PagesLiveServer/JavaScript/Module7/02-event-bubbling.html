@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Спливання подій</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <main class="main">
+      <h1>Спливання подій</h1>
+      <section class="section">
+        <h3>Спливання подій</h3>
+        <p>
+          Під час настання події, обробники спочатку спрацьовують на найбільш
+          вкладеному елементі, потім - на його батьківському елементі, потім
+          вище і так далі, вгору по ланцюжку вкладеності. Цей процес називається
+          спливання (event bubbling), тому що події «спливають» від внутрішнього
+          елемента вгору через усіх предків до window, подібно до спливання
+          бульбашки повітря у воді.
+        </p>
+        <img src="./img/event-bubbling.png" alt="event-bubling" width="360" />
+        <p>
+          Розглянемо приклад, так буде зрозуміліше. Є три вкладених тега
+          &lt;div&gt; з обробниками кліка на кожному з них.
+        </p>
+        <pre class="code">
+&lt;div&nbsp;id=&quot;parent&quot;&gt;
+<br>&nbsp;&nbsp;Parent
+<br>&nbsp;&nbsp;&lt;div&nbsp;id=&quot;child&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Child
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;id=&quot;descendant&quot;&gt;Descendant&lt;/div&gt;
+<br>&nbsp;&nbsp;&lt;/div&gt;
+<br>&lt;/div&gt;
+</pre>
+        <p>
+          Спливання гарантує, що клік по #descendant викличе обробник кліка,
+          якщо він є, спочатку на самому #descendant, потім на елементі #child,
+          далі на елементі #parent і так далі вгору по ланцюжку предків до
+          window. Тому, якщо в прикладі клікнути на #descendant, то послідовно
+          виведуться alert для descendant → child → parent.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="QWpBwaa"
+            data-pen-title="lesson-13-event-bubbling"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/QWpBwaa">
+                lesson-13-event-bubbling</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: Спливають майже всі події, наприклад, події focus і blur не
+          спливають, тому існують їх спливаючі аналоги - focusin і focusout.
+        </p>
+        <h3>Властивість event.target​</h3>
+        <p>
+          Незалежно від того, де ми спіймали подію під час її спливання, завжди
+          можна дізнатися, де саме вона відбулася. Найглибший елемент, який
+          викликає подію, називається цільовим або вихідним, і доступний як
+          event.target.
+        </p>
+        <ul class="section-list">
+          <li>
+            <b>event.target</b> - це посилання на вихідний елемент, на якому
+            відбулася подія, в процесі спливання вона - незмінна.
+          </li>
+          <li>
+            <b>event.currentTarget</b> - це посилання на поточний елемент, до
+            якого дійшло спливання, на ньому зараз виконується обробник події.
+          </li>
+        </ul>
+        <p>
+          Якщо слухач події зареєстрований на найвищому елементі, то він
+          «спіймає» усі кліки всередині, тому що події будуть спливати до цього
+          елемента. Відкрийте консоль в прикладі і поклікайте, event.target - це
+          завжди вихідний (і найглибший) елемент, на якому був клік, а
+          event.currentTarget не змінюється.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="JjWBoqd"
+            data-pen-title="lesson-13-event-target"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/JjWBoqd">
+                lesson-13-event-target</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Припинення спливання</h3>
+        <p>
+          Зазвичай, подія буде спливати вгору до елемента window, викликаючи усі
+          обробники на своєму шляху. Але будь-який проміжний обробник може
+          вирішити, що подія повністю оброблена і зупинити спливання, викликавши
+          метод stopPropagation().
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="gOmjpwo"
+            data-pen-title="lesson-13-stop-propagation"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/gOmjpwo">
+                lesson-13-stop-propagation</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p>
+          Якщо елемент має декілька обробників на одну подію, то, навіть у разі
+          припинення спливання, усі вони будуть виконані. Тобто метод
+          stopPropagation() тільки перешкоджає просуванню події далі. Якщо
+          необхідно повністю зупинити обробку події, використовується метод
+          stopImmediatePropagation(). Він не тільки запобігає спливанню, але й
+          зупиняє обробку подій на поточному елементі.
+        </p>
+        <p class="note">
+          ЦІКАВО: Не припиняйте спливання без необхідності. Припинення спливання
+          створює свої підводні камені, які потім доводиться обходити.
+          Наприклад, аналітика використовує спливання, щоб відстежувати події на
+          сторінці.
+        </p>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
+
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
+</html>

@@ -1,25 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Властивості та атрибути</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
     <header class="header">
-        <a href="../../../../indexLS.html">Home</a>
-      </header>
-          <h1>Властивості та атрибути</h1>
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <h1>Властивості та атрибути</h1>
 
-      <main class="main">
-        <section class="section"></section>
-      </main>
-      <footer class="footer">Це футер</footer>
+    <main class="main">
+      <section class="section">
+        <p>
+          Під час побудови DOM-дерева, деякі стандартні HTML-атрибути стають
+          властивостями елементів. Подивимося на декілька властивостей, які
+          часто використовуються.
+        </p>
+        <ul class="section-list">
+          <li>value - містить поточний текстовий контент елементів форм.</li>
+          <li>checked - зберігає стан чекбокса або радіокнопки.</li>
+          <li>name - зберігає значення, вказане в HTML-атрибуті name.</li>
+          <li>src - шлях до зображення тегу <img />.</li>
+        </ul>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="poeLbbd"
+            data-pen-title="lesson-11-properties"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/poeLbbd">
+                lesson-11-properties</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Властивість textContent​</h3>
+        <p>
+          elem.textContent повертає текстовий контент всередині елемента.
+          Доступний для читання і запису. Неважливо, що буде передано в
+          textContent, дані завжди будуть записані як текст.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="wvJmWqd"
+            data-pen-title="lesson-11-textContent"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/wvJmWqd">
+                lesson-11-textContent</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Властивість classList​</h3>
+        <p>
+          У властивості classList зберігається об'єкт з методами для роботи з
+          класами елемента.
+        </p>
+        <ul class="section-list">
+          <li>
+            elem.classList.contains(cls) - повертає true або false, залежно від
+            наявності класу cls в елемента.
+          </li>
+          <li>
+            elem.classList.add(cls) - додає клас cls до списку класів елемента.
+          </li>
+          <li>
+            elem.classList.remove(cls) - видаляє клас cls зі списку класів
+            елемента.
+          </li>
+          <li>
+            elem.classList.toggle(cls) - якщо відсутній клас cls, то додає його,
+            якщо - присутній, навпаки - видаляє.
+          </li>
+          <li>
+            elem.classList.replace(oldClass, newClass) - замінює існуючий клас
+            oldClass на вказаний newClass.
+          </li>
+        </ul>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="qBroNyW"
+            data-pen-title="lesson-11-classList"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/qBroNyW">
+                lesson-11-classList</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Властивість style​</h3>
+        <p>
+          Використовується для читання та зміни інлайнових стилів. Повертає
+          об'єкт CSSStyleDeclaration, який містить список усіх властивостей,
+          визначених тільки у вбудованих стилях елемента, а не увесь CSS. Під
+          час запису властивості записуються в camelCase, тобто background-color
+          перетворюється на element.style.backgroundColor тощо.
+        </p>
+        <pre class="code">
+const button = document.querySelector(".btn");
 
+button.style.backgroundColor = "teal";
+button.style.fontSize = "24px";
+button.style.textAlign = "center";
 
+console.log(button.style); // inline styles object
+</pre
+        >
+        <p class="note">
+          ЦІКАВО: На практиці стилізація елементів виконується шляхом додавання
+          CSS-класів. Властивість style використовується для додавання будь-яких
+          динамічних стилів, наприклад, під час анімації.
+        </p>
+        <h3>Атрибути​</h3>
+        <p>
+          DOM-елементам відповідають HTML-теги, які містять текстові атрибути.
+          Доступ до атрибутів здійснюється за допомогою стандартних методів. Ці
+          методи працюють зі значенням, яке знаходиться в HTML.
+        </p>
+        <ul class="section-list">
+          <li>
+            elem.hasAttribute(name) - перевіряє наявність атрибута, повертає
+            true або false.
+          </li>
+          <li>
+            elem.getAttribute(name) - отримує значення атрибута і повертає його.
+          </li>
+          <li>elem.setAttribute(name, value) - встановлює атрибут.</li>
+          <li>elem.removeAttribute(name) - видаляє атрибут.</li>
+          <li>
+            elem.attributes - властивість, що повертає об'єкт усіх атрибутів
+            елемента.
+          </li>
+        </ul>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="VwpXjga"
+            data-pen-title="lesson-11-attributes"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/VwpXjga">
+                lesson-11-attributes</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>data-атрибути​</h3>
+        <p>
+          Дозволяють додати до тегу довільний атрибут і отримати його значення в
+          JavaScript. Цю можливість використовують для того, щоб спростити
+          написання коду, наприклад, зв'язати дані і розмітку за унікальним
+          ідентифікатором, вказати тип дії кнопки тощо.
+        </p>
+        <p class="code">
+          &lt;button&nbsp;type=&quot;button&quot;&nbsp;data-action=&quot;save&quot;&gt;Save&lt;/button&gt;
+          <br />&lt;button&nbsp;type=&quot;button&quot;&nbsp;data-action=&quot;close&quot;&gt;Close&lt;/button&gt;
+        </p>
+        <p>
+          Для отримання значення data-атрибута використовується властивість
+          dataset, після якого стоїть ім'я атрибута. Тобто data- відкидається, а
+          інша частина імені записується як ім'я властивості об'єкта.
+        </p>
+        <pre class="code">
+const saveBtn = document.querySelector('button[data-action="save"]');
+console.log(saveBtn.dataset.action); // "save"
 
+const closeBtn = document.querySelector('button[data-action="close"]');
+console.log(closeBtn.dataset.action); // "close"
+</pre
+        >
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="vYxRXYg"
+            data-pen-title="lesson-11-data-attributes"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/vYxRXYg">
+                lesson-11-data-attributes</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
 
-    <script src="./pages/PagesLiveServer/JavaScript/js/main.js" type="module"></script></body>
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
 </html>
