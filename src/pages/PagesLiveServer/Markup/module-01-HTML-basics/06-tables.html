@@ -11,13 +11,364 @@
     <a href="../markup.html">Markup</a>
     <h2>Таблиці</h2>
     <section class="section">
-      
+      <p>
+        <a href="https://html.spec.whatwg.org/multipage/tables.html#tables"
+          >Таблиці</a
+        >
+        дозволяють відобразити складні зв'язки, розміщуючи в клітинках будь-який
+        контент. Їх потрібно використовувати тільки для розмітки табличних
+        даних: розклад транспорту, календар, результати матчів, фінансові
+        операції, меню в ресторані, прайс-лист тощо. Тобто інформацію, яку
+        логічно представити в табличній формі, наприклад, використовуючи Google
+        Sheets.
+      </p>
+      <p class="useful">
+        Корисно: Елементи таблиці семантично описують табличні дані, та їх
+        використання для інших цілей - це порушення семантики.
+      </p>
+      <p>Будемо набирати розмітку ось такого розкладу потягів.</p>
+      <img src="./img/train-schedule.png" alt="train-schedule" width="620" />
+      <p>
+        Таблиця - це набір рядків з клітинками. Познайомимося з базовими тегами.
+      </p>
+      <ul class="section-list">
+        <ul>
+          &lt;table&gt; - визначає всю таблицю, контейнер для контенту.
+        </ul>
+        <ul>
+          &lt;tr&gt; - рядок таблиці (table row). Не може бути порожнім, повинен
+          містити хоча б одну клітинку.
+        </ul>
+        <ul>
+          &lt;td&gt; - клітинка таблиці (table data). Можна використовувати
+          тільки всередині рядка. У кожному рядку таблиці повинна бути однакова
+          кількість клітинок.
+        </ul>
+      </ul>
+      <p>Розмітимо розклад потягів таблицею з трьома рядками.</p>
+      <pre class="code">
+&lt;table&gt;
+<br>&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;433&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Київ&nbsp;-&nbsp;Ковель&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;5&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;701&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Харків&nbsp;-&nbsp;Дніпро&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;7&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;258&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Львів&nbsp;-&nbsp;Одеса&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;4&nbsp;години&lt;/td&gt;
+<br>&nbsp;&nbsp;&lt;/tr&gt;
+<br>&lt;/table&gt;  
+</pre>
+      <p class="useful">
+        Корисно: За замовчуванням у таблиці немає спеціального оформлення,
+        наприклад, такої темної рамки як на зображенні. Для цього
+        використовується CSS, як і для будь-якого іншого оформлення контенту.
+      </p>
+      <h3>Клітинки-заголовки</h3>
+      <p>
+        Для того щоб створити рядок з заголовками стовпчиків, використовуємо
+        стандартний тег &lt;tr&gt; для рядка, а клітинки розмічаємо спеціальним
+        тегом &lt;th&gt; (table header) - семантичним тегом клітинки-заголовка.
+        За замовчуванням текст всередині &lt;th&gt; виділяється жирним і
+        центрується.
+      </p>
+      <pre class="code">
+&lt;table&gt;
+<br>&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Номер&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Маршрут&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Час&nbsp;у&nbsp;дорозі&lt;/th&gt;
+<br>&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;433&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Київ&nbsp;-&nbsp;Ковель&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;5&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;701&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Харків&nbsp;-&nbsp;Дніпро&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;7&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;258&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Львів&nbsp;-&nbsp;Одеса&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;4&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&lt;/tr&gt;
+<br>&lt;/table&gt;  
+</pre>
+      <h3>Секції таблиці</h3>
+      <p>
+        Для підвищення семантики розмітки таблиці існує кілька структурних
+        тегів.
+      </p>
+      <ul class="section-list">
+        <li>
+          &lt;thead&gt; - шапка, обгортає групу рядків таблиці в області
+          заголовка.
+        </li>
+        <li>&lt;tbody&gt; - тіло, обгортає основну групу рядків таблиці.</li>
+        <li>
+          &lt;tfoot&gt; - підвал, означає групу рядків таблиці в області
+          нижнього колонтитула.
+        </li>
+      </ul>
+      <p></p>
+      <pre class="code">
+&lt;table&gt;
+<br>&nbsp;&nbsp;&lt;thead&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Номер&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Маршрут&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Час&nbsp;у&nbsp;дорозі&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;/thead&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;tbody&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;433&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Київ&nbsp;-&nbsp;Ковель&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;5&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;701&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Харків&nbsp;-&nbsp;Дніпро&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;7&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;258&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Львів&nbsp;-&nbsp;Одеса&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;4&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;/tbody&gt;
+<br>&lt;/table&gt;  
+</pre>
+      <h3>Заголовок таблиці</h3>
+      <p>
+        Якщо у таблиці є заголовок, звичайно можна розмітити його,
+        використовуючи теги заголовків.
+      </p>
+      <pre class="code">
+&lt;h1&gt;Розклад&nbsp;потягів&lt;/h1&gt;
+<br>&lt;table&gt;
+<br>&nbsp;&nbsp;&lt;!--&nbsp;Розмітка&nbsp;таблиці&nbsp;--&gt;
+<br>&lt;/table&gt;  
+</pre>
+      <p>
+        Але семантичніше буде використовувати спеціальний табличний тег
+        &lt;caption&gt;, який повинен розташовуватися всередині таблиці,
+        найпершим елементом.
+      </p>
+      <pre class="code">
+&lt;table&gt;
+<br>&nbsp;&nbsp;&lt;caption&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Розклад&nbsp;потягів
+<br>&nbsp;&nbsp;&lt;/caption&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;!--&nbsp;Інша&nbsp;частина&nbsp;розмітки&nbsp;таблиці&nbsp;--&gt;
+<br>&lt;/table&gt;  
+</pre>
+      <p>
+        Ось живий приклад результату. На вкладці CSS можна подивитися стилі, де
+        до кожного з CSS-правил є коментар з поясненням.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="dyXboZv"
+          data-pen-title="lesson-02-schedule-table"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/dyXboZv">
+              lesson-02-schedule-table</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Групування клітинок</h3>
+      <p>
+        Деякі таблиці зроблені таким чином, що потрібно об'єднати декілька
+        клітинок за горизонталлю або вертикаллю.
+      </p>
+      <img src="./img/cloud-services.png" alt="cloud-services" width="620" />
+      <p>
+        Напишемо розмітку такої таблиці, додавши додаткові клітинки, враховуючи,
+        що «Хмарний сервіс» займе дві клітинки за вертикаллю, а «Використання» -
+        три за горизонталлю.
+      </p>
+      <pre class="code">
+&lt;table&gt;
+<br>&nbsp;&nbsp;&lt;thead&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Хмарний&nbsp;сервіс&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Використання&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Користувачі&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Відвідування&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Об&#96;єм&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;/thead&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;tbody&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Google&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;12000&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;307000&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;1000&nbsp;Tb&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Amazon&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;9000&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;200500&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;800&nbsp;Tb&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;/tbody&gt;
+<br>&lt;/table&gt;  
+</pre>
+      <p>
+        Зверніть увагу на порожні теги &lt;th&gt;, в кожному рядку повинна бути
+        однакова кількість клітинок, тому «зайві» поки що залишаємо порожніми. В
+        результаті отримаємо наступну таблицю.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="rNLBVKV"
+          data-pen-title="lesson-02-usage-table-basic"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/rNLBVKV">
+              lesson-02-usage-table-basic</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Правило рівності кількості клітинок в рядках і стовпчиках не можна
+        скасувати, але можна оминути. Для того щоб розширити клітинку за
+        горизонталлю, використовується атрибут colspan, за вертикаллю - rowspan.
+      </p>
+      <p>
+        Потрібно визначити групу клітинок для злиття і потім крайній верхній і
+        лівій клітинці групи задати атрибут colspan з кількістю клітинок, які
+        потрібно об'єднати праворуч та/або rowspan - знизу. Після цього
+        обов'язково потрібно видалити вже непотрібні клітинки праворуч та/або
+        знизу.
+      </p>
+      <p>
+        У нашому завданні клітинка «Хмарний сервіс» повинна займати 2 клітинки
+        за вертикаллю, тому додаємо їй rowspan="2" і видаляємо порожній
+        &lt;th&gt; рядком нижче. Аналогічно з клітинкою «Використання»,
+        встановлюємо colspan="3" і видаляємо дві сусідні клітинки праворуч в
+        цьому рядку.
+      </p>
+      <pre class="code">
+&lt;table&gt;
+<br>&nbsp;&nbsp;&lt;thead&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&nbsp;rowspan=&quot;2&quot;&gt;Хмарний&nbsp;сервіс&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&nbsp;colspan=&quot;3&quot;&gt;Використання&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Користувачі&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Відвідування&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Об&#96;єм&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;/thead&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;!--&nbsp;Розмітка&nbsp;tbody&nbsp;--&gt;
+<br>&lt;/table&gt;  
+</pre>
+      <p class="note">
+        Цікаво: Правило рівності кількості клітинок буде візуально порушено, але
+        браузер враховує клітинки в об'єднаних групах, тому все правильно.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="pobzJxM"
+          data-pen-title="lesson-02-usage-table-final"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/pobzJxM">
+              lesson-02-usage-table-final</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
     </section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
-    <section class="section"></section>
+    
   </body>
 </html>
