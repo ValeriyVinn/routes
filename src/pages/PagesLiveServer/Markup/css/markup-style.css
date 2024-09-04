@@ -85,14 +85,27 @@ a {
 }
 
 .code {
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 5px;
-  background-color: rgb(200, 220, 255);
-  outline: 1px solid rgb(190, 190, 255);
-  color: navy;
+  /* background-color: rgb(200, 220, 255);
+  outline: 1px solid rgb(190, 190, 255); */
+  /* color: navy; */
+
+  background-color: rgb(241, 240, 240);
+  /* background-color: black;
+  color: white; */
+  border: 1px solid rgb(199, 199, 199);
+
   margin-bottom: 5px;
   overflow-x: auto;
 }
+
+.tabs, 
+.tab-content
+.code {
+  margin: 0;
+}
+
 
 .span-code {
   background-color: lightgray;
@@ -111,7 +124,6 @@ a {
   font-style: italic;
 }
 
-
 .useful {
   background-color: rgb(207, 255, 255);
   color: teal;
@@ -126,7 +138,7 @@ a {
   padding: 5px;
   border: 1px solid crimson;
   border-radius: 5px;
-  color:crimson;
+  color: crimson;
   font-style: italic;
 }
 
@@ -139,7 +151,7 @@ a {
   padding: 0px 10px;
 }
 
-/* Accordeon */
+/*! Accordeon */
 .accordion {
   display: block;
   background-color: white;
@@ -186,4 +198,40 @@ a {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   margin-bottom: 5px;
+}
+
+/*! tabs */
+
+/* Стиль вкладок */
+.tabs {
+  display: flex;
+  /* border-bottom: 1px solid #ccc; */
+}
+
+/* Стиль кнопок вкладок */
+.tab-button {
+  padding: 5px 20px;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Активна кнопка */
+.tab-button.actual {
+  background-color: #ccc;
+  /* border-bottom: 1px solid #333; */
+}
+
+/* Стиль змісту вкладок */
+.tab-content {
+  display: none;
+  /* padding: 20px; */
+}
+
+/* Активний зміст */
+.tab-content.actual {
+  display: block;
 }

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оформлення тексту</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Оформлення тексту</h2>
+    <section class="section">
+      <h3>Властивість text-decoration</h3>
+      <p>Задає різні декоративні підкреслення та інші ефекти тексту.</p>
+      <pre class="code">
+text-decoration: none | underline | line-through | overline  
+</pre
+      >
+      <p>
+        Таблиця стилів від браузера встановлює більшості елементів значення
+        none, тобто відключено. А ось, наприклад, у посилань за замовчуванням
+        вказано underline.
+      </p>
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">HTML</button>
+          <button class="tab-button" data-tab="tab2">CSS</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+&lt;h1&nbsp;class=&quot;title&quot;&gt;Iste&nbsp;odit&nbsp;similique&nbsp;sit&lt;/h1&gt;
+<br>&lt;p&nbsp;class=&quot;text&quot;&gt;
+<br>&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&lt;span&gt;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&lt;/span&gt;&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,
+<br>&nbsp;&nbsp;impedit&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&lt;/p&gt;
+<br>&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Читати&nbsp;далі...&lt;/a&gt;   
+</pre>
+        </div>
+
+        <div id="tab2" class="tab-content">
+          <pre class="code">
+.text > span {
+  text-decoration: line-through;
+}
+
+.link {
+  text-decoration: none;
+}   
+</pre
+          >
+        </div>
+      </div>
+
+      <h3>Властивість text-transform</h3>
+      <p>
+        Управляє регістром символів у тексті, наприклад, зробити всі літери
+        великими або малими. У розмітці текст завжди набирається відповідно до
+        правил мови. Після чого, за допомогою text-transform, приводиться до
+        потрібного вигляду, тому що все оформлення повинно бути в CSS.
+      </p>
+      <pre class="code">
+text-transform: none | uppercase | lowercase | capitalize  
+</pre
+      >
+      <p>
+        Створимо розмітку меню навігації, текст пунктів якої в макеті
+        намальований великими літерами.
+      </p>
+      <pre class="code">
+&lt;ul&nbsp;class=&quot;site-nav&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Workshops&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Podcasts&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <p>Тепер у стилях робимо всі літери тексту посилань великими.</p>
+      <pre class="code">
+.site-nav .link {
+  text-transform: uppercase;
+}  
+</pre
+      >
+      <h3>Властивість text-align</h3>
+      <p>Управляє вирівнюванням текстового вмісту елемента за горизонталлю.</p>
+      <pre class="code">
+text-align: left | right | center | justify  
+</pre
+      >
+      <p>За замовчуванням текст вирівнюється по лівому краю (значення left).</p>
+      <pre class="code">
+&lt;article&nbsp;class=&quot;post&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&nbsp;class=&quot;post-title&quot;&gt;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&nbsp;class=&quot;post-text&nbsp;align-right&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;p&nbsp;class=&quot;post-text&nbsp;align-justify&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <p>
+        Центруємо текст заголовка і вирівняємо текст абзаців по правому краю і
+        рівномірно.
+      </p>
+      <pre class="code">
+.post-title {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-justify {
+  text-align: justify;
+}  
+</pre
+      >
+      <p class="attention">
+        Увага: Використання значення justify - не найкраща ідея. Хоча текст і
+        притискається до лівого і правого краю блоку рівномірно, його
+        читабельність сильно падає. Все тому, що пробіли між словами стають
+        різної ширини, а це негативно впливає на сприйняття тексту.
+      </p>
+      <h3>Властивість text-indent</h3>
+      <p>
+        Встановлює величину відступу першого рядка блоку тексту, наприклад
+        абзацу. Не впливає на всі інші рядки, крім першого.
+      </p>
+      <pre class="code">
+text-indent: значення | відсотки | inherit  
+</pre
+      >
+      <p>
+        Значенням можуть бути будь-які одиниці довжини, наприклад пікселі (px).
+        Встановлюючи значення у відсотках, відступ обчислюється залежно від
+        ширини блоку.
+      </p>
+      <pre class="code">
+&lt;article&nbsp;class=&quot;post&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&nbsp;class=&quot;post-title&quot;&gt;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&nbsp;class=&quot;post-text&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.Obcaecati
+<br>&nbsp;&nbsp;&nbsp;&nbsp;commodi,&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;impedit&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <pre class="code">
+.post-text {
+  text-indent: 100px;
+}  
+</pre
+      >
+      <h3>Властивість line-height</h3>
+      <p>
+        Встановлює міжрядковий інтервал (інтерлін'яж, висоту рядка) тексту. За
+        замовчуванням відстань між рядками залежить від виду шрифту і його
+        розмірів, і визначається браузером автоматично.
+      </p>
+      <pre class="code">
+line-height: множник | значення | відсотки | normal | inherit  
+</pre
+      >
+      <p>
+        Значення можна задавати абсолютними або відносними одиницями і
+        множником. Найкраще встановлювати значення за допомогою множника, тоді
+        інтерлін'яж розраховується від поточного розміру шрифту тексту.
+      </p>
+      <pre class="code">
+&lt;p&nbsp;class=&quot;text&quot;&gt;
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati commodi,
+  veritatis nihil alias iste odit similique sit eius optio veniam, impedit
+  cumque fuga facere labore quo id necessitatibus quaerat rerum.Obcaecati
+  commodi, veritatis nihil alias iste odit similique sit eius optio veniam,
+  impedit cumque fuga facere labore quo id necessitatibus quaerat rerum.
+&lt;/p&gt;  
+</pre
+      >
+      <p>
+        Наприклад, якщо в макеті розмір шрифту 16px, а інтерлін'яж - 24px,
+        просто ділимо 24 на 16 і отримуємо множник 1.5. Використання множника
+        гарантує рівномірне масштабування міжрядкового інтервалу при зміні
+        розміру тексту.
+      </p>
+      <pre class="code">
+.text {
+  font-size: 16px;
+  line-height: 1.5;
+}  
+</pre
+      >
+      <h3>Властивість letter-spacing</h3>
+      <p>
+        Визначає інтервал між символами. За замовчуванням відстань між символами
+        встановлюється, виходячи з типу і виду шрифту, його розмірів і
+        налаштувань операційної системи.
+      </p>
+      <pre class="code">
+letter-spacing: значення | normal | inherit  
+</pre
+      >
+      <p>
+        Іноді дизайнери встановлюють нестандартне значення міжсимвольної
+        відстані, і саме для цього існує властивість letter-spacing.
+      </p>
+      <pre class="code">
+&lt;article&nbsp;class=&quot;post&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&nbsp;class=&quot;post-title&quot;&gt;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&nbsp;class=&quot;post-text&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.Obcaecati
+<br>&nbsp;&nbsp;&nbsp;&nbsp;commodi,&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;impedit&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <p>
+        Для наочності задамо великі значення letter-spacing тексту заголовка і
+        абзацу.
+      </p>
+      <pre class="code">
+.post-title {
+  letter-spacing: 10px;
+}
+
+.post-text {
+  letter-spacing: 5px;
+}  
+</pre
+      >
+      <h3>Властивість word-spacing</h3>
+      <p>
+        Визначає інтервал між словами. За замовчуванням відстань між словами
+        встановлюється з огляду на тип і вид шрифту, його розмірів і налаштувань
+        операційної системи.
+      </p>
+      <pre class="code">
+word-spacing: значення | normal | inherit  
+</pre
+      >
+      <p class="note">
+        Цікаво: Властивість word-spacing належить до групи властивостей
+        оформлення тексту, які застосовуються досить рідко.
+      </p>
+      <h3>Властивість text-shadow</h3>
+      <p>
+        Контролює тінь тексту, а також встановлює її параметри: колір, зміщення
+        і радіус розмиття.
+      </p>
+      <pre class="code">
+text-shadow: &lt;зміщення&nbsp;по&nbsp;x&gt;,&nbsp;&lt;зміщення&nbsp;по&nbsp;y&gt;,&nbsp;&lt;радіус&nbsp;розмиття&gt;,&nbsp;&lt;колір&gt;  
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          колір - задається в будь-якому форматі. За замовчуванням колір тіні
+          збігається з кольором тексту.
+        </li>
+        <li>
+          зміщення по x - зміщення тіні за горизонталлю щодо тексту. Позитивне
+          значення задає зміщення тіні вправо, негативне - вліво.
+        </li>
+        <li>
+          зміщення по y - зміщення тіні за вертикаллю щодо тексту. Позитивне
+          значення задає зміщення тіні вниз, негативне - вгору.
+        </li>
+        <li>
+          радіус розмиття - чим більше значення, тим сильніше тінь розмивається
+          і стає світлішою. За замовчуванням, якщо не заданий, буде дорівнювати
+          0.
+        </li>
+      </ul>
+      <pre class="code">
+&lt;h1&nbsp;class=&quot;title&quot;&gt;Fusce&nbsp;posuere&nbsp;ligula&nbsp;elementum&nbsp;purus&lt;/h1&gt;  
+</pre
+      >
+      <p>
+        Зробимо білий текст з темною тінню. Для цього встановимо зміщення по
+        осях X і Y 2px, радіус розмиття 4px і чорний колір тіні.
+      </p>
+      <pre class="code">
+.title {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000;
+}  
+</pre
+      >
+      <h4>Багатошарова тінь</h4>
+      <p>
+        На один елемент можна додати кілька тіней, вказавши їх через кому.
+        Виходить багатошаровий пиріг з тіней.
+      </p>
+      <pre class="code">
+&lt;h1&nbsp;class=&quot;title&quot;&gt;Fusce&nbsp;posuere&nbsp;ligula&nbsp;elementum&nbsp;purus&lt;/h1&gt;&nbsp;&nbsp;
+<br></pre>
+      <p>
+        Порядок відображення наступний - перша тінь у списку розміщується
+        найвище, остання - найнижче. Тобто, чим раніше вказана тінь, тим вище
+        вона у шарах, і буде візуально перекривати всі наступні.
+      </p>
+      <pre class="code">
+.title {
+  color: #ffffff;
+  text-shadow: 2px 2px 20px #ff0000, 5px 5px 5px #000000;
+}  
+</pre
+      >
+      <h3>Властивість white-space</h3>
+      <p>
+        За замовчуванням браузер ігнорує більше одного пробілу і перенесення
+        рядка в HTML-розмітці. Властивість white-space, як і тег &lt;pre&gt;,
+        але гнучкіше управляє форматуванням пробілів і перенесень тексту.
+      </p>
+      <pre class="code">
+white-space: normal | nowrap | pre | pre-wrap  
+</pre
+      >
+    </section>
+
+    <script src="../js/markup-script.js" type="module"></script>
+  </body>
+</html>

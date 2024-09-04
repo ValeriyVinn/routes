@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каскад стилів</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Каскад стилів</h2>
+    <section class="section">
+      <p>
+        <b>Каскадування</b> - це механізм, який керує кінцевими значеннями
+        властивостей елемента, якщо до нього застосовується кілька CSS-правил.
+      </p>
+      <ul class="section-list">
+        <li>
+          Якщо до елемента застосовується кілька правил, їх властивості
+          комбінуються
+        </li>
+        <li>
+          Якщо правила містять однакові властивості з різними значеннями, то
+          вони конфліктують
+        </li>
+      </ul>
+      <pre class="code">
+/* Яким буде колір тексту абзаців? */
+p {
+  color: blue;
+  background-color: orange;
+}
+
+p {
+  color: teal;
+}  
+</pre
+      >
+      <p>
+        Для того щоб зібрати фінальні стилі елемента і вирішити конфлікти
+        значень властивостей, браузер використовує два механізми:
+        <b>специфічність</b> і <b>наслідування</b>.
+      </p>
+      <h3>Специфічність селектора</h3>
+      <p>
+        Для кожного CSS-правила браузер обчислює специфічність (вагу) селектора.
+        Якщо до елементу потрібно застосувати властивості з різних правил, та
+        існують конфліктуючі (однакові) властивості, використовується значення
+        властивості з правила з найбільш високою специфічністю селектора.
+      </p>
+      <p>
+        Значення специфічності складається з чотирьох рангів, важливість яких
+        збільшується справа наліво.
+      </p>
+      <img src="./img/specificity.svg" alt="specificity" width="420" />
+      <h4>Селектори 4-го рангу</h4>
+      <p>
+        Кожен селектор елемента і псевдоелемента додає одиницю до четвертого
+        рангу.
+      </p>
+      <pre class="code">
+&lt;article&gt;
+<br>&nbsp;&nbsp;&lt;h1&gt;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&gt;Читати&nbsp;далі...&lt;/a&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <p>
+        Колір тексту абзацу буде помаранчевим, тому що специфічність другого
+        правила вище.
+      </p>
+      <pre class="code">
+/* Специфічність - 0 0 0 1 */
+p {
+  color: green;
+}
+
+/* ✅ Специфічність - 0 0 0 2 */
+article > p {
+  color: orange;
+}  
+</pre
+      >
+      <h4>Селектори 3-го рангу</h4>
+      <p>
+        Кожен селектор класу, атрибута і псевдокласу додає одиницю до третього
+        рангу.
+      </p>
+      <pre class="code">
+&lt;article&nbsp;class=&quot;post&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&nbsp;class=&quot;post-title&quot;&gt;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;post-link&quot;&gt;Читати&nbsp;далі...&lt;/a&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <p>
+        Колір тексту заголовка буде помаранчевим, бо специфічність третього
+        правила вище.
+      </p>
+      <pre class="code">
+/* Специфічність - 0 0 1 0 */
+.post-title {
+  color: green;
+}
+
+/* Специфічність - 0 0 1 1 */
+.post > h1 {
+  color: red;
+}
+
+/* ✅ Специфічність - 0 0 2 0 */
+.post > .post-title {
+  color: orange;
+}  
+</pre
+      >
+      <p>
+        Колір тексту посилання буде коричневим, тому що специфічність п'ятого
+        правила вище.
+      </p>
+      <pre class="code">
+/* Специфічність - 0 0 0 1 */
+a {
+  color: green;
+}
+
+/* Специфічність - 0 0 1 0 */
+.post-link {
+  color: orange;
+}
+
+/* Специфічність - 0 0 1 1 */
+a.post-link {
+  color: blue;
+}
+
+/* Специфічність - 0 0 2 0 */
+.post > .post-link {
+  color: red;
+}
+
+/* ✅ Специфічність - 0 0 2 1 */
+.post > a.post-link {
+  color: brown;
+}  
+</pre
+      >
+      <h4>Селектори 2-го рангу</h4>
+      <p>Кожен селектор ідентифікатора додає одиниць до другого рангу.</p>
+      <pre class="code">
+&lt;article&nbsp;class=&quot;post&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&nbsp;class=&quot;post-title&quot;&nbsp;id=&quot;title&quot;&gt;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;post-link&quot;&gt;Читати&nbsp;далі...&lt;/a&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <p>
+        Колір тексту заголовка буде помаранчевим, бо специфічність другого
+        правила вище.
+      </p>
+      <pre class="code">
+/* Специфічність - 0 0 1 0 */
+.post-title {
+  color: green;
+}
+
+/* ✅ Специфічність - 0 1 0 0 */
+#title {
+  color: orange;
+}  
+</pre
+      >
+      <h4>Селектори 1-го рангу</h4>
+      <p>
+        Вбудовані стилі додають одиницю до першого рангу, мають найвищу
+        специфічність, і їх неможливо перевизначити через CSS.
+      </p>
+      <pre class="code">
+<!-- Специфічність такого стилю - 1 0 0 0 -->
+&lt;p&nbsp;style=&quot;color:&nbsp;green;&quot;&gt;
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati commodi,
+  veritatis nihil alias iste odit similique sit eius optio veniam, impedit
+  cumque fuga facere labore quo id necessitatibus quaerat rerum.
+&lt;/p&gt;&nbsp; 
+</pre>
+      <h4>Однакова специфічність</h4>
+      <p>
+        Якщо специфічність однакова, перемагає правило, розташоване нижче в
+        коді.
+      </p>
+      <pre class="code">
+/* Три селектори елемента з однаковою специфічністю */
+a {
+  color: teal;
+}
+
+a {
+  color: brown;
+}
+
+/* Оскільки це правило стоїть нижче, до всіх посилань застосується помаранчевий колір тексту */
+a {
+  color: orange;
+}  
+</pre
+      >
+      <h4>Уникаємо специфічності</h4>
+      <p>
+        Якщо селектор виглядає як A > B > C + X Y, варто задуматися. Чим
+        простіший селектор, тим менше проблем зі специфічністю. Візьміть собі за
+        правило використовувати селектори класу. Атрибут class не тільки
+        допомагає уникнути проблем зі специфічністю, але й підвищує
+        читабельність HTML-розмітки.
+      </p>
+      <p>
+        Перший підхід - це присвоєння класу загальному блоку-батькові та
+        використання селекторів дитини і нащадка.
+      </p>
+      <pre class="code">
+&lt;article&nbsp;class=&quot;post&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&gt;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&gt;Читати&nbsp;далі...&lt;/a&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <p>
+        Такий CSS добре працює, коли розмітка проста. Але зі зростанням
+        складності розмітки блоку, зручна стилізація по селекторам тегу стає
+        неможливою. Наприклад, якщо в пості буде 5 посилань, а не одне, точково
+        вибрати якесь посилання не вийде або селектор буде занадто складний.
+      </p>
+      <pre class="code">
+.post {
+  /* Стилі статті */
+}
+
+.post > h1 {
+  /* Стилі заголовка */
+}
+
+.post > p {
+  /* Стилі тексту */
+}
+
+.post > a {
+  /* Стилі посилання */
+}
+
+.post > a:hover {
+  /* Стилі посилання при ховері */
+}  
+</pre
+      >
+      <p>
+        Другий підхід - це додавання описових класів блоку-батькові і тегами
+        всередині нього.
+      </p>
+      <pre class="code">
+&lt;article&nbsp;class=&quot;post&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&nbsp;class=&quot;title&quot;&gt;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&nbsp;class=&quot;text&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&nbsp;&nbsp;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;&quot;&gt;Читати&nbsp;далі...&lt;/a&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <p>
+        Такий CSS непогано масштабується і підтримується. Це відправна точка для
+        написання хорошого CSS. Проте, з ростом складності розмітки можуть бути
+        невеликі проблеми зі специфічністю.
+      </p>
+      <pre class="code">
+.post {
+  /* Стилі статті */
+}
+
+.post > .title {
+  /* Стилі заголовка */
+}
+
+.post > .text {
+  /* Стилі тексту */
+}
+
+.post > .link {
+  /* Стилі посилання */
+}
+
+.post > .link:hover {
+  /* Стилі посилання при ховері */
+}  
+</pre
+      >
+      <p>
+        Третій підхід полягає у встановленні дуже специфічних класів
+        блоку-батькові та кожному тегу всередині нього за принципом
+        імя_батька-імя_дитини.
+      </p>
+      <pre class="code">
+&lt;article&nbsp;class=&quot;post&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&nbsp;class=&quot;post-title&quot;&gt;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&nbsp;class=&quot;post-text&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;post-link&quot;&gt;Читати&nbsp;далі...&lt;/a&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <p>
+        За такого підходу використовуються прості селектори класу, не потрібно
+        думати про специфічність. Такий CSS добре масштабується і підтримується.
+        В сучасній розробці під час написання стилів використовуються варіації
+        цього підходу.
+      </p>
+      <pre class="code">
+.post {
+  /* Стилі статті */
+}
+
+.post-title {
+  /* Стилі заголовка */
+}
+
+.post-text {
+  /* Стилі тексту */
+}
+
+.post-link {
+  /* Стилі посилання */
+}
+
+.post-link:hover {
+  /* Стилі посилання при ховері */
+}  
+</pre
+      >
+      <p class="useful">
+        Корисно: Не варто обмежувати себе у виборі лише одного підходу. Усі три
+        методи іменування розмітки класами і написання стилів можна
+        використовувати разом, залежно від ситуації.
+      </p>
+      <h4>Ключове слово !important</h4>
+      <p>
+        Специфічність правила можна підвищити за допомогою ключового слова
+        !important, додавши його після значення властивості.
+      </p>
+      <pre class="code">
+&lt;p&nbsp;class=&quot;text&quot;&nbsp;id=&quot;text-id&quot;&gt;
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati commodi,
+  veritatis nihil alias iste odit similique sit eius optio veniam, impedit
+  cumque fuga facere labore quo id necessitatibus quaerat rerum.
+&lt;/p&gt;  
+</pre
+      >
+      <p>
+        Значення такої властивості приорітетніше від усіх інших, і колір тексту
+        абзацу буде помаранчевий.
+      </p>
+      <pre class="code">
+p {
+  color: orange !important;
+}
+
+p#text-id.text {
+  color: blue;
+}  
+</pre
+      >
+      <p class="attention">
+        Увага: Вкрай не рекомендується використовувати !important в сучасній
+        розробці. Єдиний оптимальний випадок - це перевизначення значення
+        властивості, якщо відсутній прямий доступ до файлу зі стилями, наприклад
+        стиль з бібліотеки.
+      </p>
+      <h3>Наслідування властивостей</h3>
+      <p>
+        Генетичне наслідування звично бачити в житті. Наприклад, у високих
+        батьків найчастіше високі діти, часто передається колір волосся тощо.
+        Дещо подібне існує і в CSS. Якщо встановити зелений колір тексту
+        батькові, то, якщо будь-яке правило не перевизначить це значення, колір
+        тексту всіх його нащадків також буде зеленим.
+      </p>
+      <p>
+        Наслідування - це механізм, за допомогою якого значення певних
+        властивостей передаються від предка його нащадкам. Наслідуються
+        переважно властивості оформлення тексту, наприклад колір. Це зручно,
+        оскільки не потрібно ставити повторювані стилі для кожного нащадка
+        окремо.
+      </p>
+      <pre class="code">
+&lt;article&nbsp;class=&quot;post&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&gt;Популярне&nbsp;за&nbsp;цей&nbsp;місяць&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&gt;Читати&nbsp;далі...&lt;/a&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <p>Зробимо весь текст посту зеленого кольору.</p>
+      <pre class="code">
+.post {
+  color: green;
+}  
+</pre
+      >
+      <p>
+        В інструментах розробника, на вкладці Styles внизу побачимо наслідування
+        для абзацу і заголовка.
+      </p>
+      <img src="./img/inheritance.png" alt="inheritance" width="960" />
+      <p>
+        В житті не всі атрибути батьків передаються дітям. Те саме і в CSS, що
+        не кожна властивість за замовчуванням наслідується нащадками. Фактично,
+        якби всі властивості були успадковані, ефект був би аналогічний
+        відсутності наслідування взагалі, і довелося б написати дуже багато CSS
+        для скидання стилів наслідуваних від батька, щоб перевизначити цю
+        поведінку.
+      </p>
+      <h4>Винятки</h4>
+      <p>
+        Не всі елементи наслідують значення властивостей від предків. Наприклад,
+        посилання не наслідує колір тексту.
+      </p>
+      <pre class="code">
+&lt;article&nbsp;class=&quot;post&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&gt;Популярне&nbsp;за&nbsp;цей&nbsp;місяць&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;p&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lorem,&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Obcaecati&nbsp;commodi,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;veritatis&nbsp;nihil&nbsp;alias&nbsp;iste&nbsp;odit&nbsp;similique&nbsp;sit&nbsp;eius&nbsp;optio&nbsp;veniam,&nbsp;impedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;cumque&nbsp;fuga&nbsp;facere&nbsp;labore&nbsp;quo&nbsp;id&nbsp;necessitatibus&nbsp;quaerat&nbsp;rerum.
+<br>&nbsp;&nbsp;&lt;/p&gt;
+<br>&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;post-link&quot;&gt;Читати&nbsp;далі...&lt;/a&gt;
+<br>&lt;/article&gt;  
+</pre>
+      <p>
+        Якщо необхідно, щоб у пості воно була такого ж кольору, що і весь текст,
+        можна використовувати спеціальне значення inherit для властивості color,
+        щоб не дублювати колір у двох місцях.
+      </p>
+      <pre class="code">
+.post {
+  color: green;
+}
+
+.post-link {
+  color: inherit;
+}  
+</pre
+      >
+      <p class="useful">
+        Корисно: Значення inherit говорить браузеру про те, що необхідно
+        наслідувати значення властивості від предка. Для кольору краще
+        використовувати значення currentColor (поточний колір).
+      </p>
+      <h4>Колір тексту сторінки</h4>
+      <p>
+        Для того щоб задати базовий (домінантний) колір тексту всього документа,
+        створюємо правило для тегу &lt;body&gt; і додаємо властивість color. Цей
+        колір буде наслідуваний усім текстовим контентом, крім посилань.
+      </p>
+      <pre class="code">
+  body {
+  color: #2a2a2a;
+}
+</pre
+      >
+    </section>
+  </body>
+</html>

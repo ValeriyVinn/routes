@@ -77,3 +77,35 @@ for (i = 0; i < acc.length; i++) {
   // Встановлюємо перший слайд активним за замовчуванням
   // slideElements[0].classList.add('visible');
   
+
+  // ! Tabs -----------
+
+  // document.querySelectorAll('.tab-button').forEach(button => {
+  //   button.addEventListener('click', () => {
+  //     // Зняти активний клас з усіх кнопок і контенту
+  //     document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('actual'));
+  //     document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('actual'));
+  
+  //     // Додати активний клас до вибраної кнопки і відповідного контенту
+  //     button.classList.add('actual');
+  //     document.getElementById(button.dataset.tab).classList.add('actual');
+  //   });
+  // });
+  
+  document.querySelectorAll('.tabs-container').forEach(container => {
+    const buttons = container.querySelectorAll('.tab-button');
+    const contents = container.querySelectorAll('.tab-content');
+  
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Зняти активний клас з усіх кнопок і контенту в поточному контейнері
+        buttons.forEach(btn => btn.classList.remove('actual'));
+        contents.forEach(content => content.classList.remove('actual'));
+  
+        // Додати активний клас до вибраної кнопки і відповідного контенту
+        button.classList.add('actual');
+        container.querySelector(`#${button.dataset.tab}`).classList.add('actual');
+      });
+    });
+  });
+  

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Псевдокласи стану</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Псевдокласи стану</h2>
+    <section class="section">
+      <p>
+        Селектори стану використовуються для застосування стилів до
+        інтерактивних елементів за певної події, наприклад, у разі наведення
+        курсору на посилання або фокусування з клавіатури.
+      </p>
+      <p>
+        Псевдоклас визначає конкретний стан елемента і прикріплений до селектора
+        тегу, класу тощо. Пробілу між селектором і псевдокласом немає, щоб
+        показати, що вони пов'язані один з одним. Якщо додати пробіл, то
+        псевдоклас застосується до всіх елементів в документі.
+      </p>
+      <pre class="code">
+селектор:псевдоклас {
+  /* Властивості */
+}  
+</pre
+      >
+      <h3>Псевдоклас :hover</h3>
+      <p>
+        Активується, коли курсор миші знаходиться в межах елемента, наприклад,
+        при наведенні миші на посилання або будь-який інший елемент.
+      </p>
+      <pre class="code">
+&lt;p&gt;
+<br>&nbsp;&nbsp;Хорошу&nbsp;шпаргалку&nbsp;з&nbsp;тегів&nbsp;можна&nbsp;знайти
+<br>&nbsp;&nbsp;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;https://htmlreference.io&quot;&gt;за&nbsp;посиланням&lt;/a&gt;.
+<br>&lt;/p&gt;  
+</pre>
+      <p>Додамо посиланню базовий стиль і стиль наведення.</p>
+      <pre class="code">
+.link {
+  color: teal;
+}
+
+.link:hover {
+  color: tomato;
+}  
+</pre
+      >
+      <p>
+        Псевдокласи можна застосовувати до будь-яких селекторів, і навіть
+        контекстних.
+      </p>
+      <pre class="code">
+&lt;ul&nbsp;class=&quot;social-links&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;https://twitter.com&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;https://www.instagram.com&quot;&gt;Instagram&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;https://www.facebook.com&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <p>Додамо посиланню всередині списку базовий стиль і стиль наведення.</p>
+      <pre class="code">
+.social-links .link {
+  color: teal;
+}
+
+.social-links .link:hover {
+  color: tomato;
+}  
+</pre
+      >
+      <p class="useful">
+        Корисно: Такий селектор читається як «При ховері по елементам з класом
+        link, які знаходяться всередині елемента з класом social-links». Тобто
+        читаються селектори справа наліво.
+      </p>
+      <h3>Псевдоклас :focus</h3>
+      <p>
+        Активується, коли інтерактивний елемент (посилання, кнопка, поле форми)
+        отримує фокус під час навігації по сторінці клавіатурою (клавішею Tab).
+      </p>
+      <pre class="code">
+&lt;ul&nbsp;class=&quot;social-links&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;https://twitter.com&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;https://www.instagram.com&quot;&gt;Instagram&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;https://www.facebook.com&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <p>Додамо посиланню всередині списку базовий стиль і стиль фокусу.</p>
+      <pre class="code">
+.social-links .link {
+  color: teal;
+}
+
+.social-links .link:focus {
+  color: orange;
+}  
+</pre
+      >
+      <p>
+        Для того щоб врахувати наведення і фокусування, варто стилізувати
+        відразу обидва стани. Це робиться простим переліченням селекторів.
+      </p>
+      <pre class="code">
+.social-links .link {
+  color: teal;
+}
+
+/* Два і більше селекторів розділяються комою */
+.social-links .link:hover,
+.social-links .link:focus {
+  color: orange;
+}  
+</pre
+      >
+      <h3>Псевдоклас :active</h3>
+      <p>
+        Відбувається під час активації елемента. Наприклад, посилання стає
+        активним, якщо навести на нього курсор і клацнути мишкою. Незважаючи на
+        те, що активним може стати практично будь-який елемент, псевдоклас
+        :active використовується в основному для посилань і кнопок.
+      </p>
+      <pre class="code">
+&lt;ul&nbsp;class=&quot;social-links&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;https://twitter.com&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;https://www.instagram.com&quot;&gt;Instagram&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;https://www.facebook.com&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <pre class="code">
+.social-links .link {
+  color: teal;
+}
+
+.social-links .link:hover,
+.social-links .link:focus {
+  color: orange;
+}
+
+.social-links .link:active {
+  color: red;
+}  
+</pre
+      >
+      <h3>Псевдоклас :visited</h3>
+      <p>
+        Цей псевдоклас активується на посиланнях, які вже були відвідані. За
+        замовчуванням посилання відображаються синіми і після відвідування
+        стають фіолетовими.
+      </p>
+      <pre class="code">
+&lt;ul&nbsp;class=&quot;social-links&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;https://twitter.com&quot;&nbsp;class=&quot;link&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;https://www.instagram.com&quot;&nbsp;class=&quot;link&quot;&gt;Instagram&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;https://www.facebook.com&quot;&nbsp;class=&quot;link&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <pre class="code">
+.social-links .link {
+  color: teal;
+}
+
+.social-links .link:hover,
+.social-links .link:focus {
+  color: orange;
+}
+
+.social-links .link:active {
+  color: red;
+}
+
+.social-links .link:visited {
+  color: green;
+}  
+</pre
+      >
+      <h3>Ховер і таблиці</h3>
+      <p>
+        Псевдоклас :hover не обов'язково повинен застосовуватися до посилань,
+        його можна додавати і до інших елементів документа. Наприклад, до рядків
+        або клітинок таблиці, щоб вони змінювали колір фону під час наведення
+        курсору миші.
+      </p>
+      <pre class="code">
+&lt;table&nbsp;class=&quot;schedule&quot;&gt;
+<br>&nbsp;&nbsp;&lt;thead&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Номер&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Маршрут&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Час&nbsp;у&nbsp;дорозі&lt;/th&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;/thead&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;tbody&nbsp;class=&quot;schedule-body&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;433&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Київ&nbsp;-&nbsp;Ковель&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;5&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;701&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Харків&nbsp;-&nbsp;Дніпро&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;7&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;258&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Львів&nbsp;-&nbsp;Одеса&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;4&nbsp;годин&lt;/td&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+<br>&nbsp;&nbsp;&lt;/tbody&gt;
+<br>&lt;/table&gt;  
+</pre>
+      <p>Додамо базове оформлення таблиці і стилі для ховера по рядках.</p>
+      <pre class="code">
+.schedule-body > tr:hover {
+  background-color: tomato;
+  color: white;
+}
+
+/* Оформлення таблиці */
+.schedule {
+  border-collapse: collapse;
+}
+
+.schedule th,
+.schedule td {
+  padding: 8px;
+  border: 1px solid #212121;
+}  
+</pre
+      >
+      <p>Ось робочий приклад.</p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="wvWwRxg"
+          data-pen-title="lesson-03-table-hover"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/wvWwRxg">
+              lesson-03-table-hover</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість cursor</h3>
+      <p>
+        Встановлює тип вказівника миші, коли він знаходиться в межах елемента.
+        Вид курсору залежить від операційної системи і її налаштувань. Міняти
+        тип курсору просто так - погана ідея, це тільки заплутає користувача,
+        коли, замість звичної руки або лупи, він побачить щось інше. Здебільшого
+        краще залишити все як є.
+      </p>
+      <p>
+        Наводьте мишкою на текст (значення властивості) і курсор буде змінювати
+        свій вигляд.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="WNryoZK"
+          data-pen-title="lesson-03-cursor"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/WNryoZK">
+              lesson-03-cursor</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+    </section>
+  </body>
+</html>

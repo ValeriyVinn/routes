@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS-змінні</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>CSS-змінні</h2>
+    <section class="section">
+      <p>
+        Користувацькі властивості (CSS Custom Properties), також відомі як
+        CSS-змінні - це контейнери для значень, визначені в CSS-документі з
+        метою повторного використання. CSS-змінні спрощують використання і зміну
+        значень, що повторюються у файлі стилів. Вони підтримуються браузером
+        нативно і не вимагають жодних додаткових інструментів.
+      </p>
+<div class="tabs-container">
+        <div class="tabs">
+        <button class="tab-button actual" data-tab="tab1">CSS</button>
+        <button class="tab-button" data-tab="tab2">HTML</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+.section {
+  /* Інші стилі */
+  border: 2px solid #3f51b5;
+}
+
+.section-title {
+  /* Інші стилі */
+  color: #3f51b5;
+}
+
+.section-title::before {
+  /* Інші стилі */
+  background-color: #3f51b5;
+}    
+</pre
+        >
+      </div>
+
+      <div id="tab2" class="tab-content">
+        <pre class="code">
+&lt;section&nbsp;class=&quot;section&quot;&gt;
+<br>&nbsp;&nbsp;&lt;h1&nbsp;class=&quot;section-title&quot;&gt;Section&nbsp;title&lt;/h1&gt;
+<br>&lt;/section&gt;&nbsp;   
+</pre>
+      </div>
+</div>
+
+
+      <p>
+        У наведеному прикладі значення #3f51b5 зустрічається тричі. Припустимо,
+        що це головний колір бренду, який постійно використовується на різних
+        сторінках сайту. Якщо зміниться колір бренду, нам потрібно буде всюди
+        замінити це значення, а у великому проекті це можуть бути сотні місць.
+        Найкраще, що ми можемо зробити - використовувати пошук і заміну.
+      </p>
+      <h3>Оголошення змінної</h3>
+      <p>
+        На допомогу приходять CSS-змінні. Ім'я змінної чутливе до регістру та
+        може містити латинські літери, цифри, підкреслення і тире. Створимо
+        змінну --brand-color для зберігання кольору бренду (#3f51b5) і будемо її
+        використовувати.
+      </p>
+      <pre class="code">
+:root {
+  --brand-color: #3f51b5;
+}  
+</pre
+      >
+      <p>
+        Глобальні змінні, що доступні в будь-якому іншому правилі, визначаються
+        в селекторі :root - специфічнішому селекторі елемента &lt;html&gt;.
+        Оголошення змінної починається з подвійного дефіса --, за яким стоїть її
+        ім'я у довільній нотації. Наприклад, brand-color або brandColor - це
+        валідні імена змінної, головне, щоб всі змінні в проекті були в
+        однаковій нотації. Ім'я та значення розділяється двокрапкою, а в кінці
+        ставиться крапка з комою.
+      </p>
+      <p class="note">
+        Цікаво: Оголошення змінної - це створення нової CSS-властивості, що
+        наслідується і тому доступна скрізь, оскільки будь-який елемент - це
+        нащадок елемента &lt;html&gt;.
+      </p>
+      <h3>Використання змінної</h3>
+      <p>
+        Для отримання доступу до значення змінної застосовується вбудована
+        функція var(), якій першим аргументом передається ім'я змінної.
+      </p>
+      <pre class="code">
+:root {
+  --brand-color: #3f51b5;
+}
+
+.section {
+  /* Інші стилі */
+  border: 2px solid var(--brand-color);
+}
+
+.section-title {
+  /* Інші стилі */
+  color: var(--brand-color);
+}
+
+.section-title::before {
+  /* Інші стилі */
+  background-color: var(--brand-color);
+}  
+</pre
+      >
+      <p>
+        Коду стало не набагато більше, але він гнучкіший і читабельніший. Якщо
+        необхідно змінити колір бренду, досить замінити значення змінної
+        --brand-color і колір зміниться всюди, де вона використовується.
+      </p>
+      <p class="useful">
+        Корисно: CSS-змінні застосовуються не тільки для зберігання палітри
+        кольорів проекту, в них можна зберігати що завгодно. Наприклад,
+        стандартні розміри шрифту, радіус заокруглення рамок, загальні відступи
+        і поля, ширину контейнера, контрольні точки для адаптивної верстки тощо.
+        Тобто будь-які значення, які використовуються повторно у різних
+        CSS-правилах.
+      </p>
+      <h4>Резервні значення</h4>
+      <p>
+        Функція var(ім'я_змінної, фолбек) може приймати два значення. Другий
+        аргумент - це фолбек - значення, яке буде використовуватися, якщо
+        змінна, яка передана першим аргументом, не визначена.
+      </p>
+      <pre class="code">
+.section {
+  border: 2px solid var(--brand-color, orange);
+}
+
+.section-title {
+  color: var(--brand-color, black);
+}
+
+.section-title::before {
+  background-color: var(--brand-color, tomato);
+}  
+</pre
+      >
+      <p class="useful">
+        Корисно: Можливість передати значення за замовчуванням, це, в першу
+        чергу можливість, а не обов'язкова вимога у використанні CSS-змінних.
+        Немає потреби всюди вказувати фолбек.
+      </p>
+      <h4>Область видимості</h4>
+      <p>
+        Змінна --brand-color - глобальна, тому що визначена в :root, тобто
+        доступна в будь-якому іншому елементі. Якщо значення буде
+        використовуватися тільки в конкретній частині сторінки, можна створювати
+        змінні з локальною областю видимості. Вони будуть доступні тільки для
+        того елемента, і його нащадків, в якому були оголошенні.
+      </p>
+
+      <div class="tabs-container">
+  <div class="tabs">
+        <button class="tab-button actual" data-tab="tab1">CSS</button>
+        <button class="tab-button" data-tab="tab2">HTML</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+.alert {
+  --alert-text-color: black;
+  --alert-accent-color: tomato;
+}
+
+.alert-text {
+  color: var(--alert-text-color);
+  border: 1px solid var(--alert-accent-color);
+}
+
+.alert-icon {
+  background-color: var(--alert-accent-color);
+}   
+</pre
+        >
+      </div>
+
+      <div id="tab2" class="tab-content">
+        <pre class="code">
+&lt;div&nbsp;class=&quot;alert&quot;&gt;
+<br>&nbsp;&nbsp;&lt;p&nbsp;class=&quot;alert-text&quot;&gt;Alert&nbsp;text&lt;/p&gt;
+<br>&nbsp;&nbsp;&lt;svg&nbsp;class=&quot;alert-icon&quot;&gt;&lt;/svg&gt;
+<br>&lt;/div&gt;   
+</pre>
+      </div>
+      </div>
+      
+      <h3>Перевизначення значень</h3>
+      <p>
+        Змінні можна перевизначати локально іншими значеннями. Для цього
+        необхідно оголосити змінну з таким самим ім'ям, що і в предка, і задати
+        їй необхідне значення.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="jOMpGvX"
+          data-pen-title="lesson-05-css-vars"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/jOMpGvX">
+              lesson-05-css-vars</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+    </section>
+
+    <script src="../js/markup-script.js" type="module"></script>
+  </body>
+</html>

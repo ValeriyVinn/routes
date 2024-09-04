@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Нестандартні шрифти</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Нестандартні шрифти</h2>
+    <section class="section">
+<p>Шрифт допомагає зробити сайт яскравим і незабутнім. Мільйони сайтів з одним шрифтом «Times New Roman» були б, напевно, занадто нудні. Тому дизайнери створюють свої шрифти, а розробники можуть використовувати їх в проектах.</p>
+<p class="note">Цікаво:
+
+  Шрифти діляться на платні і безкоштовні. Ліцензію платного шрифту необхідно купувати, а використовувати його без ліцензії загрожує порушенням авторських прав. Є багато гарних безкоштовних шрифтів, які знаходяться в загальному доступі.</p>
+<h3>Сервіс Google Fonts</h3>
+<p> <a href="https://fonts.google.com/">Google Fonts</a>  - це сховище величезної кількості безкоштовних шрифтів. Все що необхідно зробити - це знайти потрібний шрифт, отримати на нього посилання і підключити у своєму HTML-файлі як ще одну таблицю стилів.</p>
+<p>Скопіюйте та вставте наступний HTML-код у свій файл розмітки і відкрийте сторінку в браузері. Текст, відображений нестандартним шрифтом, нічим не відрізняється, крім зовнішнього вигляду, тому для його оформлення можна використовувати будь-які CSS-властивості.</p>
+<pre class="code">
+&lt;html&gt;
+<br>&nbsp;&nbsp;&lt;head&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;link
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;https://fonts.googleapis.com/css2?family=Tangerine:wght@700&amp;display=swap&quot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rel=&quot;stylesheet&quot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;/&gt;
+<br>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;style&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.title&nbsp;{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&nbsp;&#39;Tangerine&#39;,&nbsp;cursive;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/style&gt;
+<br>&nbsp;&nbsp;&lt;/head&gt;
+<br>&nbsp;&nbsp;&lt;body&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&nbsp;class=&quot;title&quot;&gt;Making&nbsp;the&nbsp;Web&nbsp;Beautiful!&lt;/h1&gt;
+<br>&nbsp;&nbsp;&lt;/body&gt;
+<br>&lt;/html&gt;  
+</pre>
+<p>Для того щоб підключити нестандартний безкоштовний шрифт з сервісу Google Fonts, переходимо за посиланням і потрапляємо на .<a href="https://fonts.google.com/">сторінку пошуку</a></p>
+<img src="./img/font-step-1.png" alt="font step 1" width="840">
+<p>Можна перегортати галерею шрифтів і шукати ті, які сподобалися, або, якщо ім'я шрифту відоме, ввести його в поле пошуку і натиснути на картку шрифту.</p>
+<img src="./img/font-step-2.png" alt="font step 2" width="840">
+<p>На сторінці шрифту вибираємо необхідну вагу. Вибирати всі доступні жирності не потрібно, що більше варіантів, то важчим буде файл шрифту, і довше буде завантажуватися ваша веб-сторінка. Те саме і з кількістю шрифтів, звичайно обмежуються одним, максимум двома шрифтами для всього сайту.</p>
+<p class="attention">Увага:
+
+  Не всі шрифти підтримують повний діапазон жирності (від 100 до 900) і накреслень (стандартний або курсив). Дизайнер створює набір найпопулярніших значень. Якщо шрифт не підтримує певну вагу, браузер буде відображати його у найближчій доступній жирності.</p>
+<p>Нам потрібна тільки вага 700, тому що ми підключаємо шрифт для заголовків.</p>
+<img src="./img/font-step-3.png" alt="font step 3" width="840">
+<p>На вкладці Embed копіюємо тег &lt;link&gt;, в якому вказано посилання на таблицю стилів шрифту, і додаємо її в шапку свого HTML-документа перед іншими стилями.</p>
+<img src="./img/font-step-4.png" alt="font step 4" width="840">
+<p>Тепер у файлі стилів можна використовувати шрифт Tangerine, вказавши його у властивості font-family.</p>
+<h3>Директива @font-face</h3>
+<p>Давайте розберемося, що саме ми підключили до HTML-документа у попередній секції.</p>
+<img src="./img/font-face.png" alt="font-face" width="840">
+<ul class="section-list">
+  <ul>Відкриваємо інструменти розробника і переходимо на вкладку «Network».</ul>
+  <ul>Вибираємо фільтр «CSS», щоб відображалися тільки файли стилів.</ul>
+  <ul>Клікаємо по файлу від Google Fonts.</ul>
+  <ul>Вибираємо вкладку «Preview», в якій відображається вміст файлу.</ul>
+  <pre class="code">
+  /* latin */
+@font-face {
+  font-family: 'Tangerine';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Tangerine Bold'), local('Tangerine-Bold'),
+    url(https://fonts.gstatic.com/s/tangerine/v12/Iurd6Y5j_oScZZow4VO5srNZi5FNym499g.woff2)
+      format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}  
+  </pre>
+  <p>Отже, Google Fonts повернув нам самий звичайний CSS-файл, в якому є директива @font-face - оголошення шрифту. Ця директива дозволяє вказати параметри шрифту, який підключаємо.</p>
+  <ul class="section-list">
+    <ul>font-family - локальне ім'я для використання у нашому CSS-коді.</ul>
+    <ul>font-style - тип накреслень (звичайний, курсив тощо).</ul>
+    <ul>font-weight - вага шрифту, який підключається.</ul>
+    <ul>font-display - <a href="https://ymatuhin.ru/front-end/font-display/">управляє відображенням тексту</a>  під час завантаження шрифту.</ul>
+    <ul>src - посилання на сам файл шрифту і уточнення його типу, зазвичай woff або woff2. У нашому випадку файл шрифту лежить на серверах Google, але це може бути і локальний шрифт, який зберігається у файлах проекту.</ul>
+    <ul>unicode-range - вказує набір необхідних символів у шрифті з <a href="https://symbl.cc/en/unicode-table/">таблиці символів Unicode</a> . завантажувати всі символи не потрібно, що менше їх, то швидше завантажиться шрифт.</ul>
+  </ul>
+  <p class="useful">Корисно:
+
+    Всі відомі людству символи (мов, математичні знаки тощо) зібрані і описані стандартом, що називається Unicode, в якому кожен символ має ім'я (наприклад, «latin capital letter a») і код (code point) - число від 0 до 10FFFF.</p>
+</ul>    
+    </section>
+   
+  </body>
+</html>

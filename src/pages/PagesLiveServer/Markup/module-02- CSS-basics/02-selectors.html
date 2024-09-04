@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Селектори</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Селектори</h2>
+    <section class="section">
+      <p>
+        За допомогою різних селекторів можна вибрати один або групу елементів.
+        Селекторів
+        <a
+          href="https://webdesign.tutsplus.com/ru/the-30-css-selectors-you-must-memorize--net-16048t"
+          >доволі багато</a
+        >
+        , тому розглянемо основні, які можуть застосовуватися щодня.
+      </p>
+      <img src="./img/css-selectors.png" alt="css selectors" width="420" />
+      <h3>Селектор елемента (тегу)</h3>
+      <p>
+        Описує, до якого типу елементів буде застосоване CSS-правило. Селектор
+        елемента недостатньо специфічний для того, щоб стилізувати окремі
+        елементи, тому найчастіше застосовується для оформлення всіх тегів
+        одного типу на сторінці. Наприклад, якщо у всіх посилань в документі
+        потрібно прибрати підкреслення.
+      </p>
+      <pre class="code">
+/* Застосується до всіх абзаців на сторінці */
+p {
+  font-size: 24px;
+}
+
+/* Застосується до всіх посилань на сторінці */
+a {
+  text-decoration: none;
+}  
+</pre
+      >
+      <h3>Селектор класу</h3>
+      <p>
+        Основний селектор в сучасній розробці. Використовується разом із
+        глобальним атрибутом class. Ім'я класу задається тільки англійською
+        мовою, і це обов'язково іменник, що описує цей елемент. Для поповнення
+        словникового запасу використовуйте
+        <a href="https://github.com/yoksel/common-words">довідник</a>,<a
+          href="https://github.com/web-standards-ru/dictionary/blob/main/dictionary.md"
+          >словник термінів</a
+        >
+        і
+        <a
+          href="https://github.com/nicothin/idiomatic-pre-CSS/blob/gh-pages/words_and_abbreviations.md"
+          >скорочення</a
+        >.
+      </p>
+      <pre class="code">
+&lt;h1&nbsp;class=&quot;title&quot;&gt;Привіт,&nbsp;я&nbsp;Mango.&lt;/h1&gt;
+<br>&lt;p&nbsp;class=&quot;text&quot;&gt;
+<br>&nbsp;&nbsp;Ласкаво&nbsp;просимо&nbsp;на&nbsp;мою&nbsp;особисту&nbsp;сторінку.&nbsp;Тут&nbsp;можна&nbsp;подивитися
+<br>&nbsp;&nbsp;&lt;a&nbsp;class=&quot;link&quot;&nbsp;href=&quot;&quot;&gt;проекти&lt;/a&gt;.
+<br>&lt;/p&gt;  
+</pre>
+      <p>
+        В CSS використовується селектор класу, щоб задати стилі для одного і
+        більше елементів з однаковим значенням атрибута class (ім'ям класу). У
+        селекторі, перед ім'ям класу ставиться крапка ..
+      </p>
+      <pre class="code">
+/* Застосується до всіх тегів з класом title */
+.title {
+  font-weight: 500;
+}
+
+/* Застосується до всіх тегів з класом text */
+.text {
+  color: brown;
+  font-size: 18px;
+}
+
+/* Застосується до всіх тегів з класом link */
+.link {
+  text-decoration: none;
+}  
+</pre
+      >
+      <p class="attention">
+        Увага: В імені класу використовуються тільки маленькі літери і тире.
+        Наприклад, list, list-item, logo-image тощо. Підкреслення list_item,
+        великі літери ListItem або цифри listitem27 вважаються поганим тоном.
+      </p>
+      <h3>Композиція класів</h3>
+      <p>
+        В елемента може бути кілька класів, тоді вони записуються через пробіл.
+      </p>
+      <pre class="code">
+&lt;element&nbsp;class=&quot;value1&nbsp;value2&nbsp;value3&quot;&gt;&lt;/element&gt;  
+</pre
+      >
+      <img
+        src="./img/class-composition.png"
+        alt="class composition"
+        width="420"
+      />
+      <p>
+        Це можна застосовувати для комбінування і повторного використання
+        стилів. Створимо розмітку і стилі для компонента повідомлень.
+      </p>
+      <pre class="code">
+&lt;p&nbsp;class=&quot;alert&nbsp;success&quot;&gt;Поповнення&nbsp;рахунку&nbsp;виконано&lt;/p&gt;
+<br>&lt;p&nbsp;class=&quot;alert&nbsp;warning&quot;&gt;Увага,&nbsp;будуть&nbsp;змінені&nbsp;тарифи&lt;/p&gt;
+<br>&lt;p&nbsp;class=&quot;alert&nbsp;error&quot;&gt;Помилка&nbsp;проведення&nbsp;транзакції&lt;/p&gt;  
+</pre>
+      <p>
+        У стилях описуємо кілька правил: загальних для всіх повідомлень і
+        специфічних для кожного типу.
+      </p>
+      <pre class="code">
+/*&nbsp;Загальні&nbsp;стилі&nbsp;для&nbsp;всіх&nbsp;типів&nbsp;повідомлень&nbsp;*/
+<br>.alert&nbsp;{
+<br>&nbsp;&nbsp;font-size:&nbsp;24px;
+<br>&nbsp;&nbsp;font-weight:&nbsp;500;
+<br>}
+<br>
+<br>/*&nbsp;Специфічні&nbsp;стилі&nbsp;для&nbsp;кожного&nbsp;типу&nbsp;*/
+<br>.success&nbsp;{
+<br>&nbsp;&nbsp;color:&nbsp;green;
+<br>}
+<br>
+<br>.warning&nbsp;{
+<br>&nbsp;&nbsp;color:&nbsp;orange;
+<br>}
+<br>
+<br>.error&nbsp;{
+<br>&nbsp;&nbsp;color:&nbsp;red;
+<br>}  
+</pre>
+      <p>Ось робочий приклад.</p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="oNLvQJM"
+          data-pen-title="lesson-03-class-composition"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/oNLvQJM">
+              lesson-03-class-composition</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Селектор ідентифікатора</h3>
+      <p>
+        Як і з класом, тегам можна задавати глобальний атрибут id. Відмінність у
+        тому, що значення id повинно бути унікальним на сторінці, тобто не може
+        бути двох елементів з однаковими значеннями ідентифікатора.
+      </p>
+      <pre class="code">
+&lt;h1&nbsp;id=&quot;title&quot;&gt;Заголовок&nbsp;сторінки&lt;/h1&gt;  
+</pre
+      >
+      <p>
+        В CSS-селекторі перед ім'ям ідентифікатора ставиться символ решітки #.
+      </p>
+      <pre class="code">
+#title {
+  font-weight: 500;
+  color: orange;
+}  
+</pre
+      >
+      <p class="useful">
+        Корисно Не використовуйте ідентифікатори для оформлення. Правило
+        унікальності значення робить повторне використання стилів неможливим.
+        Ідентифікатори призначені для «якорів».
+      </p>
+      <h3>Селектор нащадка</h3>
+      <p>
+        Селектор нащадка або контекстний селектор застосовує стилі до дітей і
+        нащадків елемента за будь-якої глибини вкладеності.
+      </p>
+      <pre class="code">
+&lt;a&nbsp;href=&quot;&quot;&gt;Читайте&nbsp;наш&nbsp;блог!&lt;/a&gt;
+<br>
+<br>&lt;ul&nbsp;class=&quot;social-links&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&gt;Twitter&lt;/a&gt;
+<br>&nbsp;&nbsp;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&gt;Instagram&lt;/a&gt;
+<br>&nbsp;&nbsp;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&gt;Facebook&lt;/a&gt;
+<br>&nbsp;&nbsp;&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <p>
+        Наприклад, замість того, щоб задавати стиль усім посиланням, потрібно
+        змінити стилі тільки тих, які знаходяться всередині списку з класом
+        social-links.
+      </p>
+      <pre class="code">
+/* ❌ Застосується до всіх посилань у документі */
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+/* ✅ Застосується тільки до посилань, які лежать всередині тегу з класом social-links */
+.social-links a {
+  color: blue;
+  text-decoration: none;
+}  
+</pre
+      >
+      <h3>Селектор дитини</h3>
+      <p>
+        Ще один поширений селектор, який дозволяє вибрати тільки безпосередню
+        дитину всередині батьківського елементу. Використовуємо розмітку для
+        багаторівневого меню магазину, в якому необхідно стилізувати теги
+        <li>у списку з класом menu, але не submenu.</li>
+      </p>
+      <pre class="code">
+&lt;ul&nbsp;class=&quot;menu&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Комп&#39;ютери&nbsp;та&nbsp;комплектуючі
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;class=&quot;submenu&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Процесори&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Монітори&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Відеокарти&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+<br>&nbsp;&nbsp;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Побутова&nbsp;техніка
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;class=&quot;submenu&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Холодильники&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Телевізори&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Пральні&nbsp;машини&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+<br>&nbsp;&nbsp;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Товари&nbsp;для&nbsp;дому
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;class=&quot;submenu&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Крісла&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Матраци&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Електрокаміни&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+<br>&nbsp;&nbsp;&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <p>
+        Якщо використовувати селектор нащадка (контекстний), то CSS-правило
+        застосується до всіх тегів &lt;li&gt;, і червона рамка буде у кожного.
+      </p>
+      <pre class="code">
+/* ❌ Не вирішує завдання */
+.menu li {
+  border: 1px solid tomato;
+}  
+</pre
+      >
+      <p>
+        Селектор дитини допомагає вирішити цю проблему, вибравши тільки ті
+        &lt;li&gt;, які є дітьми (перша вкладеність) списку ul.menu.
+      </p>
+      <pre class="code">
+/* ✅ Те, що потрібно */
+.menu &gt; li {
+  border: 1px solid tomato;
+}  
+</pre
+      >
+      <h3>Селектор атрибута</h3>
+      <p>
+        Дозволяє застосувати стилі до елементів з певним атрибутом або його
+        значенням.
+      </p>
+      <h4>елемент[атрибут]</h4>
+      <p>Застосує стилі до всіх елементів, у яких є вказаний атрибут.</p>
+      <pre class="code p">
+&lt;a&nbsp;href=&quot;https://htmlreference.io&quot;&nbsp;title=&quot;Довідник&nbsp;тегів&quot;&gt;&nbsp;htmlreference.io&nbsp;&lt;/a&gt;
+<br>
+<br>&lt;a&nbsp;href=&quot;https://cssreference.io&quot;&nbsp;title=&quot;Довідник&nbsp;стилів&quot;&gt;&nbsp;cssreference.io&nbsp;&lt;/a&gt;
+<br>
+<br>&lt;a&nbsp;href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;  
+</pre>
+      <p>Вибере всі посилання з атрибутом title.</p>
+      <pre class="code">
+a[title] {
+  color: teal;
+}  
+</pre
+      >
+      <h4>елемент[атрибут="значення"]</h4>
+      <p>
+        Застосує стилі до всіх елементів у яких є атрибут з вказаним значенням.
+      </p>
+      <pre class="code p">
+&lt;a&nbsp;href=&quot;https://htmlreference.io&quot;&nbsp;title=&quot;Довідник&nbsp;тегів&quot;&gt;&nbsp;htmlreference.io&nbsp;&lt;/a&gt;
+<br>
+<br>&lt;a&nbsp;href=&quot;https://cssreference.io&quot;&nbsp;title=&quot;Довідник&nbsp;стилів&quot;&gt;&nbsp;cssreference.io&nbsp;&lt;/a&gt;
+<br>
+<br>&lt;a&nbsp;href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;  
+</pre>
+      <p>Вибере всі посилання з атрибутом href і відповідним значенням.</p>
+      <pre class="code">
+  /* Незвичне форматування фігурних дужок - це нормально */
+a[href="https://htmlreference.io"]
+{
+  color: teal;
+}
+
+a[href="https://cssreference.io"]
+{
+  color: orange;
+}
+
+a[href="https://www.youtube.com"]
+{
+  color: tomato;
+}
+</pre
+      >
+    </section>
+  </body>
+</html>
