@@ -11,8 +11,295 @@
     <a href="../markup.html">Markup</a>
     <h2>Структурні псевдокласи</h2>
     <section class="section">
-    
+      <p>
+        Структурні псевдокласи - це спосіб вибрати певні елементи з
+        <b>колекції дочірніх елементів</b> (сусідів), без присвоєння додаткових
+        класів. Дочірні елементи (сусіди) - це елементи зі спільним батьком.
+      </p>
+      <pre class="code">
+&lt;ul&nbsp;class=&quot;list&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;list-link&quot;&gt;Посилання&nbsp;1&lt;/a&gt;
+<br>&nbsp;&nbsp;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;list-link&quot;&gt;Посилання&nbsp;2&lt;/a&gt;
+<br>&nbsp;&nbsp;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;list-link&quot;&gt;Посилання&nbsp;3&lt;/a&gt;
+<br>&nbsp;&nbsp;&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <p>
+        У наведеному вище прикладі, елементи li.list-item - це сусіди, і до них
+        можна буде застосувати структурні псевдокласи. Водночас посилання
+        a.list-link не є сусідами, у них відсутній спільний батько, тому не
+        можна буде використовувати псевдокласи для вибору певного посилання або
+        групи посилань.
+      </p>
+      <pre class="code">
+# ✅ Спрацює, .list-item - це колекція сусідів зі спільним батьком
+.list-item: структурний-псевдоклас {}
+
+# ❌ Не спрацює, .list-link - це не колекція сусідів, у них відсутній спільний батько
+.list-link: структурний-псевдоклас {}  
+</pre
+      >
+      <h3>Псевдокласи :first-child і :last-child</h3>
+      <p>
+        Дозволяють вибрати перший або останній елемент в колекції сусідів.
+        Наприклад, якщо кожному елементу списку задати нижній відступ, то він
+        буде і в останнього. Крайню геометрію необхідно обов'язково чистити,
+        тому що такі відступи можуть неочевидно випадати або розширювати батька.
+      </p>
+      <pre class="code">
+&lt;ul&nbsp;class=&quot;list&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;HTML&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;CSS&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;JavaScript&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;React&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <p>Псевдоклас :last-child вибирає останній елемент в колекції сусідів.</p>
+      <img src="./img/1-last-child.png" alt="last-child" width="420" />
+      <pre class="code">
+.list-item {
+  margin-bottom: 12px;
+}
+
+.list-item:last-child {
+  margin-bottom: 0;
+}  
+</pre
+      >
+      <p>
+        Аналогічно працює :first-child, застосовуючи стилі до першого елемента в
+        колекції сусідів. Наприклад, коли потрібно задати верхній відступ всім
+        елементам, крім першого.
+      </p>
+      <img src="./img/2-first-child.png" alt="first-child" width="420" />
+      <pre class="code">
+.list-item {
+  margin-top: 12px;
+}
+
+.list-item:first-child {
+  margin-top: 0;
+}  
+</pre
+      >
+      <h3>Псевдоклас :not(selector)</h3>
+      <p>
+        Дозволяє вибрати всі елементи, які не задовольняють критерій - простий
+        селектор записаний в дужках. Простий селектор - це універсальний
+        селектор, селектор типу, ідентифікатора, атрибута, класу або
+        псевдокласу.
+      </p>
+      <p>
+        Правило застосування нижнього відступу до всіх елементів, крім
+        останнього, можна записати наступним чином.
+      </p>
+      <pre class="code">
+/*
+ * Читається як: застосувати стилі до всіх елементів з класом list-item,
+ * які не є останнім елементом в колекції сусідів.
+ */
+.list-item:not(:last-child) {
+  margin-bottom: 12px;
+}  
+</pre
+      >
+      <h3>Псевдоклас :nth-child(an+b)</h3>
+      <p>
+        Вибирає елементи в колекції сусідів за номером, зазначеним в дужках, за
+        допомогою циклу an+b, який дозволяє задати правило для послідовності
+        елементів.
+      </p>
+      <ul class="section-list">
+        <li>a - період циклу. Довільне число.</li>
+        <li>
+          n - лічильник циклу. Починається з нуля і збільшується на одиницю на
+          кожній ітерації.
+        </li>
+        <li>b - зміщення. Довільне число.</li>
+      </ul>
+      <p>
+        Наприклад, якщо a = 2, а b = 1, то an+b = 2n+1. Ця формула вибере всі
+        непарні елементи.
+      </p>
+      <pre class="code">
+# При n = 0
+2 * 0 + 1 = 1
+
+# При n = 1
+2 * 1 + 1 = 3
+
+# При n = 2
+2 * 2 + 1 = 5
+
+# І так далі для n = 3, n = 4 ...  
+</pre
+      >
+      <p>
+        Створимо розмітку списку з десяти елементів і будемо змінювати колір їх
+        фону.
+      </p>
+      <pre class="code">
+&lt;ul&nbsp;class=&quot;list&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;1&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;2&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;3&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;4&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;5&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;6&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;7&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;8&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;9&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;list-item&quot;&gt;10&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <h4>N-й елемент</h4>
+      <p>
+        У найпростішому випадку можна передати буквально номер елемента
+        колекції. Тобто a = 0, а значення b - це довільне число, номер елемента
+        колекції. Тоді за будь-якого n, формула буде 0 * n + b або просто b.
+      </p>
+      <img src="./img/3-nth-5.png" alt="n element" width="420" />
+      <pre class="code">
+.list-item:nth-child(5) {
+  background-color: orange;
+}  
+</pre
+      >
+      <h4>Парні і непарні елементи</h4>
+      <p>
+        Для вибору всіх парних елементів можна використовувати формулу 2n або її
+        псевдонім - значення even - зарезервоване слово.
+      </p>
+      <img src="./img/4-nth-even.png" alt="even" width="420" />
+      <pre class="code">
+.list-item:nth-child(2n + 1) {
+  background-color: orange;
+}
+
+/* Аналогічно, використовуючи псевдонім */
+.list-item:nth-child(odd) {
+  background-color: orange;
+}  
+</pre
+      >
+      <h4>Від N-го елемента</h4>
+      <p>
+        Якщо задати a = 1, то результуюча формула n + b дозволяє вибрати всі
+        елементи, починаючи з елемента під номером b. Наприклад, для того щоб
+        вибрати всі елементи з шостого і далі (тобто крім перших п'яти),
+        використовуємо формулу n + 6.
+      </p>
+      <img src="./img/6-nth-last.png" alt="nth-last" width="420" />
+      <pre class="code">
+.list-item:nth-child(n + 6) {
+  background-color: orange;
+}  
+</pre
+      >
+      <h4>До N-го елемента</h4>
+      <p>
+        Якщо задати a = -1, то результуюча формула -n + b дозволяє вибрати всі
+        елементи, починаючи з першого і до елемента під номером b. Наприклад,
+        для того щоб вибрати перші п'ять елементів, використовуємо формулу -n +
+        5.
+      </p>
+      <img src="./img/7-nth-first.png" alt="nth first" width="420" />
+      <pre class="code">
+.list-item:nth-child(-n + 5) {
+  background-color: orange;
+}  
+</pre
+      >
+      <h4>Кожен N-й елемент</h4>
+      <p>
+        Наприклад, для того щоб вибрати кожен 3-й елемент, починаючи з першого,
+        використовуємо цикл an+b, в якому a = 3, а зміщення - b = 1.
+      </p>
+      <img src="./img/8-nth-every.png" alt="nth every" width="420" />
+      <pre class="code">
+.list-item:nth-child(3n + 1) {
+  background-color: orange;
+}  
+</pre
+      >
+      <div class="useful">
+        Корисно: Кілька прикладів для закріплення.
+        <ul class="section-list">
+          <li>
+            3n + 2 - кожен третій елемент, починаючи з 2-го, тобто елементи 2,
+            5, 8 тощо.
+          </li>
+          <li>
+            2n + 4 - кожен другий елемент, починаючи з 4-го, тобто елементи 4,
+            6, 8 тощо.
+          </li>
+          <li>
+            4n + 5 - кожен четвертий елемент, починаючи з 5-го, тобто елементи
+            5, 9, 13 тощо.
+          </li>
+        </ul>
+      </div>
+      <h3>Псевдоклас :nth-last-child(an+b)</h3>
+      <p>
+        Аналог :nth-child() з відмінністю у тому, що відлік ведеться з кінця
+        колекції (Останнього елемента).
+      </p>
+      <h4>N-й елемент</h4>
+      <p>
+        Виберемо 3-й елемент з кінця, тобто 8-й, тому що всього 10-ть елементів.
+        Якби всього було 20-ть елементів, тоді був би обраний 18-й тощо.
+      </p>
+      <img src="./img/9-nth-last-3.png" alt="nth last" width="420" />
+      <pre class="code">
+.list-item:nth-last-child(3) {
+  background-color: orange;
+}  
+</pre
+      >
+      <h4>До N-го елемента</h4>
+      <p>
+        Щоб вибрати кілька останніх елементів в колекції, використовується
+        формула -n + b, де b - це кількість елементів, що вибираються.
+        Наприклад, у разі b = 3, будуть обрані тільки останні три елементи.
+      </p>
+      <img src="./img/10-nth-last-3.png" alt="nth last" width="420" />
+      <pre class="code">
+.list-item:nth-last-child(-n + 3) {
+  background-color: orange;
+}  
+</pre
+      >
+      <h3>Додаткові псевдокласи</h3>
+      <p>
+        Цей набір псевдокласів використовується у досить рідкісних або дуже
+        специфічних випадках.
+      </p>
+      <ul class="section-list">
+        <li>:first-of-type - вибирає перший селектор цього типу.</li>
+        <li>:last-of-type - вибирає останній селектор цього типу.</li>
+        <li>
+          :only-of-type - вибирає елемент, який є єдиною дитиною такого типу в
+          колекції сусідів.
+        </li>
+        <li>
+          :nth-of-type(an+b) - вибирає номер селектора, використовуючи формулу
+          an+b.
+        </li>
+        <li>
+          :nth-last-of-type(an+b) - аналог :nth-of-type() з відмінністю у тому,
+          що відлік ведеться з кінця колекції (останнього елемента).
+        </li>
+        <li>
+          :only-child - вибирає елемент, який є єдиною дитиною з таким
+          селектором в колекції сусідів.
+        </li>
+        <li>:empty - вибирає порожні елементи, тобто без нащадків і тексту.</li>
+      </ul>
     </section>
-   
   </body>
 </html>

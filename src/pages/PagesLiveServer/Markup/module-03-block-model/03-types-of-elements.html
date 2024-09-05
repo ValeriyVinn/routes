@@ -11,8 +11,579 @@
     <a href="../markup.html">Markup</a>
     <h2>Типи елементів</h2>
     <section class="section">
-    
+      <p>
+        У таблиці стилів браузера для кожного елемента встановлений його тип -
+        властивість display. Поведінка елемента визначається його типом.
+        Найпоширеніші типи - це блокові (block) і рядкові (inline) елементи.
+        Крім цього, існує певна кількість додаткових типів, наприклад
+        рядково-блокові (Inline-block) елементи.
+      </p>
+      <img src="./img/box-types.png" alt="box types" width="620" />
+      <ul class="section-list">
+        <li>
+          Рядкові елементи призначені для виділення і оформлення текстового
+          контенту. Наприклад посилання, кнопка, зображення тощо.
+        </li>
+        <li>
+          Блокові використовуються для розмітки текстових контейнерів
+          (заголовок, список, абзац) і великих смислових розділів (секція,
+          шапка, підвал).
+        </li>
+        <li>
+          Дізнатися тип будь-якого елемента можна в
+          <a href="https://htmlreference.io/">довіднику</a> або
+          <a href="https://html.spec.whatwg.org/multipage/">специфікації</a> .
+        </li>
+      </ul>
+      <p>
+        Іноді необхідно, щоб рядковий елемент поводився як блоковий і навпаки,
+        тому значення властивості display можна змінювати, у разі потреби, на
+        будь-яке інше.
+      </p>
+      <h3>Блокові елементи (block)</h3>
+      <p>
+        Візуально - це прямокутні області, що йдуть одна за одною зверху вниз.
+      </p>
+      <img src="./img/block-elements.png" alt="block elements" width="420" />
+      <ul class="section-list">
+        <li>Для них задана властивість display: block.</li>
+        <li>
+          Вони займають всю доступну ширину рядка (простір за горизонталлю)
+          всередині батька.
+        </li>
+        <li>
+          Їх висота визначається вмістом, якщо явно не задана у властивості
+          height.
+        </li>
+        <li>
+          Вони завжди починаються з нового рядка, тому кілька сусідніх блокових
+          елементів розташовані вертикально один під одним.
+        </li>
+        <li>
+          Їм можна задавати будь-які властивості геометрії елемента: ширину,
+          висоту, поля, рамки і відступи.
+        </li>
+      </ul>
+      <p class="useful">
+        Корисно: Переважна більшість елементів - блокові. Наприклад
+        &lt;h1&gt;,&nbsp;&lt;p&gt;,&nbsp;&lt;section&gt;,&nbsp;&lt;ul&gt;,&nbsp;&lt;li&gt;,&nbsp;&lt;div&gt;,&nbsp;&lt;header&gt;
+        і багато інших.
+      </p>
+      <h4>Фіксована ширина</h4>
+      <p>
+        Навіть якщо ширина блокових елементів задана явно, вони все одно будуть
+        розташовуватися вертикально один під одним. Все вільне місце в рядку за
+        замовчуванням займається автоматичним правим відступом (margin-right)
+        елемента.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="dyXYJoR"
+          data-pen-title="lesson-05-fixed-width-block"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/dyXYJoR">
+              lesson-05-fixed-width-block</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="useful">
+        Інструменти розробника: Щоб подивитися на відступ елемента, необхідно
+        використовувати інструменти розробника, візуально на сторінці вони
+        жодним чином не виділяються.
+      </p>
+      <h4>Горизонтальне центрування блокових елементів</h4>
+      <p>
+        Блоковий елемент можна горизонтально центрувати всередині його батька, у
+        разі, коли ширина батька більша за ширину центрованого елемента. Тобто
+        блоковому елементу задана фіксована ширина. Для цього використовується
+        особливість автоматичних горизонтальних відступів.
+      </p>
+      <p>
+        За замовчуванням у блокового елемента автоматичний правий відступ, який
+        займає увесь вільний простір в рядку.
+      </p>
+      <div class="tabcode">css</div>
+      <pre class="code">
+.box {
+  margin-right: auto;
+}  
+</pre
+      >
+      <p>
+        Якщо задати автоматичні лівий і правий відступи, вільний простір
+        розподіляється порівну між ними і блоковий елемент центрується.
+      </p>
+      <div class="tabcode">css</div>
+      <pre class="code">
+.box {
+  width: 300px;
+  background-color: tomato;
+  margin-right: auto;
+  margin-left: auto;
+}  
+</pre
+      >
+      <p>
+        Для коротшого запису можна використовувати збірну властивість margin,
+        задавши нульові вертикальні відступи і автоматичні горизонтальні.
+      </p>
+      <div class="tabcode">css</div>
+      <pre class="code">
+.box {
+  width: 300px;
+  background-color: tomato;
+  margin: 0 auto;
+}  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="mdrjVZr"
+          data-pen-title="lesson-05-auto-margin"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/mdrjVZr">
+              lesson-05-auto-margin</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>Елемент-контейнер</h4>
+      <p>
+        <b>Контейнер, обгортка, враппер, центрувальник</b> - все це імена
+        стандартного блокового елемента-контейнера для обмеження ширини і
+        центрування контенту сторінки.
+      </p>
+      <img src="./img/container-width.jpg" alt="wrapper" width="920" />
+      <p>
+        В CSS створюється клас container, який можна задати будь-якому елементу,
+        але на практиці це завжди буде несемантичний &lt;div&gt;. Контейнеру
+        обов'язково встановлюється ширина (фіксована або адаптивна), відповідно
+        до сітки з макету, автоматичні горизонтальні відступи і необов'язкові
+        поля, також за макетом.
+      </p>
+      <div class="tabcode">css</div>
+      <pre class="code">
+.container {
+  width: 480px;
+  margin: 0 auto;
+  padding: 0 15px;
+}  
+</pre
+      >
+      <p>
+        Контейнер може бути всього один - загальний, який обгортає відразу увесь
+        контент сторінки. У наступному прикладі межі контейнера виділені
+        пунктиром для наочності.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="gOwjrxG"
+          data-pen-title="lesson-05-single-container"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/gOwjrxG">
+              lesson-05-single-container</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Найчастіше контейнерів декілька, оскільки в кожному розділі сторінки
+        необхідний свій контейнер. За такого підходу можна зручно задавати
+        різний повнорозмірний фон та інші стилі оформлення окремих розділів
+        сторінки.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="WNGKwKY"
+          data-pen-title="lesson-05-multiple-containers"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/WNGKwKY">
+              lesson-05-multiple-containers</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Рядкові елементи (inline)</h3>
+      <p>
+        Візуально розташовуються в одному рядку один за одним доти, доки в ньому
+        вистачає місця, після чого почнуть перестрибувати на наступний рядок і
+        заповнювати його.
+      </p>
+      <img src="./img/inline-elements.png" alt="inline elements" width="420" />
+      <ul class="section-list">
+        <li>Для них задана властивість display: inline.</li>
+        <li>
+          Їх ширина і висота залежать тільки від вмісту, явно задати їх не
+          можна. Тобто властивості width і height не мають жодного ефекту.
+        </li>
+        <li>
+          Вони розташовуються в рядку доти, доки в ньому є достатньо місця,
+          після чого нові переносяться на наступний рядок.
+        </li>
+        <li>
+          Їм можна задавати тільки горизонтальну геометрію: ліві і праві поля,
+          відступи і рамки. Тобто вони ігнорують значення верхніх і нижніх
+          margin, padding і border.
+        </li>
+      </ul>
+      <pre class="code">
+<a class="link" href="">Посилання</a>  
+</pre>
+      <p>
+        Спан - це рядковий елемент, задамо йому різну геометрію і подивимося, що
+        буде.
+      </p>
+      <pre class="code">
+.text {
+  background-color: tomato;
+  color: white;
+
+  /* ✅ Працює */
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+
+  /* ❌ Жодного ефекту */
+  width: 1000px;
+  height: 1000px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}  
+</pre
+      >
+      <p class="useful">
+        Корисно: Рядкові елементи можуть містити тільки текст, медіаконтент та
+        інші рядкові елементи. Винятком є елемент &lt;a&gt;, який згідно
+        специфікації може обгортати абзаци, списки, таблиці, заголовки та цілі
+        розділи, за умови, що вони не містять інші інтерактивні елементи -
+        посилання і кнопки.
+      </p>
+      <h4>Проміжок у рядкових елементів</h4>
+      <p>
+        У рядкових і рядково-блокових елементів є правий або, у разі зображень,
+        нижній проміжок. Це не margin або padding, а буквально порожнє місце -
+        особливість того, як браузер розташовує рядковий контент в рядку.
+      </p>
+      <img src="./img/inline-gap.png" alt="inline gap" width="520" />
+      <p>
+        Величина цього проміжку визначається розміром тексту найближчого предка
+        з явно встановленим значенням або, якщо такий предок відсутній,
+        використовується розмір шрифту браузера за замовчуванням - 16px. Тому у
+        кнопок, посилань, спанів, полів введення та інших рядкових елементів за
+        замовчуванням буде проміжок 4px - 1/4 розміру шрифту найближчого предка.
+      </p>
+      <p>
+        Як подолати цю особливість сучасним способом ми розглянемо у наступних
+        уроках. А зараз розберемося, як прибрати нижній проміжок у зображення.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="rNMqMKG"
+          data-pen-title="lesson-05-inline-image-gap"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/rNMqMKG">
+              lesson-05-inline-image-gap</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Елементу div.card заданий червоний колір фону. У першій картці видно
+        смугу кольору її фону між зображенням і заголовком, а в другій картці
+        цієї смуги немає. У другій картці зображенню змінили тип елемента,
+        зробивши його блоковим, внаслідок чого зникнув нижній проміжок.
+      </p>
+      <pre class="code">
+.card-image.no-gap {
+  display: block;
+}  
+</pre
+      >
+      <h4>Особливості вертикальних полів і рамок</h4>
+      <p>
+        Верхні і нижні поля, а також рамки рядкового елемента працюють дуже
+        дивно - не збільшують розмір блоку, але візуально відображаються.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="PozPEEx"
+          data-pen-title="lesson-05-inline-vertical-geometry"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/PozPEEx">
+              lesson-05-inline-vertical-geometry</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Візуально фон заповнив вертикальні поля і рамки, які «залазять» на
+        сусідні рядки абзацу та поводяться дуже дивно. Це особливість
+        відображення в браузері, вони жодним чином не впливають на геометрію
+        сусідніх елементів, і тому не використовуються.
+      </p>
+      <h3>Рядково-блокові елементи (inline-block)</h3>
+      <p>
+        Гібрид між блоковими і рядковим елементами, який взяв все найкраще від
+        обох.
+      </p>
+      <ul class="section-list">
+        <li>Для них задана властивість display: inline-block.</li>
+        <li>
+          Їх ширина і висота залежать від вмісту, але можна явно задати
+          властивості width і height.
+        </li>
+        <li>
+          Вони розташовуються в рядку доти, доки в ньому є достатньо місця,
+          після чого нові переносяться на наступний рядок.
+        </li>
+        <li>
+          Їм можна задавати будь-які властивості геометрії елемента: ширину,
+          висоту, поля, рамки і відступи.
+        </li>
+      </ul>
+      <p>
+        Вони використовуються у тих випадках, коли рядковим елементам потрібно
+        додати декоративні ефекти. Наприклад, задати посиланню вертикальні поля,
+        відступ або ширину з висотою, візуально зробивши з неї кнопку, або
+        перетворити &lt;span&gt; в іконку з фіксованими розмірами.
+      </p>
+      <pre class="code">
+&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Дізнатися&nbsp;більше&lt;/a&gt;  
+</pre
+      >
+      <p>
+        Міняємо тип елемента за допомогою властивості display. Тепер посиланню,
+        яке спочатку було рядковим елементом, можна задати вертикальні поля та
+        іншу геометрію.
+      </p>
+      <pre class="code">
+.link {
+  display: inline-block;
+  padding: 16px 32px;
+
+  border-radius: 3px;
+  background-color: teal;
+  color: white;
+
+  font-family: sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}  
+</pre
+      >
+      <h3>Ховаємо елементи</h3>
+      <p>
+        Значення display: none дозволяє повністю приховати елемент, звільнивши
+        його простір для інших. Такий елемент вилучається з потоку документа,
+        візуально ховається і не бере участі у розмітці сторінки.
+      </p>
+      <p class="useful">
+        Цікаво: Мінус цього підходу у тому, що зміну значення властивості
+        display не можна анімувати, але для цього існують інші підходи, з якими
+        познайомимося пізніше.
+      </p>
+      <p>
+        Спочатку сховаємо всі панелі за допомогою display: none, вони будуть
+        візуально приховані і звільнять своє місце в потоці документа. Далі
+        додамо клас активної панелі is-active, в якому будемо встановлювати
+        display: block. Панель з класом is-active буде видно, інші приховані.
+      </p>
+      <pre class="code">
+.pane {
+  display: none;
+  padding: 8px;
+  border: 1px solid blue;
+  border-radius: 3px;
+}
+
+.is-active {
+  display: block;
+}  
+</pre
+      >
+      <p>
+        Цікаво: Для того щоб це все оживити, потрібна мова програмування
+        JavaScript. За певної події можна буде динамічно додавати і видаляти
+        класи в елементів. Нижче наведений повністю робочий приклад, натискайте
+        на посилання і буде відображатися відповідна панель.
+      </p>
+
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="NWrGyYb"
+          data-pen-title="lesson-05-tabs"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/NWrGyYb">
+              lesson-05-tabs</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
     </section>
-   
   </body>
 </html>

@@ -11,8 +11,356 @@
     <a href="../markup.html">Markup</a>
     <h2>Геометрія елемента</h2>
     <section class="section">
-    
+      <p>
+        В геометрії елемента є 4 сторони: верх (top), право (right), низ
+        (bottom) і ліво (left). Саме в такому порядку за годинниковою стрілкою,
+        починаючи зверху, задаються значення збірних властивостей padding,
+        margin і border.
+      </p>
+      <h3>Властивість padding</h3>
+      <img src="./img/padding.png" alt="padding" width="240" />
+      <p>
+        Збірна властивість контролює внутрішні поля між контентом і рамкою для
+        усіх сторін елемента. Результат роботи залежить від кількості значень
+        властивості.
+      </p>
+      <pre class="code">
+/* Однакові поля по 20px з усіх сторін */
+padding: 20px;
+
+/* Поля зверху і знизу по 10px, зліва і справа по 20px */
+padding: 10px 20px;
+
+/* Поле зверху 10px, зліва і справа по 20px, знизу 5px */
+padding: 10px 20px 5px;
+
+/* Поле зверху 10px, справа 15px, знизу 20px, зліва 25px */
+padding: 10px 15px 20px 25px;  
+</pre
+      >
+      <p>
+        Також існують властивості для встановлення полів кожної сторони окремо.
+      </p>
+      <pre class="code">
+padding-top: 20px;
+padding-right: 10px;
+padding-bottom: 15px;
+padding-left: 30px;  
+</pre
+      >
+      <p>
+        Поля (падінги) використовуються для декоративних ефектів. Наприклад, для
+        створення вільного простору між рамкою елемента і його контентом, як в
+        прикладі. Якщо не поставити падінг, то текст буде негарно прилягати до
+        межі абзацу.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="mdEJYPN"
+          data-pen-title="lesson-05-padding"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/mdEJYPN">
+              lesson-05-padding</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="useful">
+        Корисно: У прикладі властивості рамки не вказані явно, але вона все одно
+        є. За замовчуванням її ширина дорівнює 0px і вона бере участь в побудові
+        геометрії елемента, тому можна задати поле між нею і контентом.
+      </p>
+      <h3>Властивість margin</h3>
+      <p>
+        Збірна властивість контролює зовнішні відступи від рамки для всіх сторін
+        елемента. Результат роботи залежить від кількості значень властивості.
+      </p>
+      <pre class="code">
+/* Однакові відступи по 20px з усіх сторін */
+margin: 20px;
+
+/* Відступ зверху і знизу по 10px, зліва і справа по 20px */
+margin: 10px 20px;
+
+/* Відступ зверху 10px, зліва і справа по 20px, знизу 5px */
+margin: 10px 20px 5px;
+
+/* Відступ зверху 10px, справа 15px, знизу 20px, зліва 25px */
+margin: 10px 15px 20px 25px;  
+</pre
+      >
+      <p>
+        Також існують властивості для встановлення відступів кожної сторони
+        окремо.
+      </p>
+      <pre class="code">
+margin-top: 20px;
+margin-right: 10px;
+margin-bottom: 15px;
+margin-left: 30px;  
+</pre
+      >
+      <p>
+        Зовнішні відступи використовуються для створення проміжку між двома
+        сусідніми елементами. У прикладі у кожного елемента картки є
+        різнокольорова рамка, тому видно, що між ними є відступи.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="yLJNWxv"
+          data-pen-title="lesson-05-margin"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/yLJNWxv">
+              lesson-05-margin</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="attention">
+        Увага: Під час використання падінгів для створення проміжків, елементи
+        будуть щільно прилягати один до одного рамками без проміжку. Якщо в
+        елемента не заданий колір рамки або фону, візуально визначити чи
+        правильно зроблені відступи - неможливо, потрібно відкривати інструменти
+        розробника.
+      </p>
+      <img
+        src="./img/margin-vs-padding.png"
+        alt="margin vs padding"
+        width="620"
+      />
+      <p>
+        Властивість padding відокремлює контент від межі елемента, а margin
+        створює проміжки між сусідніми елементами. В цьому і полягає різниця.
+      </p>
+      <h4>Схлопування вертикальних відступів</h4>
+      <p>
+        Вертикальні відступи сусідніх блокових елементів не додаються, а
+        вибирається найбільший з двох. Схлопування відступів виконується тільки
+        для блокових елементів у нормальному потоці документа.
+      </p>
+      <img src="./img/margin-collapse.png" alt="margin collapse" width="360" />
+      <pre class="code">
+&lt;div&nbsp;class=&quot;box&nbsp;top&quot;&gt;&lt;/div&gt;
+<br>&lt;div&nbsp;class=&quot;box&nbsp;bottom&quot;&gt;&lt;/div&gt;  
+</pre>
+      <p>
+        Задамо верхньому блокові нижній відступ 20px, а нижньому блокові верхній
+        відступ 40px. Внаслідок схлопування, відступ між ними буде 40px, тому що
+        вибирається більший з двох.
+      </p>
+      <pre class="code">
+.box {
+  width: 200px;
+  height: 100px;
+}
+
+.top {
+  margin-bottom: 20px;
+  background-color: teal;
+}
+
+.bottom {
+  margin-top: 40px;
+  background-color: palevioletred;
+}  
+</pre
+      >
+      <h4>Випадання вертикальних відступів</h4>
+      <p>
+        Вертикальний відступ вкладеного блоку випадає з батьківського і
+        відштовхує обох від сусіда. Якщо у батьківського елемента також був
+        заданий верхній відступ, то вибереться найбільше зі значень.
+      </p>
+      <img src="./img/vertical-margin.png" alt="vertical margin" width="320" />
+      <pre class="code">
+&lt;div&nbsp;class=&quot;outer-box&quot;&gt;
+<br>&nbsp;&nbsp;&lt;div&nbsp;class=&quot;inner-box&quot;&gt;&lt;/div&gt;
+<br>&lt;/div&gt;  
+</pre>
+      <p>
+        У прикладі ми задаємо верхній відступ 40px для div.inner-box, а в
+        результаті відсунеться не він сам від верху div.outer-box, а весь
+        div.outer-box - від краю екрану.
+      </p>
+      <pre class="code">
+.outer-box {
+  width: 200px;
+  height: 200px;
+  background-color: teal;
+}
+
+.inner-box {
+  width: 100px;
+  height: 100px;
+  margin-top: 40px;
+  background-color: palevioletred;
+}  
+</pre
+      >
+      <p class="attention">
+        Увага: Верхні і нижні відступи на межі зіткнення з блоком-батьком немов
+        пробивають його і випадають назовні - це одна з найчастіших помилок
+        верстки. Робіть відступи тільки між двома сусідніми елементами.
+      </p>
+      <h3>Властивість border</h3>
+      <img src="./img/border.png" alt="border" width="240" />
+      <p>
+        Збірна властивість контролює ширину, стиль і колір рамки (межі)
+        елемента.
+      </p>
+      <pre class="code">
+border: ширина стиль колір;  
+</pre
+      >
+      <p>Також існують властивості для того, щоб задати ці значення окремо.</p>
+      <pre class="code">
+border-width: ширина;
+border-style: стиль;
+border-color: колір;  
+</pre
+      >
+      <p>
+        Існує багато стилів рамок, найпопулярніші значення - це solid, dashed і
+        dotted.
+      </p>
+      <pre class="code">
+.box {
+  width: 100px;
+  height: 100px;
+  border: 5px solid tomato;
+}  
+</pre
+      >
+      <h4>Індивідуальні рамки</h4>
+      <p>
+        Можна задати індивідуальні стилі рамці з кожної сторони елемента. Формат
+        імені властивості простий - border-сторона-властивість: значення.
+      </p>
+      <pre class="code">
+.box {
+  /* Встановить стилі верхньої рамки */
+  border-top-width: 3px;
+  border-top-style: solid;
+  border-top-color: blue;
+
+  /* Встановить стилі правої рамки */
+  border-right-width: 5px;
+  border-right-style: dotted;
+  border-right-color: black;
+
+  /* Встановить стилі нижньої рамки */
+  border-bottom-width: 7px;
+  border-bottom-style: dashed;
+  border-bottom-color: palevioletred;
+
+  /* Встановить стилі лівої рамки */
+  border-left-width: 9px;
+  border-left-style: dashed;
+  border-left-color: green;
+}  
+</pre
+      >
+      <h4>Закруглена рамка</h4>
+      <p>
+        Для того щоб закруглити всі кути рамки, існує збірна властивість
+        border-radius. Значенням можуть бути як абсолютні, так і відносні
+        одиниці.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="bGedXjb"
+          data-pen-title="lesson-05-border-radius"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/bGedXjb">
+              lesson-05-border-radius</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>Наступні властивості дозволяють закруглити кожен кут рамки окремо.</p>
+      <pre class="code">
+/* верхній лівий кут */
+border-top-left-radius: значення;
+
+/* верхній правий кут */
+border-top-right-radius: значення;
+
+/* нижній правий кут */
+border-bottom-right-radius: значення;
+
+/* нижній лівий кут */
+border-bottom-left-radius: значення;  
+</pre
+      >
     </section>
-   
   </body>
 </html>
