@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Властивості контейнера</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Властивості контейнера</h2>
+    <section class="section">
+      <p>
+        Flex-контейнер (далі просто контейнер) - це батько групи елементів, яким
+        необхідно змінити порядок розташування. Саме властивості контейнера
+        контролюють напрямок осей, багаторядковість і позиціонування елементів в
+        рядку.
+      </p>
+      <img src="./img/flex-container.svg" alt="flex container" width="360" />
+      <h3>Властивість display</h3>
+      <pre class="code">
+display: flex | inline-flex  
+</pre
+      >
+      <p>
+        Створює flex-контейнер, блоковий або рядково-блоковий, залежно від
+        заданого значення, і встановлює flex-контекст для всіх дітей
+        <em>(не нащадків)</em> контейнера, перетворюючи їх у flex-елементи.
+      </p>
+      <pre class="code">
+&lt;ul&nbsp;class=&quot;menu&quot;&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Головна&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Блог&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Підкасти&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Контакти&lt;/a&gt;&lt;/li&gt;
+<br>&lt;/ul&gt;  
+</pre>
+      <p>
+        Створимо горизонтальне меню, перетворивши ul.menu у flex-контейнер. Тоді
+        його діти, елементи li.item, розташуються вздовж головної осі, яка за
+        замовчуванням йде зліва направо.
+      </p>
+      <pre class="code">
+.menu {
+  display: flex;
+}  
+</pre
+      >
+      <p>
+        Флекс-контейнер ul.menu жодним чином не впливає на a.link всередині
+        елементів списку, тому що вони його нащадки, а не діти. Флекс-елементами
+        стають саме діти, у нашому випадку - елементи li.item.
+      </p>
+
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="vYLPzOE"
+          data-pen-title="lesson-06-display-flex"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/vYLPzOE">
+              lesson-06-display-flex</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість flex-direction</h3>
+      <p>
+        Flexbox - це система розташування елементів в одному певному напрямку -
+        <b>горизонтально</b> або <b>вертикально</b> . Властивість flex-direction
+        встановлює напрямок головної осі, визначаючи напрямок елементів в
+        контейнері.
+      </p>
+      <pre class="code">
+        flex-direction: row | row-reverse | column | column-reverse;  
+        </pre
+      >
+      <ul class="section-list">
+        <li>
+          row - вісь починається зліва і закінчується справа. Це значення за
+          замовчуванням.
+        </li>
+        <li>row-reverse - вісь починається справа і закінчується зліва.</li>
+        <li>
+          column - головна вісь стає вертикально, початок зверху і кінець знизу.
+        </li>
+        <li>
+          column-reverse - головна вісь стає вертикально, початок знизу і кінець
+          зверху.
+        </li>
+      </ul>
+      <img src="./img/flex-direction.svg" alt="flex direction" width="520" />
+      <p class="useful">
+        Корисно: Тобто ця властивість міняє місцями main-start і main-end
+        головної осі. Flex-елементи завжди будуть розміщені вздовж головної осі
+        від початку (main-start) до кінця (main-end).
+      </p>
+      <p>
+        За замовчуванням для flex-direction встановлено значення row, тому
+        елементи верхнього меню починають вибудовуватися зліва направо. Для
+        нижнього меню задано значення row-reverse, головна вісь розвернулася на
+        180 градусів та елементи вибудовуються справа наліво.
+      </p>
+
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="ZEQZgOv"
+          data-pen-title="lesson-06-flex-direction"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/ZEQZgOv">
+              lesson-06-flex-direction</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість justify-content</h3>
+      <p>
+        Управляє позиціонуванням елементів на головній осі від main-start до
+        main-end.
+      </p>
+      <pre class="code">
+        justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly  
+        </pre
+      >
+      <ul class="section-list">
+        <li>
+          flex-start - елементи притискаються до старту осі. Це значення за
+          замовчуванням.
+        </li>
+        <li>flex-end - елементи притискаються до кінця осі.</li>
+        <li>center - елементи центруються на осі.</li>
+        <li>
+          space-between - елементи рівномірно розподіляються на головній осі.
+          Перший елемент встановлюється на початку осі, а останній - в кінці.
+        </li>
+        <li>
+          space-around - елементи розподіляються рівномірно, але лівий і правий
+          елемент відстають від меж контейнера на половину проміжку між іншими
+          елементами.
+        </li>
+        <li>
+          space-evenly - елементи розподіляються таким чином, що відстань між
+          елементами, і від крайніх елементів до меж контейнера, - однакова.
+        </li>
+      </ul>
+
+      <img src="./img/justify-content.jpg" alt="justify content" width="720" />
+      <p class="attention">
+        Увага: У цієї властивості є й інші значення, але вони не підтримуються
+        багатьма браузерами або працюють нестабільно між різними браузерами.
+      </p>
+      <p>
+        Значення, що найчастіше використовуються, у тому числі значення за
+        замовчуванням, наведені в прикладі. Вони включають зміщення контенту
+        вправо (flex-end), центрування (center) і рівномірний розподіл простору
+        між елементами (space-between).
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="RwrOXZN"
+          data-pen-title="lesson-06-justify-content"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/RwrOXZN">
+              lesson-06-justify-content</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість align-items</h3>
+      <p>
+        Управляє розташуванням елементів вздовж поперечної осі. Це аналог
+        justify-content для головної осі.
+      </p>
+      <pre class="code">
+      align-items: stretch | flex-start | flex-end | center | baseline  
+      </pre>
+      <ul class="section-list">
+        <li>
+          stretch - елементи розтягуються на всю довжину осі. Це значення за
+          замовчуванням.
+        </li>
+        <li>flex-start - елементи притискаються до старту осі.</li>
+        <li>flex-end - елементи притискаються до кінця осі.</li>
+        <li>center - елементи центруються на осі.</li>
+        <li>
+          baseline - елементи вирівнюються по базовій лінії їх текстового
+          вмісту.
+        </li>
+      </ul>
+      <img src="./img/align-items.svg" alt="align items" width="420" />
+
+      <p class="attention">
+        Увага: У цієї властивості є й інші значення, але вони не підтримуються
+        багатьма браузерами або працюють нестабільно між різними браузерами.
+      </p>
+      <p>
+        Напевно, найчастіше застосування - це вертикальне центрування елементів
+        в рядку, особливо, якщо елементи різної висоти. Додамо до нашої розмітки
+        шапку з логотипом і вкладемо меню в шапку таким чином, щоб логотип і
+        меню були сусідами.
+      </p>
+
+      <pre class="code">
+&lt;header&nbsp;class=&quot;page-header&quot;&gt;
+<br>&nbsp;&nbsp;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;logo&quot;&gt;Логотип&lt;/a&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;ul&nbsp;class=&quot;menu&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Головна&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Блог&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Підкасти&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;item&quot;&gt;&lt;a&nbsp;href=&quot;&quot;&nbsp;class=&quot;link&quot;&gt;Контакти&lt;/a&gt;&lt;/li&gt;
+<br>&nbsp;&nbsp;&lt;/ul&gt;
+<br>&lt;/header&gt;  
+</pre>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="abdxeMr"
+          data-pen-title="lesson-06-align-items"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/abdxeMr">
+              lesson-06-align-items</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+
+      <p>
+        Перше, що необхідно зробити - це поставити в рядок логотип a.logo і меню
+        ul.menu, для цього перетворюємо header.page-header у flex-контейнер.
+      </p>
+      <pre class="code">
+.page-header {
+  display: flex;
+}    
+</pre
+      >
+      <p>
+        Меню вище за логотип (з усіма стилями з прикладу), тому воно
+        розтягується за вертикаллю на всю довжину поперечної осі, оскільки
+        align-items за замовчуванням задане значення stretch. Щоб виправити це і
+        вирівняти логотип та меню вертикально по центру - задаємо значення
+        center.
+      </p>
+      <pre class="code">
+.page-header {
+  display: flex;
+  align-items: center;
+}    
+</pre
+      >
+      <p>
+        Останнім кроком розсунемо логотип і меню по кутах хедера, задавши
+        justify-content значення space-between. Оскільки елементів в рядку
+        всього два (логотип і меню), вони притискаються до країв головної осі, а
+        увесь вільний простір знаходиться між ними.
+      </p>
+      <pre class="code">
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+</pre
+      >
+      <h3>Картка із зображенням</h3>
+      <p>
+        Стандартна проблема - картка з горизонтально розташованим контентом і
+        зображенням. Картка - flex-контейнер, це означає, що align-items за
+        замовчуванням задано значення stretch, тобто елементи вертикально
+        розтягуються по висоті найбільшого елемента. Якщо контенту більше, ніж
+        висота зображення, воно починає розтягуватися, змінювати пропорції і
+        викривлятися.
+      </p>
+      <div class="codepn">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="vYLwvWo"
+          data-pen-title="lesson-06-align-items-card"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/vYLwvWo">
+              lesson-06-align-items-card</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Проблема вирішується просто - достатньо перевизначити значення
+        align-items у flex-контейнера. У цьому випадку підійде значення
+        flex-start, щоб елементи притискалися до початку поперечної осі.
+      </p>
+
+      <pre class="code">
+.card {
+  display: flex;
+  align-items: flex-start;
+}  
+</pre
+      >
+
+      <h3>Властивість flex-wrap</h3>
+      <p>
+        За замовчуванням створюється однорядковий контейнер і елементи
+        розміщуються на одному рядку, стискаючись у разі потреби. Властивість
+        flex-wrap дозволяє перетворити однорядковий контейнер у багаторядковий.
+        Елементи будуть додаватися в рядок доти, доки в ньому буде місце, після
+        чого буде автоматично створений ще один рядок.
+      </p>
+      <img src="./img/flex-wrap.svg" alt="flex wrap" width="420" />
+      <pre class="code">
+ flex-wrap: nowrap | wrap | wrap-reverse  
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          nowrap - всі елементи будуть на одному рядку. Це значення за
+          замовчуванням.
+        </li>
+        <li>
+          wrap - дозволяє елементам перестрибувати на інші рядки, які за
+          замовчуванням розташовуються зверху вниз (вздовж поперечної осі).
+        </li>
+        <li>
+          wrap-reverse - дозволяє елементам перестрибувати на інші рядки, які
+          розташовуються знизу вгору (вздовж поперечної осі).
+        </li>
+      </ul>
+      <h4>Сітка елементів</h4>
+      <p>
+        Багаторядковий контейнер дозволяє зробити «сітку» елементів, наприклад,
+        карток продуктів в інтернет-магазині, прев'ю статей в блозі, галерею
+        зображень тощо.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="mdVoGVV"
+          data-pen-title="lesson-06-flex-wrap"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/mdVoGVV">
+              lesson-06-flex-wrap</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Покроково розберемо техніку створення «сіток». Перше, що необхідно
+        зробити - перетворити ul.card-set у flex-контейнер і зробити його
+        багаторядковим. Контейнеру можна задати довільну ширину.
+      </p>
+      <pre class="code">
+.card-set {
+  display: flex;
+  flex-wrap: wrap;
+}  
+</pre
+      >
+      <p>
+        Далі використовуємо flex-властивість контейнера gap, яка визначає
+        відстань між стовпцями та рядками сітки. Нехай у нашому ймовірному
+        макеті це 10px.
+      </p>
+      <pre class="code">
+.card-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}  
+</pre
+      >
+      <p class="note">
+        Властивість gap: Властивість gap комбінує в собі значення властивостей
+        row-gap та column-gap, які дозволяють окремо вказати розміри відступів
+        між рядками та стовпцями сітки. Використовуйте gap, коли відступи
+        однакові, інакше підійдуть row-gap та column-gap.
+      </p>
+      <p>
+        Останній крок – задати розмір flex-елементам li.item. Ширина вказується
+        у відсотках від загальної ширини батька (100%) за наступною формулою.
+      </p>
+      <pre class="code">
+calc((100% - кіль-сть_відступів_в_рядку * довжина_одного_відступу_в_рядку) / кіль-сть_елементів_в_рядку)  
+</pre
+      >
+      <p>
+        Кількість відступів між елементами в рядку завжди на одиницю менша за
+        кількість елементів. У нашій сітці три елементи в один рядок, значить в
+        одному рядку є два відступи по 10px. Властивість flex-basis - це заміна
+        width для flex-елементів і розглядається далі.
+      </p>
+      <pre class="code">
+.item {
+  flex-basis: calc((100% - 20px) / 3);
+}  
+</pre
+      >
+      <p class="note">
+        Чому не використовувати фіксовані значення?: Це масштабоване рішення,
+        тому що розміри елементів не потрібно буде перераховувати знову у разі
+        зміни ширини контейнера або значення відступу між елементами.
+      </p>
+      <h3>Властивість align-content</h3>
+      <p>
+        Управляє вирівнюванням всіх рядків багаторядкового контейнера вздовж
+        поперечної осі, якщо є вільне місце. Аналогічно тому, як justify-content
+        вирівнює елементи в кожному рядку. Ця властивість не діє, якщо є тільки
+        один рядок елементів або в контейнері немає вільного місця за вертикаллю
+        (явно не задана висота більша за контент).
+      </p>
+      <pre class="code">
+align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch  
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          stretch - рядки рівномірно розтягуються, щоб зайняти увесь простір.
+          Значення за замовчуванням.
+        </li>
+        <li>flex-start - рядки притискаються до старту осі.</li>
+        <li>flex-end - рядки притискаються до кінця осі.</li>
+        <li>center - рядки центруються на осі.</li>
+      </ul>
+      <p class="note">
+        Цікаво: Значення space-between, space-around і space-evenly працюють
+        аналогічно властивості justify-content тільки для рядків, і
+        використовуються рідко.
+      </p>
+      <img src="./img/align-content.svg" alt="align content" width="420" />
+    </section>
+  </body>
+</html>
