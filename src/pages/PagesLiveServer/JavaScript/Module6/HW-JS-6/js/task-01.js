@@ -1,10 +1,10 @@
 // ? ======= 1 варіант ========================================
 
-const numberOfCategories = document.querySelectorAll(".item");
+const liEl = document.querySelectorAll(".item");
 
-console.log(`Number of categories: ${numberOfCategories.length}`);
+console.log(`Number of categories: ${liEl.length}`);
 
-numberOfCategories.forEach((elem) => {
+liEl.forEach((elem) => {
   console.log(`Category: ${elem.firstElementChild.textContent}`);
   console.log(`Elements: ${elem.lastElementChild.children.length}`);
 });
