@@ -15,7 +15,18 @@ const images = [
 
 const gallery = document.querySelector('.three-gallery');
 
-// ------------- 1st variant ----------------------------------------------------------------
+
+
+
+const galleryItems = images.map(({url, alt}) => {
+  
+  return `<li class="three-gallery-item"><img src=${url} alt=${alt} width="250" height="150"></li> `
+}).join('')
+
+gallery.insertAdjacentHTML("beforeend", galleryItems)
+
+
+// ----1st variant ------------------------------------------------------
 // const galleryItems = ({ url, alt }) =>
 //   `<li><img src="${url}" alt="${alt}" width = 300 height = auto></li>`;
 // const galleryMarkup = images.reduce(
@@ -25,7 +36,9 @@ const gallery = document.querySelector('.three-gallery');
 
 // gallery.insertAdjacentHTML('afterbegin', galleryMarkup);
 
-// ------------- 2nd variant ----------------------------------------------------------------
+
+
+//--- 2nd variant -------------------------------------------------------
 /*
 const renderGallery = (arr) => {
   return arr.map(({ url, alt }) => {
@@ -62,17 +75,17 @@ const galleryMarkup = images
 gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 */
 
-// ------------- 5th variant --------------------------------------------------------------------
+// ------------- 5th variant -------------------------------------------------
 
-const galleryMarkup = images.reduce(
-  (acc, { alt, url }) =>
-    (acc += `<li class="three-gallery-item"><img src="${url}" alt="${alt}" class="gallery-img" width = "300" height = "200"></li>`),
-  []
-);
+// const galleryMarkup = images.reduce(
+//   (acc, { alt, url }) =>
+//     (acc += `<li class="three-gallery-item"><img src="${url}" alt="${alt}" class="gallery-img" width = "300" height = "200"></li>`),
+//   []
+// );
 
-gallery.insertAdjacentHTML('beforeend', galleryMarkup);
+// gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 
-// ------------- 6th variant --------------------------------------------------------------------
+// --- 6th variant -------------------------------------------------------
 /*
 const galleryMarkup = images
   .reduce(

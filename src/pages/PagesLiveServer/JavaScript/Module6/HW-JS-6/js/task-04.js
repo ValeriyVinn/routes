@@ -1,24 +1,37 @@
 // !  Variant 1 =============
+// const targetValue = document.querySelector("#value");
 
-let counterValue = 0;
+// let counterValue = 0;
 
-const btnDecrement = document
-  .querySelector('[data-action="decrement"]')
-  .addEventListener("click", () => {
-    counterValue -= 1;
-    targetValue.textContent = counterValue;
-    // console.log(counterValue);
-  });
+// const btnDecrement = document
+//   .querySelector('[data-action="decrement"]')
+//   .addEventListener("click", () => {
+//     counterValue -= 1;
+//     targetValue.textContent = counterValue;
+//     // console.log(counterValue);
+//   });
 
-const btnIncrement = document
-  .querySelector('[data-action="increment"]')
-  .addEventListener("click", () => {
-    counterValue += 1;
-    targetValue.textContent = counterValue;
-    // console.log(counterValue);
-  });
+// const btnIncrement = document
+//   .querySelector('[data-action="increment"]')
+//   .addEventListener("click", () => {
+//     counterValue += 1;
+//     targetValue.textContent = counterValue;
+//     // console.log(counterValue);
+//   });
 
-const targetValue = document.querySelector("#value");
+
+const value = document.getElementById('value')
+
+const decrementBtn = document.querySelector('[data-action="decrement"]').addEventListener('click', toDecrease)
+const incrementBtn = document.querySelector('[data-action="increment"]').addEventListener('click', toIncrease)
+
+function toDecrease() {
+  value.textContent -= 1
+}
+function toIncrease() {
+  value.textContent = +value.textContent +1  ;
+}
+
 
 // btnDecrement.addEventListener("click", () => {
 //   counterValue -= 1;

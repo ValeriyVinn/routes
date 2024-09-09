@@ -21,3 +21,10 @@ const createUl = ingredients.map((ingridient) => {
 ingridientContainer.append(...createUl);
 
 console.log(createUl);
+
+
+console.log(document);
+
+const body = document.body;
+console.log(body);
+

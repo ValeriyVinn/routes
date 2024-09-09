@@ -40,14 +40,14 @@ button {
 
 .three-gallery-item {
   margin-right: 10px;
-  border: 2px solid yellowgreen;
+  border: 2px solid grey;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .three-gallery-item:hover {
-  border: 2px solid yellow;
-
+  /* border: 2px solid  blueviolet; */
+rotate: 1deg;
 }
 
 /* task 4 ------------------------*/
