@@ -72,13 +72,29 @@ pre {
   padding: 0;
   margin: 0;
 }
-.code {
+/* .code {
   border-radius: 5px;
   padding: 5px;
   background-color: #dbfff3;
   outline: 1px solid #9affdd;
   color: #008000;
   margin-bottom: 5px;
+} */
+
+.code {
+  border-radius: 3px;
+  padding: 5px;
+  /* background-color: rgb(200, 220, 255);
+  outline: 1px solid rgb(190, 190, 255); */
+  /* color: navy; */
+
+  background-color: rgb(241, 240, 240);
+  /* background-color: black;
+  color: white; */
+  border: 1px solid rgb(199, 199, 199);
+
+  margin-bottom: 5px;
+  overflow-x: auto;
 }
 
 .remember {

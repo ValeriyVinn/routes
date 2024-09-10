@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>До друку</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="../../../../indexLS.html  " class="green">Home</a>
+    </header>
+    <main class="main">
+      <h1>Об'єктна модель документа</h1>
+
+      <section class="section">
+        <p>
+          Коли ми працюємо з браузером, доступний функціонал складається з
+          декількох модулів, оскільки JavaScript не має інструментів для роботи
+          з браузером.
+        </p>
+        <img src="./img/browser-js.png" alt="browser-js" width="360" />
+        <p>
+          Об'єктна модель документа (Document Object Model) - незалежний від
+          мови інтерфейс для роботи з HTML-документом. Містить набір
+          властивостей і методів, що дозволяють шукати, створювати і видаляти
+          елементи, реагувати на дії користувача і багато іншого. Тобто з'єднує
+          сторінку з мовою програмування.
+        </p>
+        <p>
+          DOM - це відображення HTML-документа, деревоподібна структура, в якій
+          кожен вузол - це JavaScript-об'єкт з властивостями і методами, що
+          становить частину HTML-документа. Кожен елемент в документі, весь
+          документ в цілому, заголовок, посилання, абзац - це частини DOM цього
+          документа, тому всі вони можуть бути змінені з JavaScript-коду.
+        </p>
+        <p>
+          DOM - це відображення HTML-документа, деревоподібна структура, в якій
+          кожен вузол - це JavaScript-об'єкт з властивостями і методами, що
+          становить частину HTML-документа. Кожен елемент в документі, весь
+          документ в цілому, заголовок, посилання, абзац - це частини DOM цього
+          документа, тому всі вони можуть бути змінені з JavaScript-коду.
+        </p>
+        <h4>HTML-документ і DOM</h4>
+        <p>
+          Згідно з DOM-моделлю, кожен тег утворює окремий елемент-вузол, кожен
+          фрагмент тексту - текстовий елемент. HTML-документ - це ієрархічне
+          дерево, в якому у кожного елемента (крім кореневого) є тільки один
+          батьківський елемент, тобто елемент, всередині якого він
+          розташовується. Це дерево утворюється за рахунок вкладеної структури
+          тегів і текстових елементів.
+        </p>
+        <img src="./img/dom-tree.png" alt="dom-tree" width="420" />
+        <p>
+          Щоб відобразити HTML-документ, браузер спочатку перетворює його у
+          формат, який він розуміє - DOM. Рушій браузера має спеціальний
+          фрагмент коду - HTML-парсер, який використовується для перетворення
+          HTML в DOM.
+        </p>
+        <p>
+          В HTML вкладеність визначає відносини батько-дитина між елементами. В
+          DOM об'єкти пов'язані у деревоподібній структурі даних, фіксуючи ці
+          відносини. Браузер будує DOM поступово, щойно надходять перші
+          фрагменти коду, він починає парсити HTML, додаючи вузли у
+          деревоподібну структуру.
+        </p>
+        <img src="./img/html-parser.gif" alt="html-parser" width="420" />
+        <p>
+          Після того, як DOM-дерево побудовано, у ньому можна знайти елемент за
+          допомогою JavaScript і виконувати з ним певні дії, оскільки кожен
+          елемент має інтерфейс з безліччю властивостей і методів.
+        </p>
+        <img src="./img/js-engine.gif" alt="js-engine" width="420" />
+        <h4>DOM-дерево</h4>
+        <p>
+          Візуалізуємо дерево HTML-документа, використовуючи сервіс
+          <a href="https://software.hixie.ch/utilities/js/live-dom-viewer/"
+            >генератора DOM-дерева</a
+          >
+        </p>
+        <p class="code">
+          &lt;!DOCTYPE&nbsp;html&gt;
+          <br />&lt;html&gt; <br />&nbsp;&nbsp;&lt;head&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Document&nbsp;title&lt;/title&gt;
+          <br />&nbsp;&nbsp;&lt;/head&gt; <br />&nbsp;&nbsp;&lt;body&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Page&nbsp;title&lt;/h1&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;#&quot;&gt;Link&nbsp;1&lt;/a&gt;&lt;/li&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;#&quot;&gt;Link&nbsp;2&lt;/a&gt;&lt;/li&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+          <br />&nbsp;&nbsp;&lt;/body&gt; <br />&lt;/html&gt;
+        </p>
+        <img src="./img/live-dom-tree.png" alt="live-dom-tree" width="320" />
+        <p>У цьому дереві виділені два типи вузлів.</p>
+        <ul class="section-list">
+          <li>
+            Вузли-елементи (element node) - утворюються тегами, звичайним чином
+            одні елементи вкладені в інші. Структура дерева утворена виключно за
+            рахунок них.
+          </li>
+          <li>
+            Текстові вузли (text node) - утворюються текстом всередині
+            елементів. Текстовий вузол містить тільки рядок тексту і не може
+            мати дочірніх елементів, тобто він завжди на найнижчому рівні
+            ієрархії. Пробіли і перенесення рядків - це теж текстові вузли.
+          </li>
+        </ul>
+        <p class="note">
+          ЦІКАВО З цього правила є винятки: пробіли до head ігноруються, а
+          будь-який вміст після body не створює елемент, браузер переносить його
+          в кінець 'body'.
+        </p>
+      </section>
+      <h1>Навігація по DOM</h1>
+
+      <section class="section">
+        <p>
+          DOM надає широкий спектр можливостей для роботи з елементом і його
+          вмістом, але для цього, спочатку потрібно отримати посилання на нього.
+          Доступ до DOM починається з об'єкта <b>document</b> , з нього можна
+          дістатися до будь-яких елементів.
+        </p>
+        <p class="note">
+          ЦІКАВО: document - це частина глобального об'єкта window, який
+          доступний у скрипті, коли він виконується в браузері. Так само як
+          alert, console.log, prompt і багато інших.
+        </p>
+        <p>
+          Елементи DOM-дерева мають ієрархічне відношення один до іншого. Для
+          опису відносин використовуються терміни предок (ancestor), нащадок
+          (descendant), батько (parent), дитина (child) і сусід (sibling).
+        </p>
+        <ul class="section-list">
+          <li>Найвищий елемент називається кореневим (root node).</li>
+          <li>
+            Кожен елемент, крім кореневого, має тільки одного батьківського.
+          </li>
+          <li>У елемента може бути скільки завгодно дітей.</li>
+          <li>Сусіди - це елементи зі спільним батьківським елементом.</li>
+          <li>
+            Дочірні елементи (діти) - елементи, які знаходяться безпосередньо
+            всередині поточного (перша вкладеність).
+          </li>
+          <li>
+            Нащадки - усі елементи, які знаходяться у поточному, разом з їхніми
+            дітьми, дітьми їхніх дітей тощо. Тобто все на зразок дерева.
+          </li>
+        </ul>
+        <img src="./img/dom-traversal.png" alt="dom-traversal" width="360" />
+        <p>
+          Для навігації по цій ієрархії елементи мають наступні властивості.
+        </p>
+        <ul class="section-list">
+          <li>elem.parentNode - вибере батьківський elem.</li>
+          <li>
+            elem.childNodes - псевдомасив, зберігає всі дочірні елементи,
+            включно з текстовими.
+          </li>
+          <li>
+            elem.children - псевдомасив, зберігає тільки дочірні вузли-елементи,
+            тобто ті, що відповідають тегам.
+          </li>
+          <li>
+            elem.firstChild - вибере перший дочірній елемент всередині elem,
+            включно з текстовими вузлами.
+          </li>
+          <li>
+            elem.firstElementChild - вибере перший дочірній вузол-елемент
+            всередині elem.
+          </li>
+          <li>
+            elem.lastChild - вибере останній дочірній елемент всередині elem,
+            включно з текстовими вузлами.
+          </li>
+          <li>
+            elem.lastElementChild - вибере останній дочірній вузол-елемент
+            всередині elem.
+          </li>
+          <li>
+            elem.previousSibling - вибере елемент «зліва» від elem (його
+            попереднього сусіда).
+          </li>
+          <li>
+            elem.previousElementSibling - вибере вузол-елемент «зліва» від elem
+            (його попереднього сусіда).
+          </li>
+          <li>
+            elem.nextSibling - вибере елемент «праворуч» від elem (його
+            наступного сусіда)
+          </li>
+          <li>
+            elem.nextElementSibling - вибере вузол-елемент «праворуч» від elem
+            (його наступного сусіда).
+          </li>
+        </ul>
+        <p>
+          Відкрий цей приклад в окремому вікні і подивися логи в консолі
+          розробника.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="oNZqxoP"
+            data-pen-title="lesson-11-dom-traversal"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/oNZqxoP">
+                lesson-11-dom-traversal</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: DOM-колекції, як-от childNodes і children - псевдомасиви
+          (NodeList), у них немає більшості методів масиву.
+        </p>
+      </section>
+
+      <h1>Пошук елементів</h1>
+
+      <section class="section">
+        <p>
+          Отже, ми вже знаємо що DOM-елемент - це об'єкт з властивостями і
+          методами. Саме час навчитися швидко знаходити елемент за довільним
+          CSS-селектором. Група методів elem.querySelector* - це сучасний
+          стандарт для пошуку елементів. Вони дозволяють знайти елемент або
+          групу елементів за CSS-селектором будь-якої складності.
+        </p>
+        <p class="code">element.querySelector(selector);</p>
+        <p>
+          Використовується, якщо необхідно знайти тільки один, найчастіше
+          унікальний елемент.
+        </p>
+        <ul class="section-list">
+          <li>
+            Повертає перший знайдений елемент всередині element, що відповідає
+            CSS-селектору selector.
+          </li>
+          <li>Якщо нічого не знайдено, поверне null.</li>
+        </ul>
+        <p class="code">element.querySelectorAll(selector);</p>
+        <p>
+          Використовується, якщо необхідно знайти колекцію елементів, тобто
+          отримати масив посилань на елементи з однаковим селектором. Наприклад,
+          всі елементи списку з класом menu-item.
+        </p>
+
+        <ul class="section-list">
+          <li>
+            Повертає псевдомасив всіх елементів всередині element, які
+            відповідають CSS-селектору selector.
+          </li>
+          <li>Якщо нічого не знайдено, поверне порожній масив.</li>
+        </ul>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="wvJmGbG"
+            data-pen-title="lesson-11-querySelector*"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/wvJmGbG">
+                lesson-11-querySelector*</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+      </section>
+
+      <!-- ! -->
+      <h1>Властивості та атрибути</h1>
+
+      <section class="section">
+        <p>
+          Під час побудови DOM-дерева, деякі стандартні HTML-атрибути стають
+          властивостями елементів. Подивимося на декілька властивостей, які
+          часто використовуються.
+        </p>
+        <ul class="section-list">
+          <li>value - містить поточний текстовий контент елементів форм.</li>
+          <li>checked - зберігає стан чекбокса або радіокнопки.</li>
+          <li>name - зберігає значення, вказане в HTML-атрибуті name.</li>
+          <li>src - шлях до зображення тегу <img />.</li>
+        </ul>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="poeLbbd"
+            data-pen-title="lesson-11-properties"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/poeLbbd">
+                lesson-11-properties</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Властивість textContent​</h3>
+        <p>
+          elem.textContent повертає текстовий контент всередині елемента.
+          Доступний для читання і запису. Неважливо, що буде передано в
+          textContent, дані завжди будуть записані як текст.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="wvJmWqd"
+            data-pen-title="lesson-11-textContent"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/wvJmWqd">
+                lesson-11-textContent</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Властивість classList​</h3>
+        <p>
+          У властивості classList зберігається об'єкт з методами для роботи з
+          класами елемента.
+        </p>
+        <ul class="section-list">
+          <li>
+            elem.classList.contains(cls) - повертає true або false, залежно від
+            наявності класу cls в елемента.
+          </li>
+          <li>
+            elem.classList.add(cls) - додає клас cls до списку класів елемента.
+          </li>
+          <li>
+            elem.classList.remove(cls) - видаляє клас cls зі списку класів
+            елемента.
+          </li>
+          <li>
+            elem.classList.toggle(cls) - якщо відсутній клас cls, то додає його,
+            якщо - присутній, навпаки - видаляє.
+          </li>
+          <li>
+            elem.classList.replace(oldClass, newClass) - замінює існуючий клас
+            oldClass на вказаний newClass.
+          </li>
+        </ul>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="qBroNyW"
+            data-pen-title="lesson-11-classList"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/qBroNyW">
+                lesson-11-classList</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Властивість style​</h3>
+        <p>
+          Використовується для читання та зміни інлайнових стилів. Повертає
+          об'єкт CSSStyleDeclaration, який містить список усіх властивостей,
+          визначених тільки у вбудованих стилях елемента, а не увесь CSS. Під
+          час запису властивості записуються в camelCase, тобто background-color
+          перетворюється на element.style.backgroundColor тощо.
+        </p>
+        <pre class="code">
+const button = document.querySelector(".btn");
+
+button.style.backgroundColor = "teal";
+button.style.fontSize = "24px";
+button.style.textAlign = "center";
+
+console.log(button.style); // inline styles object
+</pre
+        >
+        <p class="note">
+          ЦІКАВО: На практиці стилізація елементів виконується шляхом додавання
+          CSS-класів. Властивість style використовується для додавання будь-яких
+          динамічних стилів, наприклад, під час анімації.
+        </p>
+        <h3>Атрибути​</h3>
+        <p>
+          DOM-елементам відповідають HTML-теги, які містять текстові атрибути.
+          Доступ до атрибутів здійснюється за допомогою стандартних методів. Ці
+          методи працюють зі значенням, яке знаходиться в HTML.
+        </p>
+        <ul class="section-list">
+          <li>
+            elem.hasAttribute(name) - перевіряє наявність атрибута, повертає
+            true або false.
+          </li>
+          <li>
+            elem.getAttribute(name) - отримує значення атрибута і повертає його.
+          </li>
+          <li>elem.setAttribute(name, value) - встановлює атрибут.</li>
+          <li>elem.removeAttribute(name) - видаляє атрибут.</li>
+          <li>
+            elem.attributes - властивість, що повертає об'єкт усіх атрибутів
+            елемента.
+          </li>
+        </ul>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="VwpXjga"
+            data-pen-title="lesson-11-attributes"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/VwpXjga">
+                lesson-11-attributes</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>data-атрибути​</h3>
+        <p>
+          Дозволяють додати до тегу довільний атрибут і отримати його значення в
+          JavaScript. Цю можливість використовують для того, щоб спростити
+          написання коду, наприклад, зв'язати дані і розмітку за унікальним
+          ідентифікатором, вказати тип дії кнопки тощо.
+        </p>
+        <p class="code">
+          &lt;button&nbsp;type=&quot;button&quot;&nbsp;data-action=&quot;save&quot;&gt;Save&lt;/button&gt;
+          <br />&lt;button&nbsp;type=&quot;button&quot;&nbsp;data-action=&quot;close&quot;&gt;Close&lt;/button&gt;
+        </p>
+        <p>
+          Для отримання значення data-атрибута використовується властивість
+          dataset, після якого стоїть ім'я атрибута. Тобто data- відкидається, а
+          інша частина імені записується як ім'я властивості об'єкта.
+        </p>
+        <pre class="code">
+const saveBtn = document.querySelector('button[data-action="save"]');
+console.log(saveBtn.dataset.action); // "save"
+
+const closeBtn = document.querySelector('button[data-action="close"]');
+console.log(closeBtn.dataset.action); // "close"
+</pre
+        >
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="vYxRXYg"
+            data-pen-title="lesson-11-data-attributes"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/vYxRXYg">
+                lesson-11-data-attributes</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+      </section>
+      <!-- ! -->
+      <h1>Створення та видалення елементів</h1>
+      <section class="section">
+        <p>
+          DOM API дозволяє не тільки вибирати або змінювати вже існуючі, але й
+          видаляти, а також створювати нові елементи, після чого додавати їх в
+          документ.
+        </p>
+        <h3>Створення</h3>
+        <p class="code">document.createElement(tagName);</p>
+        <p>
+          Створює елемент з ім'ям tagName і повертає посилання на нього як
+          результат свого виконання. tagName - це рядок, що вказує тип елемента,
+          який створюється. Елемент створюється в пам'яті, в DOM його ще немає.
+        </p>
+        <pre class="code">
+const heading = document.createElement("h1");
+console.log(heading); // &lt;h1&gt;&lt;/h1&gt;
+
+heading.textContent = "This is a heading";
+console.log(heading); // &lt;h1&gt;This is a heading&lt;/h1&gt;
+
+const image = document.createElement("img");
+image.src = "https://placeimg.com/640/480/nature";
+image.alt = "Nature";
+console.log(image); // &lt;img src="https://placeimg.com/640/480/nature" alt="Nature" /&gt;
+</pre
+        >
+        <h3>Додавання​</h3>
+        <p>
+          Щоб створений елемент відображався на сторінці, його необхідно додати
+          до вже існуючого елемента в DOM-дереві. Припустимо, що додаємо до
+          певного елемента element, для цього існують методи.
+        </p>
+        <ul class="section-list">
+          <li>
+            element.append(el1, el2, ...) - додає один або декілька елементів
+            після всіх дітей елемента element.
+          </li>
+          <li>
+            element.prepend(el1, el2, ...) - додає один або декілька елементів
+            перед усіма дітьми елемента element.
+          </li>
+          <li>
+            element.after(el1, el2, ...) - додає один або декілька елементів
+            після елемента element.
+          </li>
+          <li>
+            element.before(el1, el2, ...) - додає один або декілька елементів
+            перед елементом element.
+          </li>
+        </ul>
+        <p>
+          У всіх цих методах el - це елементи або рядки, в будь-якому поєднанні
+          і кількості. Рядки додаються як текстові вузли.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="WNpzoZQ"
+            data-pen-title="lesson-11-inserting-elements"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/WNpzoZQ">
+                lesson-11-inserting-elements</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: Якщо елемент для додавання вже знаходиться в DOM, то він
+          видаляється зі свого старого місця і додається у нове. З цього
+          випливає правило - один і той самий елемент не може бути одночасно у
+          двох місцях.
+        </p>
+        <h3>Видалення</h3>
+        <p class="code">elem.remove();</p>
+        <p>
+          Для того, щоб видалити елемент, використовується метод remove(). Він
+          викликається на елементі elem, який необхідно видалити.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="mdWKWoM"
+            data-pen-title="lesson-11-remove"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/mdWKWoM">
+                lesson-11-remove</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Оптимізація роботи з DOM​</h3>
+        <p>
+          Сучасні браузери намагаються оптимізувати процес відтворення сторінки
+          без втручання розробника. Проте, зміна DOM-дерева - це дорога
+          операція, тому необхідно намагатися мінімізувати кількість звернень до
+          DOM.
+        </p>
+        <p>
+          <b>Repaint</b> - відбувається, коли зміни торкнулися стилів, що
+          впливають на зовнішній вигляд елемента, але не на геометрію. Наприклад
+          opacity, background-color, visibility і outline. Браузер повторно
+          створює елемент, з урахуванням нового стилю. Також перевіряється
+          видимість інших елементів, один або більше можуть виявитися
+          прихованими під елементом, що змінив зовнішній вигляд.
+        </p>
+        <p>
+          <b>Reflow</b> - відбувається, коли зміни впливають на вміст, структуру
+          документу, положення елементів. Відбувається перерахунок
+          позиціонування і розмірів, що призводить до повторного створення
+          частини або всього документу. Зміна розміру одного батьківського
+          контейнера вплине на всіх його дітей і предків. Має значно більший
+          вплив на продуктивність, ніж repaint.
+        </p>
+        <p>
+          Усі перераховані вище операції блокують браузер. Сторінка не може
+          виконувати жодні інші операції у той час, коли відбувається reflow або
+          repaint.
+        </p>
+        <p>Причинами можуть бути:</p>
+        <ul class="section-list">
+          <li>
+            Маніпуляції з DOM (додавання, видалення, зміна, перестановка
+            елементів)
+          </li>
+          <li>Зміна вмісту, зокрема тексту в полях форм</li>
+          <li>Розрахунок або зміна CSS-властивостей</li>
+          <li>Додавання і видалення таблиць стилів</li>
+          <li>Маніпуляції з атрибутом class</li>
+          <li>Маніпуляції з вікном браузера (зміни розмірів, прокручування)</li>
+          <li>Активація псевдокласів (наприклад, ':hover')</li>
+        </ul>
+      </section>
+      <!-- ! -->
+      <h1>Властивість innerHTML</h1>
+
+      <section class="section">
+        <p>
+          Ще один спосіб створити DOM-елементи і помістити їх в дерево - це
+          використовувати рядки з тегами і дозволити браузеру зробити всю важку
+          роботу. У такого підходу є свої плюси і мінуси.
+        </p>
+        <h3>Читання​</h3>
+        <p>
+          Властивість innerHTML зберігає вміст елемента, включно з тегами, у
+          вигляді рядка. Значення, що повертається, - це завжди валідний
+          HTML-код.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="ZEeRegd"
+            data-pen-title="lesson-11-innerhtml-read"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/ZEeRegd">
+                lesson-11-innerhtml-read</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Зміна</h3>
+        <p>
+          Властивість innerHTML доступна і для читання, і для запису. Якщо
+          записати в неї рядок з HTML-тегами, то браузер під час парсингу рядка
+          перетворить їх у валідні елементи і додасть в DOM-дерево.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="JjWZNKb"
+            data-pen-title="lesson-11-innerhtml-write"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/JjWZNKb">
+                lesson-11-innerhtml-write</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: Якщо у властивість innerHTML записати порожній рядок, то вміст
+          елемента буде очищено. Це простий і швидкий спосіб видалення всього
+          вмісту.
+        </p>
+        <p>
+          За такого підходу, на відміну від document.createElement(), ми не
+          отримуємо посилання на створений DOM-елемент. Це перший крок на шляху
+          до шаблонізації - створення великої кількості однотипної розмітки з
+          різними даними за наперед визначеним шаблоном. Наприклад, як у списку
+          товарів інтернет магазину тощо.
+        </p>
+        <p>
+          Однотипна (шаблонна) розмітка створюється із масиву даних. Прийом
+          полягає у перебиранні цього масиву і складанні одного рядка з
+          HTML-тегами, який потім записуємо в innerHTML елемента.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="qBrKmJP"
+            data-pen-title="lesson-11-innerhtml-multiinsert"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/qBrKmJP">
+                lesson-11-innerhtml-multiinsert</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Додавання​</h3>
+        <p>
+          Зміна elem.innerHTML повністю видалить і повторно створить всі нащадки
+          елемента elem. Якщо елемент спочатку не був порожній, то виникнуть
+          додаткові витрати на серіалізацію вже існуючої розмітки, а це погано.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="QWpxvqR"
+            data-pen-title="lesson-11-innerhtml-update"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/QWpxvqR">
+                lesson-11-innerhtml-update</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: Використовуйте властивість elem.innerHTML для додавання тільки
+          тоді, коли елемент elem - порожній, або якщо потрібно повністю
+          замінити його вміст.
+        </p>
+        <h3>Метод insertAdjacentHTML()​</h3>
+        <p>
+          Сучасний метод для додавання рядка з HTML-тегами перед, після або
+          всередину елемента. Вирішує проблему innerHTML з повторною
+          серіалізацією вмісту елемента під час додавання розмітки до вже
+          існуючої.
+        </p>
+        <p class="code">elem.insertAdjacentHTML(position, string);</p>
+        <p>
+          Аргумент position - це рядок, позиція щодо елемента elem. Приймає одне
+          з чотирьох значень.
+        </p>
+        <ul>
+          <li>"beforebegin" - перед elem</li>
+          <li>"afterbegin" - всередині elem, перед усіма дітьми</li>
+          <li>"beforeend" - всередині elem, після усіх дітей</li>
+          <li>"afterend" - після elem</li>
+          <div class="codepen">
+            <p
+              class="codepen"
+              data-height="300"
+              data-default-tab="html,result"
+              data-slug-hash="mdWKMOE"
+              data-pen-title="lesson-11-insert-adjacent-html"
+              data-user="goit-academy"
+              style="
+                height: 300px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              "
+            >
+              <span
+                >See the Pen
+                <a href="https://codepen.io/goit-academy/pen/mdWKMOE">
+                  lesson-11-insert-adjacent-html</a
+                >
+                by goit-academy (<a href="https://codepen.io/goit-academy"
+                  >@goit-academy</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+            <script
+              async
+              src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+            ></script>
+          </div>
+          <p class="note">
+            ЦІКАВО: "beforebegin" і "afterend" працюють тільки тоді, коли elem
+            вже знаходиться в DOM-дереві.
+          </p>
+        </ul>
+      </section>
+      <!-- ! -->
+
+      <h1>Підключення скриптів</h1>
+      <section class="section">
+        <p>
+          Завантаження і виконання скрипта, зазначеного в тезі &lt;script&gt;
+          без будь-яких атрибутів, блокують обробку HTML-документа і побудову
+          DOM. Це проблема.
+        </p>
+        <p class="code">
+          &lt;script&nbsp;src=&quot;path-to-script.js&quot;&gt;&lt;/script&gt;
+        </p>
+        <p>
+          Коли аналізатор зустрічає такий тег, обробка HTML-документа
+          припиняється і починається завантаження файлу скрипта, зазначеного в
+          атрибуті src. Після завантаження скрипт виконується, і тільки потім
+          відновлюється обробка HTML. Це називається «блокуючий» скрипт.
+        </p>
+        <p>
+          <b>Атрибути defer та async</b> були введені, щоб дати розробникам
+          можливість краще контролювати спосіб завантаження скриптів, і коли
+          саме їх виконувати.
+        </p>
+        <h4>Атрибут defer​</h4>
+        <p class="code">
+          &lt;script&nbsp;defer&nbsp;src=&quot;path-to-script.js&quot;&gt;&lt;/script&gt;
+          <br />
+        </p>
+        <p>
+          <b>Атрибут defer</b> вказує браузеру завантажувати файл скрипта у
+          фоновому режимі, паралельно обробці HTML-документа і побудові DOM.
+          Скрипт буде виконаний тільки після того, як HTML-документ був
+          оброблений, а DOM побудований. Такі скрипти не блокують побудову
+          DOM-дерева і гарантовано виконуються у тому порядку, в якому вказані в
+          HTML-документі.
+        </p>
+        <img src="./img/defer.png" alt="defer" width="420" />
+        <h4>Атрибут async​</h4>
+        <p class="code">
+          &lt;script&nbsp;async&nbsp;src=&quot;path-to-script.js&quot;&gt;&lt;/script&gt;
+          <br />
+        </p>
+        <p>
+          Завантаження скрипта з атрибутом async не блокує побудову DOM, але він
+          виконується відразу після завантаження. Це означає, що такі скрипти
+          можуть заблокувати побудову DOM, і виконуються у довільному порядку.
+        </p>
+        <img src="./img/async.png" alt="async" width="420" />
+      </section>
+      <!-- ! -->
+      <h1>Події</h1>
+
+      <section class="section">
+        <p>
+          <b>Подія</b> - це сигнал від браузера про те, що на веб-сторінці щось
+          відбулося. Події використовуються для реакції на дії користувача і
+          виконання коду, пов'язаного з певною подією. Існує багато видів подій:
+          миші, клавіатури, елементів форм, завантаження зображень, буфера
+          обміну, зміни стадії CSS анімації або переходу, зміни розмірів вікна
+          та багато інших.
+        </p>
+        <p>
+          Одна дія може викликати декілька подій. Наприклад, клік викликає
+          спочатку mousedown, а потім mouseup і click. У тих випадках, коли одна
+          дія генерує декілька подій, їхній порядок фіксований. Тобто обробники
+          викликаються у порядку mousedown → mouseup → click.
+        </p>
+        <p>
+          Для того, щоб елемент реагував на дії користувача, до нього необхідно
+          додати слухача (обробника) події. Тобто функцію, яка буде викликана,
+          щойно подія відбулася.
+        </p>
+        <h4>Метод addEventListener()​</h4>
+        <p>Додає слухача події на елемент.</p>
+        <p class="code">element.addEventListener(event, handler, options);</p>
+        <ul class="section-list">
+          <li>event - ім'я події, рядок, наприклад "click".</li>
+          <li>
+            handler - колбек-функція, яка буде викликана під час настання події.
+          </li>
+          <li>
+            options - необов'язковий об'єкт параметрів з розширеними
+            налаштуваннями.
+          </li>
+        </ul>
+        <pre class="code">
+    const button = document.querySelector(".my-button");
+    
+    button.addEventListener("click", () => {
+      console.log("Button was clicked");
+    });
+    </pre
+        >
+        <p>
+          Для колбека можна (і бажано) використовувати окрему функцію і
+          передавати на неї посилання. Іменована функція підвищує читабельність
+          коду.
+        </p>
+        <pre class="code">
+    const button = document.querySelector(".my-button");
+    
+    const handleClick = () => {
+      console.log("Button was clicked");
+    };
+    
+    button.addEventListener("click", handleClick);
+    </pre
+        >
+        <p>
+          На одному елементі може бути будь-яка кількість обробників подій,
+          навіть подій одного типу. Колбек-функції будуть викликатися у порядку
+          їх реєстрації в коді.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="QWpxOvE"
+            data-pen-title="lesson-12-add-event-listener"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/QWpxOvE">
+                lesson-12-add-event-listener</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h4>Метод removeEventListener()​</h4>
+        <p>
+          Видаляє слухача події з елемента. Аргументи аналогічні методу
+          addEventListener().
+        </p>
+        <p class="code">
+          element.removeEventListener(event, handler, options);
+        </p>
+        <p>
+          Для видалення потрібно передати посилання саме на ту колбек-функцію,
+          яка була призначена в addEventListener(). У такому разі, для колбеків
+          використовують окрему функцію і передають її за ім'ям (посиланням).
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="vYxrWpw"
+            data-pen-title="lesson-12-remove-event-listener"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/vYxrWpw">
+                lesson-12-remove-event-listener</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h4>Ключове слово this​</h4>
+        <p>
+          Якщо колбеком буде функція, яка використовує this, за замовчуванням
+          контекст всередині неї буде посилатися на DOM-елемент, на якому висить
+          слухач.
+        </p>
+        <pre class="code">
+    const mango = {
+      username: "Mango",
+      showUsername() {
+        console.log(this);
+        console.log(`My username is: ${this.username}`);
+      },
+    };
+    
+    const btn = document.querySelector(".js-btn");
+    
+    // ✅ Працює
+    mango.showUsername();
+    
+    // ❌ this буде посилатися на button, якщо використовувати showUsername як callback
+    btn.addEventListener("click", mango.showUsername); // не працює
+    
+    // ✅ Не забувайте прив'язувати контекст методів об'єкта
+    btn.addEventListener("click", mango.showUsername.bind(mango));
+    </pre
+        >
+      </section>
+      <!-- ! -->
+      <h1>Об'єкт події</h1>
+
+      <section class="section">
+        <p>
+          Щоб обробити подію - недостатньо знати про те, що це клік або
+          натискання клавіші, можуть знадобитися деталі. Наприклад, поточне
+          значення текстового поля, елемент, на якому відбулася подія, вбудовані
+          методи та інші.
+        </p>
+        <p>
+          Кожна подія - це об'єкт, який містить інформацію про деталі події та
+          автоматично передається першим аргументом в обробник події. Всі події
+          відбуваються з базового класу Event.
+        </p>
+        <pre class="code">
+const handleClick = event => {
+  console.log(event);
+};
+
+button.addEventListener("click", handleClick);
+</pre
+        >
+        <p>
+          Параметр event - це і є об'єкт події, який автоматично передається
+          першим аргументом під час виклику колбек-функції. Ми можемо називати
+          його як завгодно, але, як правило, його оголошують як e, evt або
+          event.
+        </p>
+        <p>Деякі властивості об'єкта події:</p>
+        <ul class="section-list">
+          <li>event.type - тип події.</li>
+          <li>
+            event.currentTarget - елемент, на якому виконується обробник події.
+          </li>
+        </ul>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="MWpXraG"
+            data-pen-title="lesson-12-event-object"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/MWpXraG">
+                lesson-12-event-object</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h4>Дії браузера за замовчуванням​</h4>
+        <p>
+          Деякі події викликають дію браузера, вбудовану за замовчуванням як
+          реакція на певний тип події. Наприклад, клік на посиланні ініціює
+          перехід на нову адресу, зазначену в href, а відправлення форми
+          перезавантажує сторінку. Найчастіше ця поведінка небажана і її
+          необхідно скасувати.
+        </p>
+        <p>
+          Для скасування дії браузера за замовчуванням в об'єкта події є
+          стандартний метод preventDefault().
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="wvJXprr"
+            data-pen-title="lesson-12-prevent-default"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/wvJXprr">
+                lesson-12-prevent-default</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+      </section>
+      <!-- ! -->
+      <h1>Події клавіатури</h1>
+
+      <section class="section">
+        <p>
+          Існує дві основні події клавіатури: keydown і keyup. На відміну від
+          інших, події клавіатури обробляються на документі, а не на конкретному
+          елементі. Об'єкти подій клавіатури походять від базового класу
+          KeyboardEvent.
+        </p>
+        <pre class="code">
+        document.addEventListener("keydown", event => {
+          console.log("Keydown: ", event);
+        });
+        
+        document.addEventListener("keyup", event => {
+          console.log("Keyup: ", event);
+        });
+        </pre>
+        <p>
+          Натискаючи клавішу, спочатку відбувається keydown, після чого - keyup,
+          коли клавішу відпустили. На практиці переважно обробляють тільки подію
+          keydown, оскільки вона відбувається швидше за keyup, і користувач
+          раніше бачить результат натискання. Події keydown і keyup спрацьовують
+          при натисканні будь-якої клавіші, включно зі службовими (Ctrl, Shift,
+          Alt, Escape тощо).
+        </p>
+        <p class="note">
+          ЦІКАВО: Раніше була ще одна подія клавіатури - keypress. Більшість
+          постів на форумах і блогах все ще можуть її використовувати, але
+          будьте обережні - вона застаріла і підтримка у нових браузерах може
+          припинитися в будь-який момент.
+        </p>
+        <h4>Властивості key і code​</h4>
+        <p>
+          Властивість key повертає символ, згенерований натисканням клавіші,
+          враховуючи стан клавіш-модифікаторів, наприклад, Shift, а також
+          поточну мову. Властивість code повертає код фізичної клавіші на
+          клавіатурі і не залежить від мови.
+        </p>
+        <pre class="code">
+        document.addEventListener("keydown", event => {
+          console.log("key: ", event.key);
+          console.log("code: ", event.code);
+        });
+        </pre>
+        <p>
+          Наведіть фокус у вікно прикладу, клікнувши по ньому мишкою,
+          відстеження подій клавіатури знаходиться на елементі document.
+          Надрукуйте щось на клавіатурі і подивіться результат.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="ZEeRxaJ"
+            data-pen-title="lesson-12-keyboard-events"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/ZEeRxaJ">
+                lesson-12-keyboard-events</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h4>Клавіші-модифікатори​</h4>
+        <p>
+          Для обробки комбінації клавіш, наприклад Ctrl + s або будь-якої іншої,
+          на об'єкті події є властивості ctrlKey, altKey, shiftkey і metaKey, що
+          зберігають булеве значення, яке сигналізує про те, чи була затиснута
+          клавіша-модифікатор.
+        </p>
+        <pre class="code">
+        document.addEventListener("keydown", event => {
+          event.preventDefault();
+        
+          if ((event.ctrlKey || event.metaKey) && event.code === "KeyS") {
+            console.log("«Ctrl + s» or «Command + s» combo");
+          }
+        });
+        </pre>
+        <p>
+          Деякі комбінації клавіш можуть конфліктувати з поведінкою браузера за
+          замовчуванням. Наприклад, Ctrl + d або Command + d робить закладку.
+          Потрібно намагатися проектувати систему комбінацій сторінки таким
+          чином, щоб вона не перетиналася із вбудованою у браузері. Але, у
+          крайньому разі, поведінку за замовчуванням можна скасувати, викликавши
+          метод event.preventDefault().
+        </p>
+        <p class="note">
+          ЦІКАВО: Не так давно, замість властивостей key і code, використовували
+          властивість keyCode. Більшість постів на форумах і блогах все ще
+          можуть використовувати її, але будьте обережні - вона застаріла, не
+          використовуйте властивість keyCode.
+        </p>
+      </section>
+      <!-- ! -->
+      <h1>Події елементів форм</h1>
+
+      <section class="section">
+        <h4>Подія submit​</h4>
+        <p>
+          Відправлення форми відбувається під час кліку по кнопці з атрибутом
+          type="submit" або натискання клавіші Enter, перебуваючи в будь-якому
+          її текстовому полі. Подію submit можна застосувати для валідації
+          (перевірки) форми перед відправленням, оскільки на об'єкті події існує
+          багато корисних властивостей, пов'язаних з елементами форми. Сабміт
+          форми перезавантажує сторінку, тому не забувайте скасовувати дію за
+          замовчуванням методом preventDefault().
+        </p>
+
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="oNZydVL"
+            data-pen-title="lesson-12-form-submit"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/oNZydVL">
+                lesson-12-form-submit</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: Властивість elements DOM-елемента форми містить об'єкт з
+          посиланнями на усі її елементи, які мають атрибут name. Тому в
+          прикладі ми отримуємо значення полів, звертаючись до login.value і
+          password.value.
+        </p>
+        <h4>Подія change​</h4>
+        <p>
+          Відбувається після зміни елемента форми. Для текстових полів або
+          textarea подія відбудеться не на кожному введенні символу, а після
+          втрати фокусу, що не завжди зручно. Наприклад, доки ви набираєте щось
+          у текстовому полі - подія відсутня, але як тільки фокус пропав,
+          відбудеться подія change. Для інших елементів, наприклад, select,
+          чекбоксів і радіо-кнопок, подія change спрацьовує відразу під час
+          вибору значення.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="gOmKKvj"
+            data-pen-title="lesson-12-change-event"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/gOmKKvj">
+                lesson-12-change-event</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: Зверніть увагу на корисні властивості при роботі з елементом
+          &lt;select&gt; в прикладі. Розберіться, що зберігається у властивостях
+          value, selectedIndex і options.
+        </p>
+        <h4>Подія input​</h4>
+        <p>
+          Відбувається тільки на текстових полях і textarea, і створюється
+          щоразу при зміні значення елемента, не чекаючи втрати фокусу. На
+          практиці input - це найголовніша подія для роботи з текстовими полями
+          форми.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="jOBKpNP"
+            data-pen-title="lesson-12-input-event"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/jOBKpNP">
+                lesson-12-input-event</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h4>Подія focus і blur​</h4>
+        <p>
+          Елемент отримує фокус під час кліку миші або переходу клавішею Tab.
+          Момент отримання і втрати фокусу - дуже важливий, отримуючи фокус, ми
+          можемо завантажити дані для автозаповнення, почати відстежувати зміни
+          тощо. Під час втрати фокусу - перевірити введені дані.
+        </p>
+        <p>
+          Під час фокусування елемента відбувається подія focus, а коли фокус
+          зникає, наприклад, користувач клікає в іншому місці екрана,
+          відбувається подія blur. Активувати або скасувати фокус можна
+          програмно, викликавши в коді для елемента однойменні методи focus() і
+          blur().
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="JjWZBdM"
+            data-pen-title="lesson-12-focus-events"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/JjWZBdM">
+                lesson-12-focus-events</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p>
+          Фокус може бути тільки на одному елементі сторінки за одиницю часу, і
+          поточний елемент, на якому знаходиться фокус, доступний як
+          document.activeElement.
+        </p>
+        <p class="note">
+          ЦІКАВО: Багато елементів не можуть отримати фокус. Наприклад, якщо
+          клікнути по &lt;div&gt;, то фокусування на ньому не відбудеться, тому
+          що це не інтерактивний елемент.
+        </p>
+      </section>
+      <!-- ! -->
+
+      <!-- ! -->
+
+      <!-- ! -->
+    </main>
+    <footer class="footer">Це футер</footer>
+
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
+</html>

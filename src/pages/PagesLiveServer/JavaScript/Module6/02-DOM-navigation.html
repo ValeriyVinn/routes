@@ -9,55 +9,133 @@
   </head>
   <body>
     <header class="header">
-      <a href="../../../../indexLS.html"  class="green">Home</a>
+      <a href="../../../../indexLS.html" class="green">Home</a>
     </header>
     <h1>Навігація по DOM</h1>
 
     <main class="main">
       <section class="section">
-
-<p>DOM надає широкий спектр можливостей для роботи з елементом і його вмістом, але для цього, спочатку потрібно отримати посилання на нього. Доступ до DOM починається з об'єкта <b>document</b> , з нього можна дістатися до будь-яких елементів.</p>
-<p class="note">ЦІКАВО:
-  document - це частина глобального об'єкта window, який доступний у скрипті, коли він виконується в браузері. Так само як alert, console.log, prompt і багато інших.</p>
-<p>Елементи DOM-дерева мають ієрархічне відношення один до іншого. Для опису відносин використовуються терміни предок (ancestor), нащадок (descendant), батько (parent), дитина (child) і сусід (sibling).</p>
-<ul class="section-list">
-  <li>Найвищий елемент називається кореневим (root node).</li>
-  <li>Кожен елемент, крім кореневого, має тільки одного батьківського.</li>
-  <li>У елемента може бути скільки завгодно дітей.</li>
-  <li>Сусіди - це елементи зі спільним батьківським елементом.</li>
-  <li>Дочірні елементи (діти) - елементи, які знаходяться безпосередньо всередині поточного (перша вкладеність).</li>
-  <li>Нащадки - усі елементи, які знаходяться у поточному, разом з їхніми дітьми, дітьми їхніх дітей тощо. Тобто все на зразок дерева.</li>
-</ul>
-<img src="./img/dom-traversal.png" alt="dom-traversal" width="360">
-<p>Для навігації по цій ієрархії елементи мають наступні властивості.</p>
-<ul class="section-list">
-  <li>elem.parentNode - вибере батьківський elem.</li>
-  <li>elem.childNodes - псевдомасив, зберігає всі дочірні елементи, включно з текстовими.</li>
-  <li>elem.children - псевдомасив, зберігає тільки дочірні вузли-елементи, тобто ті, що відповідають тегам.</li>
-  <li>elem.firstChild - вибере перший дочірній елемент всередині elem, включно з текстовими вузлами.</li>
-  <li>elem.firstElementChild - вибере перший дочірній вузол-елемент всередині elem.</li>
-  <li>elem.lastChild - вибере останній дочірній елемент всередині elem, включно з текстовими вузлами.</li>
-  <li>elem.lastElementChild - вибере останній дочірній вузол-елемент всередині elem.</li>
-  <li>elem.previousSibling - вибере елемент «зліва» від elem (його попереднього сусіда).</li>
-  <li>elem.previousElementSibling - вибере вузол-елемент «зліва» від elem (його попереднього сусіда).</li>
-  <li>elem.nextSibling - вибере елемент «праворуч» від elem (його наступного сусіда)</li>
-  <li>elem.nextElementSibling - вибере вузол-елемент «праворуч» від elem (його наступного сусіда).</li>
-</ul>
-<p>Відкрий цей приклад в окремому вікні і подивися логи в консолі розробника.</p>
-<div class="codepen">
-  <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="oNZqxoP" data-pen-title="lesson-11-dom-traversal" data-user="goit-academy" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-    <span>See the Pen <a href="https://codepen.io/goit-academy/pen/oNZqxoP">
-    lesson-11-dom-traversal</a> by goit-academy (<a href="https://codepen.io/goit-academy">@goit-academy</a>)
-    on <a href="https://codepen.io">CodePen</a>.</span>
-  </p>
-  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-</div>
-<p class="note">
-  ЦІКАВО:
-DOM-колекції, як-от childNodes і children - псевдомасиви (NodeList), у них немає більшості методів масиву.
-</p>
-
-
+        <p>
+          DOM надає широкий спектр можливостей для роботи з елементом і його
+          вмістом, але для цього, спочатку потрібно отримати посилання на нього.
+          Доступ до DOM починається з об'єкта <b>document</b> , з нього можна
+          дістатися до будь-яких елементів.
+        </p>
+        <p class="note">
+          ЦІКАВО: document - це частина глобального об'єкта window, який
+          доступний у скрипті, коли він виконується в браузері. Так само як
+          alert, console.log, prompt і багато інших.
+        </p>
+        <p>
+          Елементи DOM-дерева мають ієрархічне відношення один до іншого. Для
+          опису відносин використовуються терміни предок (ancestor), нащадок
+          (descendant), батько (parent), дитина (child) і сусід (sibling).
+        </p>
+        <ul class="section-list">
+          <li>Найвищий елемент називається кореневим (root node).</li>
+          <li>
+            Кожен елемент, крім кореневого, має тільки одного батьківського.
+          </li>
+          <li>У елемента може бути скільки завгодно дітей.</li>
+          <li>Сусіди - це елементи зі спільним батьківським елементом.</li>
+          <li>
+            Дочірні елементи (діти) - елементи, які знаходяться безпосередньо
+            всередині поточного (перша вкладеність).
+          </li>
+          <li>
+            Нащадки - усі елементи, які знаходяться у поточному, разом з їхніми
+            дітьми, дітьми їхніх дітей тощо. Тобто все на зразок дерева.
+          </li>
+        </ul>
+        <img src="./img/dom-traversal.png" alt="dom-traversal" width="360" />
+        <p>
+          Для навігації по цій ієрархії елементи мають наступні властивості.
+        </p>
+        <ul class="section-list">
+          <li>elem.parentNode - вибере батьківський elem.</li>
+          <li>
+            elem.childNodes - псевдомасив, зберігає всі дочірні елементи,
+            включно з текстовими.
+          </li>
+          <li>
+            elem.children - псевдомасив, зберігає тільки дочірні вузли-елементи,
+            тобто ті, що відповідають тегам.
+          </li>
+          <li>
+            elem.firstChild - вибере перший дочірній елемент всередині elem,
+            включно з текстовими вузлами.
+          </li>
+          <li>
+            elem.firstElementChild - вибере перший дочірній вузол-елемент
+            всередині elem.
+          </li>
+          <li>
+            elem.lastChild - вибере останній дочірній елемент всередині elem,
+            включно з текстовими вузлами.
+          </li>
+          <li>
+            elem.lastElementChild - вибере останній дочірній вузол-елемент
+            всередині elem.
+          </li>
+          <li>
+            elem.previousSibling - вибере елемент «зліва» від elem (його
+            попереднього сусіда).
+          </li>
+          <li>
+            elem.previousElementSibling - вибере вузол-елемент «зліва» від elem
+            (його попереднього сусіда).
+          </li>
+          <li>
+            elem.nextSibling - вибере елемент «праворуч» від elem (його
+            наступного сусіда)
+          </li>
+          <li>
+            elem.nextElementSibling - вибере вузол-елемент «праворуч» від elem
+            (його наступного сусіда).
+          </li>
+        </ul>
+        <p>
+          Відкрий цей приклад в окремому вікні і подивися логи в консолі
+          розробника.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="oNZqxoP"
+            data-pen-title="lesson-11-dom-traversal"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/oNZqxoP">
+                lesson-11-dom-traversal</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: DOM-колекції, як-от childNodes і children - псевдомасиви
+          (NodeList), у них немає більшості методів масиву.
+        </p>
       </section>
     </main>
     <footer class="footer">Це футер</footer>
