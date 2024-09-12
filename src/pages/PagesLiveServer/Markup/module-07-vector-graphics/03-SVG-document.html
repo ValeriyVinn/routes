@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG-документ</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>SVG-документ</h2>
+    <section class="section">
+      <p>
+        Векторну графіку зберігають у файлах з розширенням .svg. Це звичайні
+        текстові файли, в яких на верхньому рівні знаходиться тег &lt;svg&gt; з
+        набором службових атрибутів, що вказують, в якій версії мови розмітки та
+        за якою версією SVG-специфікації написаний документ. З усіх службових,
+        тільки атрибут xmlns обов'язковий, інші, як правило, пропускають.
+      </p>
+      <pre class="code">
+&lt;svg
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:ev="http://www.w3.org/2001/xml-events"
+&gt;
+<br>&nbsp;&nbsp;&lt;circle&nbsp;r=&quot;75&quot;&nbsp;cx=&quot;50%&quot;&nbsp;cy=&quot;50%&quot;&nbsp;fill=&quot;tomato&quot;&nbsp;/&gt;
+<br>&lt;/svg&gt;  
+</pre>
+      <p>
+        Якщо зберегти цей код у зовнішньому файлі, наприклад icon.svg, і додати
+        на веб-сторінку, використовуючи тег &lt;img&gt;, браузер намалює полотно
+        300x150 пікселів, в центрі якого буде коло.
+      </p>
+      <p class="note">
+        Цікаво: Якщо явно не поставити розмір, браузер за замовчуванням
+        встановлює розмір елемента 300x150 пікселів. Все що не влізло - буде
+        обрізане.
+      </p>
+      <h3>SVG-viewport</h3>
+      <p>
+        Вміст SVG-документа малюється на нескінченному полотні і може бути
+        будь-якого розміру, але видима частина полотна відповідає розмірам
+        елемента &lt;svg&gt;. Атрибути width і height задають розмір робочої
+        області перегляду (viewport). Верхній лівий кут області перегляду - це
+        початок координат, де x = 0 і y = 0. За замовчуванням використовуються
+        пікселі, тому зазначення px - зайве.
+      </p>
+      <pre class="code">
+&lt;svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="400"
+  height="200"
+  style="outline: 2px dashed #2a2a2a;"
+&gt;
+<br>&nbsp;&nbsp;&lt;circle&nbsp;r=&quot;75&quot;&nbsp;cx=&quot;50%&quot;&nbsp;cy=&quot;50%&quot;&nbsp;fill=&quot;tomato&quot;&nbsp;/&gt;
+<br>&lt;/svg&gt;  
+</pre>
+      <h3>SVG-viewBox</h3>
+      <p>
+        Якщо перекласти «view box», то буквально отримаємо - «вікно перегляду».
+        Тобто це «вікно», через яке можна переглядати певну частину
+        SVG-документа. Щось схоже на вікно ілюмінатора в літаку, через яке ви
+        можете бачити навколишній світ, але viewBox також може масштабувати
+        (наближати або віддаляти) зображення як телескоп.
+      </p>
+      <img src="./img/viewbox.svg" alt="viewbox" width="420" />
+      <p>
+        Атрибут viewBox визначає, яка частина зображення буде відображена, і в
+        якому масштабі.
+      </p>
+      <pre class="code">
+viewBox="x y width height"  
+</pre
+      >
+      <p>
+        Значення x і y управляють зміщенням щодо початкових координат області
+        перегляду (viewbox) і дозволяють відобразити тільки частину зображення.
+        Значення width і height управляють масштабуванням.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="YzpLRgN"
+          data-pen-title="lesson-08-svg-viewbox"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/YzpLRgN">
+              lesson-08-svg-viewbox</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Якщо співвідношення значень атрибутів width і height до їх аналогів у
+        viewBox дорівнює 1:1, зображення буде намальоване в оригінальному
+        розмірі.
+      </p>
+      <pre class="code">
+&lt;svg&nbsp;width=&quot;400&quot;&nbsp;height=&quot;200&quot;&nbsp;viewBox=&quot;0&nbsp;0&nbsp;400&nbsp;200&quot;&gt;
+<br>&nbsp;&nbsp;&lt;circle&nbsp;r=&quot;75&quot;&nbsp;cx=&quot;50%&quot;&nbsp;cy=&quot;50%&quot;&nbsp;fill=&quot;tomato&quot;&nbsp;/&gt;
+<br>&lt;/svg&gt;  
+</pre>
+      <p>
+        У разі співвідношення 2:1, оригінальне зображення буде збільшено в
+        масштабі рівно у два рази, але розміри елемента залишаться попередніми -
+        400x200.
+      </p>
+      <pre class="code">
+&lt;svg&nbsp;width=&quot;400&quot;&nbsp;height=&quot;200&quot;&nbsp;viewBox=&quot;0&nbsp;0&nbsp;200&nbsp;100&quot;&gt;
+<br>&nbsp;&nbsp;&lt;circle&nbsp;r=&quot;75&quot;&nbsp;cx=&quot;50%&quot;&nbsp;cy=&quot;50%&quot;&nbsp;fill=&quot;tomato&quot;&nbsp;/&gt;
+<br>&lt;/svg&gt;  
+</pre>
+      <p>
+        У разі співвідношення 1:2, оригінальне зображення буде зменшено в
+        масштабі рівно у два рази, але розміри елемента залишаться попередніми -
+        400x200.
+      </p>
+      <pre class="code">
+&lt;svg&nbsp;width=&quot;400&quot;&nbsp;height=&quot;200&quot;&nbsp;viewBox=&quot;0&nbsp;0&nbsp;800&nbsp;400&quot;&gt;
+<br>&nbsp;&nbsp;&lt;circle&nbsp;r=&quot;75&quot;&nbsp;cx=&quot;50%&quot;&nbsp;cy=&quot;50%&quot;&nbsp;fill=&quot;tomato&quot;&nbsp;/&gt;
+<br>&lt;/svg&gt;  
+</pre>
+      <p class="attention">
+        Увага: Тобто viewBox - це «вікно», через яке користувач дивиться на
+        SVG-документ. Його можна перемістити в будь-яке місце SVG-документа, і
+        користувач побачить фрагмент, який знаходиться безпосередньо під
+        viewBox, відповідно до заданого масштабу.
+      </p>
+    </section>
+  </body>
+</html>

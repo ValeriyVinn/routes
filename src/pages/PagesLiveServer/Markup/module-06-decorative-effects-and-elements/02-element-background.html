@@ -11,10 +11,444 @@
     <a href="../markup.html">Markup</a>
     <h2>Фон елемента</h2>
     <section class="section">
+      <p>
+        Фон - це не тільки декоративний ефект для оформлення, але і допомога у
+        сприйнятті змісту, підказка про вміст елемента. Наприклад, зелений колір
+        асоціюється з успішною операцією, а червоний - з помилкою.
+      </p>
+      <p>
+        Якщо текст світлий, то фон повинен бути темним (і навпаки), в іншому
+        випадку, читання стає важким або неможливим. Текст з назвою компанії на
+        фоні пальм і морського пляжу без зайвих слів підкаже сферу діяльності і
+        допоможе прийняти рішення щодо продовження знайомства з контентом.
+      </p>
+      <p class="attention">
+        Увага: За замовчуванням фон елемента поширюється на content і padding.
+        На margin - ніколи не поширюється, це зовнішній відступ.
+      </p>
+      <h3>Властивість background-color</h3>
+      <p>
+        Задає колір фону елемента. Значенням може бути зарезервоване слово або
+        колір, записаний в RGB, RGBA і HEX-форматі.
+      </p>
+      <pre class="code">
+background-color: колір  
+</pre
+      >
+      <h3>Властивість background-image</h3>
+      <p>
+        Задає фонове зображення елемента, адреса якого вказується аргументом
+        функції url(). Це може бути як відносний, так і абсолютний шлях.
+      </p>
+      <pre class="code">
+background-image: url('адреса зображення');  
+</pre
+      >
+      <p>
+        Можна відразу задати колір фону і фонове зображення, яке буде поверх
+        фону. Наприклад, у разі, якщо не завантажене фонове зображення,
+        користувач побачить хоча б колір фону, а не порожнє місце.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="abZdPzz"
+          data-pen-title="html-css-v2-m04b01s02"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/abZdPzz">
+              html-css-v2-m04b01s02</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість background-repeat</h3>
+      <p>
+        Управляє повторенням фонового зображення. За замовчуванням воно
+        повторюється за горизонталлю і вертикаллю. Це помітно, якщо зображення
+        менше за розмір елемента.
+      </p>
+      <pre class="code">
+background-repeat: repeat | repeat-x | repeat-y | no-repeat  
+</pre
+      >
+      <ul class="swction-list">
+        <li>repeat - повторювати по X і Y. Значення за замовчуванням.</li>
+        <li>repeat-x - повторювати тільки по X, тобто за горизонталлю.</li>
+        <li>repeat-y - повторювати тільки по Y, тобто за вертикаллю.</li>
+        <li>no-repeat - не повторювати.</li>
+      </ul>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="zYrVWGG"
+          data-pen-title="lesson-07-background-repeat"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/zYrVWGG">
+              lesson-07-background-repeat</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість background-position</h3>
+      <p>
+        Управляє положенням фонового зображення щодо меж елемента,
+        використовуючи дві координати - x за горизонталлю та y за вертикаллю.
+      </p>
+      <pre class="code">
+background-position: x y  
+</pre
+      >
+      <p>
+        Як значення можна використовувати абсолютні одиниці або відносні одиниці
+        і ключові слова (top, bottom, right, left, center). За замовчуванням
+        задані значення left для x і top для y , тобто фон позиціонується щодо
+        верхнього лівого кута елемента.
+      </p>
+      <pre class="code">
+/* Поставить фонове зображення по центру */
+background-position: 50% 50%;
 
-        
+/* Поставить фонове зображення 100px від лівого краю і 200px від верху */
+background-position: 100px 200px;
 
-        
+/* Поставить фонове зображення у нижній правий кут */
+background-position: right bottom;
+
+/* Поставить фонове зображення у верхній лівий кут */
+background-position: left top;  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="yLedKJd"
+          data-pen-title="lesson-07-bg-position"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/yLedKJd">
+              lesson-07-bg-position</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>Позиція зі зміщенням</h4>
+      <p>
+        Щоб не прив'язуватися до розмірів елемента і точно не фіксувати позицію
+        фону, можна використовувати синтаксис позиції зі зміщенням.
+      </p>
+      <pre class="code">
+backrgound-position: x зміщення-x y зміщення-y  
+</pre
+      >
+      <p>
+        Наприклад, якщо необхідно поставити фон у нижній правий кут елемента
+        довільних розмірів таким чином, щоб фон відокремлювався від меж на 30px
+        справа і 20px знизу.
+      </p>
+      <pre class="code">
+backrgound-position: right 30px bottom 20px;  
+</pre
+      >
+      <h3>Властивість background-size</h3>
+      <p>
+        За замовчуванням браузер не змінює розмір фонового зображення. Якщо
+        зображення буде більшим або меншим за розмір елемента, буде порожній
+        простір, не зайнятий фоном або навпаки, фон буде видно тільки частково.
+      </p>
+      <pre class="code">
+background-size: auto | значення | cover | contain  
+</pre
+      >
+      <p>
+        Ця властивість дозволяє підкоригувати розміри зображення, вказавши
+        необхідну ширину і висоту. Якщо не вказати висоту, вона буде вирахувана
+        автоматично, зберігаючи пропорції.
+      </p>
+      <pre class="code">
+/* Вихідні розміри зображення, значення за замовчуванням */
+background-size: auto auto;
+
+/* Ширина 200px, висота буде пропорційна */
+background-size: 200px;
+
+/* Ширина 200px, висота 300px */
+background-size: 200px 300px;  
+</pre
+      >
+      <h4>Значення contain і cover</h4>
+      <p>
+        Значенням також можуть бути два зарезервованих слова - contain і cover.
+        Вони намагаються максимально вмістити в контейнер фонове зображення,
+        тільки одне - за рахунок обрізання зайвого, а інше - за рахунок появи
+        порожнього простору в контейнері.
+      </p>
+      <img src="./img/cover-contain.jpg" alt="cover contain" width="420" />
+      <p>Значення contain:</p>
+      <ul class="section-list">
+        <li>Гарантовано зберігає пропорції зображення.</li>
+        <li>
+          Зображенню задаються максимально можливі розміри (не більші за
+          оригінал), за яких воно повністю поміщається в елемент.
+        </li>
+        <li>
+          Зображення може не закрити увесь фон елемента за вертикаллю або
+          горизонталлю, якщо пропорції блоку і зображення не збігаються.
+        </li>
+      </ul>
+      <p>Значення cover:</p>
+      <ul class="section-list">
+        <ul>
+          Гарантовано зберігає пропорції зображення.
+        </ul>
+        <ul>
+          Зображенню задаються мінімальні розміри, за яких воно заллє фон всього
+          елемента.
+        </ul>
+        <ul>
+          Якщо пропорції зображення і елемента різні, частина зображення, за
+          вертикаллю або горизонталлю, візуально обрізається.
+        </ul>
+      </ul>
+      <p>
+        Натискаючи на кнопки в прикладі, ви змінюєте значення властивості
+        background-size. За замовчуванням встановлено значення auto.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="vYLqRXW"
+          data-pen-title="lesson-07-background-size"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/vYLqRXW">
+              lesson-07-background-size</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість background-attachment</h3>
+      <p>
+        За замовчуванням фонове зображення прокручується разом із вмістом
+        елемента. З допомогою властивості background-attachment можна
+        зафіксувати фон на місці і заборонити прокручуватися зі скролом.
+      </p>
+      <pre class="code">
+background-attachment: scroll| fixed | inherit  
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          scroll - фон прокручується разом із вмістом. Це значення за
+          замовчуванням.
+        </li>
+        <li>fixed - фон не прокручується, зафіксований на місці.</li>
+      </ul>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="xxZoWEE"
+          data-pen-title="lesson-07-bg-attachment-fixed"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/xxZoWEE">
+              lesson-07-bg-attachment-fixed</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Багатошаровий фон</h3>
+      <p>
+        Елементу можна задати кілька фонових зображень одночасно. Достатньо
+        перелічити їх у властивості background-image через кому. Для кожного
+        зображення також можна задати значення інших властивостей фону, теж
+        через кому в кожній властивості.
+      </p>
+      <pre class="code">
+background-image: url('зображення-1'), url('зображення-2');
+background-size: 100px, cover;
+background-position: top right, center;
+background-repeat: repeat-x, no-repeat;  
+</pre
+      >
+      <p>
+        Виходить листковий пиріг із зображень, в якому вище буде те зображення,
+        яке зазначено раніше у переліку. Зоряне небо, свинка, комета, космічний
+        корабель і планета - це 5 різних фонових зображень.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="wvMLmzY"
+          data-pen-title="lesson-07-bg-multiple"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/wvMLmzY">
+              lesson-07-bg-multiple</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="useful">
+        Корисно: Здебільшого багатошаровий фон можна замінити одним зображенням,
+        на якому у спеціальному редакторі були поєднані всі інші. Вага такого
+        файлу буде меншою за загальну вагу окремих зображень, і браузеру
+        необхідно буде зробити тільки один запит, замість п'яти, що також
+        збільшить швидкість завантаження і відображення сторінки.
+      </p>
+      <h3>Властивість background</h3>
+      <p>
+        Збірна властивість для одночасного встановлення значень всіх розглянутих
+        властивостей.
+      </p>
+      <pre class="code">
+background: background-color background-image background-repeat background-position background-attachment  
+</pre
+      >
+      <p>
+        Якщо якийсь компонент не вказаний, буде взято його значення за
+        замовчуванням.
+      </p>
+      <pre class="code">
+/* Встановить тільки колір фону */
+background: #2a2a2a;
+
+/* Прозорий колір фону із зображенням, що повторюється по x, починаючи з верхнього лівого кута */
+background: url('адреса зображення') repeat-x;  
+</pre
+      >
+      <p class="useful">
+        Корисно: Рекомендується, хоча б спочатку, використовувати окремі
+        властивості для кожного значення, оскільки зі збірним background можна
+        легко заплутатися.
+      </p>
     </section>
   </body>
 </html>

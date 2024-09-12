@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оформлення фігур</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Оформлення фігур</h2>
+    <section class="section">
+      <p>
+        В CSS можна динамічно змінювати деякі характеристики вбудованого
+        векторного зображення або іконки з SVG-спрайту, наприклад заливання,
+        колір або тип обведення. Значення можна задавати як атрибутами
+        SVG-фігур, так і однойменними CSS-властивостями. На практиці для
+        оформлення фігур використовують не атрибути, а CSS-код, оскільки його
+        простіше підтримувати і змінювати.
+      </p>
+      <h3>Властивість fill</h3>
+      <p>
+        Управляє кольором заливання. Колір можна задавати в будь-якому зручному
+        форматі. Якщо колір заливання не вказаний, фігура буде залита поточним
+        кольором тексту, за замовчуванням чорним (#000000). Повністю прибрати
+        заливання можна значенням none, в результаті вийде повністю прозора
+        фігура.
+      </p>
+      <pre class="code">
+/* Встановлюємо колір заливання у спокійному стані. */
+.icon {
+  fill: #2a2a2a;
+}
+
+/* Змінюємо колір заливання при ховері. */
+.icon:hover {
+  fill: #ff6347;
+}  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="LYbrxqp"
+          data-pen-title="lesson-08-fill"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/LYbrxqp">
+              lesson-08-fill</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість fill-opacity</h3>
+      <p>
+        Управляє тільки прозорістю кольору заливання, а не всього кольору або
+        елемента, тобто відрізняється від opacity або stroke-opacity. Наприклад,
+        якщо у іконки буде задане червоне обведення, то на її колір ця
+        властивість не вплине. Значення задається числом від 0 до 1.
+      </p>
+      <pre class="code">
+.icon {
+  fill: #2a2a2a;
+  fill-opacity: 0.7;
+}
+
+/* fill-opacity також застосується до нового кольору при ховері. */
+.icon:hover {
+  fill: #03a9f4;
+}  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="XWNYMrv"
+          data-pen-title="lesson-08-fill-opacity"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/XWNYMrv">
+              lesson-08-fill-opacity</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість stroke</h3>
+      <p>
+        Встановлює колір обведення. За замовчуванням не має значення.
+        Характеристики обведення, наприклад колір і товщина, задаються окремими
+        властивостями.
+      </p>
+      <pre class="code">
+.icon {
+  stroke: #f44336;
+}  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="RwoJpxQ"
+          data-pen-title="lesson-08-stroke"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/RwoJpxQ">
+              lesson-08-stroke</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість stroke-width</h3>
+      <p>
+        Контролює товщину обведення. Значення за замовчуванням 1px, тому для
+        однопіксельного обведення достатньо вказати колір у властивості stroke.
+        Якщо задана товщина обведення, але не заданий колір, вона не
+        відобразиться.
+      </p>
+      <pre class="code">
+.icon {
+  stroke: #f44336;
+  stroke-width: 3px;
+}  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="OJbEpaa"
+          data-pen-title="lesson-08-stroke-width"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/OJbEpaa">
+              lesson-08-stroke-width</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість stroke-opacity</h3>
+      <p>
+        Управляє тільки прозорістю кольору обведення, а не всього кольору або
+        елемента. Значення задається числом від 0 до 1.
+      </p>
+      <pre class="code">
+.icon {
+  stroke: #f44336;
+  stroke-width: 3px;
+  stroke-opacity: 0.7;
+}  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="jOVKBJN"
+          data-pen-title="lesson-08-stroke-opacity"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/jOVKBJN">
+              lesson-08-stroke-opacity</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+    </section>
+  </body>
+</html>

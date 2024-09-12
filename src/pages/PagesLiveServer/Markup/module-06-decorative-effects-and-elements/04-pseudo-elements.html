@@ -11,10 +11,157 @@
     <a href="../markup.html">Markup</a>
     <h2>Псевдоелементи</h2>
     <section class="section">
+      <p>
+        Псевдоелементи ::before і ::after використовуються для додавання
+        декоративних ефектів (іконок, плашок, оверлеїв) без необхідності
+        створення додаткових порожніх тегів в розмітці.
+      </p>
+      <ul class="section-list">
+        <ul>
+          ::before - створює псевдоелемент
+          <b>перед</b>
+          усім контентом елемента (на початку).
+        </ul>
+        <ul>
+          ::after - створює псевдоелемент
+          <b>після</b>
+          всього контенту елемента (в кінці).
+        </ul>
+      </ul>
+      <pre class="code">
+.box {
+  /* стилі елемента */
+}
 
-        
+.box::before {
+  /* стилі псевдоелемента before */
+}
 
-        
+.box::after {
+  /* стилі псевдоелемента after */
+}  
+</pre
+      >
+      <p class="useful">
+        Корисно За замовчуванням це рядкові елементи. Для того щоб задати
+        псевдоелементу вертикальну геометрію, необхідно змінити його тип на
+        блоковий або, здебільшого, на рядково-блоковий.
+      </p>
+      <h3>Властивість content</h3>
+      <p>
+        Ця обов'язкова властивість дозволяє додати текстовий контент всередину
+        псевдоелемента. Навіть, якщо текстовий контент не потрібен, його
+        значенням необхідно поставити порожній рядок, інакше браузер просто не
+        створить псевдоелемент.
+      </p>
+      <pre class="code">
+&lt;div&nbsp;class=&quot;box&quot;&gt;
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia itaque quia
+  nobis fugit amet adipisci, corrupti animi, iusto eius a sed totam voluptas
+  porro. Dolorem aliquid rerum magnam eligendi aspernatur.
+&lt;/div&gt;  
+</pre
+      >
+      <p>
+        У селекторі можна використовувати тільки один псевдоелемент, який
+        повинен додаватися після простого селектора (тегу, класу,
+        ідентифікатора).
+      </p>
+      <pre class="code">
+.box::before {
+  content: 'Це текст в ::before';
+  font-size: 40px;
+  color: orange;
+}
+
+.box::after {
+  content: 'Це текст в ::after';
+  font-size: 30px;
+  color: teal;
+}  
+</pre
+      >
+      <p class="attention">
+        Увага: Не використовуйте псевдоелементи для додавання текстового
+        контенту - це грубе порушення специфікації, вони слугують виключно для
+        декоративного оформлення. Текст всередині псевдоелемента не сприймається
+        асистивними технологіями та індексаторами, а також буде недоступний
+        користувачеві, якщо не завантажиться файл стилів.
+      </p>
+      <h3>Псевдоклас :hover</h3>
+      <p>
+        Для того щоб змінити стилі псевдоелемента під час події на батьківському
+        елементі, наприклад ховері, необхідно використовувати наступний
+        селектор.
+      </p>
+      <pre class="code">
+/* Застосувати стилі до псевдоелемента .box :: before у разі ховера по елементу .box */
+.box:hover::before {
+  color: green;
+}
+
+/* Застосувати стилі до псевдоелемента .box :: after у разі ховера по елементу .box */
+.box:hover::after {
+  color: tomato;
+}  
+</pre
+      >
+      <h3>Псевдоелемент-іконка</h3>
+      <p>
+        Використовуючи псевдоелементи, додамо іконки перед і після посиланнями у
+        списку. Нехай ::before буде видно завжди, а ::after - тільки у разі
+        ховера по посиланню.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="xxZoWRE"
+          data-pen-title="lesson-07-pseudoelements"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/xxZoWRE">
+              lesson-07-pseudoelements</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Найважливіше знаходиться в цьому CSS-правилі. Змінюємо тип елемента на
+        рядково-блоковий і задаємо фіксовану висоту і ширину. Також не забуваємо
+        вказати властивість content з порожнім рядком, щоб браузер створив
+        псевдоелемент.
+      </p>
+      <pre class="code">
+.list-link::before,
+.list-link::after {
+  content: '';
+  display: inline-block
+  width: 24px;
+  height: 24px;
+}  
+</pre
+      >
     </section>
   </body>
 </html>

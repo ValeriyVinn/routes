@@ -11,10 +11,178 @@
     <a href="../markup.html">Markup</a>
     <h2>Властивості object-fit і object-position</h2>
     <section class="section">
+      <p>
+        Бувають ситуації, коли контентне зображення більше або менше за
+        контейнер, в який його необхідно помістити, або зображення має інші
+        пропорції. Наприклад, часте завдання у картках товару - це «тумба»
+        фіксованої висоти, в яку необхідно гарно вмістити фотографію товару
+        довільного розміру, тобто підігнати зображення під розмір контейнера.
+      </p>
+      <h3>Властивість object-fit</h3>
+      <p>
+        Визначає, яким чином вміст &lt;img&gt; (або &lt;video&gt;) буде
+        вміщуватися в контейнер, якщо їх розміри або пропорції не збігаються.
+        Властивість object-fit обрізає, розтягує або масштабує контентне
+        зображення. Це схоже на background-size, але для контентних зображень.
+      </p>
+      <pre class="code">
+object-fit: fill | contain | cover | scale-down | none</pre
+      >
+      <ul class="section-list">
+        <li>
+          fill - зображення масштабується без збереження пропорцій, щоб повністю
+          заповнити контейнер. Значення за замовчуванням.
+        </li>
+        <li>
+          contain - зображення масштабується зі збереженням пропорцій, щоб
+          максимально заповнити контейнер.
+        </li>
+        <li>
+          cover - зображення масштабується зі збереженням пропорцій, щоб
+          повністю заповнити контейнер.
+        </li>
+        <li>
+          scale-down - буде вибрано значення none або contain, щоб зображення
+          було найменшого розміру.
+        </li>
+        <li>
+          none - зберігаються вихідні розміри зображення, задана висота і ширина
+          не мають ефекту.
+        </li>
+      </ul>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="vYLPrQr"
+          data-pen-title="lesson-07-object-fit"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/vYLPrQr">
+              lesson-07-object-fit</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Для того щоб ця техніка працювала, необхідні два обов'язкових кроки.
+      </p>
+      <pre class="code">
+&lt;div&nbsp;class=&quot;thumb&quot;&gt;
+<br>&nbsp;&nbsp;&lt;img&nbsp;src=&quot;&quot;&nbsp;alt=&quot;&quot;&nbsp;/&gt;
+<br>&lt;/div&gt;  
+</pre>
+      <p>
+        Перший - у контейнера (тумби) повинна бути явно вказана фіксована
+        висота. Ширина може бути по ширині батька як у прикладі.
+      </p>
+      <pre class="code">
+.thumb {
+  height: 400px;
+  width: 300px;
+}  
+</pre
+      >
+      <p>
+        Другий - зображення необхідно «вмістити» в контейнер, задавши висоту і
+        ширину 100%.
+      </p>
+      <pre class="code">
+  .thumb &gt; img {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }  
+</pre
+      >
+      <p>
+        Після цього до зображення можна застосовувати властивість object-fit.
+      </p>
+      <pre class="code">
+.thumb &gt; img {
+  display: block;
+  height: 100%;
+  width: 100%;
 
-        
-
-        
+  object-fit: cover;
+}  
+</pre
+      >
+      <p class="useful">
+        Корисно: Можна не використовувати «тумбу», задавши фіксовані розміри
+        самому елементу <img />, але здебільшого ви зустрінете саме таку
+        розмітку. «Тумба» слугує контейнером для створення анімацій та інших
+        декоративних ефектів, пов'язаних з областю зображення.
+      </p>
+      <h3>Властивість object-position</h3>
+      <p>
+        Доповнює властивість object-fit, дозволяючи задати положення зображення
+        в контейнері по осях X і Y. Це схоже на background-position, але для
+        контентних зображень.
+      </p>
+      <pre class="code">
+object-position: position | initial | inherit  
+</pre
+      >
+      <p>
+        Значенням властивості можуть бути зарезервовані слова, абсолютні або
+        відносні одиниці вимірювання. За замовчуванням значення 50% 50%, тобто
+        вертикально і горизонтально по центру.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="bGewwxL"
+          data-pen-title="lesson-07-object-position"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/bGewwxL">
+              lesson-07-object-position</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
     </section>
   </body>
 </html>

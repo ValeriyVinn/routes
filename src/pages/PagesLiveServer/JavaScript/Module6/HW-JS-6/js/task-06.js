@@ -16,6 +16,6 @@ const inputValue = document.getElementById("validation-input");
 // ! Version 2  ====================
 
 inputValue.addEventListener("blur", (evt) => {
-  inputValue.classList.toggle("valid", evt.target.value.length === 6);
-  inputValue.classList.toggle("invalid", evt.target.value.length !== 6);
+  inputValue.classList.toggle("valid", evt.target.value.length === +inputValue.dataset.length);
+  inputValue.classList.toggle("invalid", evt.target.value.length !== +inputValue.dataset.length);
 });

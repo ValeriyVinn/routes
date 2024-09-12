@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Використання</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Використання</h2>
+    <section class="section">
+      <p>
+        Існує кілька способів використання векторної графіки, кожен має свої
+        плюси і мінуси.
+      </p>
+      <h3>В елементі &lt;img&gt;</h3>
+      <p>
+        Такий підхід нічим не відрізняється від використання растрових
+        зображень, достатньо вказати шлях до зображення.
+      </p>
+      <p>
+        Створимо три елементи &lt;img&gt; різних розмірів і використаємо одну й
+        ту саму SVG-іконку. Пікселізація відсутня, навіть, якщо максимально
+        масштабувати веб-сторінку, тому що в елементі &lt;img&gt; вектор також
+        малюється браузером відповідно до заданих формул всередині SVG-файлу.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="qBbzomr"
+          data-pen-title="lesson-08-svg-as-img"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/qBbzomr">
+              lesson-08-svg-as-img</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Як фон елемента</h3>
+      <p>
+        Векторне зображення може використовуватися як фон елемента у властивості
+        background-image. Можна робити будь-які маніпуляції з векторним фоном,
+        так само як і з растровою графікою.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="gOPNeWK"
+          data-pen-title="lesson-08-svg-as-bg"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/gOPNeWK">
+              lesson-08-svg-as-bg</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Вбудований SVG</h3>
+      <p>
+        Попередні два методи підходять для статичної графіки, наприклад
+        абстрактного фону або іконок, для яких не потрібно додавати ефект ховеру
+        або фокусу. Але у них є один суттєвий недолік - відсутня можливість
+        динамічно змінити колір або інші характеристики векторного зображення з
+        CSS.
+      </p>
+      <p>
+        SVG-зображення можна додати повністю в HTML - це називається вбудований
+        SVG (inline svg). Тобто відкрити SVG-файл у текстовому редакторі,
+        скопіювати вміст і вставити його в HTML-документ. Таким чином можна
+        звернутися до його внутрішньої структури.
+      </p>
+      <p>
+        У прикладі ми додаємо елементу &lt;svg&gt; клас .icon, встановлюємо
+        базовий чорний колір заливання (властивість fill), і змінюємо його при
+        ховері на помаранчевий.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="KKVjomj"
+          data-pen-title="lesson-08-inline-svg"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/KKVjomj">
+              lesson-08-inline-svg</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>У такого підходу є ряд суттєвих мінусів.</p>
+      <ul class="section-list">
+        <li>Вбудований SVG-код збільшує розмір HTML-файлу.</li>
+        <li>
+          Неможливо повторно використовувати однакове зображення без дублювання
+          коду.
+        </li>
+        <li>Підтримка і редагування вбудованого SVG - трудомісткі.</li>
+        <li>
+          Браузер не може кешувати вбудовані фігури, на відміну від зовнішніх
+          SVG-файлів.
+        </li>
+      </ul>
+      <h3>SVG-спрайт</h3>
+      <p>
+        SVG-спрайт - це сучасна техніка, яку застосовують у більшості випадків.
+      </p>
+      <ul class="section-list">
+        <li>Один файл для всіх SVG-іконок веб-сайту.</li>
+        <li>
+          Файл спрайту кешується браузером і не буде завантажений під час
+          повторних візитів.
+        </li>
+        <li>
+          Іконкам в спрайті можна змінювати колір та інші характеристики через
+          CSS.
+        </li>
+      </ul>
+      <p class="attention">
+        Увага: Створення SVG-спрайту, використовуючи сервіс
+        <a href="https://icomoon.io/app/#/select">icomoon.io</a> , розглядається
+        у відео-лекції.
+      </p>
+      <p>
+        SVG-документ - це просто текстовий файл, у якому, на відміну від
+        растрової графіки, описані фігури, які малює браузер. Всередині одного
+        файлу можна описати безліч різних груп фігур, використовуючи елемент
+        &lt;symbol&gt;, після чого, вказавши кожному символу унікальний id,
+        звернутися до будь-якого з них з HTML-документа.
+      </p>
+
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">index.html</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+&lt;svg&gt;
+<br>&nbsp;&nbsp;&lt;use&nbsp;href=&quot;./путь-к-свг-спрайту/имя-спрайта.svg#ідентифікатор-символа&quot;&gt;&lt;/use&gt;
+<br>&lt;/svg&gt;&nbsp;  
+</pre>
+        </div>
+      </div>
+
+      <p>
+        Для використання іконки зі спрайту в HTML-документі, необхідно додати
+        розмітку елемента &lt;svg&gt; і вкладеного в нього елемента &lt;use&gt;
+        з атрибутом href, в якому вказаний шлях до іконки. Шлях задається як до
+        звичайного файлу, але наприкінці додається якір з ідентифікатором
+        символу у спрайті.
+      </p>
+      <p>
+        Розберемо приклад. Для наочності ми вставили весь SVG-спрайт в документ
+        (і задавши йому id, сховали), щоб заощадити вам час переходу пошуку
+        SVG-коду (адже цікаво, як він там всередині влаштований).
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="zYrVWzq"
+          data-pen-title="lesson-08-svg-sprite"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/zYrVWzq">
+              lesson-08-svg-sprite</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Отже, всередині SVG-спрайту є набір елементів &lt;svg&gt; і
+        &lt;symbol&gt;, що описують повністю увесь SVG-спрайт і кожну фігуру
+        окремо. Кожному &lt;symbol&gt; заданий унікальний ідентифікатор. В HTML
+        використовуємо атрибут href і звертаємося до SVG-символа через хеш (#) і
+        його ідентифікатор.
+      </p>
+      <p class="attention">
+        Увага: У прикладі увесь SVG-спрайт знаходиться в HTML-розмітці, тому
+        відсутнє ім'я SVG-файлу перед хешем. Якби SVG-спрайт лежав окремим
+        файлом, було б звернення за ім'ям, а потім # і id символа.
+      </p>
+    </section>
+  </body>
+</html>

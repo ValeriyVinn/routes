@@ -11,10 +11,454 @@
     <a href="../markup.html">Markup</a>
     <h2>Градієнт</h2>
     <section class="section">
+      <p>
+        <b>Градієнт</b> - перехід від одного кольору до іншого. Градієнт в CSS -
+        це фонове зображення, тому задається у властивості background-image. Ця
+        особливість дозволить нам робити дуже цікаві речі, поєднуючи градієнт з
+        фоном. Градієнт може бути лінійний, радіальний або конічний.
+      </p>
+      <p class="attention">
+        Увага: Конічні градієнти ще не містяться у специфікації і знаходяться на
+        стадії розробки, тому ми не будемо їх розглядати. Якщо вам цікаво
+        дізнатися більше, рекомендуємо статтю у секції додаткових матеріалів.
+      </p>
+      <h3>Лінійний градієнт</h3>
+      <p>
+        Створюється за допомогою двох і більше кольорів, для яких заданий
+        напрямок поширення. Формат значення кольору може бути будь-який -
+        ключові слова, rgb, rgba або hex, та їх можна змішувати.
+      </p>
+      <pre class="code">
+linear-gradient(<напрямок>, <колір-1>, <колір-2>, <колір-3>, ...)  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="OJXRpzm"
+          data-pen-title="lesson-07-linear-gradient"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/OJXRpzm">
+              lesson-07-linear-gradient</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Напрямок градієнта може задаватися ключовими словами to top, to right,
+        to bottom, to left та їх комбінаціями. Якщо напрямок не вказаний,
+        використовується значення за замовчуванням - зверху вниз (to bottom). У
+        разі, якщо напрямок заданий парою ключових слів, наприклад to top left,
+        початкова точка градієнта буде розташована у протилежному куті - правому
+        нижньому як в прикладі.
+      </p>
+      <p>
+        Напрямок також можна задати кутом нахилу в градусах - одиниця deg.
+        Значення 0deg аналогічне to top. Збільшення кута повертає напрямок лінії
+        градієнта, прямої, що проходить через центр блоку і вздовж якої
+        розподіляються кольори за годинниковою стрілкою.
+      </p>
+      <img
+        src="./img/gradient-direction.gif"
+        alt="gradient direction"
+        width="420"
+      />
+      <p>
+        У цій анімації кут збільшується від 0 до 360 градусів з кроком 10
+        градусів. Низька роздільна здатність дозволяє краще бачити, як різні
+        кольори відображаються у вигляді «ліній», завжди перпендикулярних лінії
+        градієнта.
+      </p>
+      <h3>Колорстоп (color-stop)</h3>
+      <p>
+        За замовчуванням кольори градієнта розподіляються рівномірно, але цим
+        можна управляти, використовуючи колорстопи - точки переходу, до яких
+        буде поширюватися певний колір. Значенням можуть бути пікселі або
+        відсотки.
+      </p>
+      <pre class="code">
+background-image: linear-gradient(
+  to right,
+  #f44336 15%,
+  #09792b 40%,
+  #00b9ff 65%,
+  #ffb800
+);  
+</pre
+      >
+      <p>У такому градієнті:</p>
+      <ul class="section-list">
+        <li>червоний колір (#f44336) буде поширюватися від 0% до 15%</li>
+        <li>зелений колір (#09792b) буде поширюватися від 15% до 40%</li>
+        <li>синій колір (#00b9ff) буде поширюватися від 40% до 65%</li>
+        <li>жовтий колір (#ffb800) буде поширюватися від 65% до 100%</li>
+      </ul>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="qBNambN"
+          data-pen-title="lesson-07-gradient-colorstop"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/qBNambN">
+              lesson-07-gradient-colorstop</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="useful">
+        Корисно: Якщо колорстопи задані в пікселях і загальна сума менша за
+        ширину або висоту елемента, то буде повторюваний градієнт.
+      </p>
+      <h3>Суцільний градієнт</h3>
+      <p>
+        Градієнт - це плавний перехід між кольорами, але якщо двом сусіднім з
+        них задати однакові колорстопи, отримаємо суцільні кольори і різкий
+        перехід між ними. Це можна використовувати для створення «смугастого»
+        фону.
+      </p>
+      <pre class="code">
+background-image: linear-gradient(
+  to right,
+  #c64f4f 15%,
+  #09792b 15%,
+  #09792b 40%,
+  #00b9ff 40%,
+  #00b9ff 65%,
+  #ffb800 65%
+);  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="ExygmGZ"
+          data-pen-title="lesson-07-gradient-hard-colorstops"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/ExygmGZ">
+              lesson-07-gradient-hard-colorstops</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
 
-        
+      <p>
+        Якщо в останньому прикладі змінити напрямок на to bottom або будь-який
+        інший не горизонтальний, то ми не отримаємо гарні горизонтальні смуги.
+        Справа в тому, що для вертикального або кутового поширення в елемента
+        повинна бути висота від його контенту або явно вказана.
+      </p>
+      <pre class="code">
+/* Задаємо body мінімальну висоту, що дорівнює 100% висоти в'юпорту */
+body {
+  margin: 0;
+  min-height: 100vh;
 
-        
+  /* І додаємо вертикальний градієнт з to bottom
+      або кутовий, наприклад з to bottom right */
+}  
+</pre
+      >
+      <p>
+        У наступному прикладі блокам div.tile задана фіксована висота 200px.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="jOrdNjN"
+          data-pen-title="lesson-07-vertical-gradient-hard-colorstops"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/jOrdNjN">
+              lesson-07-vertical-gradient-hard-colorstops</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Радіальний градієнт</h3>
+      <p>
+        Радіальний градієнт відрізняється від лінійного тим, що кольори виходять
+        з центру градієнта і рівномірно поширюються назовні, приймаючи форму
+        еліпса.
+      </p>
+      <pre class="code">
+radial-gradient(<тип> <центр>, <колір-1>, <колір-2>, <колір-3>, ...);  
+</pre
+      >
+      <p>
+        Форма градієнта визначається ключовими словами circle або ellipse
+        (значення за замовчуванням), тому, якщо елемент - не квадрат, за
+        замовчуванням градієнт прийме форму еліпса. Позиція центру задається
+        ключовими словами center (значення за замовчуванням), top, bottom,
+        right, і left, з додаванням приставки at.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="mdEvdEQ"
+          data-pen-title="lesson-07-radial-gradient"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/mdEvdEQ">
+              lesson-07-radial-gradient</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Радіальний градієнт також може бути суцільним, достатньо правильно
+        поставити колорстопи.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="BazMyBK"
+          data-pen-title="lesson-07-radial-gradient-hard-colorstops"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/BazMyBK">
+              lesson-07-radial-gradient-hard-colorstops</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Повторюваний градієнт</h3>
+      <p>
+        Повторюваний градієнт може бути лінійним або радіальним, і дозволяє
+        зробити цікаві декоративні ефекти. Найчастіше повторюваний градієнт
+        роблять суцільним.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="Exyravr"
+          data-pen-title="lesson-07-repeating-gradient"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/Exyravr">
+              lesson-07-repeating-gradient</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Розмір градієнта визначається останнім колорстопом. У прикладі це 40px
+        пікселів, тому ширина градієнта, який потім повторюється, дорівнює 40
+        пікселів. У прикладі використовується всього два кольори, але їх
+        кількість - необмежена, головне правильно поставити колорстопи.
+      </p>
+      <pre class="code">
+background-image: repeating-linear-gradient(
+  to left,
+  blue,
+  blue 20px,
+  red 20px,
+  red 40px /* Визначає розмір градієнта */
+);  
+</pre
+      >
+      <h4>Смугасті заголовки</h4>
+      <p>
+        Повторюваний градієнт можна використовувати для створення цікавих
+        ефектів, наприклад «смугастих» заголовків або будь-яких інших елементів.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="jOrdEdK"
+          data-pen-title="lesson-07-striped-headings"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/jOrdEdK">
+              lesson-07-striped-headings</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Додаткові матеріали</h3>
+      <ul class="section-list">
+        <li><a href="https://cssgradient.io/">Генератор градієнтів</a></li>
+        <li>
+          <a href="https://uigradients.com/#GradeGrey"
+            >Підбірка цікавих градієнтів</a
+          >
+        </li>
+        <li>
+          <a href="https://lea.verou.me/blog/2015/06/conical-gradients-today/"
+            >Конічні градієнти</a
+          >
+        </li>
+      </ul>
     </section>
   </body>
 </html>
