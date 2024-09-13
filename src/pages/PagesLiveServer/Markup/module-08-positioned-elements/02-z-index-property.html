@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Властивість z-index</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Властивість z-index</h2>
+    <section class="section">
+<p>Доки ми не дізналися про позиційовані елементи, нам не доводилося стикатися з проблемами глибини. Ми розташовували елементи у двовимірній системі координат - x за горизонталлю та y за вертикаллю. Порядок відображення задавався виключно вкладеністю елементів - предок розташовувався внизу подібно до аркушу паперу, а нащадок - немов новий аркуш паперу, який лягає зверху.</p>
+<p>Позиційовані елементи поводяться по-іншому. Вони випадають з потоку, а значить для них потрібне правило, яке буде визначати, який елемент знаходиться вище, а який нижче на осі z - перпендикулярно до площини екрану.</p>
+<p>Це правило задає властивість z-index, яке контролює глибину (порядок) позиціонованих елементів на сторінці по осі z - від очей користувача і до екрану. Значеннями може бути будь-яке ціле число, зокрема й від'ємне.</p>
+<img src="./img/z-index.png" alt="z index" width="520">
+<h3>Правила застосування</h3>
+<p>Спільний предок позиціонованих елементів створює контекст (stacking context) - область, в якій властивість z-index елемента впливає на інші елементи з z-index. Що більше значення z-index всередині цього контексту, то вище розташовується елемент.</p>
+<img src="./img/z-index-stacking.jpg" alt="z index stacking" width="720">
+<p>Мінімальне (навіть від'ємне) значення z-index говорить про те, що інші елементи за межами потоку будуть вище цього елемента. Якщо у двох елементів однакові значення z-index, вище буде елемент оголошений останнім в HTML-коді.</p>
+<p>Багато правил, а насправді все дуже просто. У прикладі, div.container з відносним позиціонуванням - це спільний предок для чотирьох div.box, які позиціоновані у ньому абсолютно. Використовуючи властивість z-index, можна змінити їх порядок відображення на осі z.</p>
+<div class="codepen">
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="qBbzoVm" data-pen-title="lesson-09-z-index" data-user="goit-academy" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/goit-academy/pen/qBbzoVm">
+  lesson-09-z-index</a> by goit-academy (<a href="https://codepen.io/goit-academy">@goit-academy</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>  
+</div>
+    </section>
+  </body>
+</html>

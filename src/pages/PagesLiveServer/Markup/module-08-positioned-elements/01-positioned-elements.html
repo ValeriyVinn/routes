@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Позиційовані елементи</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Позиційовані елементи</h2>
+    <section class="section">
+      <p>
+        За замовчуванням елементи на сторінці розташовуються зліва направо і
+        зверху вниз. А як зробити напис на зображенні товару, показати один
+        елемент поверх іншого при ховері або змусити меню завжди бути
+        прикріпленим до верхньої частини в'юпорту, навіть під час скролу? Для
+        вирішення подібних завдань існує властивість position, що дозволяє
+        буквально підняти елемент і розмістити його поверх будь-якого іншого.
+      </p>
+      <img
+        src="./img/css-positioning-schemes.png"
+        alt="css positioning schemes"
+        width="720"
+      />
+      <p>
+        Статичне позиціонування (static) - це початковий стан всіх елементів
+        веб-сторінки. Блокова модель і флексбокс розташовують елементи саме в
+        цьому статичному потоці сторінки. Відносне (relative), абсолютне
+        (absolute) і фіксоване (fixed) позиціонування дозволяють підняти елемент
+        над потоком сторінки і вручну його позиціонувати, використовуючи систему
+        координат, початок якої залежить від типу позиціонування.
+      </p>
+      <p class="attention">
+        Увага: Переважна більшість елементів повинна бути розміщена відповідно
+        до стандартного статичного потоку сторінки. Інші схеми позиціонування
+        використовуються для декоративних ефектів і у разі, якщо неможливо
+        спозиціонувати по-іншому.
+      </p>
+      <h3>Властивість position</h3>
+      <p>
+        Змінює тип позиціонування елемента. За замовчуванням встановлено
+        значення static. Для зазначення положення елемента використовуються
+        властивості top, left, bottom або right, які застосовуються до елементів
+        без position.
+      </p>
+      <pre class="code">
+position: static | relative | absolute | fixed | sticky | inherit  
+</pre
+      >
+      <p>
+        Елемент, значення властивості position якого відрізняється від static,
+        називається «позиційований елемент».
+      </p>
+      <img
+        src="./img/positioned-elements.png"
+        alt="positioned elements"
+        width="720"
+      />
+      <h3>Відносне позиціонування</h3>
+      <p>
+        Під час використання відносного позиціонування елемент залишається в
+        потоці сторінки, тобто сусідні елементи не займають його місце. Проте,
+        візуально елемент можна зсунути щодо його оригінального положення,
+        водночас він може перекривати сусідів.
+      </p>
+      <img
+        src="./img/relative-positioning.png"
+        alt="relative positioning"
+        width="360"
+      />
+      <p>
+        Властивості top, left, bottom і right дозволяють вказати зміщення
+        елемента (візуальне) щодо його вихідного положення. Можуть приймати
+        від'ємні значення.
+      </p>
+      <img
+        src="./img/relative-positioning-offsets.png"
+        alt="relatove positioning offsets"
+        width="620"
+      />
+      <p class="useful">
+        Корисно: Відносне позиціонування не використовується самостійно, тому що
+        елемент не виривається з потоку сторінки, продовжуючи займати місце.
+        Використовується тільки разом із абсолютним позиціонуванням.
+      </p>
+      <p>
+        Створимо три блоки. Середньому div.relative встановимо відносне
+        позиціонування і візуально змістимо його вправо і вниз щодо початкового
+        положення.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="XWXLEad"
+          data-pen-title="lesson-09-relative-positioning"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/XWXLEad">
+              lesson-09-relative-positioning</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Абсолютне позиціонування</h3>
+      <p>
+        Під час використання абсолютного позиціонування елемент виривається з
+        потоку сторінки, тобто сусідні елементи займають його місце. Відлік
+        значень top, left, bottom і right для абсолютно позиційованого елемента
+        ведеться щодо найближчого предка з позиціонуванням, відмінного від
+        статичного. Якщо такого предка не буде, то відлік буде здійснюватися від
+        меж елемента &lt;body&gt;.
+      </p>
+      <img
+        src="./img/absolute-positioning.png"
+        alt="absolute positioning"
+        width="360"
+      />
+      <p>
+        Абсолютне позиціонування не дуже корисне самостійно, і використовується,
+        наприклад, разом із відносним для декоративного позиціонування
+        елементів. Тобто елемент «абсолютно» позиціонується «щодо» якогось свого
+        предка, який знаходиться в потоці сторінки.
+      </p>
+      <img
+        src="./img/relatively-absolute-positioning.png"
+        alt="relatively absolutw positioning"
+        width="360"
+      />
+      <p>
+        Тоді значення top, left, right і bottom для абсолютно позиціонованого
+        елемента відраховуються від меж цього предка, а не від &lt;body&gt;.
+        Тобто встановлення position: relative предку використовується з єдиною
+        метою - змусити абсолютно позиційований елемент розташовуватися щодо
+        цього предка.
+      </p>
+      <p class="useful">
+        Корисно: Запис bottom: 20px означає відстань між нижньою межею щодо
+        позиціонованого предка і нижньою межею абсолютно позиціонованого
+        елемента. Аналогічно працюють right, left і top - задається відстань між
+        однойменними сторонами предка і елемента.
+      </p>
+      <p>
+        Створимо три блоки із зображенням і текстом в кожному. Задамо div.thumb
+        відносне позиціонування, а p.label - абсолютне, щоб можна було поставити
+        текст поверх зображення в цьому блоці. Не забуваємо прибрати у p.label
+        зовнішній відступ (margin), оскільки він впливає на зміщення самого
+        елемента, але не на інші елементи в потоці.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="vYLqRJd"
+          data-pen-title="lesson-09-absolute-positioning"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/vYLqRJd">
+              lesson-09-absolute-positioning</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="attention">
+        Увага Якщо не поставити div.thumb відносне позиціонування, то всі три
+        p.label опиняться у верхньому правому куті вікна, оскільки значення top
+        і right будуть відраховуватися щодо елемента &lt;body&gt;.
+      </p>
+      <h3>Фіксоване позиціонування</h3>
+      <p>
+        У разі фіксованого позиціонування, елемент вилучається з потоку сторінки
+        і позиціонується щодо в'юпорту (вікна браузера). Це створює ефект
+        фіксації елемента в певному місці екрану при прокручуванні сторінки.
+      </p>
+      <img
+        src="./img/fixed-positioning.png"
+        alt="fixed positioning"
+        width="360"
+      />
+      <p>
+        Фіксоване позиціонування використовується для закріплених хедерів з
+        навігацією, спливаючих вікон, чатів з менеджером на сторінках
+        інтернет-магазинів тощо.
+      </p>
+      <img
+        src="./img/fixed-positioning-animated.gif"
+        alt="fixed positioning animated"
+        width="360"
+      />
+      <p>
+        Створимо кнопку чату з менеджером button.chat-button і помістимо її в
+        нижній правий кут в'юпорту. Під час прокручування сторінки кнопка
+        залишається на місці, тому що у неї фіксоване позиціонування.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="OJMevjB"
+          data-pen-title="lesson-09-fixed-positioning"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/OJMevjB">
+              lesson-09-fixed-positioning</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Липке позиціонування</h3>
+      <p>
+        Липке позиціонування (sticky) - це ніби комбінація властивостей relative
+        і fixed. Для початку подивіться на ілюстрацію, на якій липке
+        позиціонування задається елементам з літерами A і B, таким чином відразу
+        буде зрозуміло.
+      </p>
+      <img
+        src="./img/position-sticky-2.gif"
+        alt="sticky positioning"
+        width="360"
+      />
+      <ul class="section-list">
+        <li>
+          Доки елемент знаходиться у своєму контейнері і контейнер не покидає
+          область видимості під час вертикальної прокрутки - елемент поводить
+          себе ніби позиціонується щодо (relative).
+        </li>
+        <li>
+          Щойно частина батьківського контейнера залишає зону видимості, елемент
+          фіксується на сторінці доти, доки хоча б якусь частину контейнера
+          видно на екрані.
+        </li>
+        <li>
+          Якщо весь контейнер покине зону видимості, то знову увімкнеться
+          поведінка як під час відносного позиціонування - елемент зникне з
+          екрану одразу після контейнера.
+        </li>
+      </ul>
+      <p>Для реалізації липкого позиціонування необхідні всього три умови:</p>
+      <ul class="cection-list">
+        <li>
+          У липкого елемента повинно бути встановлено позиціонування position:
+          sticky.
+        </li>
+        <li>
+          У липкого елемента повинно бути встановлено положення, наприклад top:
+          0.
+        </li>
+        <li>
+          Елемент-контейнер повинен бути більшим по висоті за липкий елемент.
+        </li>
+      </ul>
+      <p>
+        Заголовки секцій в прикладі зроблені липкими, тому, під час
+        прокручування сторінки вони будуть «прилипати» до верху області
+        перегляду доти, доки видима будь-яка частина їх секції.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="pogXLWz"
+          data-pen-title="lesson-09-sticky-positioning"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/pogXLWz">
+              lesson-09-sticky-positioning</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+    </section>
+  </body>
+</html>

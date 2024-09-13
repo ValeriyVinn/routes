@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Властивість overflow</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Властивість overflow</h2>
+    <section class="section">
+      <p>
+        Розміри елемента визначаються контентом всередині нього або задаються
+        явно. Що відбувається у разі зміни контенту всередині елемента?
+        Наприклад, якщо не встановити висоту, то вона буде збільшуватися, доки в
+        елементі не поміститься увесь контент.
+      </p>
+      <p>
+        Але що буде, якщо висота або ширина вказані явно? Тоді блок не може
+        збільшитися, і вміст його переповнює - виходить за межі. Властивість
+        overflow управляє тим, як поводиться вміст елемента, якщо його розмір
+        перевищує допустиму довжину або ширину.
+      </p>
+      <pre class="code">
+overflow: visible | hidden | scroll | auto  
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          visible - видимий переповнюючий вміст. Значення за замовчуванням.
+        </li>
+        <li>
+          hidden - все, що виходить за межі блоку, буде візуально приховане.
+        </li>
+        <li>
+          scroll - у разі переповнення з'являються горизонтальна і вертикальна
+          смуги прокручування, навіть якщо потрібна тільки одна.
+        </li>
+        <li>
+          auto - схоже на значення scroll, але смуги прокручування показуються
+          тільки там, де вони дійсно необхідні, а не всі відразу.
+        </li>
+      </ul>
+      <p class="useful">
+        Корисно: <br />
+
+        Також існують властивості overflow-x і overflow-y, які управляють
+        переповненням тільки у відповідній площині.
+      </p>
+      <p>
+        Розглянемо поведінку елемента з фіксованими розмірами для кожного
+        значення overflow.
+      </p>
+      <h3>Значення visible</h3>
+      <p>
+        Якщо не вказати властивість overflow, то за замовчуванням встановлюється
+        значення visible і, у разі переповнення, вміст буде відображатися за
+        межами блоку. У прикладі межа блоку позначена червоною рамкою.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="vYLaJeM"
+          data-pen-title="lesson-09-overflow-visible"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/vYLaJeM">
+              lesson-09-overflow-visible</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="attention">
+        Увага: <br />
+
+        Тут важливо пам'ятати, що навіть, якщо зовні елемента є видимий контент,
+        що його переповнює, цей контент не впливає на геометрію сусідніх
+        елементів як з кнопкою в прикладі.
+      </p>
+      <h3>Значення hidden</h3>
+      <p>
+        Протилежне значення hidden. У цьому випадку будь-який переповнюючий
+        вміст, який виходить за межі елемента, не відображається. Така поведінка
+        зручна для використання з декоративними ефектами, приклади яких ми
+        розглянемо далі.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="PoZBKBq"
+          data-pen-title="lesson-09-overflow-hidden"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/PoZBKBq">
+              lesson-09-overflow-hidden</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="attention">
+        Увага: <br />
+
+        Пам'ятайте, що у цьому випадку переповнюючий контент недоступний і
+        прихований від користувача. Саме тому ми ніколи не задаємо фіксовану
+        висоту текстовим блокам.
+      </p>
+      <h3>Значення scroll</h3>
+      <p>
+        Якщо встановлене значення scroll, переповнюючий вміст буде прихований,
+        але з'являться скроллбари, щоб була можливість переглянути увесь
+        контент. Водночас будуть показані обидва скроллбари - горизонтальний і
+        вертикальний, навіть якщо потрібен тільки якийсь один.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="xxZJLay"
+          data-pen-title="lesson-09-overflow-scroll"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/xxZJLay">
+              lesson-09-overflow-scroll</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Значення auto</h3>
+      <p>
+        Значення auto схоже на значення scroll, за винятком того, що показуються
+        тільки ті смуги прокручування, які дійсно необхідні.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="dyGjzaE"
+          data-pen-title="lesson-09-overflow-auto"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/dyGjzaE">
+              lesson-09-overflow-auto</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Заокруглене зображення</h3>
+      <p>
+        Зображення поводяться таким чином, що візуально виходять за межі блоку,
+        якщо їх розмір більший. Ця особливість спливає у прийомі заокруглення
+        рамок зображення. Зображення обгортається в «тумбу», якій задаються
+        стилі рамки та її радіуса.
+      </p>
+      <pre class="code">
+&lt;div&nbsp;class=&quot;thumb&quot;&gt;
+<br>&nbsp;&nbsp;&lt;img&nbsp;src=&quot;&quot;&nbsp;alt=&quot;&quot;&nbsp;/&gt;
+<br>&lt;/div&gt;  
+</pre>
+      <p>
+        Оскільки зображення завжди переповнює блок, візуально виходячи за його
+        межі, виходить не зовсім те, що потрібно.
+      </p>
+      <img src="./img/overflow-cat.jpg" alt="overflow cat" width="360" />
+      <p>
+        На допомогу приходить властивість overflow та її значення hidden, яке
+        задається «тумбі» і контролює видимість переповнюючого контенту. Колір і
+        розмір рамки у прикладі заданий для візуалізації, встановлювати будь-які
+        значення, крім радіуса, - не обов'язково.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="gOPjxVr"
+          data-pen-title="lesson-09-rounded-image"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/gOPjxVr">
+              lesson-09-rounded-image</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Декоративний оверлей</h3>
+      <p>
+        Властивість overflow зі значенням hidden використовується під час
+        створення декоративних ефектів з появою прихованого контенту через межі
+        блоку.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="rNxrGMQ"
+          data-pen-title="lesson-09-hidden-overlay"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/rNxrGMQ">
+              lesson-09-hidden-overlay</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Такий ефект реалізується за допомогою кількох простих кроків. Розберемо
+        стилі для створення ефекту, повний код дивіться на живому прикладі.
+      </p>
+      <pre class="code">
+&lt;div&nbsp;class=&quot;box&quot;&gt;
+<br>&nbsp;&nbsp;&lt;div&nbsp;class=&quot;overlay&quot;&gt;&lt;/div&gt;
+<br>&lt;/div&gt;  
+</pre>
+      <p>
+        Спочатку абсолютно позиціонуємо div.overlay щодо div.box і розтягуємо
+        його на всю ширину і висоту div.box.
+      </p>
+      <pre class="code">
+.box {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}  
+</pre
+      >
+      <p>
+        Використовуючи властивість transform і translateX, зміщуємо div.overlay
+        вліво на 100% його ширини. Трансформації будемо детально розглядати
+        далі.
+      </p>
+      <pre class="code">
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: translateX(-100%);
+}  
+</pre
+      >
+      <p>
+        При ховері по div.box, використовуючи transform і translateX, повертаємо
+        div.overlay у початкове положення.
+      </p>
+      <pre class="code">
+.box:hover .overlay {
+  transform: translateX(0);
+}  
+</pre
+      >
+      <p>
+        Задаємо div.box властивість overflow зі значенням hidden, щоб візуально
+        приховати div.overlay, коли той зміщений за межі div.box.
+      </p>
+      <pre class="code">
+.box {
+  position: relative;
+  overflow: hidden;
+}  
+</pre
+      >
+      <p>
+        Анімацію будемо детально розглядати у наступних уроках, зараз просто
+        використовуємо одну властивість для візуалізації появи оверлею. Додаємо
+        div.overlay перехід для анімації властивості transform.
+      </p>
+      <pre class="code">
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: translateX(-100%);
+  transition: transform 250ms ease;
+}  
+</pre
+      >
+    </section>
+  </body>
+</html>
