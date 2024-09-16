@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Анімовані властивості</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Анімовані властивості</h2>
+    <section class="section">
+<p>З усіх <b>властивостей, які можуть бути анімовані</b>, рекомендується, якщо можливо, використовувати всього дві: opacity (прозорість) і transform (трансформація). Здебільшого анімація інших властивостей не суттєво вплине на продуктивність сторінки, але краще дотримуватися цього правила, щоб створювати максимально продуктивну анімацію. Вся справа в тому, як браузер малює веб-сторінку.</p>
+<img src="./img/rendering-steps.jpg" alt="rendering steps" width="820">
+<ul class="section-list">
+  <li><b>Крок JavaScript</b> - скрипт або якась подія, наприклад ховер або фокус, запускають анімацію стилів елемента.</li>
+  <li><b>Крок Style</b> - відбувається обчислення нових стилів елементів, розраховується специфічність, конфлікти, каскадування тощо.</li>
+  <li><b>Крок Layout</b> - виконується розрахунок геометрії елементів. У разі анімації властивості, яка впливає на геометрію, наприклад margin, браузеру доводиться обчислювати нову позицію для цілої групи елементів.</li>
+  <li><b>Крок Painting</b> - відбувається малювання шарів, тому що елементи вкладені один в одного або позиціоновані, тим самим створюючи листковий пиріг.</li>
+  <li><b>Крок Composite</b> - компонування всіх підготовлених шарів і малювання фінального зображення на екрані користувача.</li>
+  <p>Наприклад, якщо анімувати властивість width, браузеру доведеться виконати кроки Layout > Paint > Composite, а це досить дорога операція для продуктивності веб-сторінки.</p>
+  <img src="./img/animating-width.jpg" alt="animating width" width="820">
+  <p>Анімації властивості background не впливає на геометрію елементів, тому браузеру достатньо виконати кроки Paint &gt; Composite.</p>
+  <img src="./img/animating-background.jpg" alt="animating background" width="820">
+  <p>Для анімації властивостей opacity і transform браузеру не потрібно розраховувати нову геометрію або перемальовувати шари, достатньо виконати тільки крок Composite.</p>
+  <img src="./img/animating-opacity-transform.jpg" alt="animating opacity transform" width="820">
+  <p>У прикладі демонструється різниця у продуктивності між анімацією лівого відступу і трансформації для переміщення 3000 елементів. У разі анімації margin, ефект переміщення рваний, стрибкоподібний, тому що браузеру доводиться постійно розраховувати геометрію і шари. Якщо анімується transform - переміщення плавне, без стрибків.</p>
+  <p class="attention">Увага: <br>
+
+    Анімація трьох тисяч елементів - це досить ресурсомістка операція і може відображатися по-різному, залежно від потужності вашого комп'ютера.</p>
+  <div class="codepen">
+  <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="gOPEzKR" data-pen-title="lesson-10-animatable-properties" data-user="goit-academy" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/goit-academy/pen/gOPEzKR">
+  lesson-10-animatable-properties</a> by goit-academy (<a href="https://codepen.io/goit-academy">@goit-academy</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>  
+  </div>
+</ul>    
+    </section>
+  </body>
+</html>

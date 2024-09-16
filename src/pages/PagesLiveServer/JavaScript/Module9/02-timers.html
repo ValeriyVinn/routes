@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Таймери</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <main class="main">
+      <h1>Таймери</h1>
+      <section class="section">
+        <p>
+          Внутрішній таймер-планувальник браузера дозволяє відкладати виклик
+          функції на певний період часу. Для цього є тайм-аути та інтервали, які
+          контролюють, коли і як часто викликається функція. Таймери реалізовані
+          в браузері, а не вбудовані в мову, і доступні на глобальному об'єкті
+          window.
+        </p>
+        <h3>Тайм-аут​</h3>
+        <p>
+          Метод setTimeout() дозволяє запланувати запуск функції через певний
+          час.
+        </p>
+        <pre class="code">
+const timerId = setTimeout(callback, delay, arg1, arg2, ...);
+</pre
+        >
+        <ul class="section-list">
+          <li>callback - функція, виконання якої необхідно запланувати.</li>
+          <li>
+            delay - час в мілісекундах, через який callback-функція буде
+            викликана один раз.
+          </li>
+        </ul>
+        <p>
+          Додаткові аргументи (arg1, arg2 тощо) будуть передані callback-функції
+          під час виклику. Повертає цифровий ідентифікатор створеного таймера,
+          який використовується для його видалення.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="oNZPVjw"
+            data-pen-title="lesson-17-set-timeout"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/oNZPVjw">
+                lesson-17-set-timeout</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p>
+          Якщо нам, з будь-якої причини, потрібно скасувати виклик функції
+          всередині тайм-ауту, використовується метод clearTimeout(id), який
+          приймає ідентифікатор таймера і очищає (видаляє) його.
+        </p>
+        <pre class="code">
+const greet = () => {
+  console.log("Hello!");
+};
+
+const timerId = setTimeout(greet, 3000);
+
+clearTimeout(timerId);
+</pre
+        >
+        <p>
+          Оскільки ми викликали clearTimeout(), який виповниться раніше, ніж
+          буде викликана функція greet(), таймер з timerId буде видалений і
+          реєстрація відкладеного виклику greet() скасується. Тому в консоль
+          нічого не виведеться.
+        </p>
+        <h3>Інтервал</h3>
+        <p>
+          Метод setInterval() - це простий спосіб повторення коду знову і знову
+          зі встановленим проміжком часу повторень. Синтаксис і параметри такі
+          самі як у setTimeout(). На відміну від setTimeout(), інтервал запускає
+          виконання функції не один раз, а регулярно повторює її через вказаний
+          проміжок часу. Зупинити виконання можна викликом методу
+          clearInterval(id).
+        </p>
+        <pre class="code">
+const timerId = setInterval(callback, delay, arg1, arg2, ...);
+</pre
+        >
+        <p>
+          Клікаючи на кнопку «Start», запустимо інтервал і будемо кожну секунду
+          виводити в консоль рядок. Використовуємо Math.random(), щоб рядки були
+          різні. По кліку на кнопку «Stop» викличемо clearInterval() і передамо
+          ідентифікатор інтервалу, який потрібно зупинити.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="dyvqrNZ"
+            data-pen-title="lesson-17-set-interval"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/dyvqrNZ">
+                lesson-17-set-interval</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Частота спрацьовування лічильника</h3>
+        <p>
+          У браузерного таймера є мінімально можлива затримка. У сучасних
+          браузерах вона коливається приблизно від 0 до 4 мілісекунд. У старіших
+          браузерах затримка може бути більшою і досягати 15 мілісекунд. За
+          стандартом, мінімальна затримка становить 4 мілісекунди, тому різниці
+          між setTimeout(callback, 1) і setTimeout(callback, 4) немає.
+        </p>
+        <p>
+          Таймер може спрацьовувати рідше, ніж зазначено в параметрі delay, тому
+          що за надто великого завантаження процесора деякі запуски
+          функцій-інтервалів будуть пропущені. Браузери продовжують виконувати
+          тайм-аути та інтервали, навіть якщо вкладка браузера неактивна, але
+          водночас знижують частоту спрацьовування таймерів.
+        </p>
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
+
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
+</html>

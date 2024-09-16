@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D-трансформації</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>2D-трансформації</h2>
+    <section class="section">
+      <p>
+        CSS-трансформації дозволяють зсувати, змінювати масштаб і повертати
+        елементи, тобто додавати декоративні ефекти. Трансформації змінюють
+        форму і положення елемента, не впливаючи на інші елементи сторінки. За
+        замовчуванням трансформація відбувається щодо центру елемента, але це
+        можна змінити.
+      </p>
+      <h3>Властивість transform</h3>
+      <p>
+        Відповідає за застосування однієї або більше трансформації до елемента.
+      </p>
+      <pre class="code">
+transform: none | <тип трансформації> <тип трансформації> ...  
+</pre
+      >
+      <p>
+        <b>Трансформований елемент</b> - це елемент з будь-яким встановленим
+        значенням властивості transform, відмінним від none.
+      </p>
+      <h3>Масштабування</h3>
+      <p>
+        Функції scaleX(tx), scaleY(ty) і scale(tx, ty) масштабують блок по
+        ширині та/або висоті, не впливаючи на геометрію оточуючих елементів.
+        Якщо для scale() вказано одне значення, друге буде таке саме.
+      </p>
+      <pre class="code">
+.box {
+  transform: scale(1.15);
+}  
+</pre
+      >
+      <p>
+        Початковий масштаб елемента - 1. Значення від 1 до 0 зменшують елемент,
+        більше 1 - навпаки, збільшують. Наприклад, значення scale(1.25) - це
+        125% від початкового розміру, а scale(0.75) - 75%.
+      </p>
+      <p class="attention">
+        Увага: <br />
+
+        Анімація прикладів зроблена для візуалізації зміни властивостей і
+        поведінки елементів.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="RwrBQwP"
+          data-pen-title="lesson-10-scale"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/RwrBQwP">
+              lesson-10-scale</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Поворот</h3>
+      <p>
+        Функція rotate(кут) повертає елементи на задану кількість градусів
+        (одиниця deg). Додатні значення повертають елемент за годинниковою
+        стрілкою, від'ємні - проти.
+      </p>
+      <pre class="code">
+.box {
+  transform: rotate(45deg);
+}  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="BajPxRa"
+          data-pen-title="lesson-10-rotate"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/BajPxRa">
+              lesson-10-rotate</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="note">
+        Цікаво: <br />
+
+        Значення можна передати не тільки в градусах, а й в «оборотах» (одиниця
+        turn). Наприклад, rotate(0.5turn) - це половина обороту, аналог
+        rotate(180deg).
+      </p>
+      <h3>Зміщення</h3>
+      <p>
+        Функції translateX(tx), translateY(ty) і translate(tx, ty) переміщують
+        елемент в горизонтальному (вісь X) та/або вертикальному (вісь Y)
+        напрямках щодо початкового положення.
+      </p>
+      <ul class="section-list">
+        <li>Додатні значення X зміщують елемент вправо, від'ємні - вліво.</li>
+        <li>Додатні значення Y зміщують елемент вниз, від'ємні - вгору.</li>
+      </ul>
+      <p>
+        Значення можуть бути в пікселях або відсотках. Якщо значення задане у
+        відсотках, то воно розраховується на підставі розміру елемента, що
+        зміщується.
+      </p>
+      <pre class="code">
+.box {
+  transform: translate(100px, 200px);
+}  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="OJMwzYX"
+          data-pen-title="lesson-10-translate"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/OJMwzYX">
+              lesson-10-translate</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>Центрування елемента</h4>
+      <p>
+        Розглянемо прийом, за допомогою якого можна поставити абсолютно
+        позиційований елемент точно по центру блоку, щодо якого він
+        позиціонується. Техніка дуже проста і складається з трьох кроків.
+      </p>
+      <pre class="code">
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}  
+</pre
+      >
+      <ul class="section-list">
+        <li>Абсолютно позиціонуємо елемент щодо предка.</li>
+        <li>
+          Задаємо елементу властивості top і left зі значенням 50%, це поставить
+          верхній лівий кут елемента рівно по центру предка.
+        </li>
+        <li>
+          Задаємо елементу від'ємне зміщення (translate) по 50% його висоти і
+          ширини. Це посуне елемент вгору і вліво, і відцентрує всередині
+          предка.
+        </li>
+      </ul>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="KKVBByO"
+          data-pen-title="lesson-15-translate-centered"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/KKVBByO">
+              lesson-15-translate-centered</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Викривлення</h3>
+      <p>
+        Функції skewX(кут), skewY(кут) і skew(x-кут, y-кут) використовуються для
+        викривлення (нахилу, деформування) сторін елемента щодо координатних
+        осей. Якщо для skew() вказане тільки одне значення, друге дорівнюватиме
+        0, тобто це буде аналог skewX().
+      </p>
+      <pre class="code">
+.box {
+  transform: skew(30deg);
+}  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="oNbMqgY"
+          data-pen-title="lesson-10-skew"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/oNbMqgY">
+              lesson-10-skew</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Точка трансформації</h3>
+      <p>
+        Властивість transform-origin дозволяє змістити точку трансформації, щодо
+        якої відбувається зміна положення, розміру або форми елемента. Значення
+        за замовчуванням — center, або 50% 50%. Задається лише для
+        трансформованих елементів. Не наслідується.
+      </p>
+      <p>
+        У прикладі точка трансформації кожного елемента позначена синьою міткою.
+        Значення можна вказувати не тільки ключовими словами, а також в пікселях
+        або відсотках.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="800"
+          data-default-tab="html,result"
+          data-slug-hash="qBbyxmW"
+          data-pen-title="lesson-10-transform-origin"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/qBbyxmW">
+              lesson-10-transform-origin</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+    </section>
+  </body>
+</html>

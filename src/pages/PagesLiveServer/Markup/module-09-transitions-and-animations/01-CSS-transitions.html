@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS-переходи</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>CSS-переходи</h2>
+    <section class="section">
+      <p>
+        CSS-переходи дозволяють анімувати зміну значення властивості з плином
+        часу, керуючи швидкістю цього переходу. Зміна властивостей відбувається
+        під час настання певної події, яка описується відповідним псевдокласом,
+        наприклад :hover.
+      </p>
+      <p>
+        <b>Перехід завжди має тільки два стани</b> - початкове та кінцеве
+        значення властивості, і вміє змінювати це значення A > B і B > A за
+        вказаний час. Для анімацій з великою кількістю станів необхідно
+        використовувати CSS-анімацію.
+      </p>
+      <img
+        src="./img/transition-states-uk.png"
+        alt="transition state"
+        width="820"
+      />
+      <p>
+        Наступні чотири властивості управляють різними параметрами переходу.
+      </p>
+      <pre class="code">
+transition-property: <властивість>
+transition-duration: <час>
+transition-timing-function: <функція розподілу часу>
+transition-delay: <затримка>  
+</pre
+      >
+      <p>
+        Все, що необхідно зробити - це вказати початкові значення анімованих
+        властивостей і значення властивостей переходу, після чого під час події,
+        наприклад :hover, задати нові значення властивостей, до яких ми хочемо
+        анімувати елемент. Наведіть курсор миші на квадрат для запуску переходу.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="pogOBLb"
+          data-pen-title="lesson-10-transition-properties"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/pogOBLb">
+              lesson-10-transition-properties</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="useful">
+        Корисно: <br />
+
+        Пам'ятайте, під час додавання будь-яких переміщень (переходів та
+        анімацій), вони повинні бути простими, не нав'язливими і логічними.
+        Анімація повинна передавати смислове значення, акцентуючи увагу, не
+        відволікаючи користувача від взаємодії з контентом.
+      </p>
+      <h3>Властивість transition-property</h3>
+      <p>
+        Задає властивості, до яких буде застосований ефект переходу. Значенням
+        може бути одна властивість або список властивостей через кому. За
+        замовчуванням значення all - анімуються всі можливі властивості.
+      </p>
+      <pre class="code">
+.box {
+  background-color: teal;
+  transition-property: background-color;
+}
+
+.box:hover {
+  background-color: orange;
+}  
+</pre
+      >
+      <p class="attention">
+        Увага: <br />
+
+        Список властивостей, які можуть бути анімовані в майбутньому може
+        змінитися. Тому обов'язково необхідно вказувати властивість, яку
+        потрібно анімувати, інакше будуть анімовані всі можливі властивості
+        елемента, що призведе до несподіваних результатів.
+      </p>
+      <h3>Властивість transition-duration</h3>
+      <pre class="code">
+.box {
+  background-color: teal;
+  transition-property: background-color;
+  transition-duration: 1000ms;
+}
+
+.box:hover {
+  background-color: orange;
+}  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="yLexwPr"
+          data-pen-title="lesson-10-transition-duration"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/yLexwPr">
+              lesson-10-transition-duration</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість transition-timing-function</h3>
+      <p>
+        Задає<a href="https://cubic-bezier.com/#.17,.67,.83,.67"
+          >функцію розподілу часу</a
+        >
+        функцію розподілу часу, яка описує швидкість переходу властивості від
+        одного значення до іншого за час, вказаний в transition-duration, тобто
+        поведінка анімації.
+      </p>
+      <pre class="code">
+.box {
+  background-color: teal;
+  transition-property: background-color;
+  transition-duration: 1000ms;
+  transition-timing-function: linear;
+}
+
+.box:hover {
+  background-color: orange;
+}  
+</pre
+      >
+      <p>
+        В CSS існує кілька ключових слів для опису базових функцій Безьє. За
+        замовчуванням використовується значення ease - перехід починається
+        повільно, швидко прискорюється, а потім знову сповільнюється в кінці.
+        Решта ключових слів: linear, ease-in, ease-out, і ease-in-out.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="JjGaVXy"
+          data-pen-title="lesson-10-transition-timing-function"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/JjGaVXy">
+              lesson-10-transition-timing-function</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість transition-delay</h3>
+      <p>
+        Затримка, після якої почнеться анімація переходу. Використовується для
+        побудови сценаріїв - послідовності переходів різних елементів. За
+        замовчуванням задано значення 0s.
+      </p>
+      <p>
+        У прикладі встановлена затримка 500ms. Наведіть курсор миші на квадрат,
+        і перехід почнеться тільки через півсекунди після цієї події.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="WNrgWKQ"
+          data-pen-title="lesson-10-transition-delay"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/WNrgWKQ">
+              lesson-10-transition-delay</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Короткий запис переходу</h3>
+      <p>
+        Всі властивості переходу можна об'єднати в одну збірну властивість
+        transition.
+      </p>
+      <pre class="code">
+transition: [property] [duration] [timing-function] [delay]  
+</pre
+      >
+      <p>
+        Якщо анімується кілька властивостей, то набір значень для кожного з них
+        розділяється комою. Необхідно обов'язково вказати властивість і час
+        переходу, функцію часу і затримку можна не вказувати, тоді для них
+        будуть використані значення за замовчуванням.
+      </p>
+      <pre class="code">
+transition: background-color 500ms linear, transform 500ms ease-in-out;  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="QWyVPzN"
+          data-pen-title="lesson-10-transition-property"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/QWyVPzN">
+              lesson-10-transition-property</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Сценарії з transition-delay</h3>
+      <p>
+        Напишемо простий сценарій переходу кольору фону і обертання блоку.
+        Спочатку блок повинен змінити колір, і тільки після цього почати
+        обертатися. Все, що необхідно зробити, - це вказати перехід обертання,
+        почекати стільки часу, скільки займе анімація зміни кольору фону.
+      </p>
+      <pre class="code">
+transition: background-color 500ms linear, transform 500ms ease-in-out 500ms;  
+</pre
+      >
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="qBbMwGM"
+          data-pen-title="lesson-10-transition-delay-script"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/qBbMwGM">
+              lesson-10-transition-delay-script</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS-анімація</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>CSS-анімація</h2>
+    <section class="section">
+      <p>
+        Як і переходи, анімація надає веб-сторінкам динамічність, але, на
+        відміну від переходів, анімації не потрібен обов'язковий ініціатор
+        (подія), її можна повторити нескінченну кількість разів, і між
+        початковим і кінцевим станами може бути будь-яка кількість проміжних
+        станів.
+      </p>
+      <img
+        src="./img/animation-states-uk.png"
+        alt="animation states"
+        width="820"
+      />
+      <h3>Оголошення анімації</h3>
+      <p>
+        Анімація оголошується директивою @keyframes, яка дозволяє описати набір
+        кадрів (frames, станів) анімації, яких повинно бути як мінімум два
+        (початковий і кінцевий).
+      </p>
+      <pre class="code">
+/* Ім'я повинно бути описовим, тобто, що це за анімація. */
+@keyframes ім'яАнімації {
+  /* Тут будуть описуватися кадри */
+}  
+</pre
+      >
+      <p>
+        Кадри визначають, у який момент часу змінюються анімовані властивості, і
+        описуються ключовими словами from (псевдонім 0%) і to (псевдонім 100%)
+        або, найчастіше, у вигляді відсотків в діапазоні 0%-100%, оскільки
+        відсотки дозволяють вказати довільне значення.
+      </p>
+      <pre class="code">
+/* Ім'я повинно бути описовим, тобто, що це за анімація. */
+@keyframes ім'яАнімації {
+  0% {
+    /* Властивості для зміни */
+  }
+
+  /* Довільна кількість проміжних кадрів */
+
+  100% {
+    /* Властивості для зміни */
+  }
+}  
+</pre
+      >
+      <p class="useful">
+        Корисно: <br />
+
+        В анімації не вказується час або елемент, до якого вона буде
+        застосовуватися, це означає, що одну і ту саму анімацію можна
+        використовувати повторно для різних елементів.
+      </p>
+      <p>
+        Оголосимо анімацію для зміни кольору фону елемента в трьох точках: 0%,
+        50% і 100%.
+      </p>
+      <pre class="code">
+@keyframes changeBgColor {
+  0% {
+    background-color: teal;
+  }
+
+  50% {
+    background-color: orange;
+  }
+
+  100% {
+    background-color: deepskyblue;
+  }
+}  
+</pre
+      >
+      <h3>Властивості анімації</h3>
+      <h4>animation-name</h4>
+      <p>
+        Щоб використовувати вже оголошену анімацію, потрібно вказати її ім'я як
+        значення для властивості animation-name.
+      </p>
+      <pre class="code">
+.box {
+  animation-name: changeBgColor;
+}  
+</pre
+      >
+      <p>
+        Анімацію можна додати до селектора, тоді вона буде застосована відразу
+        під час завантаження сторінки. Так само можна застосувати анімацію на
+        підставі події, наприклад ховеру або фокусу, використовуючи відповідні
+        псевдокласи.
+      </p>
+      <pre class="code">
+. box {
+  /* Базові стилі елемента */
+}
+
+/* Додаємо анімацію по ховеру */
+.box:hover {
+  animation-name: changeBgColor;
+}  
+</pre
+      >
+      <h4>animation-duration</h4>
+      <p>
+        Встановлює тривалість анімації - час, за який будуть пройдені всі кадри.
+        Задається в секундах або мілісекундах. Якщо не поставити тривалість,
+        анімація буде миттєвою.
+      </p>
+      <pre class="code">
+.box {
+  animation-name: changeBgColor;
+  animation-duration: 3000ms;
+}  
+</pre
+      >
+      <p>
+        За замовчуванням анімація відбувається один раз і фінальні значення
+        анімованих властивостей не зберігаються, натомість елемент повертається
+        до свого вихідного стану.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="eYJPRQO"
+          data-pen-title="lesson-10-animation-duration"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/eYJPRQO">
+              lesson-10-animation-duration</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>animation-timing-function</h4>
+      <p>
+        Встановлює
+        <a href="https://cubic-bezier.com/#.17,.67,.83,.67"
+          >функцію розподілу часу</a
+        >
+        для анімації, значення аналогічні transition-timing-function в
+        CSS-переходах.
+      </p>
+      <pre class="code">
+.box {
+  animation-name: changeBgColor;
+  animation-duration: 3000ms;
+  animation-timing-function: linear;
+}  
+</pre
+      >
+      <h4>animation-delay</h4>
+      <p>
+        Встановлює затримку перед початком анімації в секундах або мілісекундах.
+      </p>
+      <pre class="code">
+.box {
+  animation-name: changeBgColor;
+  animation-duration: 3000ms;
+  animation-timing-function: linear;
+  animation-delay: 1000ms;
+}  
+</pre
+      >
+      <h4>animation-iteration-count</h4>
+      <p>Встановлює кількість повних повторень анімації.</p>
+      <pre class="code">
+.box {
+  animation-name: changeBgColor;
+  animation-duration: 3000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 5;
+}  
+</pre
+      >
+      <p>
+        Значення може бути цілим додатним числом або ключовим словом infinite -
+        це зробить анімацію нескінченною.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="yLeRoMN"
+          data-pen-title="lesson-10-animation-iteration-count"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/yLeRoMN">
+              lesson-10-animation-iteration-count</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>animation-direction</h4>
+      <p>
+        Контролює напрямок відтворення анімації - від початкового до кінцевого
+        кадру, навпаки від кінцевого кадру до початкового, або, можливо
+        необхідно, щоб порядок чергувався на кожному повторенні.
+      </p>
+      <pre class="code">
+.box {
+  animation-name: changeBgColor;
+  animation-duration: 3000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}  
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          normal - анімація відтворюється від початкового до кінцевого кадру,
+          після чого відразу повертається у початковий кадр для наступного
+          повторення (скидається до початкового стану). Це значення за
+          замовчуванням.
+        </li>
+        <li>
+          reverse - анімація відтворюється у зворотному напрямку, починаючи від
+          кінцевого кадру і до початкового, після чого відразу повертається у
+          кінцевий кадр для наступного повторення.
+        </li>
+        <li>
+          alternate - перший раз відтворення починається від початкового і до
+          кінцевого кадру, після чого відбувається зміна напрямку на кожному
+          наступному повторенні.
+        </li>
+        <li>
+          alternate-reverse - перший раз відтворення починається від кінцевого і
+          до початкового кадру, після чого відбувається зміна напрямку на
+          кожному наступному повторенні.
+        </li>
+      </ul>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="zYrmEqW"
+          data-pen-title="lssson-10-animation-direction"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/zYrmEqW">
+              lssson-10-animation-direction</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>animation-fill-mode</h4>
+      <p>
+        Визначає, що відбувається зі стилями елемента до початку анімації і
+        після її завершення. Тобто дозволяє вказати, чи повинні стилі анімації
+        застосовуватися до елементу поза анімацією.
+      </p>
+      <pre class="code">
+animation-fill-mode: none | forwards | backwards | both  
+</pre
+      >
+      <ul class="section-list">
+        <li>
+          none - стилі анімації впливають на елемент тільки під час анімації. До
+          і після анімації елемент знаходиться у своєму початковому стані.
+          Значення за замовчуванням.
+        </li>
+        <li>
+          forwards - стилі, застосовані в кінці анімації, залишаються на
+          елементі після її завершення.
+        </li>
+        <li>
+          backwards - стартові стилі анімації будуть застосовані до елемента ще
+          до старту анімації.
+        </li>
+        <li>
+          both - поєднує forwards і backwards, стилі застосовуються до і після
+          анімації.
+        </li>
+      </ul>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="jOWXoJM"
+          data-pen-title="lssson-10-animation-fill-mode"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/jOWXoJM">
+              lssson-10-animation-fill-mode</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>animation-play-state</h4>
+      <p>
+        Дозволяє призупинити відтворення анімації. За замовчуванням встановлено
+        значення running. Якщо встановити значення paused, наприклад при :hover,
+        анімація буде припинена, доки курсор миші знаходиться над елементом.
+      </p>
+
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="gOPBoPj"
+          data-pen-title="lesson-10-animation-play-state"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/gOPBoPj">
+              lesson-10-animation-play-state</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>Властивість animation</h4>
+      <p>Збірна властивість дозволяє коротше записати властивості анімації.</p>
+      <pre class="code">
+animation: [name] [duration] [timing-function] [delay] [iteration-count] [direction] [fill-mode] [play-state]  
+</pre
+      >
+      <p>
+        Значення необов'язкових властивостей можна пропустити або поміняти
+        місцями. Виняток становлять властивості duration і delay - значення
+        тривалості анімації завжди повинно зазначатися до затримки.
+      </p>
+      <pre class="code">
+.box {
+  animation: magic 2s infinite;
+}
+
+.box {
+  animation: magic 2s 0.5s ease-in-out;
+}
+
+.box {
+  animation: magic 2s ease-in-out 0.5s forwards;
+}
+
+.box {
+  animation: magic 2s forwards infinite ease-out 0.5s;
+}
+
+@keyframes magic {
+  /* ... */
+}  
+</pre
+      >
+    </section>
+  </body>
+</html>

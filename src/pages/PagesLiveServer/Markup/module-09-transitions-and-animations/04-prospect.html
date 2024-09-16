@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Перспектива</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Перспектива</h2>
+    <section class="section">
+      <p>
+        За замовчуванням елемент рендериться у 2D-просторі та, у разі
+        трансформацій, - по осях X та Y, наприклад rotate, викривляється і
+        виглядає неприродно.
+      </p>
+      <img
+        src="./img/perspective-intro.png"
+        alt="perspective intro"
+        width="480"
+      />
+      <p>
+        У прикладі елементи div.box повернені на 45 градусів по осях X та Y.
+        Вони виглядають плоскими і викривленими, тому що їм не вистачає
+        перспективи, тобто глибини сцени.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="pogXgQd"
+          data-pen-title="lesson-10-no-perspective"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/pogXgQd">
+              lesson-10-no-perspective</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Функція perspective()</h3>
+      <p>
+        Це ще одна функція трансформації для властивості transform, яка дозволяє
+        задати перспективу одному елементу, до якого застосовується.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="KKVjVEy"
+          data-pen-title="lesson-10-self-perspective"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/KKVjVEy">
+              lesson-10-self-perspective</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Встановивши perspective(400px), ми говоримо браузеру про необхідність
+        рендерити div.box у 3D-просторі, додаючи елементу глибину сцени та
+        об'єм. Значення 400px - це відстань до сцени, на якій знаходиться
+        елемент. Що менше значення, то ближче глядач до сцени і навпаки.
+      </p>
+      <p>
+        У разі використання відразу на декількох елементах, у кожного
+        створюється своя сцена і перспектива, тобто глядач ніби дивиться на
+        кожен елемент з різної точки.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="VweJape"
+          data-pen-title="lesson-10-multiple-self-perspective"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/VweJape">
+              lesson-10-multiple-self-perspective</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Властивість perspective</h3>
+      <p>
+        Дозволяє створити однакову перспективу цілій групі елементів на сцені.
+        Ця властивість задається спільному контейнеру групи елементів (сцені), у
+        нашому випадку - div.scene.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="NWxZNyY"
+          data-pen-title="lesson-10-scene-perspective"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/NWxZNyY">
+              lesson-10-scene-perspective</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+    </section>
+  </body>
+</html>

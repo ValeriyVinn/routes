@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Методи класу Promise</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="../../../../indexLS.html" class="green">Home</a>
+    </header>
+    <main class="main">
+      <h1>Методи класу Promise</h1>
+      <section class="section">
+        <p>
+          В одному випадку необхідно дочекатися виконання усіх відразу, і тільки
+          потім обробляти їх результат, а в іншому - достатньо дочекатися
+          виконання будь-якого, проігнорувавши інші тощо. Саме для цих випадків
+          клас Promise має статичні методи для роботи з одним або групою
+          промісів.
+        </p>
+        <h3>Promise.all()​</h3>
+        <p>
+          Приймає масив промісів, очікує їх виконання і повертає проміс. Якщо
+          всі проміси виконаються успішно, проміс, що повертається, перейде у
+          стан fulfilled, а його значенням буде масив результатів виконання
+          кожного промісу. У разі, коли хоча б один з промісів буде відхилений,
+          проміс, що повертається, перейде у стан rejected, а його значенням
+          буде помилка.
+        </p>
+        <pre class="code">
+Promise.all([promise1, promise2, promise3, ...])
+</pre
+        >
+        <p>
+          Напишемо функцію, яка приймає текст для resolve() і затримку в
+          мілісекундах, а результатом свого виконання повертає проміс. Потім
+          створимо два проміси з різним часом затримки.
+        </p>
+        <pre class="code">
+const makePromise = (text, delay) => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(text), delay);
+  });
+};
+
+const promiseA = makePromise("promiseA value", 1000);
+const promiseB = makePromise("promiseB value", 3000);
+
+Promise.all([promiseA, promiseB])
+  .then(value => console.log(value)) //["promiseA value", "promiseB value"]
+  .catch(error => console.log(error));
+</pre
+        >
+        <p>
+          Колбек методу then() буде викликаний через три секунди, тобто коли
+          виконається проміс promiseB. Проміс promiseA виконається через одну
+          секунду і просто чекатиме. Якщо будь-який з промісів буде відхилений,
+          то буде викликаний колбек методу catch().
+        </p>
+        <h3>Promise.race()​</h3>
+        <p>
+          Повертає виконаний або відхилений проміс, залежно від того, з яким
+          результатом завершиться «найшвидший» з переданих промісів, зі
+          значенням або причиною його відхилення.
+        </p>
+        <pre class="code">
+Promise.race([promise1, promise2, promise3, ...])
+</pre
+        >
+        <p>
+          Коли хоча б один проміс з масиву виконається або буде відхилений,
+          проміс, що повертається, перейде у стан resolved або rejected, а всі
+          інші будуть відкинуті.
+        </p>
+        <pre class="code">
+const makePromise = (text, delay) => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(text), delay);
+  });
+};
+
+const promiseA = makePromise("promiseA value", 1000);
+const promiseB = makePromise("promiseB value", 3000);
+
+Promise.race([promiseA, promiseB])
+  .then(value => console.log(value)) // "promiseA value"
+  .catch(error => console.log(error));
+</pre
+        >
+        <p>
+          Колбек методу then() або catch() буде викликаний через одну секунду,
+          коли виконається promiseA. Другий проміс promiseB буде проігнорований.
+        </p>
+        <h3>Promise.resolve() і Promise.reject()​</h3>
+        <p>
+          Статичні методи для створення промісів, що миттєво успішно виконуються
+          або відхиляються. Працюють аналогічно new Promise() за винятком
+          можливості вказати затримку, але мають коротший синтаксис.
+        </p>
+        <pre class="code">
+// Fulfilled promise
+new Promise(resolve => resolve("success value")).then(value =>
+  console.log(value)
+);
+
+Promise.resolve("success value").then(value => console.log(value));
+
+// Rejected promise
+new Promise((resolve, reject) => reject("error")).catch(error =>
+  console.error(error)
+);
+
+Promise.reject("error").catch(error => console.error(error));
+</pre
+        >
+        <p>
+          Ці методи використовуються для промісифікаціі функцій, коли необхідно
+          побудувати ланцюжок промісів і вже є початкове значення. Виконаємо
+          рефакторинг наступного коду.
+        </p>
+        <pre class="code">
+const makeGreeting = guestName => {
+  if (guestName === "" || guestName === undefined) {
+    return {
+      success: false,
+      message: "Guest name must not be empty",
+    };
+  }
+
+  return {
+    success: true,
+    message: `Welcome ${guestName}`,
+  };
+};
+
+const result = makeGreeting("Mango");
+
+if (result.success) {
+  console.log(result.message);
+} else {
+  console.error(result.message);
+}
+</pre
+        >
+        <p>
+          Використовуючи колбек, відпадає необхідність повертати складні об'єкти
+          зі статусом операції і перевіряти його у зовнішньому коді.
+        </p>
+        <pre class="code">
+const makeGreeting = (guestName, onSuccess, onError) => {
+  if (guestName === "" || guestName === undefined) {
+    return onError("Guest name must not be empty");
+  }
+  onSuccess(`Welcome ${guestName}`);
+};
+
+makeGreeting(
+  "Mango",
+  greeting => console.log(greeting),
+  error => console.error(error)
+);
+</pre
+        >
+        <p>
+          Останнім кроком буде промісифікація функції makeGreeting() для того,
+          щоб повністю усунути її залежність від зовнішнього коду.
+        </p>
+        <pre class="code">
+const makeGreeting = guestName => {
+  if (guestName === "" || guestName === undefined) {
+    return Promise.reject("Guest name must not be empty");
+  }
+
+  return Promise.resolve(`Welcome ${guestName}`);
+};
+
+makeGreeting("Mango")
+  .then(greeting => console.log(greeting))
+  .catch(error => console.error(error));
+</pre
+        >
+      </section>
+    </main>
+    <footer class="footer">Це футер</footer>
+
+    <script
+      src="./pages/PagesLiveServer/JavaScript/js/main.js"
+      type="module"
+    ></script>
+  </body>
+</html>
