@@ -14,7 +14,373 @@
     <main class="main">
       <h1>AJAX</h1>
       <section class="section">
-        
+        <p>
+          <b>AJAX (Asynchronous JavaScript and XML)</b> - метод отримання або
+          відправлення даних з подальшим оновленням інтерфейсу за цими даними,
+          без потреби перезавантаження сторінки. Завдяки цьому зменшується час
+          відгуку і веб-сторінка стає інтерактивнішою. Цей процес можна
+          розібрати на прикладі завантаження даних.
+        </p>
+        <ul class="section-list">
+          <li>
+            На веб-сторінці відбувається подія (сторінка завантажується,
+            натискається кнопка «Показати більше», відправляється форма тощо).
+          </li>
+          <li>
+            На клієнті, за допомогою JavaScript, реакцією на цю подію буде
+            виконуватися функція для роботи з сервером, де створюється і
+            відправляється HTTP-запит.
+          </li>
+          <li>
+            Сервер отримує і обробляє HTTP-запит, відправляючи назад у відповіді
+            дані у форматі JSON.
+          </li>
+          <li>
+            На клієнті, за допомогою JavaScript, відповідь від сервера
+            обробляється, зчитуються дані і оновлюється інтерфейс.
+          </li>
+        </ul>
+        <p class="note">
+          ЦІКАВО: <br />
+          Незважаючи на те, що у назві технології присутній XML, в сучасному
+          інтернеті його замінив JSON, а назву залишили як данину пам'яті. AJAX
+          трактується як будь-яке спілкування з сервером без перезавантаження
+          сторінки.
+        </p>
+        <h3>Fetch API​</h3>
+        <p>
+          Інтерфейс, вбудований в браузер, доступний на об'єкті window, який
+          містить набір властивостей і методів для відправлення, отримання та
+          обробки ресурсів від сервера. Метод fetch() надає сучасний інтерфейс
+          для формування запитів до сервера і побудований на промісах.
+        </p>
+        <pre class="code">
+fetch(url, options)
+</pre
+        >
+        <ul class="section-list">
+          <li>
+            url - шлях до даних на бекенді, які необхідно отримати, створити або
+            змінити. Обов'язковий аргумент.
+          </li>
+          <li>
+            options - об'єкт налаштувань запиту: метод (за замовчуванням GET),
+            заголовки, тіло тощо. Необов'язковий аргумент.
+          </li>
+        </ul>
+        <p>
+          Будемо робити запити до
+          <a href="https://jsonplaceholder.typicode.com/"
+            >JSONPlaceholder API</a
+          >
+          - публічного REST API для швидкого прототипування, який надає колекцію
+          несправжніх користувачів в ресурсі /users.
+        </p>
+        <pre class="code">
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then(response => {
+    // Response handling
+  })
+  .then(data => {
+    // Data handling
+  })
+  .catch(error => {
+    // Error handling
+  });
+</pre
+        >
+        <h3>Перевірка відповіді​</h3>
+        <p>
+          Значення промісу, який повертає метод fetch(), - це об'єкт зі
+          службовою інформацією про стан відповіді сервера. Екземпляр класу
+          Response містить різні методи і властивості. Залежно від типу
+          отримуваного контенту, використовуються різні методи для перетворення
+          тіла відповіді у дані.
+        </p>
+        <ul class="section-list">
+          <li>json() - парсить дані в JSON-форматі.</li>
+          <li>
+            text() - парсить дані в простому текстовому форматі, наприклад .csv
+            (табличні дані).
+          </li>
+          <li>
+            blob() - парсить дані, що описують файл, наприклад, зображення,
+            аудіо або відео.
+          </li>
+        </ul>
+        <p>
+          У першому методі then() виконується перевірка статусу відповіді і
+          перетворення даних у правильний формат, або явне створення помилки,
+          щоб обробити невдалий HTTP-запит в блоці catch().
+        </p>
+        <pre class="code">
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Data handling
+  })
+  .catch(error => {
+    // Error handling
+  });
+</pre
+        >
+        <p class="note">
+          ЦІКАВО: <br />
+          Це необхідно для того, щоб fetch() правильно зреагував на статус код
+          404, який, технічно, не є помилкою, але для клієнта - це неуспішний
+          результат.
+        </p>
+        <h3>Вкладка Network​</h3>
+        <p>
+          В інструментах розробника на вкладці Network відображаються всі
+          HTTP-запити, що виконуються на сторінці. Вибравши фільтр XHR,
+          залишаться тільки запити до бекенду. Після натискання кнопки в
+          прикладі, через деякий час запит відобразиться у списку. Вибравши
+          його, можна подивитися службову інформацію і тіло відповіді на
+          підвкладках Headers, Preview і Response.
+        </p>
+        <img src="./img/network-tab.png" alt="network tab" width="780" />
+        <h3>Робота з публічним REST API</h3>
+        <p>
+          Кожен бекенд унікальний, їх тисячі. З іншого боку REST API побудовані
+          за стандартною архітектурою. Це означає, що можна зрозуміти принцип їх
+          роботи, після чого, все що потрібно зробити - це ознайомитися з
+          документацією того бекенду, який необхідно використовувати.
+        </p>
+        <p>
+          Продовжимо працювати з
+          <a href="https://jsonplaceholder.typicode.com/">JSONPlaceholder API</a
+          >. З документації беремо URL ресурсу для запиту інформації про
+          колекції несправжніх користувачів.
+        </p>
+        <pre class="code">
+https://jsonplaceholder.typicode.com/users
+</pre
+        >
+        <p>Цей шлях складається з наступних частин:</p>
+        <ul class="section-list">
+          <li>
+            https://jsonplaceholder.typicode.com - це ендпоінт, базовий URL,
+            точка входу в API.
+          </li>
+          <li>/users - ресурс, до якого ми звертаємося.</li>
+        </ul>
+        <p>
+          По кліку на кнопку «Fetch users» зробимо GET-запит і виведемо список
+          користувачів за отриманими даними.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="dyvwPbV"
+            data-pen-title="lesson-19-fetch"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/dyvwPbV">
+                lesson-19-fetch</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <p class="note">
+          ЦІКАВО: <br />
+          Зверніть увагу на те, що функція fetchUsers() повертає проміс, тому до
+          результату її виклику ми додаємо ланцюжок методів then() і catch().
+        </p>
+        <h3>Помилка новачка​</h3>
+        <p>
+          Розберемо поширену помилку при роботі з асинхронним кодом - спробу
+          використовувати дані HTTP-запиту поза колбеком методу then(). Новачок
+          намагається записати «результат fetch» у зовнішню змінну і
+          використовувати її нижче у коді, відразу після виклику методу fetch().
+        </p>
+        <pre class="code">
+let globalVariable; // undefined
+
+// Initializing data fetching
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then(response => response.json())
+  .then(users => {
+    console.log("users inside then callback: ", users);
+
+    // Writing the result to a global variable
+    globalVariable = users;
+
+    // Everything is ok here, the data is in the variable
+    console.log("globalVariable inside fetch callback: ", globalVariable);
+  });
+
+// No async data here
+console.log("globalVariable outside fetch: ", globalVariable); // undefined
+</pre
+        >
+        <p>
+          Поза колбеком методу then() даних немає, оскільки останній
+          console.log() виконається раніше, ніж надійде відповідь від сервера. У
+          цей час змінна globalVariable ще містить undefined. Значення промісу,
+          що виконався, доступне тільки в колбеку методу then().
+        </p>
+        <h3>Параметри рядка запиту​</h3>
+        <p>
+          Параметри запиту дозволяють вказати бекенду додаткові критерії.
+          Наприклад, скільки елементів колекції ми хочемо отримати в запиті,
+          можливо, необхідно додати сортування за якоюсь властивістю об'єкта,
+          обмежити вибірку тощо. Список параметрів запиту, їх назви і можливі
+          значення залежать від бекенду і описані в документації.
+        </p>
+        <p>
+          Символ ? вказує на старт параметрів запиту. Кожен параметр - це пара
+          ім'я=значення. Символ & використовується для зазначення смислового
+          «І», розділяючи параметри в рядку запиту.
+        </p>
+        <pre class="code">
+const url = "https://jsonplaceholder.typicode.com/users?_limit=7&_sort=name";
+</pre
+        >
+        <p>
+          Такий GET-запит поверне масив із семи користувачів (всього їх 10),
+          відсортованих за ім'ям (поле name) в алфавітному порядку. Підкреслення
+          в іменах параметрів специфічні для цього бекенду, це не якийсь
+          стандарт.
+        </p>
+        <div class="codepen">
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="html,result"
+            data-slug-hash="abJPzQq"
+            data-pen-title="lesson-19-query-params"
+            data-user="goit-academy"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/goit-academy/pen/abJPzQq">
+                lesson-19-query-params</a
+              >
+              by goit-academy (<a href="https://codepen.io/goit-academy"
+                >@goit-academy</a
+              >) on <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <h3>Клас URLSearchParams​</h3>
+        <p>
+          Параметрів може бути багато, і незручно складати з них один довгий
+          рядок як для читабельності, так і для його подальшого редагування. Під
+          час складання рядків параметрів, створюється екземпляр класу
+          URLSearchParams та ініціалізується об'єктом. Результатом буде
+          спеціальний об'єкт (ітератор) з методами, який у рядковому
+          перетворенні повертає результат виклику методу toString() - своє
+          рядкове відображення.
+        </p>
+        <pre class="code">
+const searchParams = new URLSearchParams({
+  _limit: 5,
+  _sort: "name",
+});
+
+console.log(searchParams.toString()); // "_limit=5&_sort=name"
+
+const url = `https://jsonplaceholder.typicode.com/users?${searchParams}`;
+console.log(url); // "https://jsonplaceholder.typicode.com/users?_limit=5&_sort=name"
+</pre
+        >
+        <p>
+          У рядковому вигляді властивості об'єкта стануть параметрами та їх
+          значеннями. Параметри будуть розділені символом &. У разі інтерполяції
+          значення в шаблонних рядках відбувається його неявне перетворення у
+          рядок, тому не потрібно викликати метод toString() під час складання
+          URL. Не забувайте вказувати початок рядка запиту символом ?.
+        </p>
+        <h3>HTTP-заголовки​</h3>
+        <p>
+          Клас Headers дозволяє виконувати різні дії в заголовках HTTP-запиту і
+          відповіді. До цих дій належать діставання, налаштування, додавання і
+          видалення заголовків.
+        </p>
+        <pre class="code">
+const headers = new Headers({
+  "Content-Type": "application/json",
+  "X-Custom-Header": "custom value",
+});
+
+headers.append("Content-Type", "text/bash");
+headers.append("X-Custom-Header", "custom value");
+headers.has("Content-Type"); // true
+headers.get("Content-Type"); // "text/bash"
+headers.set("Content-Type", "application/json");
+headers.delete("X-Custom-Header");
+</pre
+        >
+        <p>
+          На практиці для складання заголовків запиту, як правило,
+          використовують просто літерал об'єкта з властивостями. У такому разі
+          методів не буде, що найчастіше і не потрібно.
+        </p>
+        <pre class="code">
+const headers = {
+  "Content-Type": "application/json",
+  "X-Custom-Header": "custom value",
+};
+</pre
+        >
+        <p>Запит з використанням заголовків буде виглядати наступним чином.</p>
+        <pre class="code">
+fetch("https://jsonplaceholder.typicode.com/users", {
+  headers: {
+    Accept: "application/json",
+  },
+}).then(response => {
+  // ...
+});
+</pre
+        >
+        <p class="note">
+          ЦІКАВО: <br />
+          Сучасні браузери додають багато заголовків за замовчуванням, залежно
+          від операції і тіла запиту, тому немає потреби явно вказувати
+          стандартні заголовки.
+        </p>
       </section>
     </main>
     <footer class="footer">Це футер</footer>
