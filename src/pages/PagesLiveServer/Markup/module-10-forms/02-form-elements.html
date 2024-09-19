@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Елементи форм</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Елементи форм</h2>
+    <section class="section">
+      <h3>Елемент &lt;form&gt;</h3>
+      <p>
+        Елемент &lt;form&gt; - це контейнер для групи пов'язаних елементів
+        форми. Наприклад, форма відгуку, реєстрації, оплати замовлення в
+        інтернет-магазині. Кожен з цих компонентів інтерфейсу складається з
+        групи інтерактивних елементів, згрупованих формою.
+      </p>
+      <pre class="code">
+&lt;form&nbsp;name=&quot;signup_form&quot;&nbsp;autocomplete=&quot;on&quot;&nbsp;novalidate&gt;
+<br>&nbsp;&nbsp;&lt;label&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Email
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;email&quot;&nbsp;name=&quot;email&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&lt;/label&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;label&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Password
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;password&quot;&nbsp;name=&quot;password&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&lt;/label&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;button&nbsp;type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+<br>&lt;/form&gt;    
+</pre>
+      <p>
+        В елемента &lt;form&gt; немає обов'язкових атрибутів, тому в прикладі
+        наведені кілька корисних необов'язкових.
+      </p>
+      <ul class="section-list">
+        <li>
+          name - унікальне ім'я форми на поточній веб-сторінці. Використовується
+          як на сервері, так і на клієнті під час роботи з формою. Може містити
+          символи англійського алфавіту в будь-якому регістрі, цифри,
+          підкреслення і тире. В імені не можна використовувати пробіл.
+        </li>
+        <li>
+          autocomplete - визначає, чи може браузер автоматично заповнювати
+          значення всіх елементів форми. Має всього два значення off і on. Цю
+          поведінку можна буде змінити для кожного елемента форми.
+        </li>
+        <li>
+          novalidate - атрибут-прапорець, не має значення. Каже браузеру не
+          перевіряти валідність введених даних під час відправлення форми. Якщо
+          атрибут не вказаний, виконується клієнтська валідація.
+        </li>
+      </ul>
+      <p class="attention">
+        Відправлення форми: <br />
+
+        По кліку на &lt;button&nbsp;type=&quot;submit&quot;&gt; або під час
+        натискання клавіші Enter в будь-якому полі форми, вона «відправляється»,
+        що призводить до перезавантаження поточної сторінки. Це поведінка за
+        замовчуванням, яку можна буде змінити за допомогою JavaScript.
+      </p>
+      <h3>Елемент &lt;label&gt;</h3>
+      <p>
+        Елемент &lt;label&gt; пов'язує опис (мітку) з інтерактивним елементом
+        форми. Текст мітки пов'язаний з елементом не тільки візуально, але й
+        логічно. Наприклад, скрінрідер оголосить текст мітки, коли користувач
+        поставить фокус на пов'язаний елемент. По кліку на мітці, пов'язаний
+        елемент автоматично отримає ефект фокуса.
+      </p>
+      <p>
+        Якщо елемент форми, наприклад поле введення, вкладається в
+        &lt;label&gt;, зв'язок створюється браузером автоматично. Клік на текст
+        «Email» або «Password» поставить фокус у відповідне поле введення.
+      </p>
+      <pre class="code">
+&lt;form&gt;
+<br>&nbsp;&nbsp;&lt;label&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Email
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;email&quot;&nbsp;name=&quot;email&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&lt;/label&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;label&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Password
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;password&quot;&nbsp;name=&quot;password&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&lt;/label&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;button&nbsp;type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+<br>&lt;/form&gt;    
+</pre>
+      <p>
+        Якщо елемент форми не вкладений в &lt;label&gt;, необхідно явно зв'язати
+        їх за допомогою атрибута id елемента, що зв'язується, і атрибута for
+        мітки.
+      </p>
+      <img
+        src="./img/label-element-for-attribute.png"
+        alt="label element for attribute"
+        width="520"
+      />
+      <pre class="code">
+&lt;form&gt;
+<br>&nbsp;&nbsp;&lt;label&nbsp;for=&quot;user_email&quot;&gt;Email&lt;/label&gt;
+<br>&nbsp;&nbsp;&lt;input&nbsp;type=&quot;email&quot;&nbsp;name=&quot;email&quot;&nbsp;id=&quot;user_email&quot;&nbsp;/&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;label&nbsp;for=&quot;user_password&quot;&gt;Password&lt;/label&gt;
+<br>&nbsp;&nbsp;&lt;input&nbsp;type=&quot;password&quot;&nbsp;name=&quot;password&quot;&nbsp;id=&quot;user_password&quot;&nbsp;/&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;button&nbsp;type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+<br>&lt;/form&gt;    
+</pre>
+      <h3>Елемент &lt;input&gt;</h3>
+      <p>
+        Універсальний елемент для створення різноманітних полів введення. Тип
+        поля визначається атрибутом type, значення якого за замовчуванням text -
+        однорядкове текстове поле, що приймає будь-які символи.
+      </p>
+      <pre class="code">
+&lt;input type="text" name="username" /&gt;    
+</pre
+      >
+      <p>
+        Концептуально тег &lt;input&gt; представляє запис у словнику, який
+        відправляється на сервер. Атрибут name визначає ім'я цього запису, а
+        значення - це те, що ввів користувач. Ім'я поля повинно бути унікальним
+        всередині форми. Значення атрибута name також використовується при
+        роботі з формою в JavaScript.
+      </p>
+      <img
+        src="./img/sending-input-variable-to-server.png"
+        alt="sending input variable to server"
+        width="720"
+      />
+      <h4>Атрибут autofocus</h4>
+      <p>
+        Поле введення, якому заданий цей атрибут, автоматично отримає фокус під
+        час завантаження сторінки, і в ньому можна відразу набирати текст. За
+        замовчуванням атрибут не встановлений для жодного поля.
+      </p>
+      <p>
+        Оскільки фокус не може бути у кількох елементів одночасно, атрибут
+        задається полю, з якого користувачеві варто почати заповнювати форму.
+        Атрибут autofocus - логічний, тобто без значення, вказується тільки
+        назва.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="ExNMJqo"
+          data-pen-title="lesson-11-autofocus"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/ExNMJqo">
+              lesson-11-autofocus</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="useful">
+        Корисно: <br />
+
+        Через особливості платформи з прикладами, поле введення імені
+        користувача не отримує фокус під час завантаження сторінки. Роботу цього
+        коду можна перевірити у себе в редакторі.
+      </p>
+      <h4>Атрибут placeholder</h4>
+      <p>
+        Дозволяє відображати текст-підказку про те, які дані необхідно ввести в
+        поле, коли елемент &lt;input&gt; порожній. Цей атрибут можна
+        використовувати в будь-якому елементі форми, де є текстове введення.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="KKgxpme"
+          data-pen-title="lesson-11-placeholder"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/KKgxpme">
+              lesson-11-placeholder</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="useful">
+        Корисно: <br />
+
+        Текст-підказка не замінює хороший &lt;label&gt;, а доповнює його
+        демонстрацією прикладу типу даних, які слід вводити.
+        <a href="https://www.youtube.com/watch?v=jrigp2L-P-0&feature=youtu.be"
+          >Placeholders in Form Fields Are Harmful</a
+        >
+        - відео про те, як правильно проектувати доступні і легкі у використанні
+        елементи форм з мітками і підказками.
+      </p>
+      <h4>Пошта і пароль</h4>
+      <p>
+        Значення атрибута type впливає на тип поля, набір символів, які в нього
+        можна ввести і подальшу валідацію значення. Наприклад, якщо браузер
+        смартфона бачить поле з типом email, він відображає користувачеві
+        спеціальну клавіатуру для введення електронної пошти з легко доступним
+        символом @. Браузер також може надати спосіб вибрати адресу електронної
+        пошти з адресної книги.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="rNMZeEB"
+          data-pen-title="lesson-11-email-and-password"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/rNMZeEB">
+              lesson-11-email-and-password</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Для типу password, значення пароля, що вводиться, буде візуально
+        підмінено на маркери з міркувань безпеки. Атрибути minLength і maxLength
+        - не обов'язкові. Вони дозволяють обмежити кількість символів, які можна
+        ввести у полі.
+      </p>
+      <h4>Радіо-кнопки (перемикачі)</h4>
+      <p>
+        Якщо задати атрибуту type значення radio - інпут перетвориться у
+        перемикач (радіо-кнопку, radio button). Радіо-кнопки завжди йдуть
+        групами, що дозволяє користувачеві вибрати
+        <b>одне з безлічі</b> визначених значень.
+      </p>
+      <p>
+        Кожній радіо-кнопці в групі задається однакове значення атрибута name,
+        інакше браузер не знатиме, що це група.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="XWjPXBY"
+          data-pen-title="lesson-11-radio-buttons"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/XWjPXBY">
+              lesson-11-radio-buttons</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        На відміну від текстових полів, в радіо-кнопку не можна вводити дані,
+        тому кожній з них необхідно вказати значення в атрибуті value. Це
+        значення, яке буде передане на сервер, коли користувач відправить форму.
+      </p>
+      <p>
+        Логічний атрибут checked вказує на те, який перемикач буде обраний
+        (відмічений) за замовчуванням. У групі радіо-кнопок в стані checked може
+        бути тільки один елемент.
+      </p>
+      <h4>Чекбокси (прапорці)</h4>
+      <p>
+        Прапорці (чекбокси, checkbox) схожі на перемикачі, але дозволяють
+        вибирати довільну кількість значень, тобто <b>багато з багатьох</b> .
+        Чекбоксів може бути ціла група, наприклад, вибір хобі, або тільки один,
+        наприклад, прийняття згоди користувача під час реєстрації.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="BaLOjqz"
+          data-pen-title="lesson-11-checkboxes"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/BaLOjqz">
+              lesson-11-checkboxes</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>Числа</h4>
+      <p>
+        Звичайні текстові поля приймають буквально все: цифри, літери, пробіли,
+        розділові знаки тощо. Для того, щоб дозволити вводити тільки числа, з
+        можливістю обмежити діапазон, використовується тип поля number. При
+        введенні даних у числове поле браузер автоматично ігнорує всі символи,
+        крім цифр.
+      </p>
+      <pre class="code">
+&lt;label&gt;
+<br>&nbsp;&nbsp;Age
+<br>&nbsp;&nbsp;&lt;input&nbsp;type=&quot;number&quot;&nbsp;name=&quot;age&quot;&nbsp;value=&quot;0&quot;&nbsp;min=&quot;18&quot;&nbsp;max=&quot;120&quot;&nbsp;/&gt;
+<br>&lt;/label&gt;    
+</pre>
+      <p>
+        Звичайно ж, існує багато чисел, які не підходять для кожного типу
+        числових даних. Наприклад, може бути необхідно заборонити введення
+        занадто великих, або від'ємних чисел. Ця проблема вирішується за
+        допомогою атрибутів min і max, які визначають діапазон введення.
+      </p>
+      <p>
+        За замовчуванням числові поля приймають тільки цілі числа. Цю поведінку
+        можна змінити за допомогою атрибута step, який вказує крок зміни числа.
+        За замовчуванням значення кроку дорівнює 1.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="OJRoNdQ"
+          data-pen-title="lesson-11-number-input"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/OJRoNdQ">
+              lesson-11-number-input</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>Телефонні номери</h4>
+      <p>
+        Тип tel створює поле введення телефонних номерів, які можуть бути
+        представлені у різних форматах. Зараз єдина користь від застосування
+        поля типу tel полягає у відображенні віртуальної клавіатури для введення
+        телефонних номерів у мобільних браузерах, яка містить цифри, але не
+        літери.
+      </p>
+      <pre class="code">
+&lt;form&gt;
+<br>&nbsp;&nbsp;&lt;label&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Phone&nbsp;number
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;tel&quot;&nbsp;name=&quot;phone_number&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&lt;/label&gt;
+<br>
+<br>&nbsp;&nbsp;&lt;button&nbsp;type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+<br>&lt;/form&gt;    
+</pre>
+      <h4>Повзунки</h4>
+      <p>
+        Тип range використовується для створення повзунків з цілими і дробовими
+        значеннями. Атрибути min і max встановлюють діапазон значень, а step
+        контролює крок. Щоб встановити значення, потрібно просто перетягнути
+        повзунок у потрібну позицію між мінімальним і максимальним значеннями.
+      </p>
+      <pre class="code">
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="gOwdrmm" data-pen-title="lesson-11-range-input" data-user="goit-academy" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/goit-academy/pen/gOwdrmm">
+  lesson-11-range-input</a> by goit-academy (<a href="https://codepen.io/goit-academy">@goit-academy</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>    
+</pre>
+      <p class="note">
+        Цікаво: <br />
+
+        Браузери не надають жодної візуальної зворотної інформації про
+        встановлене значення. Це робиться за допомогою JavaScript і додаткової
+        розмітки.
+      </p>
+      <h4>Дата та час</h4>
+      <p>
+        У браузерах є вбудований календар, в якому користувач може вибрати
+        необхідну дату та/або час. Атрибути min і max дозволяють встановити
+        мінімальні і максимальні дати, за умови використання правильного
+        формату.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="eYdLZRx"
+          data-pen-title="lesson-11-date-input"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/eYdLZRx">
+              lesson-11-date-input</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="note">
+        Цікаво: <br />
+
+        Через різний зовнішній вигляд у різних браузерах і складність його зміни
+        за допомогою CSS, замість нативного календаря найчастіше використовують
+        готові JavaScript-бібліотеки.
+      </p>
+      <h3>Елемент &lt;textarea&gt;</h3>
+      <p>
+        Створює багаторядкове текстове поле для введення великої кількості
+        тексту. Наприклад, для зворотного зв'язку, коментаря, поста у
+        соцмережах, уточнення деталей замовлення тощо.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="NWRLrKO"
+          data-pen-title="lesson-11-textarea"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/NWRLrKO">
+              lesson-11-textarea</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Атрибут rows встановлює кількість рядків (висоту), а cols - стовпчиків
+        (ширину). На практиці вказується тільки rows, а ширина елементу
+        контролюється за допомогою CSS.
+      </p>
+      <p>
+        За замовчуванням елемент &lt;textarea&gt; можна розтягувати за
+        горизонталлю і вертикаллю. Для того щоб контролювати можливість зміни
+        розміру користувачем, в CSS є властивість resize.
+      </p>
+      <pre class="code">
+resize: both | horizontal | vertical | none    
+</pre
+      >
+
+      <h3>Елемент &lt;select&gt;</h3>
+      <p>
+        Випадне меню - це альтернатива радіо-кнопкам, оскільки за замовчуванням
+        дозволяє вибрати один з багатьох варіантів. Елемент &lt;select&gt; - це
+        спливаюче меню з атрибутом name, що містить набір елементів
+        &lt;option&gt; з атрибутом value.
+      </p>
+      <p>
+        Текст всередині елемента &lt;option&gt; відображається користувачеві, а
+        значення атрибута value - це те, що буде використано під час
+        відправлення форми.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="rNMZpLw"
+          data-pen-title="lesson-11-select"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/rNMZpLw">
+              lesson-11-select</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p class="useful">
+        Корисно: <br />
+
+        За замовчуванням вибраний перший елемент &lt;option&gt; зі списку. Це
+        можна змінити, задавши необхідній опції атрибут-буль selected.
+      </p>
+      <h4>Групування опцій</h4>
+      <p>
+        Іноді потрібно розбити список на окремі групи, не пов'язані між собою.
+        Для цих цілей існує тег &lt;optgroup&gt;. Щоб додати заголовок групи,
+        використовується атрибут label.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="BaLOJRy"
+          data-pen-title="lesson-11-select-with-grouped-options"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/BaLOJRy">
+              lesson-11-select-with-grouped-options</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Елемент &lt;datalist&gt;</h3>
+      <p>
+        Автозаповнення - це прийом, з яким знайомі всі користувачі. Під час
+        введення символів у текстове поле пошукова система пропонує різні
+        варіанти автозаповнення. Під час набору нового повідомлення електронної
+        пошти, поштовий клієнт пропонує список отримувачів тощо.
+      </p>
+      <p>
+        Елемент &lt;datalist&gt; створює список попередньо встановлених значень,
+        які можна вибирати під час набору в пов'язаному текстовому полі. Цей
+        список прихований і стає доступним під час отримання інпутом фокуса і
+        набору тексту в ньому. Список, що створюється елементом
+        &lt;datalist&gt;, зв'язується з текстовим полем за допомогою атрибута
+        id. Його значення повинно збігатися зі значенням атрибута list тегу
+        &lt;input&gt;.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="bGwxaYE"
+          data-pen-title="lesson-11-datalist"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/bGwxaYE">
+              lesson-11-datalist</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Елементи &lt;option&gt; також можуть мати атрибут value. Це корисно,
+        якщо текст опції та значення не збігаються. Наприклад, користувач може
+        не знати скорочення штату в США. У випадному меню він побачить список
+        штатів та їх скорочень, а вибираючи опції, текстове поле буде заповнено
+        лише значенням опції.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="zYKJpjj"
+          data-pen-title="lesson-11-datalist-with-values"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/zYKJpjj">
+              lesson-11-datalist-with-values</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h3>Групування полів</h3>
+      <p>
+        Групування пов'язаних елементів робить форми зрозумілішими для
+        користувачів. Це також допомагає користувачеві зосередитися на невеликих
+        упорядкованих групах полів, а не намагатися зрозуміти всю форму відразу.
+        Групування виконується як візуально в інтерфейсі, так і логічно в коді.
+      </p>
+      <h4>Елементи &lt;fieldset&gt; і &lt;legend&gt;</h4>
+      <p>
+        Елемент &lt;fieldset&gt; - це контейнер для групування декількох
+        пов'язаних елементів у формі, а вкладений &lt;legend&gt; виконує роль
+        заголовка групи. Пов'язані радіо-кнопки і чекбокси завжди повинні бути
+        згруповані, інші типи полів групуються у разі потреби.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="QWKVQGa"
+          data-pen-title="lesson-11-fieldset"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/QWKVQGa">
+              lesson-11-fieldset</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <h4>Групування з можливістю оформлення</h4>
+      <p>
+        Елементи &lt;fieldset&gt; і &lt;legend&gt; мають відмінну семантику, але
+        обмежені можливості оформлення. Здебільшого для групування елементів
+        форми використовується &lt;div&gt; з атрибутами доступності role і
+        aria-labelledby.
+      </p>
+      <pre class="code">
+&lt;div&nbsp;role=&quot;group&quot;&nbsp;aria-labelledby=&quot;contact-details-head&quot;&gt;
+<br>&nbsp;&nbsp;&lt;p&nbsp;id=&quot;contact-details-head&quot;&gt;Enter&nbsp;your&nbsp;contact&nbsp;details&lt;/p&gt;
+<br>&nbsp;&nbsp;Related&nbsp;elements
+<br>&lt;/div&gt;    
+</pre>
+      <ul class="section-list">
+        <li>
+          Атрибут role="group" вказує на те, що елементи всередині цього
+          &lt;div&gt; є частиною групи.
+        </li>
+        <li>
+          Атрибут aria-labelledby="contact-details-head" містить ідентифікатор
+          елемента з описом групи.
+        </li>
+      </ul>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="JjRapgG"
+          data-pen-title="lesson-11-wai-aria-grouping"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/JjRapgG">
+              lesson-11-wai-aria-grouping</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+    </section>
+  </body>
+</html>

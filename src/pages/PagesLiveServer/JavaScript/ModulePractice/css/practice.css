@@ -16,7 +16,7 @@ h3,
 h4,
 h5 {
   margin: 3px 0px 7px;
-  color: #006400;
+  color: navy;
 }
 
 p,
@@ -30,8 +30,8 @@ h4 {
   padding: 0;
 }
 
-.green {
-  color: green;
+.navy {
+  color: navy;
 }
 
 .practice-header {
@@ -39,9 +39,9 @@ h4 {
 }
 
 .header {
-  color: green;
+  color: navy;
   font-size: 22px;
-  border: 1px solid green;
+  border: 1px solid navy;
   border-radius: 4px;
   padding: 5px 10px; 
 }
@@ -51,15 +51,15 @@ h4 {
 }
 
 .footer {
-  color: green;
+  color: navy;
   font-size: 22px;
-  border: 1px solid green;
+  border: 1px solid navy;
   border-radius: 4px;
   padding: 5px 10px;
 }
 
 .section {
-  outline: 1px solid #008000;
+  outline: 1px solid navy;
   padding: 5px 10px;
   margin-bottom: 5px;
   border-radius: 3px;
@@ -136,25 +136,7 @@ pre {
   font-style: italic;
 }
 
-
-
-/* ! Таблиця  */
-table {
-  border-collapse: collapse;
-  margin-bottom: 10px;
-  
-}
-
-table th,
-table td {
-  padding: 10px;
-  border: 1px solid #2a2a2a;
-}
-
-
-
-
-/*! accordeon -------------*/
+/* accordeon -------------*/
 
 .accordion {
   display: block;
@@ -203,7 +185,7 @@ table td {
   margin-bottom: 10px;
 }
 
-/* ----------- Slider  ---------- */
+/* !----------- Slider  ---------- */
 
 /* .slider {
   padding: 10px;
@@ -344,8 +326,24 @@ table td {
 }
 /* Codepen */
 .codepen {
-  border: 1px solid green;
+  border: 1px solid navy;
   border-radius: 2px;
   padding: 1px;
   
+}
+
+
+.first {
+    display: block;
+    padding: 5px 10px;
+    color: red;
+    margin-bottom: 5px;
+}
+.green {
+    color: green;
+}
+.second {
+    display: block;
+    padding: 5px 10px;
+    color: navy;
 }
