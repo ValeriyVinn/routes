@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Директиви</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Директиви</h2>
+    <section class="section">
+<h3>Директива @import</h3>
+<p>Писати увесь код в одному великому файлі незручно. Тому препроцесор SASS дозволяє зберігати стилі в окремих файлах і збирати їх як мозаїку. Такий модульний підхід до написання коду спрощує рефакторинг і підтримку кодової бази.</p>
+<p>За замовчуванням SASS-компілятор створює CSS-файл для кожного Sass-файлу, який зустріне в проекті. Для того щоб після компіляції отримати всього один файл стилів, використовують фрагменти (partials) - звичайні Sass-файли, ім'я яких починається з нижнього підкреслення, наприклад _logo.scss. Нижнє підкреслення говорить компілятору про те, що це фрагмент і він не повинен компілюватися в окремий CSS-файл, а буде використаний в іншому Sass-файлі.</p>
+<img src="./img/project-structure.jpg" alt="project structure" width="720">
+<p>На ілюстрації зображена базова структура Sass-файлів в проекті. В папці sass є один головний файл main.scss, для якого після компіляції буде створений файл main.css, який ми підключаємо в index.html. В папках utils і components лежать фрагменти, які будуть частиною main.scss.</p>
+<p>Для того щоб підключити фрагмент в інший Sass-файл, використовується директива @import. Файл main.scss з прикладу буде виглядати наступним чином.</p>
+<div class="tabs">
+  <button class="tab-button actual">main.scss</button>
+</div>
+
+<div id="tab1" class="tab-content actual">
+  <pre class="code">
+@import 'utils/colors';
+@import 'utils/mixins';
+@import 'components/header';
+@import 'components/logo';
+@import 'components/site-nav';
+@import 'components/section'; 
+</pre
+  >
+</div>
+<p>Коли компілятор зустрічає директиву @import, він підставляє код імпортованого файлу на місце імпорту. Після компіляції виходить один CSS-файл, скомпільований з декількох фрагментів.</p>
+<p class="note">Імена в імпорті: <br>
+
+  Зверніть увагу на те, що ми використовуємо @import 'components/logo' у файлі main.scss. Під час імпорту фрагмента не потрібно вказувати розширення .scss і нижнє підкреслення, SASS-компілятор здогадається сам і знайде цей файл. Головне задати правильний відносний шлях.</p>
+
+<h3>Директива @extend</h3>
+<p>Директива @extend використовується для наслідування (розширення) вже існуючих стилів. Застосуємо її, щоб створити компонент кнопки з декількома станами.</p>
+<div class="tabs-container">
+  <div class="tabs">
+    <button class="tab-button actual" data-tab="tab1">SCSS</button>
+    <button class="tab-button" data-tab="tab2">CSS</button>
+  </div>
+
+  <div id="tab1" class="tab-content actual">
+    <pre class="code">
+main.scss
+<hr>.button {
+  display: inline-flex;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 10px 20px;
+  color: white;
+  background-color: gray;
+}
+
+.button-success {
+  @extend .button;
+  background-color: green;
+}
+
+.button-error {
+  @extend .button;
+  background-color: red;
+} 
+</pre
+    >
+  </div>
+
+  <div id="tab2" class="tab-content">
+    <pre class="code">
+main.css
+<hr>.button,
+.button-error,
+.button-success {
+  display: inline-flex;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 10px 20px;
+  color: white;
+  background-color: gray;
+}
+
+.button-success {
+  background-color: green;
+}
+
+.button-error {
+  background-color: red;
+}  
+</pre
+    >
+  </div>
+<p>Розширення (наслідування) не зробить копію стилів для кожного селектора, а грамотно додасть потрібні селектори у перелік до правила з наслідуваними стилями.</p>
+<h3>Шаблони (плейсхолдери)</h3>
+<p>Але що, якщо ми хочемо розширити набір стилів, для якого не потрібний базовий селектор? Наприклад, якщо не потрібний селектор .button з попереднього прикладу, адже сам по собі він нічого не робить і не буде використаний в HTML.</p>
+<p>Для таких випадків існує placeholder (плейсхолдер, заповнювач місця, шаблон) - довільне ім'я селектора з обов'язковим символом % на початку, наприклад %button.</p>
+<div class="tabs-container">
+  <div class="tabs">
+    <button class="tab-button actual" data-tab="tab1">SCSS</button>
+    <button class="tab-button" data-tab="tab2">CSS</button>
+  </div>
+
+  <div id="tab1" class="tab-content actual">
+    <pre class="code">
+main.scss
+<hr>%button {
+  display: inline-flex;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 10px 20px;
+  color: white;
+  background-color: gray;
+}
+
+.button-success {
+  @extend %button;
+  background-color: green;
+}
+
+.button-error {
+  @extend %button;
+  background-color: red;
+} 
+</pre
+    >
+  </div>
+
+  <div id="tab2" class="tab-content">
+    <pre class="code">
+main.css
+<hr>.button-error,
+.button-success {
+  display: inline-flex;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 10px 20px;
+  color: white;
+  background-color: gray;
+}
+
+.button-success {
+  background-color: green;
+}
+
+.button-error {
+  background-color: red;
+}  
+</pre
+    >
+  </div>
+<p>Після компіляції будуть доступні селектори .button-success і .button-error, прив'язані до правила шаблону, а самого імені шаблону в CSS не буде.</p>
+
+<h3>Директива @mixin</h3>
+<p>Міксіни або домішки, як і плейсхолдери, дозволяють створювати готові набори властивостей, але з різними значеннями, залежно від отриманих аргументів під час виклику міксіна.</p>
+<pre class="code">
+@mixin ім'я (параметри) {
+  // Властивості
+}  
+</pre>
+<p>Міксін оголошується за допомогою директиви @mixin та його імені. Далі можуть йти необов'язкові параметри в круглих дужках (самі дужки обов'язкові), а у фігурних - набір властивостей і значень.</p>
+<p>Створимо міксін для встановлення тільки верхньої і нижньої рамки елемента, і зробимо колір рамки значенням, що може налаштовуватися. Параметри міксіна - це локальні SASS-змінні.</p>
+<pre class="code">
+@mixin bordered($color) {
+  border-top: 1px solid $color;
+  border-bottom: 1px solid $color;
+}  
+</pre>
+<p>Додати стилі міксіна до селектора можна за допомогою директиви @include, після якої викликаємо міксін і передаємо значення для властивостей, що налаштовуються.</p>
+<p>Після компіляції будуть тільки правила для селекторів .section і .header з доданим кодом з міксіна, коду оголошення самого міксіна не буде.</p>
+<div class="tabs-container">
+  <div class="tabs">
+    <button class="tab-button actual" data-tab="tab1">SCSS</button>
+    <button class="tab-button" data-tab="tab2">CSS</button>
+  </div>
+
+  <div id="tab1" class="tab-content actual">
+    <pre class="code">
+main.scss
+<hr>@mixin bordered($color) {
+  border-top: 1px solid $color;
+  border-bottom: 1px solid $color;
+}
+
+.section {
+  @include bordered(tomato);
+  padding: 20px;
+}
+
+.header {
+  @include bordered(green);
+  min-height: 80px;
+} 
+</pre
+    >
+  </div>
+
+  <div id="tab2" class="tab-content">
+    <pre class="code">
+main.css
+<hr>.section {
+  border-top: 1px solid tomato;
+  border-bottom: 1px solid tomato;
+  padding: 20px;
+}
+
+.header {
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
+  min-height: 80px;
+}  
+</pre
+    >
+  </div>
+<p class="attention">Увага: <br>
+
+  Міксін відрізняється від плейсхолдера тим, що властивості дублюються в кожен селектор. Все тому, що значення властивостей міксіна можуть бути різними, залежно від переданих аргументів під час виклику @include міксін(аргументи). У той час як властивості та їх значення в плейсхолдері завжди однакові.</p>
+
+<h3>Директива @each - це цикл, який виконає тіло директиви для кожного значення зі списку. Це дозволяє скоротити кількість коду, який необхідно написати вручну.</h3>
+<p>Директива @each - це цикл, який виконає тіло директиви для кожного значення зі списку. Це дозволяє скоротити кількість коду, який необхідно написати вручну.</p>
+<pre class="code">
+@each <значення> in <список значень> {
+  // Тіло директиви @each
+}  
+</pre>
+<p>Наприклад, необхідно створити серію селекторів для елементів з фоновими зображеннями. В CSS це виглядає наступним чином. Занадто багато повторюваного коду.</p>
+<div class="tabs">
+  <button class="tab-button actual">main.css</button>
+</div>
+
+<div id="tab1" class="tab-content actual">
+  <pre class="code">
+.dog-icon {
+  background-image: url('../images/dog.png');
+}
+
+.cat-icon {
+  background-image: url('../images/cat.png');
+}
+
+.bird-icon {
+  background-image: url('../images/bird.png');
+}
+
+.turtle-icon {
+  background-image: url('../images/turtle.png');
+} 
+</pre
+  >
+</div>
+<p>Використовуючи директиву @each, можемо досягнути такого самого результату, записавши наступний Sass-код, який буде скомпільований в CSS з попереднього прикладу.</p>
+<div class="tabs">
+  <button class="tab-button actual">main.scss</button>
+</div>
+
+<div id="tab1" class="tab-content actual">
+  <pre class="code">
+@each $animal in dog, cat, bird, turtle {
+  .#{$animal}-icon {
+    background-image: url('../images/#{$animal}.png');
+  }
+} 
+</pre
+  >
+</div>
+<p>Директива @each встановлює $animal у кожне зі значень списку тварин і для кожного створює код, записаний в тілі директиви - CSS-правило з селектором класу і набором властивостей.</p>
+<ul class="section-list">
+  <li>$animal - локальна змінна, в яку будуть послідовно присвоюватися значення зі списку тварин. Ім'я змінної може бути довільним. Ми перебираємо список тварин, тому назвали animal - тварина.</li>
+  <li>dog, cat, bird, turtle - список тварин, кожен елемент якого розділений пробілом з комою.</li>
+</ul>   
+  <p class="note">Інтерполяція: <br>
+
+    Для того щоб підставити значення змінної $animal, необхідно використовувати інтерполяцію #{$ім'я_змінної}, оскільки ми створюємо рядки. Без інтерполяції ім'я змінної не буде замінено на її значення під час компіляції.</p>
+ 
+    </section>
+
+    <script src="../js/markup-script.js" type="module"></script>
+
+  </body>
+</html>

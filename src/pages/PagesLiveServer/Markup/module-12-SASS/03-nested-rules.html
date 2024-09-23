@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вкладені правила</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Вкладені правила</h2>
+    <section class="section">
+      <p>
+        Подібно до вкладеності тегів в HTML, в SASS можна вкладати
+        CSS-селектори. це одна з найбільш корисних можливостей, яка також часто
+        неправильно використовується. Вкладеність дозволяє робити одні
+        оголошення правил всередині інших. Нижче наведений CSS і SCSS код
+        оформлення секції із заголовком і абзацом.
+      </p>
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">CSS</button>
+          <button class="tab-button" data-tab="tab2">SCSS</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+main.css
+<hr>.section {
+  width: 100%;
+}
+
+.section .title {
+  color: red;
+}
+
+.section .text {
+  font-size: 14px;
+}  
+</pre>
+        </div>
+
+        <div id="tab2" class="tab-content">
+          <pre class="code">
+main.scss
+<hr>.section {
+  width: 100%;
+
+  .title {
+    color: red;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+}  
+</pre>
+        </div>
+      </div>
+
+      <p>
+        Синтаксис SCSS виглядає чистішим і менше повторюється. Після компіляції
+        у стандартний CSS, ми отримаємо код як в main.css. Але в процесі
+        розробки писати код буде зручніше.
+      </p>
+      <h3>Конкатенація селекторів</h3>
+      <p>
+        Символ & (амперсанд) дозволяє вказати, в яке місце необхідно підставити
+        батьківський селектор. Запишемо імена класів з попереднього прикладу,
+        використовуючи BEM-нотацію в CSS і SCSS.
+      </p>
+
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">CSS</button>
+          <button class="tab-button" data-tab="tab2">SCSS</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+main.css
+<hr>.section {
+  width: 100%;
+}
+
+.section__title {
+  color: red;
+}
+
+.section__text {
+  font-size: 14px;
+}  
+</pre>
+        </div>
+
+        <div id="tab2" class="tab-content">
+          <pre class="code">
+main.scss
+<hr>.section {
+  width: 100%;
+
+  &__title {
+    color: red;
+  }
+
+  &__text {
+    font-size: 14px;
+  }
+}  
+</pre>
+        </div>
+      </div>
+
+      <p>
+        Розглянемо ще один приклад - оформлення посилання зі станами ховеру і
+        фокусу.
+      </p>
+
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">CSS</button>
+          <button class="tab-button" data-tab="tab2">SCSS</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+main.css
+<hr>.link {
+  color: black;
+}
+
+.link:hover,
+.link:focus {
+  color: red;
+}  
+</pre>
+        </div>
+
+        <div id="tab2" class="tab-content">
+          <pre class="code">
+main.scss
+<hr>..link {
+  color: black;
+
+  &:hover,
+  &:focus {
+    color: red;
+  }
+}  
+</pre>
+        </div>
+      </div>
+
+      <p>
+        Що робити, якщо селектори для :hover і :focus в CSS згруповані? Без
+        проблем групуємо в SASS, не забуваючи поставити амперсанд (&) там, де
+        необхідно підставити батьківський селектор.
+      </p>
+
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">CSS</button>
+          <button class="tab-button" data-tab="tab2">SCSS</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+main.css
+<hr>.link {
+  color: black;
+}
+
+.link:hover,
+.link:focus {
+  color: red;
+}  
+</pre>
+        </div>
+
+        <div id="tab2" class="tab-content">
+          <pre class="code">
+main.scss
+<hr>.link {
+  color: black;
+
+  &:hover,
+  &:focus {
+    color: red;
+  }
+}  
+</pre>
+        </div>
+      </div>
+
+      <h3>Правила вкладеності</h3>
+      <p>
+        Вкладеність селекторів - це чудовий спосіб заощадити час і спростити
+        підтримку, але надмірна вкладеність гарантовано викличе проблеми з
+        читабельністю коду.
+      </p>
+      <p>Уявімо наступну розмітку кнопки з іконкою і текстом.</p>
+      <pre class="code">
+&lt;button&nbsp;class=&quot;button&quot;&nbsp;type=&quot;button&quot;&gt;
+<br>&nbsp;&nbsp;&lt;svg&nbsp;class=&quot;icon&quot;&gt;&lt;/svg&gt;
+<br>&nbsp;&nbsp;&lt;span&nbsp;class=&quot;label&quot;&gt;Замовити&lt;/span&gt;
+<br>&lt;/button&gt;  
+</pre>
+      <p>
+        Запишемо якісь стилі в CSS і SCSS, і зробимо їх спеціально трохи
+        складнішими, ніж потрібно.
+      </p>
+
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">CSS</button>
+          <button class="tab-button" data-tab="tab2">SCSS</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+main.css
+<hr>.button {
+  color: red;
+}
+
+.button:hover {
+  color: blue;
+}
+
+.button__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.button__icon:hover {
+  width: 50px;
+  height: 50px;
+}
+
+.button__label {
+  font-size: 16px;
+}
+
+.button:hover .button__icon {
+  background-color: teal;
+}
+
+.button:hover .button__label {
+  font-size: 20px;
+}  
+</pre>
+        </div>
+
+        <div id="tab2" class="tab-content">
+          <pre class="code">
+main.scss
+<hr>.button {
+  color: red;
+
+  &:hover {
+    color: blue;
+
+    .button__icon {
+      background-color: teal;
+    }
+
+    .button__label {
+      font-size: 20px;
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+
+    &:hover {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+  }
+}  
+</pre>
+        </div>
+      </div>
+
+      <p>
+        Прочитати такий SCSS-код швидко досить складно, візуально втрачається
+        зв'язок з батьківським селектором і, замість того щоб розбирати CSS-код,
+        доводиться вчитуватися у синтаксис вкладеностей. Тобто, використовуючи
+        можливості препроцесора, ми зробили гірше, більше - не завжди краще.
+      </p>
+      <p>
+        Створюйте нове правило для кожного блоку або елемента, а вкладеності і
+        конкатенації використовуйте для оформлення станів і BEM-модифікаторів.
+        Тобто користуйтеся здоровим глуздом, і робіть так як зручно, тому що
+        SCSS-код пишеться для зручності розробника.
+      </p>
+
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">CSS</button>
+          <button class="tab-button" data-tab="tab2">SCSS</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+main.css
+<hr>.button {
+  color: red;
+}
+
+.button:hover {
+  color: blue;
+}
+
+.button__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.button__icon:hover {
+  width: 50px;
+  height: 50px;
+}
+
+.button__label {
+  font-size: 16px;
+}
+
+.button:hover .button__icon {
+  background-color: teal;
+}
+
+.button:hover .button__label {
+  font-size: 20px;
+}  
+</pre>
+        </div>
+
+        <div id="tab2" class="tab-content">
+          <pre class="code">
+main.scss
+<hr>// Правило для всієї кнопки
+.button {
+  color: red;
+
+  &:hover {
+    color: blue;
+  }
+}
+
+// Правило для іконки
+.button__icon {
+  width: 20px;
+  height: 20px;
+
+  &:hover {
+    width: 50px;
+    height: 50px;
+  }
+
+  .button:hover & {
+    background-color: teal;
+  }
+}
+
+// Правило для тексту
+.button__label {
+  font-size: 16px;
+
+  .button:hover & {
+    font-size: 20px;
+  }
+}  
+</pre>
+        </div>
+      </div>
+    </section>
+
+    <script src="../js/markup-script.js" type="module"></script>
+  </body>
+</html>

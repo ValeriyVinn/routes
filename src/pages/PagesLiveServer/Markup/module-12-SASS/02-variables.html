@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Змінні</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Змінні</h2>
+    <section class="section">
+<p>Змінні і операції над ними - це одна з найпростіших, і водночас потужних особливостей препроцесорів. Синтаксис оголошення змінної - знак $ перед ім'ям та її значення після двокрапки.</p>
+<div class="tabs-container">
+  <div class="tabs">
+    <button class="tab-button actual" data-tab="tab1">SCSS</button>
+    <button class="tab-button" data-tab="tab2">CSS</button>
+  </div>
+
+  <div id="tab1" class="tab-content actual">
+    <pre class="code">
+main.scss
+<hr>$primaryColor: #888;
+$cardBorderRadius: 4px;
+
+.product {
+  background-color: $primaryColor;
+  border-radius: $cardBorderRadius;
+}  
+</pre
+    >
+  </div>
+
+  <div id="tab2" class="tab-content">
+    <pre class="code">
+main.css
+<hr>.product {
+  background-color: #888;
+  border-radius: 4px;
+}  
+</pre
+    >
+  </div>
+</div>
+<p>Імена змінних повинні бути описові, щоб за ім'ям було зрозуміло, що там зберігається. Змінна $color-blue має деяке значення (крім того, що вона вказує на синій колір), а ось $color-accent, $color-primary або $color-background показує роль цього кольору. Семантичні, описові імена змінних не вимагають перейменування, наприклад, у разі зміни палітри брендових кольорів компанії.</p>
+<p class="useful">Корисно: <br>
+
+  Імена змінних можуть бути записані в kebab-case, snake_case або camelCase нотаціях. Головне, щоб у проекті використовувався тільки один з цих стилів для однорідності коду.</p>
+
+<h3>Область видимості</h3>
+<p>Змінні доступні тільки в межах того рівня вкладеності селекторів, на якому вони визначені. Тобто, якщо змінна оголошена в селекторі, вона доступна тільки в ньому. Змінна, яка оголошується за межами будь-яких селекторів, доступна глобально.</p>
+<div class="tabs">
+  <button class="tab-button actual">main.scss</button>
+</div>
+
+<div id="tab1" class="tab-content actual">
+  <pre class="code">
+$primaryColor: red;
+
+body {
+  $primaryColor: blue;
+  // Це зовсім інша змінна, хоча і з таким самим ім'ям,
+  // і доступна вона тільки всередині body.
+  background: $primaryColor;
+}
+
+p {
+  color: $primaryColor;
+  // Колір тексту параграфа буде червоний,
+  // використовується глобальна змінна зі значенням red.
+} 
+</pre
+  >
+</div>
+<p>У разі, якщо в імені змінної допущена помилка або такої змінної немає в доступній області видимості, виникне помилка компіляції стилів.</p>
+
+<div class="tabs">
+  <button class="tab-button actual">main.scss</button>
+</div>
+
+<div id="tab1" class="tab-content actual">
+  <pre class="code">
+$primaryColor: red;
+
+body {
+  $secondaryColor: blue;
+  background: $primaryColor;
+}
+
+p {
+  color: $primaryColor;
+  background-color: $secondaryColor;
+  // Виникне помилка компіляції стилів, тому що
+  // змінна secondaryColor не доступна глобально.
+  // Вона існує тільки в селекторі body.
+} 
+</pre
+  >
+</div>
+
+<p class="note">Помилка компіляції: <br>
+
+  Якщо сталася помилка компіляції, необхідно її виправити, тоді виконається повторна компіляція і оновиться результуючий CSS-файл.</p>
+    </section>
+
+
+    <script src="../js/markup-script.js" type="module"></script>
+
+  </body>
+</html>

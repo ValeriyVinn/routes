@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вендорні префікси</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Вендорні префікси</h2>
+    <section class="section">
+      <p>
+        <b>Вендорні префікси</b> - це спеціальні приставки, що використовуються
+        виробниками (вендорами) браузерів для експериментальних CSS-властивостей
+        і значень, які ще не прийняті у стандарті, або не повністю реалізовані в
+        браузері.
+      </p>
+      <p>Список вендорних префіксів по браузерам:</p>
+      <ul class="section-list">
+        <li>-webkit- - Chrome, Safari, Edge, нові версії Opera.</li>
+        <li>-moz- - Firefox.</li>
+        <li>-o- - Старі версії Opera.</li>
+        <li>-ms- - Internet Explorer.</li>
+      </ul>
+      <p class="attention">
+        Увага: <br />
+
+        Вручну прописувати їх не потрібно, для цього використовуються спеціальні
+        інструменти, які автоматизують процес, наприклад SASS-компілятор з
+        додатковими налаштуваннями. Для ознайомлення можна використовувати
+        інтерактивну платформу
+        <a href="https://autoprefixer.github.io/ru/"
+          >https://autoprefixer.github.io/</a
+        >
+        .
+      </p>
+      <p>
+        Наприклад, наступний CSS-код буде працювати у більшості останніх версій
+        сучасних браузерів.
+      </p>
+      <pre class="code">
+.example {
+  display: flex;
+  transition: all 0.5s;
+  background: linear-gradient(to bottom, white, black);
+}  
+</pre
+      >
+      <p>
+        Після обробки
+        <a href="https://autoprefixer.github.io/ru/">автопрефіксером</a>
+        отримуємо наступний код, який буде гарантовано працювати в останніх 4-х
+        версіях всіх сучасних браузерів. Браузери, які підтримують нативні
+        властивості та значення, проігнорують їх аналоги з вендорними
+        префіксами, і навпаки.
+      </p>
+      <pre class="code">
+.example {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(white),
+    to(black)
+  );
+  background: -o-linear-gradient(top, white, black);
+  background: linear-gradient(to bottom, white, black);
+}  
+</pre
+      >
+      <p class="note">
+        Browserslist: <br />
+
+        Потрібна кількість версій вибирається в інтерфейсі автопрефіксера у
+        спеціальному форматі
+        <a href="https://github.com/browserslist/browserslist">Browserslist</a>
+        - конфігурації, що описує версії браузерів, які повинен підтримувати код
+        проекту. Всі сучасні інструменти, які будь-яким чином перетворюють код,
+        орієнтуються на цю єдину для всього проекту конфігурацію.
+      </p>
+    </section>
+  </body>
+</html>

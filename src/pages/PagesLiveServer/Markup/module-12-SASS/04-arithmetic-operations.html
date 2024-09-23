@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Арифметичні операції</title>
+    <link rel="stylesheet" href="../css/markup-style.css" />
+  </head>
+  <body>
+    <a href="../markup.html">Markup</a>
+    <h2>Арифметичні операції</h2>
+    <section class="section">
+      <p>
+        До того як в CSS з'явилася функція calc(), препроцесори були єдиним
+        рішенням за потреби виконати арифметичні обчислення.
+      </p>
+      <h3>Додавання і віднімання</h3>
+      <p>
+        На відміну від функції calc(), в препроцесорі не можна змішувати типи
+        одиниць. При спробі виконати додавання або віднімання несумісних типів,
+        виникне помилка. Пікселі до пікселів, слони до слонів.
+      </p>
+      <div class="tabs">
+        <button class="tab-button actual">main.scss</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+.box {
+  width: 960px + 10%; // Помилка!
+  width: 960px + 30px; // 990px
+  width: 960px + 30; // 990px
+  width: 100% + 20%; // 120%
+
+  width: 100% - 50px; // Помилка!
+  width: 960px - 30px; // 930px
+  width: 960px - 30; // 930px
+  width: 100% - 20%; // 80%
+} 
+</pre
+        >
+      </div>
+      <p>
+        Справа в тому, що препроцесор не знає наперед, скільки буде 100% або 5em
+        у пікселях. Значення відносних одиниць в пікселях можна дізнатися тільки
+        в момент рендеру HTML-сторінки. Тому для таких обчислень необхідно
+        використовувати нативну функцію calc().
+      </p>
+
+      <div class="tabs">
+        <button class="tab-button actual">main.scss</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+.box {
+  width: calc(100% - 20px);
+  width: calc(5em + 20px);
+} 
+</pre
+        >
+      </div>
+      <h3>Множення</h3>
+      <p>
+        Виконується аналогічно функції calc() в CSS, за винятком того, що не
+        можна множити несумісні типи. Також не можна множити слонів на слонів,
+        можна тільки слонів на множник.
+      </p>
+      <div class="tabs">
+        <button class="tab-button actual">main.scss</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+.box {
+  width: 50px * 50px; // Помилка!
+  width: 50% * 5%; // Помилка!
+
+  width: 50px * 2; // 100px
+  width: 10px * 2 + 50px; // 70px
+  width: 5 * (5px + 15px); // 100px
+} 
+</pre
+        >
+      </div>
+      <h3>Ділення</h3>
+      <p>Ділення в препроцесорі виконується у трьох випадках.</p>
+      <div class="tabs">
+        <button class="tab-button actual">main.scss</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+$value: 50px;
+
+.box {
+  // 1 - значення зберігається у змінній.
+  width: $value / 5; // 10
+
+  // 2 - значення, взяті в круглі дужки.
+  width: (100px / 5); // 20px
+
+  // 3 - значення використовується як частина іншого виразу.
+  width: 100px / 5px + 10px; // 30px
+}
+</pre
+        >
+      </div>
+      <h3>Змінні в операціях</h3>
+      <p>
+        Якщо в арифметичній операції використовується валідне значення змінної,
+        не буде жодних проблем.
+      </p>
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">SCSS</button>
+          <button class="tab-button" data-tab="tab2">CSS</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+main.scss
+<hr>$gridItemMargin: 20px;
+
+.box {
+  margin: $gridItemMargin * 2;
+}  
+</pre>
+        </div>
+
+        <div id="tab2" class="tab-content">
+          <pre class="code">
+main.css
+<hr>.box {
+  margin: 40px;
+}  
+</pre>
+        </div>
+      </div>
+
+      <p>
+        Але у разі, якщо SASS-змінна використовується в функції calc(), під час
+        компіляції її ім'я не замінюється на значення.
+      </p>
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">SCSS</button>
+          <button class="tab-button" data-tab="tab2">CSS</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+main.scss
+<hr>$gridItemMargin: 20px;
+
+.box {
+  margin: calc($gridItemMargin * 2);
+}  
+</pre>
+        </div>
+
+        <div id="tab2" class="tab-content">
+          <pre class="code">
+main.css
+<hr>.box {
+  margin: calc($gridItemMargin * 2);
+}  
+</pre>
+        </div>
+      </div>
+      <p>
+        У таких випадках необхідно робити інтерполяцію значення змінної,
+        використовуючи спеціальну конструкцію #{$ім'я_змінної}.
+      </p>
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-button actual" data-tab="tab1">SCSS</button>
+          <button class="tab-button" data-tab="tab2">CSS</button>
+        </div>
+
+        <div id="tab1" class="tab-content actual">
+          <pre class="code">
+main.scss
+<hr>$gridItemMargin: 20px;
+
+.box {
+  margin: calc(#{$gridItemMargin} * 2);
+}  
+</pre>
+        </div>
+
+        <div id="tab2" class="tab-content">
+          <pre class="code">
+main.css
+<hr>.box {
+  margin: calc(20px * 2);
+}  
+</pre>
+        </div>
+      </div>
+    </section>
+
+    <script src="../js/markup-script.js" type="module"></script>
+  </body>
+</html>
