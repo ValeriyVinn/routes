@@ -30,6 +30,10 @@ h4 {
   padding: 0;
 }
 
+a {
+  color: inherit;
+}
+
 .green {
   color: green;
 }
@@ -39,11 +43,29 @@ h4 {
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
   color: green;
   font-size: 22px;
   border: 1px solid green;
   border-radius: 4px;
-  padding: 5px 10px; 
+  padding: 5px 10px;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.nav-list-item {
+  border: 1px solid green;
+  border-radius: 3px;
+  padding: 2px 10px;
+}
+
+.nav-list-item:not(:last-child) {
+  margin-right: 5px;
 }
 
 .main {
@@ -117,7 +139,6 @@ pre {
   font-style: italic;
 }
 
-
 .useful {
   background-color: rgb(207, 255, 255);
   color: teal;
@@ -132,17 +153,14 @@ pre {
   padding: 5px;
   border: 1px solid crimson;
   border-radius: 5px;
-  color:crimson;
+  color: crimson;
   font-style: italic;
 }
-
-
 
 /* ! Таблиця  */
 table {
   border-collapse: collapse;
   margin-bottom: 10px;
-  
 }
 
 table th,
@@ -150,9 +168,6 @@ table td {
   padding: 10px;
   border: 1px solid #2a2a2a;
 }
-
-
-
 
 /*! accordeon -------------*/
 
@@ -194,8 +209,8 @@ table td {
 }
 .panel {
   font-size: 16px;
-  padding:  0px;
-  background-color: rgb(230, 235, 255);  
+  padding: 0px;
+  background-color: rgb(230, 235, 255);
   border-radius: 3px;
   max-height: 0;
   overflow: hidden;
@@ -248,9 +263,6 @@ table td {
 .next {
   right: 10px;
 } */
-
-
-
 
 .slider {
   position: relative;
@@ -319,7 +331,9 @@ table td {
 .span-out {
   color: blue;
 }
-.span-in, .span-on, .span-out {
+.span-in,
+.span-on,
+.span-out {
   font-size: 18px;
 }
 
@@ -347,5 +361,4 @@ table td {
   border: 1px solid green;
   border-radius: 2px;
   padding: 1px;
-  
 }

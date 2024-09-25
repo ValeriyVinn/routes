@@ -1,13 +1,13 @@
 // ? ======= 1 варіант ========================================
 
-const liEl = document.querySelectorAll(".item");
+// const liEl = document.querySelectorAll(".item");
 
-console.log(`Number of categories: ${liEl.length}`);
+// console.log(`Number of categories: ${liEl.length}`);
 
-liEl.forEach((elem) => {
-  console.log(`Category: ${elem.firstElementChild.textContent}`);
-  console.log(`Elements: ${elem.lastElementChild.children.length}`);
-});
+// liEl.forEach((elem) => {
+//   console.log(`Category: ${elem.firstElementChild.textContent}`);
+//   console.log(`Elements: ${elem.lastElementChild.children.length}`);
+// });
 
 
 // ? ======= 2 варіант ========================================

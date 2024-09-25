@@ -11,7 +11,477 @@
     <a href="../markup.html">Markup</a>
     <h2>Медіа-запити</h2>
     <section class="section">
-      
+      <p>
+        <b>Медіа-запити</b> - це те, що робить можливим створення сучасних
+        адаптивних веб-сторінок, які однаково добре виглядають на будь-якому
+        екрані, чи то десктоп, чи то смартфон. Все зводиться до застосування
+        того або іншого CSS-правила, залежно від розміру вікна браузера (області
+        перегляду, в'юпорту), налаштувань браузера або можливостей пристрою.
+      </p>
+      <img
+        src="./img/media-queries-intro.png"
+        alt="media queries intro"
+        width="360"
+      />
+      <p>Алгоритм застосування стилів наступний:</p>
+      <ul class="section-list">
+        <li>
+          Розробник описує набір медіа-запитів і CSS-правил всередині них.
+        </li>
+        <li>Браузер відстежує зміну розміру в'юпорту.</li>
+        <li>
+          Браузер застосовує CSS-правила з медіа-запитів, що відповідають
+          поточному розміру в'юпорту.
+        </li>
+      </ul>
+      <p>
+        Тобто медіа-запити - це інструкції на зразок: «коли сторінку відкрили на
+        десктопі, я хочу, щоб колір тексту був червоним, а у разі відкриття на
+        телефоні - зеленим».
+      </p>
+      <h3>Синтаксис</h3>
+      <pre class="code">
+@media media-type and (media-feature) {
+  /*
+  * Набір CSS-правил, які потрібно застосувати до документа,
+  * якщо дотримуються умови перевірки медіатипу і виразу
+  */
+}  
+</pre
+      >
+      <p>
+        Медіа-запит - це спеціальна CSS-конструкція, яка оголошується директивою
+        @media, за якою може йти тип пристрою (media-type) і медіа-функції
+        (media-feature) - вирази, що перевірять характеристики пристрою
+        (наприклад ширину в'юпорту). Медіа-функція - це логічний вираз, який
+        повертає істину (вірно) або хибність (невірно).
+      </p>
+      <p>
+        Наприклад, якщо необхідно зробити фон &lt;body&gt; помаранчевим при
+        ширині в'юпорту 900px і ширше, необхідно записати наступний медіа-запит.
+      </p>
+      <div class="tabs">
+        <button class="tab-button actual">styles.css</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+@media screen and (min-width: 900px) {
+  body {
+    background-color: orange;
+  }
+} 
+</pre
+        >
+      </div>
+      <p>
+        Людською мовою це можна прочитати як: «якщо сторінка відображається на
+        екрані, ширина якого не менше 900 пікселів, необхідно застосувати
+        вказане CSS-правило».
+      </p>
+      <p>
+        Перейдіть на сторінку прикладу, клікнувши у верхньому правому куті
+        редактора на Edit on Codepen, і змінюйте ширину області з результатом.
+        Колір фону &lt;body&gt; буде змінюватися, залежно від ширини в'юпорту,
+        вказаної в медіа-запитах.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="XWXjYoz"
+          data-pen-title="lesson-15-basic-media-query"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/XWXjYoz">
+              lesson-15-basic-media-query</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Умова перевірки може бути настільки складною або простою, наскільки
+        цього вимагає ситуація. Здебільшого достатньо вказати медіа-тип пристрою
+        (найчастіше screen), і перевірити тільки ширину в'юпорту.
+      </p>
+      <div class="tabs">
+        <button class="tab-button actual">styles.css</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+/*
+  Цей медіа-запит застосується під час друку документа.
+*/
+@media print {
+  /* ... */
+}
+
+/*
+  Цей медіа-запит застосується при ширині в'юпорту більше 400px.
+ */
+@media screen and (min-width: 400px) {
+  /* ... */
+}
+
+/*
+  Тип screen можна не вказувати, якщо стилі пишуться тільки для екранів.
+ */
+@media (min-width: 400px) {
+  /* ... */
+} 
+</pre
+        >
+      </div>
+
+      <h3>Медіа-типи</h3>
+      <p>
+        Медіа-тип використовується для опису типу пристроїв, на яких може
+        відображатися веб-сторінка. Всього існує три типи, які підтримуються
+        всіма сучасними браузерами.
+      </p>
+      <ul class="section-list">
+        <li>
+          all - якщо не вказати тип носія, за замовчуванням буде використано це
+          значення, яке означає будь-який пристрій.
+        </li>
+        <li>
+          print - відповідає принтерам і пристроям, призначених для відтворення
+          друкованого варіанту, наприклад веб-браузера, що відображає документ у
+          режимі «Попередній перегляд».
+        </li>
+        <li>
+          screen - описує пристрої з фізичним екраном: смартфони, планшети,
+          монітори, телевізори тощо. Тобто все, що не охоплює тип print.
+        </li>
+      </ul>
+      <h3>Медіа-функції</h3>
+      <p>
+        Дві медіа-функції, що найчастіше використовуються і дозволяють визначати
+        ширину в'юпорту браузера - min-width і max-width. Вказується мінімальна
+        (min-width) або максимальна (max-width) допустима ширина в'юпорту, за
+        якої застосовуються правила з медіа-запитів.
+      </p>
+      <div class="tabs">
+        <button class="tab-button actual">styles.css</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+/* Застосується, коли ширина в'юпорту більша за 900px */
+@media (min-width: 900px) {
+  body {
+    background-color: green;
+  }
+}
+
+/* Застосується, коли ширина в'юпорту менша за 600px */
+@media (max-width: 600px) {
+  body {
+    background-color: yellow;
+  }
+} 
+</pre
+        >
+      </div>
+      <p>
+        Якщо уявити ширину в'юпорту як пряму від 0 до нескінченності, то ми
+        описуємо проміжок, на якому необхідно застосувати якісь стилі.
+      </p>
+      <img src="./img/min-max-queries.png" alt="min max queries" width="560" />
+      <p class="useful">
+        Корисно: <br />
+
+        Розмір в'юпорту, за якого вся верстка або її окремі частини змінюють
+        свої стилі, тобто змінюється дизайн, називається
+        <b>точкою перелому (breakpoint)</b> .
+      </p>
+      <p>
+        При зміні ширини в'юпорту в прикладі до 600px, фон &lt;body&gt; буде
+        жовтого кольору, а після 900px - зеленого. У проміжку від 601px до 899px
+        - колір білий, значення вказане за замовчуванням, тому що жоден
+        медіа-запит не підійде.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="zYrKJvg"
+          data-pen-title="lesson-15-media-features"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/zYrKJvg">
+              lesson-15-media-features</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        А як описати проміжок, наприклад від 600px до 900px? Необхідно
+        використовувати логічні оператори для складових медіа-функцій.
+      </p>
+      <h3>Логічні оператори</h3>
+      <p>
+        Медіа-тип і медіа-функції можуть бути розділені необов'язковими
+        логічними операторами not, and і only - значення за замовчуванням.
+        Повний синтаксис медіа-запиту виглядає наступним чином.
+      </p>
+      <pre class="code">
+@media only|not media-type only|and|not (media-feature) {
+  /*
+    Набір CSS-правил, які потрібно застосувати до документа,
+     якщо виконується умова перевірки медіатипу і виразу
+  */
+}  
+</pre
+      >
+      <h4>Оператор and</h4>
+      <p>
+        Оператор and (буквально «І») використовується не тільки між типом носія
+        і медіа-умовою, але і для зв'язування декількох медіа-функцій з
+        перевірками значень.
+      </p>
+      <div class="tabs">
+        <button class="tab-button actual">styles.css</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+@media screen and (min-width: 400px) and (max-width: 800px) {
+  body {
+    background-color: red;
+  }
+} 
+</pre
+        >
+      </div>
+      <p>
+        Такий медіа-запит виконається тільки, якщо веб-сторінка відкрита на
+        екрані, а ширина в'юпорту знаходиться в діапазоні від 400px до 800px.
+      </p>
+      <img src="./img/query-segment.png" alt="query segment" width="560" />
+      <h4>Оператор ,</h4>
+      <p>
+        Оператор , (буквально «АБО») дозволяє вказати набір виразів, при
+        виконанні хочаб одного з них, виконається медіа-запит.
+      </p>
+      <p>
+        Наприклад, необхідно застосувати стилі в діапазоні до 600px або після
+        900px.
+      </p>
+      <pre class="code">
+@media (max-width: 600px), (min-width: 900px) {
+  body {
+    background-color: orange;
+  }
+}  
+</pre
+      >
+      <img src="./img/min-max-queries.png" alt="min max querries" width="560" />
+      <p>
+        Тобто це просто перелічення набору медіа-запитів, за яких повинні
+        застосуватися стилі. Це можна записати як два різних медіа-запити. Але
+        тоді код стилів &lt;body&gt; буде дублюватися.
+      </p>
+      <pre class="code">
+@media (max-width: 600px) {
+  body {
+    background-color: orange;
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    background-color: orange;
+  }
+}  
+</pre
+      >
+      <p class="useful">
+        Корисно: <br />
+
+        У майбутніх редакціях CSS, оператор <b>,</b> буде замінений на оператор
+        <b>or</b> .
+      </p>
+      <h4>Оператор not</h4>
+      <p>
+        Оператор not (буквально «НЕ») дозволяє зробити заперечення, тобто
+        скасувати медіа-запит. Ключове слово not додається на початку
+        медіа-запиту і застосовується до всього запиту. Використовується дуже
+        рідко, в якихось специфічних випадках.
+      </p>
+      <p>
+        Наприклад, запишемо умову, за якої стилі повинні застосуватися скрізь,
+        крім друку.
+      </p>
+      <pre class="code">
+@media not print {
+  /* ... */
+}  
+</pre
+      >
+      <p>
+        При використанні оператора not обов'язково повинен бути зазначений тип
+        носія, тому що за замовчуванням для нього буде встановлено значення all
+        і вираз not all буде читатися буквально як «не всі», і медіа-запит
+        ніколи не виконається.
+      </p>
+      <div class="tabs">
+        <button class="tab-button actual">styles.css</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+/* Ніколи не виконається */
+@media not (max-width: 500px) {
+  /* ... */
+}
+
+/* Виконається, якщо ширина буде більша за 500px. */
+@media not screen and (max-width: 500px) {
+  body {
+    background-color: tomato;
+  }
+}
+
+/*
+   В такому разі, для простоти читання коду
+    краще використовувати min-width: 500px.
+*/
+@media (min-width: 500px) {
+  body {
+    background-color: tomato;
+  }
+} 
+</pre
+        >
+      </div>
+      <h3>Перевизначення стилів</h3>
+      <p>
+        Ніщо не заважає браузеру застосувати більше одного медіа-запиту
+        одночасно, якщо вони підходять за умовою. Медіа-запити не додають
+        специфічності селекторам, які вони містять, але порядок правил як і
+        раніше має значення. Тобто правила, що знаходяться в медіа-запитах,
+        беруть участь у стандартному каскадуванні під час складання фінальних
+        стилів елемента.
+      </p>
+      <div class="tabs">
+        <button class="tab-button actual">styles.css</button>
+      </div>
+
+      <div id="tab1" class="tab-content actual">
+        <pre class="code">
+/* Базовий стиль */
+body {
+  background-color: #fff;
+}
+
+/* На 900px і ширше перевизначаємо фон  */
+@media screen and (min-width: 900px) {
+  body {
+    background-color: #388e3c;
+  }
+} 
+</pre
+        >
+      </div>
+      <p>
+        В інструментах розробника можна наочно побачити, як застосовуються
+        CSS-правила і перевизначається колір фону елемента &lt;body&gt;.
+      </p>
+      <img
+        src="./img/overriding-styles.png"
+        alt="overriding styles"
+        width="860"
+      />
+      <p>
+        Водночас перевизначаються тільки однакові властивості, а не повністю все
+        правило. Завдяки цьому, можна робити листковий пиріг зі стилів, не
+        дублюючи попередні, які підходять і для поточного медіа-запиту.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="PoZGxeG"
+          data-pen-title="lesson-15-overriding"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/PoZGxeG">
+              lesson-15-overriding</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Таким чином в інструментах розробника будуть виглядати стилі елемента
+        &lt;body&gt; при ширині в'юпорту більшої за 900px.
+      </p>
+      <img
+        src="./img/overriding-multiple.png"
+        alt="overriding multiple"
+        width="860"
+      />
     </section>
   </body>
 </html>
