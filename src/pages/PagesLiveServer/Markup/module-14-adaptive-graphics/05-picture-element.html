@@ -11,7 +11,201 @@
     <a href="../markup.html">Markup</a>
     <h2>Елемент &lt;picture&gt;</h2>
     <section class="section">
-      
+      <p>
+        Як ми вже розібралися, респонсивний елемент &lt;img&gt; дозволяє
+        завантажувати різні версії (розміри) однакового зображення. Елемент
+        &lt;picture&gt; використовується у разі, коли необхідно завантажити
+        зображення різного формату (розширення), зображення різної геометрії
+        (кадрування) або зображення для підтримки
+        <a href="https://webkit.org/blog/8840/dark-mode-support-in-webkit/"
+          >режиму темної теми</a
+        >
+        .
+      </p>
+      <p class="useful">
+        Корисно: <br />
+
+        У кожній ситуації необхідно використовувати правильний інструмент,
+        здебільшого буде достатньо респонсивного елемента &lt;img&gt;, не
+        обов'язково всюди застосовувати &lt;picture&gt;.
+      </p>
+      <h3>Синтаксис</h3>
+      <p>
+        Елемент &lt;picture&gt; - це контейнер для одного або більше елементів
+        &lt;source&gt;, в яких перераховуються можливі варіанти, та одного
+        обов'язкового елемента &lt;img&gt;.
+      </p>
+      <pre class="code">
+&lt;picture&gt;
+<br>&nbsp;&nbsp;&lt;source&nbsp;srcset=&quot;&quot;&nbsp;media=&quot;&quot;&nbsp;sizes=&quot;&quot;&nbsp;type=&quot;&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&lt;source&nbsp;srcset=&quot;&quot;&nbsp;media=&quot;&quot;&nbsp;sizes=&quot;&quot;&nbsp;type=&quot;&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&lt;img&nbsp;src=&quot;&quot;&nbsp;alt=&quot;&quot;&nbsp;/&gt;
+<br>&lt;/picture&gt;  
+</pre>
+      <ul class="section-list">
+        <li>
+          Браузер перевірить кожен з елементів &lt;source&gt; і вибере найбільш
+          придатний. Щоб вибрати оптимальне зображення, браузер аналізує
+          атрибути srcset, media, sizes і type.
+        </li>
+        <li>
+          Якщо жоден з варіантів не підійде, буде вибране зображення, вказане в
+          атрибуті src елемента &lt;img&gt;.
+        </li>
+        <li>
+          Вибране зображення малюється на полотні, яке займає елемент
+          &lt;img&gt;.
+        </li>
+      </ul>
+      <h3>Підтримка сучасних форматів</h3>
+      <p>
+        Елемент &lt;picture&gt; застосовується для завантаження зображень в
+        сучасних форматах (наприклад webp). Для браузерів, які не підтримують
+        такі формати, вказується дефолтне зображення в альтернативному форматі
+        (наприклад jpg або png). Атрибут type вказує
+        <a
+          href="https://developer.mozilla.org/ru/docs/Web/HTTP/Basics_of_HTTP/MIME_types"
+          >MIME-тип</a
+        >
+        зображення. Якщо браузер не підтримує його, то цей елемент
+        &lt;source&gt; пропускається.
+      </p>
+      <p>
+        Наступний приклад визначає елемент &lt;picture&gt;, який дозволить
+        браузерам завантажити photo.webp, водночас надається альтернатива
+        photo.jpg для браузерів, які ще не підтримують webp.
+      </p>
+      <pre class="code">
+&lt;picture&gt;
+<br>&nbsp;&nbsp;&lt;source&nbsp;srcset=&quot;photo.webp&nbsp;1x,&nbsp;photo@2x.webp&nbsp;2x&quot;&nbsp;type=&quot;image/webp&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&lt;source&nbsp;srcset=&quot;photo.jpg&nbsp;1x,&nbsp;photo@2x.jpg&nbsp;2x&quot;&nbsp;type=&quot;image/jpeg&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&lt;img&nbsp;src=&quot;photo.jpg&quot;&nbsp;alt=&quot;Кіт&quot;&nbsp;/&gt;
+<br>&lt;/picture&gt;  
+</pre>
+      <p>
+        Всі варіанти доступних зображень перелічуються в тегах &lt;source&gt;,
+        які будуть послідовно оброблятися браузером.
+      </p>
+      <p class="useful">
+        Корисно: <br />
+
+        Для того щоб швидко і зручно конвертувати зображення у формат webp,
+        можна використовувати онлайн-інструменти, наприклад
+        <a href="https://squoosh.app/">squoosh.app</a> .
+      </p>
+      <h3>Кадрування (art direction)</h3>
+      <img src="./img/art-direction.png" alt="art direction" width="620" />
+      <p>
+        Техніка кадрування використовується для завантаження різних зображень
+        для кожного екрану. Це дозволяє показати користувачеві максимум корисної
+        інформації і деталей зображення, навіть на маленьких пристроях.
+        Наприклад, завантажувати альбомну (landscape) або книжкову (portrait)
+        версію зображення, залежно від орієнтації або роздільної здатності
+        пристрою.
+      </p>
+      <p>
+        Атрибут media дозволяє визначити медіа-запит, який браузер буде
+        аналізувати для вибору елемента &lt;source&gt;. Якщо медіа-запит
+        визначається як помилковий (не підходить), то цей елемент &lt;source&gt;
+        пропускається.
+      </p>
+      <pre class="code">
+<!-- Для екранів ширше 600px буде завантажений photo-wide.jpg -->
+&lt;picture&gt;
+<br>&nbsp;&nbsp;&lt;source&nbsp;srcset=&quot;photo-wide.jpg&quot;&nbsp;media=&quot;(min-width:&nbsp;600px)&quot;&nbsp;/&gt;
+<br>&nbsp;&nbsp;&lt;img&nbsp;src=&quot;photo.jpg&quot;&nbsp;alt=&quot;Фотографія&quot;&nbsp;/&gt;
+<br>&lt;/picture&gt;  
+</pre>
+      <p>Перейдіть у приклад і змінюйте ширину області перегляду.</p>
+      <ul class="section-list">
+        <li>
+          Для екранів шириною до 600px буде завантажено портретне зображення
+          400x600 пікселів.
+        </li>
+        <li>
+          Для екранів шириною від 601px і ширше, буде завантажено ландшафтне
+          зображення 800x400 пікселів.
+        </li>
+      </ul>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="bGEWWEY"
+          data-pen-title="lesson-16-art-direction"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/bGEWWEY">
+              lesson-16-art-direction</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
+      <p>
+        Для підтримки екранів з високою щільністю пікселів, кожному елементу
+        &lt;source&gt; необхідно додати набір зображень з дескрипторами в
+        атрибут srcset, і не забути задати атрибут sizes.
+      </p>
+      <p>
+        Додамо в код попереднього прикладу підтримку ретіни зі щільністю 2x,
+        використовуючи дескриптор w. Обмежимо ландшафтну версію зображення
+        максимальною шириною 800px, якщо в'юпорт ширший за 800 пікселів. В
+        іншому випадку зображення тягнеться на 100% в'юпорту.
+      </p>
+      <div class="codepen">
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="html,result"
+          data-slug-hash="WNrjjZK"
+          data-pen-title="lesson-16-retina-art-direction"
+          data-user="goit-academy"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/goit-academy/pen/WNrjjZK">
+              lesson-16-retina-art-direction</a
+            >
+            by goit-academy (<a href="https://codepen.io/goit-academy"
+              >@goit-academy</a
+            >) on <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </div>
     </section>
   </body>
 </html>
