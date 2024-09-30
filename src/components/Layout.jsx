@@ -4,6 +4,8 @@ import { NavLink, Outlet } from 'react-router-dom';
 import DropdownMarkup from './DropdownMarkup';
 import DropdownJavaScript from './DropdownJavaScript';
 import DropdownReact from './DropdownReact';
+import DropdownNode from './DropdownNode';
+
 
 import css from '../components/Layout.module.css';
 
@@ -26,6 +28,11 @@ const LayoutComponents = () => {
           <li className={`${css.name__menu} ${css.menu__style}`}>
             <NavLink to="react">React</NavLink>
             <DropdownReact/>
+            
+          </li>
+          <li className={`${css.name__menu} ${css.menu__style}`}>
+            <NavLink to="node">NodeJS</NavLink>
+            <DropdownNode/>
             
           </li>
         </ul>

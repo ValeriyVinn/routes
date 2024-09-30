@@ -6,6 +6,11 @@ const DropdownReact = () => {
   return (
     <div>
       <ul className={css.hidden__menu}>
+      <li>
+          <Link to='react/abstract' className={css.nav__link }>
+            Конспект
+          </Link>
+        </li>
         <li>
           <Link to='react/module-one-components' className={css.nav__link }>
             Компоненти та коллекції. Стилізація
