@@ -5,307 +5,676 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Теги та атрибути</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+    />
+
     <link rel="stylesheet" href="../css/markup-style.css" />
   </head>
-  <body>
-    <a href="../markup.html">Markup</a>
-    <h2>Теги та атрибути</h2>
-    <section class="section">
-      <h3>Веб-технології</h3>
-      <p>
-        Веб-сайти - це основа, на якій тримається інтернет, і всі вони
-        побудовані на трьох основних технологіях.
-      </p>
-      <ul class="section-list">
-        <li>
-          <b>HTML</b> - відповідає за наповнення веб-сторінки контентом,
-          структуру і зміст.
-        </li>
-        <li>
-          <b>CSS</b> - використовується для оформлення та позиціонування,
-          зовнішній вигляд.
-        </li>
-        <li>
-          <b>JavaScript</b> - дозволяє додати функціонал, реакцію на дії
-          користувача.
-        </li>
-      </ul>
-      <img src="./img/html-css-js.png" alt="html-css-js" width="420" />
-      <p>
-        Для того щоб створити веб-сайт, недостатньо тільки цих базових
-        технологій. Під час розробки використовуються редактори коду, системи
-        контролю версій, збирачі, фреймворки, бібліотеки, хостинг та інші
-        концепції, з якими необхідно буде познайомитися.
-      </p>
-      <img src="./img/webdev.png" alt="web-dev" width="420" />
-      <h4>HTML</h4>
-      <p>
-        <b>HyperText Markup Language (мова розмітки гіпертексту)</b> - мова
-        розмітки веб-документів. Набір правил для структурування (розмітки)
-        текстової інформації, додавання зображень, створення таблиць, форм,
-        списків тощо.
-      </p>
-      <p>
-        <b>HTML-документ</b> - текстовий файл з розширенням .html. Документ,
-        розмічений за допомогою HTML, інтерпретується браузером, в результаті
-        чого користувачі бачать не вихідний код з елементами розмітки, а
-        остаточний результат обробки - веб-сторінку.
-      </p>
-      <img src="./img/html-markup.png" alt="html-markup" width="420" />
-      <p>
-        Популярність HTML і використання його як основи веб-сторінок, призвело
-        до необхідності створення, підтримки і розвитку стандартів. Зараз цим
-        займається
-        <a href="https://whatwg.org/"
-          >Web Hypertext Application Technology Working Group (WHATWG)</a
-        >, яка працює над специфікацією<a
-          href="https://html.spec.whatwg.org/multipage/"
-          >HTML Living Standard</a
-        >.
-      </p>
-    </section>
-    <section class="section">
-      <h3>Теги та атрибути</h3>
-      <p>
-        <b>Тег (tag)</b> — елемент мови розмітки гіпертексту. Це найменші
-        будівельні блоки, з яких складається будь-яка веб-сторінка. Кожен тег
-        позначає якусь сутність: заголовок, список, абзац тексту, зображення.
-      </p>
-      <p>
-        Для виділення тегів серед тексту документа використовуються кутові
-        дужки, в яких вказується ім'я тегу і його атрибути.
-      </p>
 
-      <!-- <pre class="code"></pre> -->
-      <p>
-        Відкриваючий тег вказує, де починається елемент, закриваючий - де
-        закінчується. Закриваючий тег утворюється за допомогою додавання слеша
-        (/) перед іменем тегу. Між відкриваючим і закриваючим тегами знаходиться
-        вміст тегу - контент.
-      </p>
-      <p>Приклади тегів.</p>
-      <p class="code">
-        &lt;section&gt;Секція&lt;/section&gt;
-        <br />&lt;p&gt;Абзац&lt;/p&gt; <br />&lt;a&gt;Посилання&lt;/a&gt;
-        <br />&lt;button&gt;Кнопка&lt;/button&gt;
-      </p>
+  <body class="container">
+    <header>
+      <div class="book">
+        <nav class="nav-page left">
+          
+        <a href="../markup.html" class="nav-link">
+          
+          <svg width="25px" height="25px" class="arrow-up">
+            <use href="./img/svg/symbol-defs.svg#icon-arrow-up2" ></use>
+          </svg>
+          Markup</a>
+      </nav>
+      <nav class="nav-page right">
+        <a href="../../../../indexLS.html" class="nav-link">Java Script</a>
+        <a href="../../React/react.html" class="nav-link">React</a>
+        <a href="#" class="nav-link">Node.js</a>
+      </nav>
+      </div>
+      
+    </header>
 
-      <h4>Коментарі</h4>
-      <p>
-        Коментарі використовуються для того, щоб залишити у вихідному коді
-        пояснення, замітку, тимчасово закоментувати ділянку коду тощо.
-      </p>
-      <p class="code">
-        &lt;!--&nbsp;Це&nbsp;коментар,&nbsp;його&nbsp;вміст&nbsp;не&nbsp;відобразиться&nbsp;на&nbsp;сторінці&nbsp;--&gt;
-        <br />
-        <br />&lt;p&gt;Це&nbsp;абзац&nbsp;тексту,&nbsp;він&nbsp;буде&nbsp;на&nbsp;сторінці.&lt;/p&gt;
-        <br />
-        <br />&lt;!--
-        <br />&nbsp;&nbsp;Коментар&nbsp;може&nbsp;бути&nbsp;багаторядковим.
-        <br />&nbsp;&nbsp;&nbsp;Це&nbsp;зручно&nbsp;для&nbsp;об&#39;ємніших&nbsp;описів.
-        <br />--&gt;
-      </p>
-      <h4>Атрибути</h4>
-      <p>
-        Атрибути - це додаткові налаштування тегів, за допомогою яких можна
-        змінювати властивості і поведінку елемента. У кожного тегу є обов'язкові
-        і необов'язкові атрибути, їх може бути декілька або зовсім не бути.
-      </p>
-      <p>
-        Атрибути записуються всередині відкриваючого тегу, а їх значення
-        розташовуються всередині подвійних лапок. Декілька атрибутів
-        розділяються пробілом.
-      </p>
-      <p class="code">
-        &lt;a&nbsp;href=&quot;https://google.com&quot;&nbsp;class=&quot;link&quot;&gt;...&lt;/a&gt;
-        <br />
-        <br />&lt;img&nbsp;src=&quot;cat.jpg&quot;&nbsp;alt=&quot;cute&nbsp;cat&quot;&nbsp;/&gt;
-        <br />
-        <br />&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;user_name&quot;&nbsp;/&gt;
-        <br />
-        <br />&lt;button&nbsp;type=&quot;submit&quot;&gt;...&lt;/button&gt;
-        <br />
-        <br />&lt;p&nbsp;class=&quot;text&quot;&gt;...&lt;/p&gt;
-      </p>
-      <p>Розглянемо деякі атрибути тегу &lt;a&gt;.</p>
-      <p class="code">
-        &lt;a&nbsp;href=&quot;http://google.com&quot;&nbsp;target=&quot;_blank&quot;&nbsp;title=&quot;Пошукова&nbsp;система&nbsp;Google&quot;&gt;
-        <br />&nbsp;&nbsp;Google.com <br />&lt;/a&gt;
-      </p>
-      <ul class="section-list">
-        <li>
-          <b>href</b> - адреса сторінки, на яку перейде користувач після
-          натискання на текст посилання.
-        </li>
-        <li>
-          <b>target</b> - вказує на те, в якій вкладці відкривається сторінка
-          після кліку на посилання
-        </li>
-        <li><b>title</b> - додає спливаючу підказку до тексту посилання.</li>
-      </ul>
-      <p>Розглянемо деякі атрибути тегу &lt;img&gt;.</p>
-      <p class="code">
-        &lt;img
-        <br />&nbsp;&nbsp;src=&quot;https://picsum.photos/640/480&quot;
-        <br />&nbsp;&nbsp;alt=&quot;Довільна&nbsp;картинка&nbsp;від&nbsp;генератора&quot;
-        <br />/&gt;&nbsp;
-      </p>
-      <ul class="section-list">
-        <li><b>src</b> - адреса зображення.</li>
-        <li>
-          <b>alt</b> - альтернативний текст, який буде показаний, якщо
-          зображення не завантажилося.
-        </li>
-      </ul>
-      <p class="i-usefull">
-        Для того щоб дізнатися доступні атрибути тегу та їх призначення, можна
-        зайти в документацію або довідник, наприклад
-        <a href="https://htmlreference.io/">htmlreference.io.</a>
-      </p>
-      <h4>Парні теги</h4>
-      <p>
-        Складаються з відкриваючих і закриваючих тегів, які обгортають контент,
-        дозволяючи змінювати його властивості або відображення, групувати за
-        змістом. Всередині парних тегів можуть бути вкладені інші теги, як
-        мотрійка.
-      </p>
-      <p class="code">
-        &lt;!--&nbsp;Стаття&nbsp;із&nbsp;заголовком&nbsp;і&nbsp;абзацом&nbsp;--&gt;
-        <br />&lt;article&gt;
-        <br />&nbsp;&nbsp;&lt;h1&gt;Коротко&nbsp;про&nbsp;парні&nbsp;теги&lt;/h1&gt;
-        <br />&nbsp;&nbsp;&lt;p&gt;
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;Більшість&nbsp;тегів&nbsp;парні.&nbsp;Їх&nbsp;контент&nbsp;вкладений&nbsp;між&nbsp;відкриваючим&nbsp;і&nbsp;закриваючим
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;тегом. <br />&nbsp;&nbsp;&lt;/p&gt;
-        <br />&lt;/article&gt;&nbsp;&nbsp;
-      </p>
-      <h4>Одинарні теги</h4>
-      <p>
-        Складаються тільки з відкриваючого тегу, не містять текстового контенту
-        і отримують контент або поведінку з атрибутів. Слугують для зміни
-        властивостей документа, підключення файлів тощо.
-      </p>
-      <p class="code">
-        &lt;!--&nbsp;Метаінформація&nbsp;про&nbsp;кодування&nbsp;--&gt;
-        <br />&lt;meta&nbsp;charset=&quot;utf-8&quot;&nbsp;/&gt;
-        <br />
-        <br />&lt;!--&nbsp;Поле&nbsp;введення&nbsp;--&gt;
-        <br />&lt;input&nbsp;type=&quot;text&quot;&nbsp;/&gt;
-        <br />
-        <br />&lt;!--&nbsp;Зображення&nbsp;--&gt;
-        <br />&lt;img&nbsp;src=&quot;cat.jpg&quot;&nbsp;alt=&quot;cool&nbsp;cat&quot;&nbsp;/&gt;&nbsp;
-      </p>
-      <p class="i-interesting">
-        У попередніх стандартах HTML поодинокі теги обов'язково записувалися зі
-        зворотним символом / перед закриваючою дужкою. Наприклад
-        &lt;img&nbsp;/&gt; або &lt;input&nbsp;/&gt;. В сучасному стандарті - це
-        необов'язково і ні на що не впливає.
-      </p>
-      <h4>Вкладеність тегів</h4>
-      <p>
-        Дотримуючись деяких правил, теги можна вкладати один в одного. У разі
-        вкладеності, потрібно дотримуватися порядку їх закриття за принципом
-        мотрійки.
-      </p>
-      <p class="code">
-        &lt;тег1&gt;
-        <br />&nbsp;&nbsp;&lt;тег2&gt;
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;тег4&gt;...&lt;/тег4&gt;
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;тег5&gt;...&lt;/тег5&gt;
-        <br />&nbsp;&nbsp;&lt;/тег2&gt; <br />&nbsp;&nbsp;&lt;тег3&gt;
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;тег6&gt;...&lt;/тег6&gt;
-        <br />&nbsp;&nbsp;&lt;/тег3&gt; <br />&lt;/тег1&gt;
-      </p>
-      <p>
-        Ось валідна розмітка абзацу з посиланням і виділеним текстом, а також
-        списку переваг з описом.
-      </p>
-      <p class="code">
-        &lt;p&gt;
-        <br />&nbsp;&nbsp;&lt;a&nbsp;href=&quot;squoosh.app&quot;&gt;Squoosh&lt;/a&gt;&nbsp;-&nbsp;сервіс&nbsp;&lt;em&gt;оптимизації&lt;/em&gt;&nbsp;зображень.
-        <br />&lt;/p&gt;
-        <br />
-        <br />&lt;p&gt;Переваги&lt;/p&gt; <br />&lt;ul&gt;
-        <br />&nbsp;&nbsp;&lt;li&gt;Працює&nbsp;в&nbsp;браузері&lt;/li&gt;
-        <br />&nbsp;&nbsp;&lt;li&gt;Не&nbsp;навантажує&nbsp;систему&lt;/li&gt;
-        <br />&nbsp;&nbsp;&lt;li&gt;Зручний&nbsp;інтерфейс&lt;/li&gt;
-        <br />&lt;/ul&gt;&nbsp;
-      </p>
-      <p>А в цій версії є проблеми (рядки підсвічені).</p>
-      <p class="code">
-        &lt;!--&nbsp;Не&nbsp;дотримується&nbsp;порядок&nbsp;закриття&nbsp;тегів&nbsp;--&gt;
-        <br />&lt;p&gt;&lt;a&nbsp;href=&quot;squoosh.app&quot;&gt;Squoosh&lt;/a&gt;&nbsp;-&nbsp;сервіс&nbsp;&lt;em&gt;&lt;/a&gt;оптимизації&lt;/p&gt;&nbsp;зображень.&lt;/em&gt;
-        <br />
-        <br />&lt;!--&nbsp;Не&nbsp;дотримуються&nbsp;специфічні&nbsp;правила&nbsp;вкладення&nbsp;тегів&nbsp;--&gt;
-        <br />&lt;ul&gt; <br />&nbsp;&nbsp;&lt;p&gt;Переваги&lt;/p&gt;
-        <br />&nbsp;&nbsp;&lt;li&gt;Працює&nbsp;в&nbsp;браузері&lt;/li&gt;
-        <br />&nbsp;&nbsp;&lt;li&gt;Не&nbsp;навантажує&nbsp;систему&lt;/li&gt;
-        <br />&nbsp;&nbsp;&lt;li&gt;Зручний&nbsp;інтерфейс&lt;/li&gt;
-        <br />&lt;/ul&gt;&nbsp;
-      </p>
-      <h4>Специфікація HTML</h4>
+    <main>
+      <div class="book">
+        <section class="page">
+          <h2>Теги та атрибути</h2>
 
-      <p>
-        Специфікація<a href="https://html.spec.whatwg.org/multipage/"
-          >HTML Living Standard</a
-        >
-        - головний документ, який описує стандарти, можливості і майбутній
-        розвиток мови HTML.
-      </p>
-      <p>
-        Для вивчення верстки, насамперед важливі розділи, які описують,
-        <a
-          href="https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content"
-          >які є типи елементів </a
-        >,
-        <a href="https://html.spec.whatwg.org/multipage/#toc-semantics"
-          >що позначає кожен з них</a
-        >
-        , і розуміння того, як їх можна вкладати один в одного.
-      </p>
-      <p class="useful">
-        <b>HTML-елемент</b> - це термін, що описує якусь семантичну сутність в
-        стандарті HTML. Наприклад абзац, заголовок, список або посилання. В
-        HTML-документі елемент представлений тегом (парним або одинарним) -
-        синтаксичною конструкцією мови HTML.
-      </p>
-      <h4>Вкладеність тегів</h4>
-      <p>Алгоритм визначення можливості вкладення тегу досить простий.</p>
-      <ul class="section-list">
-        <li>
-          Йдемо в
-          <a href="https://html.spec.whatwg.org/multipage/#toc-semantics"
-            >специфікацію</a
+          <h3>Веб-технології</h3>
+          <p>
+            Веб-сайти - це основа, на якій тримається інтернет, і всі вони
+            побудовані на трьох основних технологіях.
+          </p>
+          <ul class="section-list">
+            <li>
+              <b>HTML</b> - відповідає за наповнення веб-сторінки контентом,
+              структуру і зміст.
+            </li>
+            <li>
+              <b>CSS</b> - використовується для оформлення та позиціонування,
+              зовнішній вигляд.
+            </li>
+            <li>
+              <b>JavaScript</b> - дозволяє додати функціонал, реакцію на дії
+              користувача.
+            </li>
+          </ul>
+          <img src="./img/html-css-js.png" alt="html-css-js" width="420" />
+          <p>
+            Для того щоб створити веб-сайт, недостатньо тільки цих базових
+            технологій. Під час розробки використовуються редактори коду, системи
+            контролю версій, збирачі, фреймворки, бібліотеки, хостинг та інші
+            концепції, з якими необхідно буде познайомитися.
+          </p>
+          <img src="./img/webdev.png" alt="web-dev" width="420" />
+      </section>
+      <section class="page">
+        <h4>HTML</h4>
+        <p>
+          <b>HyperText Markup Language (мова розмітки гіпертексту)</b> - мова
+          розмітки веб-документів. Набір правил для структурування (розмітки)
+          текстової інформації, додавання зображень, створення таблиць, форм,
+          списків тощо.
+        </p>
+        <p>
+          <b>HTML-документ</b> - текстовий файл з розширенням .html. Документ,
+          розмічений за допомогою HTML, інтерпретується браузером, в результаті
+          чого користувачі бачать не вихідний код з елементами розмітки, а
+          остаточний результат обробки - веб-сторінку.
+        </p>
+        <img src="./img/html-markup.png" alt="html-markup" width="420" />
+        <p>
+          Популярність HTML і використання його як основи веб-сторінок, призвело
+          до необхідності створення, підтримки і розвитку стандартів. Зараз цим
+          займається
+          <a href="https://whatwg.org/"
+            >Web Hypertext Application Technology Working Group (WHATWG)</a
+          >, яка працює над специфікацією<a
+            href="https://html.spec.whatwg.org/multipage/"
+            >HTML Living Standard</a
+          >.
+        </p>
+
+        <h3>Теги та атрибути</h3>
+        <p>
+          <b>Тег (tag)</b> — елемент мови розмітки гіпертексту. Це найменші
+          будівельні блоки, з яких складається будь-яка веб-сторінка. Кожен тег
+          позначає якусь сутність: заголовок, список, абзац тексту, зображення.
+        </p>
+        <p>
+          Для виділення тегів серед тексту документа використовуються кутові
+          дужки, в яких вказується ім'я тегу і його атрибути.
+        </p>
+
+        <p>
+          Відкриваючий тег вказує, де починається елемент, закриваючий - де
+          закінчується. Закриваючий тег утворюється за допомогою додавання слеша
+          (/) перед іменем тегу. Між відкриваючим і закриваючим тегами
+          знаходиться вміст тегу - контент.
+        </p>
+<!-- ! -->
+      </section>
+      <section class="page">
+        <p>Приклади тегів.</p>
+        <p class="code">
+          &lt;section&gt;Секція&lt;/section&gt;
+          <br />&lt;p&gt;Абзац&lt;/p&gt; <br />&lt;a&gt;Посилання&lt;/a&gt;
+          <br />&lt;button&gt;Кнопка&lt;/button&gt;
+        </p>
+
+        <h4>Коментарі</h4>
+        <p>
+          Коментарі використовуються для того, щоб залишити у вихідному коді
+          пояснення, замітку, тимчасово закоментувати ділянку коду тощо.
+        </p>
+        <p class="code">
+          &lt;!--&nbsp;Це&nbsp;коментар,&nbsp;його&nbsp;вміст&nbsp;не&nbsp;відобразиться&nbsp;на&nbsp;сторінці&nbsp;--&gt;
+          <br />
+          <br />&lt;p&gt;Це&nbsp;абзац&nbsp;тексту,&nbsp;він&nbsp;буде&nbsp;на&nbsp;сторінці.&lt;/p&gt;
+          <br />
+          <br />&lt;!--
+          <br />&nbsp;&nbsp;Коментар&nbsp;може&nbsp;бути&nbsp;багаторядковим.
+          <br />&nbsp;&nbsp;&nbsp;Це&nbsp;зручно&nbsp;для&nbsp;об&#39;ємніших&nbsp;описів.
+          <br />--&gt;
+        </p>
+        <h4>Атрибути</h4>
+        <p>
+          Атрибути - це додаткові налаштування тегів, за допомогою яких можна
+          змінювати властивості і поведінку елемента. У кожного тегу є
+          обов'язкові і необов'язкові атрибути, їх може бути декілька або зовсім
+          не бути.
+        </p>
+        <p>
+          Атрибути записуються всередині відкриваючого тегу, а їх значення
+          розташовуються всередині подвійних лапок. Декілька атрибутів
+          розділяються пробілом.
+        </p>
+        <p class="code">
+          &lt;a&nbsp;href=&quot;https://google.com&quot;&nbsp;class=&quot;link&quot;&gt;...&lt;/a&gt;
+          <br />
+          <br />&lt;img&nbsp;src=&quot;cat.jpg&quot;&nbsp;alt=&quot;cute&nbsp;cat&quot;&nbsp;/&gt;
+          <br />
+          <br />&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;user_name&quot;&nbsp;/&gt;
+          <br />
+          <br />&lt;button&nbsp;type=&quot;submit&quot;&gt;...&lt;/button&gt;
+          <br />
+          <br />&lt;p&nbsp;class=&quot;text&quot;&gt;...&lt;/p&gt;
+        </p>
+      </section>
+      <section class="page">
+        <p>Розглянемо деякі атрибути тегу &lt;a&gt;.</p>
+        <p class="code">
+          &lt;a&nbsp;href=&quot;http://google.com&quot;&nbsp;target=&quot;_blank&quot;&nbsp;title=&quot;Пошукова&nbsp;система&nbsp;Google&quot;&gt;
+          <br />&nbsp;&nbsp;Google.com <br />&lt;/a&gt;
+        </p>
+        <ul class="section-list">
+          <li>
+            <b>href</b> - адреса сторінки, на яку перейде користувач після
+            натискання на текст посилання.
+          </li>
+          <li>
+            <b>target</b> - вказує на те, в якій вкладці відкривається сторінка
+            після кліку на посилання
+          </li>
+          <li><b>title</b> - додає спливаючу підказку до тексту посилання.</li>
+        </ul>
+        <p>Розглянемо деякі атрибути тегу &lt;img&gt;.</p>
+        <p class="code">
+          &lt;img
+          <br />&nbsp;&nbsp;src=&quot;https://picsum.photos/640/480&quot;
+          <br />&nbsp;&nbsp;alt=&quot;Довільна&nbsp;картинка&nbsp;від&nbsp;генератора&quot;
+          <br />/&gt;&nbsp;
+        </p>
+        <ul class="section-list">
+          <li><b>src</b> - адреса зображення.</li>
+          <li>
+            <b>alt</b> - альтернативний текст, який буде показаний, якщо
+            зображення не завантажилося.
+          </li>
+        </ul>
+        <p class="i-usefull">
+          Для того щоб дізнатися доступні атрибути тегу та їх призначення, можна
+          зайти в документацію або довідник, наприклад
+          <a href="https://htmlreference.io/">htmlreference.io.</a>
+        </p>
+        <h4>Парні теги</h4>
+        <p>
+          Складаються з відкриваючих і закриваючих тегів, які обгортають
+          контент, дозволяючи змінювати його властивості або відображення,
+          групувати за змістом. Всередині парних тегів можуть бути вкладені інші
+          теги, як мотрійка.
+        </p>
+        <p class="code">
+          &lt;!--&nbsp;Стаття&nbsp;із&nbsp;заголовком&nbsp;і&nbsp;абзацом&nbsp;--&gt;
+          <br />&lt;article&gt;
+          <br />&nbsp;&nbsp;&lt;h1&gt;Коротко&nbsp;про&nbsp;парні&nbsp;теги&lt;/h1&gt;
+          <br />&nbsp;&nbsp;&lt;p&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;Більшість&nbsp;тегів&nbsp;парні.&nbsp;Їх&nbsp;контент&nbsp;вкладений&nbsp;між&nbsp;відкриваючим&nbsp;і&nbsp;закриваючим
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;тегом. <br />&nbsp;&nbsp;&lt;/p&gt;
+          <br />&lt;/article&gt;&nbsp;&nbsp;
+        </p>
+      </section>
+      <section class="page">
+        <h4>Одинарні теги</h4>
+        <p>
+          Складаються тільки з відкриваючого тегу, не містять текстового
+          контенту і отримують контент або поведінку з атрибутів. Слугують для
+          зміни властивостей документа, підключення файлів тощо.
+        </p>
+        <p class="code">
+          &lt;!--&nbsp;Метаінформація&nbsp;про&nbsp;кодування&nbsp;--&gt;
+          <br />&lt;meta&nbsp;charset=&quot;utf-8&quot;&nbsp;/&gt;
+          <br />
+          <br />&lt;!--&nbsp;Поле&nbsp;введення&nbsp;--&gt;
+          <br />&lt;input&nbsp;type=&quot;text&quot;&nbsp;/&gt;
+          <br />
+          <br />&lt;!--&nbsp;Зображення&nbsp;--&gt;
+          <br />&lt;img&nbsp;src=&quot;cat.jpg&quot;&nbsp;alt=&quot;cool&nbsp;cat&quot;&nbsp;/&gt;&nbsp;
+        </p>
+        <p class="i-interesting">
+          У попередніх стандартах HTML поодинокі теги обов'язково записувалися
+          зі зворотним символом / перед закриваючою дужкою. Наприклад
+          &lt;img&nbsp;/&gt; або &lt;input&nbsp;/&gt;. В сучасному стандарті -
+          це необов'язково і ні на що не впливає.
+        </p>
+        <h4>Вкладеність тегів</h4>
+        <p>
+          Дотримуючись деяких правил, теги можна вкладати один в одного. У разі
+          вкладеності, потрібно дотримуватися порядку їх закриття за принципом
+          мотрійки.
+        </p>
+        <p class="code">
+          &lt;тег1&gt;
+          <br />&nbsp;&nbsp;&lt;тег2&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;тег4&gt;...&lt;/тег4&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;тег5&gt;...&lt;/тег5&gt;
+          <br />&nbsp;&nbsp;&lt;/тег2&gt; <br />&nbsp;&nbsp;&lt;тег3&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;тег6&gt;...&lt;/тег6&gt;
+          <br />&nbsp;&nbsp;&lt;/тег3&gt; <br />&lt;/тег1&gt;
+        </p>
+        <p>
+          Ось валідна розмітка абзацу з посиланням і виділеним текстом, а також
+          списку переваг з описом.
+        </p>
+        <p class="code">
+          &lt;p&gt;
+          <br />&nbsp;&nbsp;&lt;a&nbsp;href=&quot;squoosh.app&quot;&gt;Squoosh&lt;/a&gt;&nbsp;-&nbsp;сервіс&nbsp;&lt;em&gt;оптимизації&lt;/em&gt;&nbsp;зображень.
+          <br />&lt;/p&gt;
+          <br />
+          <br />&lt;p&gt;Переваги&lt;/p&gt; <br />&lt;ul&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Працює&nbsp;в&nbsp;браузері&lt;/li&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Не&nbsp;навантажує&nbsp;систему&lt;/li&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Зручний&nbsp;інтерфейс&lt;/li&gt;
+          <br />&lt;/ul&gt;&nbsp;
+        </p>
+        
+      </section>
+      <section class="page">
+        <p>А в цій версії є проблеми (рядки підсвічені).</p>
+        <p class="code">
+          &lt;!--&nbsp;Не&nbsp;дотримується&nbsp;порядок&nbsp;закриття&nbsp;тегів&nbsp;--&gt;
+          <br />&lt;p&gt;&lt;a&nbsp;href=&quot;squoosh.app&quot;&gt;Squoosh&lt;/a&gt;&nbsp;-&nbsp;сервіс&nbsp;&lt;em&gt;&lt;/a&gt;оптимизації&lt;/p&gt;&nbsp;зображень.&lt;/em&gt;
+          <br />
+          <br />&lt;!--&nbsp;Не&nbsp;дотримуються&nbsp;специфічні&nbsp;правила&nbsp;вкладення&nbsp;тегів&nbsp;--&gt;
+          <br />&lt;ul&gt; <br />&nbsp;&nbsp;&lt;p&gt;Переваги&lt;/p&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Працює&nbsp;в&nbsp;браузері&lt;/li&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Не&nbsp;навантажує&nbsp;систему&lt;/li&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Зручний&nbsp;інтерфейс&lt;/li&gt;
+          <br />&lt;/ul&gt;&nbsp;
+        </p>
+
+        <!-- ! -->
+        <h4>Специфікація HTML</h4>
+
+        <p>
+          Специфікація<a href="https://html.spec.whatwg.org/multipage/"
+            >HTML Living Standard</a
           >
-          і знаходимо потрібний елемент.
-        </li>
-        <li>
-          Перевіряємо контентну модель елемента (Content model), в який
-          вкладаємо.
-        </li>
-        <li>Перевіряємо категорії елемента (Categories), який вкладаємо.</li>
-        <li>
-          Якщо категорія підходить і обмеження не забороняють - вкладати можна,
-          інакше - не можна.
-        </li>
-      </ul>
-      <p>
-        Вже через пару днів використання HTML ви звикнете правильно вкладати
-        елементи один в одного, оскільки правила вкладеності стануть інтуїтивно
-        зрозумілі після знайомства з основними тегами.
-      </p>
-      <h4>Довідники</h4>
-      <p>
-        Крім специфікації під рукою корисно мати довідники і шпаргалки. Знати
-        все напам'ять не потрібно, специфічніші речі або ті, що рідко
-        використовуються, завжди можна підглянути.
-      </p>
-      <ul class="section-list">
-        <li><a href="https://htmlreference.io/" target="_blank">Довідник HTML-тегів</a></li>
-        <li>
-          <a href="https://cssreference.io/" target="_blank">Довідник CSS-властивостей</a>
-        </li>
-      </ul>
-    </section>
+          - головний документ, який описує стандарти, можливості і майбутній
+          розвиток мови HTML.
+        </p>
+        <p>
+          Для вивчення верстки, насамперед важливі розділи, які описують,
+          <a
+            href="https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content"
+            >які є типи елементів </a
+          >,
+          <a href="https://html.spec.whatwg.org/multipage/#toc-semantics"
+            >що позначає кожен з них</a
+          >
+          , і розуміння того, як їх можна вкладати один в одного.
+        </p>
+        <p class="useful">
+          <b>HTML-елемент</b> - це термін, що описує якусь семантичну сутність в
+          стандарті HTML. Наприклад абзац, заголовок, список або посилання. В
+          HTML-документі елемент представлений тегом (парним або одинарним) -
+          синтаксичною конструкцією мови HTML.
+        </p>
+        <h4>Вкладеність тегів</h4>
+        <p>Алгоритм визначення можливості вкладення тегу досить простий.</p>
+        <ul class="section-list">
+          <li>
+            Йдемо в
+            <a href="https://html.spec.whatwg.org/multipage/#toc-semantics"
+              >специфікацію</a
+            >
+            і знаходимо потрібний елемент.
+          </li>
+          <li>
+            Перевіряємо контентну модель елемента (Content model), в який
+            вкладаємо.
+          </li>
+          <li>Перевіряємо категорії елемента (Categories), який вкладаємо.</li>
+          <li>
+            Якщо категорія підходить і обмеження не забороняють - вкладати
+            можна, інакше - не можна.
+          </li>
+        </ul>
+        <p>
+          Вже через пару днів використання HTML ви звикнете правильно вкладати
+          елементи один в одного, оскільки правила вкладеності стануть
+          інтуїтивно зрозумілі після знайомства з основними тегами.
+        </p>
+        <h4>Довідники</h4>
+        <p>
+          Крім специфікації під рукою корисно мати довідники і шпаргалки. Знати
+          все напам'ять не потрібно, специфічніші речі або ті, що рідко
+          використовуються, завжди можна підглянути.
+        </p>
+        <ul class="section-list">
+          <li>
+            <a href="https://htmlreference.io/" target="_blank"
+              >Довідник HTML-тегів</a
+            >
+          </li>
+          <li>
+            <a href="https://cssreference.io/" target="_blank"
+              >Довідник CSS-властивостей</a
+            >
+          </li>
+        </ul>
+      </section>
+      </div>
+      
+      <section class="section">
+        <h2>Теги та атрибути</h2>
 
+        <h3>Веб-технології</h3>
+        <p>
+          Веб-сайти - це основа, на якій тримається інтернет, і всі вони
+          побудовані на трьох основних технологіях.
+        </p>
+        <ul class="section-list">
+          <li>
+            <b>HTML</b> - відповідає за наповнення веб-сторінки контентом,
+            структуру і зміст.
+          </li>
+          <li>
+            <b>CSS</b> - використовується для оформлення та позиціонування,
+            зовнішній вигляд.
+          </li>
+          <li>
+            <b>JavaScript</b> - дозволяє додати функціонал, реакцію на дії
+            користувача.
+          </li>
+        </ul>
+        <img src="./img/html-css-js.png" alt="html-css-js" width="420" />
+        <p>
+          Для того щоб створити веб-сайт, недостатньо тільки цих базових
+          технологій. Під час розробки використовуються редактори коду, системи
+          контролю версій, збирачі, фреймворки, бібліотеки, хостинг та інші
+          концепції, з якими необхідно буде познайомитися.
+        </p>
+        <img src="./img/webdev.png" alt="web-dev" width="420" />
+        <h4>HTML</h4>
+        <p>
+          <b>HyperText Markup Language (мова розмітки гіпертексту)</b> - мова
+          розмітки веб-документів. Набір правил для структурування (розмітки)
+          текстової інформації, додавання зображень, створення таблиць, форм,
+          списків тощо.
+        </p>
+        <p>
+          <b>HTML-документ</b> - текстовий файл з розширенням .html. Документ,
+          розмічений за допомогою HTML, інтерпретується браузером, в результаті
+          чого користувачі бачать не вихідний код з елементами розмітки, а
+          остаточний результат обробки - веб-сторінку.
+        </p>
+        <img src="./img/html-markup.png" alt="html-markup" width="420" />
+        <p>
+          Популярність HTML і використання його як основи веб-сторінок, призвело
+          до необхідності створення, підтримки і розвитку стандартів. Зараз цим
+          займається
+          <a href="https://whatwg.org/"
+            >Web Hypertext Application Technology Working Group (WHATWG)</a
+          >, яка працює над специфікацією<a
+            href="https://html.spec.whatwg.org/multipage/"
+            >HTML Living Standard</a
+          >.
+        </p>
+      </section>
+      <section class="section">
+        <h3>Теги та атрибути</h3>
+        <p>
+          <b>Тег (tag)</b> — елемент мови розмітки гіпертексту. Це найменші
+          будівельні блоки, з яких складається будь-яка веб-сторінка. Кожен тег
+          позначає якусь сутність: заголовок, список, абзац тексту, зображення.
+        </p>
+        <p>
+          Для виділення тегів серед тексту документа використовуються кутові
+          дужки, в яких вказується ім'я тегу і його атрибути.
+        </p>
+
+        <!-- <pre class="code"></pre> -->
+        <p>
+          Відкриваючий тег вказує, де починається елемент, закриваючий - де
+          закінчується. Закриваючий тег утворюється за допомогою додавання слеша
+          (/) перед іменем тегу. Між відкриваючим і закриваючим тегами
+          знаходиться вміст тегу - контент.
+        </p>
+        <!-- ! -->
+        <p>Приклади тегів.</p>
+        <p class="code">
+          &lt;section&gt;Секція&lt;/section&gt;
+          <br />&lt;p&gt;Абзац&lt;/p&gt; <br />&lt;a&gt;Посилання&lt;/a&gt;
+          <br />&lt;button&gt;Кнопка&lt;/button&gt;
+        </p>
+
+        <h4>Коментарі</h4>
+        <p>
+          Коментарі використовуються для того, щоб залишити у вихідному коді
+          пояснення, замітку, тимчасово закоментувати ділянку коду тощо.
+        </p>
+        <p class="code">
+          &lt;!--&nbsp;Це&nbsp;коментар,&nbsp;його&nbsp;вміст&nbsp;не&nbsp;відобразиться&nbsp;на&nbsp;сторінці&nbsp;--&gt;
+          <br />
+          <br />&lt;p&gt;Це&nbsp;абзац&nbsp;тексту,&nbsp;він&nbsp;буде&nbsp;на&nbsp;сторінці.&lt;/p&gt;
+          <br />
+          <br />&lt;!--
+          <br />&nbsp;&nbsp;Коментар&nbsp;може&nbsp;бути&nbsp;багаторядковим.
+          <br />&nbsp;&nbsp;&nbsp;Це&nbsp;зручно&nbsp;для&nbsp;об&#39;ємніших&nbsp;описів.
+          <br />--&gt;
+        </p>
+        <h4>Атрибути</h4>
+        <p>
+          Атрибути - це додаткові налаштування тегів, за допомогою яких можна
+          змінювати властивості і поведінку елемента. У кожного тегу є
+          обов'язкові і необов'язкові атрибути, їх може бути декілька або зовсім
+          не бути.
+        </p>
+        <p>
+          Атрибути записуються всередині відкриваючого тегу, а їх значення
+          розташовуються всередині подвійних лапок. Декілька атрибутів
+          розділяються пробілом.
+        </p>
+        <p class="code">
+          &lt;a&nbsp;href=&quot;https://google.com&quot;&nbsp;class=&quot;link&quot;&gt;...&lt;/a&gt;
+          <br />
+          <br />&lt;img&nbsp;src=&quot;cat.jpg&quot;&nbsp;alt=&quot;cute&nbsp;cat&quot;&nbsp;/&gt;
+          <br />
+          <br />&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;user_name&quot;&nbsp;/&gt;
+          <br />
+          <br />&lt;button&nbsp;type=&quot;submit&quot;&gt;...&lt;/button&gt;
+          <br />
+          <br />&lt;p&nbsp;class=&quot;text&quot;&gt;...&lt;/p&gt;
+        </p>
+
+        <!-- ! -->
+        <p>Розглянемо деякі атрибути тегу &lt;a&gt;.</p>
+        <p class="code">
+          &lt;a&nbsp;href=&quot;http://google.com&quot;&nbsp;target=&quot;_blank&quot;&nbsp;title=&quot;Пошукова&nbsp;система&nbsp;Google&quot;&gt;
+          <br />&nbsp;&nbsp;Google.com <br />&lt;/a&gt;
+        </p>
+        <ul class="section-list">
+          <li>
+            <b>href</b> - адреса сторінки, на яку перейде користувач після
+            натискання на текст посилання.
+          </li>
+          <li>
+            <b>target</b> - вказує на те, в якій вкладці відкривається сторінка
+            після кліку на посилання
+          </li>
+          <li><b>title</b> - додає спливаючу підказку до тексту посилання.</li>
+        </ul>
+        <p>Розглянемо деякі атрибути тегу &lt;img&gt;.</p>
+        <p class="code">
+          &lt;img
+          <br />&nbsp;&nbsp;src=&quot;https://picsum.photos/640/480&quot;
+          <br />&nbsp;&nbsp;alt=&quot;Довільна&nbsp;картинка&nbsp;від&nbsp;генератора&quot;
+          <br />/&gt;&nbsp;
+        </p>
+        <ul class="section-list">
+          <li><b>src</b> - адреса зображення.</li>
+          <li>
+            <b>alt</b> - альтернативний текст, який буде показаний, якщо
+            зображення не завантажилося.
+          </li>
+        </ul>
+        <p class="i-usefull">
+          Для того щоб дізнатися доступні атрибути тегу та їх призначення, можна
+          зайти в документацію або довідник, наприклад
+          <a href="https://htmlreference.io/">htmlreference.io.</a>
+        </p>
+        <h4>Парні теги</h4>
+        <p>
+          Складаються з відкриваючих і закриваючих тегів, які обгортають
+          контент, дозволяючи змінювати його властивості або відображення,
+          групувати за змістом. Всередині парних тегів можуть бути вкладені інші
+          теги, як мотрійка.
+        </p>
+        <p class="code">
+          &lt;!--&nbsp;Стаття&nbsp;із&nbsp;заголовком&nbsp;і&nbsp;абзацом&nbsp;--&gt;
+          <br />&lt;article&gt;
+          <br />&nbsp;&nbsp;&lt;h1&gt;Коротко&nbsp;про&nbsp;парні&nbsp;теги&lt;/h1&gt;
+          <br />&nbsp;&nbsp;&lt;p&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;Більшість&nbsp;тегів&nbsp;парні.&nbsp;Їх&nbsp;контент&nbsp;вкладений&nbsp;між&nbsp;відкриваючим&nbsp;і&nbsp;закриваючим
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;тегом. <br />&nbsp;&nbsp;&lt;/p&gt;
+          <br />&lt;/article&gt;&nbsp;&nbsp;
+        </p>
+
+        <!-- ! -->
+        <h4>Одинарні теги</h4>
+        <p>
+          Складаються тільки з відкриваючого тегу, не містять текстового
+          контенту і отримують контент або поведінку з атрибутів. Слугують для
+          зміни властивостей документа, підключення файлів тощо.
+        </p>
+        <p class="code">
+          &lt;!--&nbsp;Метаінформація&nbsp;про&nbsp;кодування&nbsp;--&gt;
+          <br />&lt;meta&nbsp;charset=&quot;utf-8&quot;&nbsp;/&gt;
+          <br />
+          <br />&lt;!--&nbsp;Поле&nbsp;введення&nbsp;--&gt;
+          <br />&lt;input&nbsp;type=&quot;text&quot;&nbsp;/&gt;
+          <br />
+          <br />&lt;!--&nbsp;Зображення&nbsp;--&gt;
+          <br />&lt;img&nbsp;src=&quot;cat.jpg&quot;&nbsp;alt=&quot;cool&nbsp;cat&quot;&nbsp;/&gt;&nbsp;
+        </p>
+        <p class="i-interesting">
+          У попередніх стандартах HTML поодинокі теги обов'язково записувалися
+          зі зворотним символом / перед закриваючою дужкою. Наприклад
+          &lt;img&nbsp;/&gt; або &lt;input&nbsp;/&gt;. В сучасному стандарті -
+          це необов'язково і ні на що не впливає.
+        </p>
+        <h4>Вкладеність тегів</h4>
+        <p>
+          Дотримуючись деяких правил, теги можна вкладати один в одного. У разі
+          вкладеності, потрібно дотримуватися порядку їх закриття за принципом
+          мотрійки.
+        </p>
+        <p class="code">
+          &lt;тег1&gt;
+          <br />&nbsp;&nbsp;&lt;тег2&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;тег4&gt;...&lt;/тег4&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;тег5&gt;...&lt;/тег5&gt;
+          <br />&nbsp;&nbsp;&lt;/тег2&gt; <br />&nbsp;&nbsp;&lt;тег3&gt;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;тег6&gt;...&lt;/тег6&gt;
+          <br />&nbsp;&nbsp;&lt;/тег3&gt; <br />&lt;/тег1&gt;
+        </p>
+        <p>
+          Ось валідна розмітка абзацу з посиланням і виділеним текстом, а також
+          списку переваг з описом.
+        </p>
+        <p class="code">
+          &lt;p&gt;
+          <br />&nbsp;&nbsp;&lt;a&nbsp;href=&quot;squoosh.app&quot;&gt;Squoosh&lt;/a&gt;&nbsp;-&nbsp;сервіс&nbsp;&lt;em&gt;оптимизації&lt;/em&gt;&nbsp;зображень.
+          <br />&lt;/p&gt;
+          <br />
+          <br />&lt;p&gt;Переваги&lt;/p&gt; <br />&lt;ul&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Працює&nbsp;в&nbsp;браузері&lt;/li&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Не&nbsp;навантажує&nbsp;систему&lt;/li&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Зручний&nbsp;інтерфейс&lt;/li&gt;
+          <br />&lt;/ul&gt;&nbsp;
+        </p>
+        <p>А в цій версії є проблеми (рядки підсвічені).</p>
+        <p class="code">
+          &lt;!--&nbsp;Не&nbsp;дотримується&nbsp;порядок&nbsp;закриття&nbsp;тегів&nbsp;--&gt;
+          <br />&lt;p&gt;&lt;a&nbsp;href=&quot;squoosh.app&quot;&gt;Squoosh&lt;/a&gt;&nbsp;-&nbsp;сервіс&nbsp;&lt;em&gt;&lt;/a&gt;оптимизації&lt;/p&gt;&nbsp;зображень.&lt;/em&gt;
+          <br />
+          <br />&lt;!--&nbsp;Не&nbsp;дотримуються&nbsp;специфічні&nbsp;правила&nbsp;вкладення&nbsp;тегів&nbsp;--&gt;
+          <br />&lt;ul&gt; <br />&nbsp;&nbsp;&lt;p&gt;Переваги&lt;/p&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Працює&nbsp;в&nbsp;браузері&lt;/li&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Не&nbsp;навантажує&nbsp;систему&lt;/li&gt;
+          <br />&nbsp;&nbsp;&lt;li&gt;Зручний&nbsp;інтерфейс&lt;/li&gt;
+          <br />&lt;/ul&gt;&nbsp;
+        </p>
+
+        <!-- ! -->
+        <h4>Специфікація HTML</h4>
+
+        <p>
+          Специфікація<a href="https://html.spec.whatwg.org/multipage/"
+            >HTML Living Standard</a
+          >
+          - головний документ, який описує стандарти, можливості і майбутній
+          розвиток мови HTML.
+        </p>
+        <p>
+          Для вивчення верстки, насамперед важливі розділи, які описують,
+          <a
+            href="https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content"
+            >які є типи елементів </a
+          >,
+          <a href="https://html.spec.whatwg.org/multipage/#toc-semantics"
+            >що позначає кожен з них</a
+          >
+          , і розуміння того, як їх можна вкладати один в одного.
+        </p>
+        <p class="useful">
+          <b>HTML-елемент</b> - це термін, що описує якусь семантичну сутність в
+          стандарті HTML. Наприклад абзац, заголовок, список або посилання. В
+          HTML-документі елемент представлений тегом (парним або одинарним) -
+          синтаксичною конструкцією мови HTML.
+        </p>
+        <h4>Вкладеність тегів</h4>
+        <p>Алгоритм визначення можливості вкладення тегу досить простий.</p>
+        <ul class="section-list">
+          <li>
+            Йдемо в
+            <a href="https://html.spec.whatwg.org/multipage/#toc-semantics"
+              >специфікацію</a
+            >
+            і знаходимо потрібний елемент.
+          </li>
+          <li>
+            Перевіряємо контентну модель елемента (Content model), в який
+            вкладаємо.
+          </li>
+          <li>Перевіряємо категорії елемента (Categories), який вкладаємо.</li>
+          <li>
+            Якщо категорія підходить і обмеження не забороняють - вкладати
+            можна, інакше - не можна.
+          </li>
+        </ul>
+        <p>
+          Вже через пару днів використання HTML ви звикнете правильно вкладати
+          елементи один в одного, оскільки правила вкладеності стануть
+          інтуїтивно зрозумілі після знайомства з основними тегами.
+        </p>
+        <h4>Довідники</h4>
+        <p>
+          Крім специфікації під рукою корисно мати довідники і шпаргалки. Знати
+          все напам'ять не потрібно, специфічніші речі або ті, що рідко
+          використовуються, завжди можна підглянути.
+        </p>
+        <ul class="section-list">
+          <li>
+            <a href="https://htmlreference.io/" target="_blank"
+              >Довідник HTML-тегів</a
+            >
+          </li>
+          <li>
+            <a href="https://cssreference.io/" target="_blank"
+              >Довідник CSS-властивостей</a
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="section">Це Футер</footer>
   </body>
 </html>

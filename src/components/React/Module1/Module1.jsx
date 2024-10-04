@@ -3,8 +3,12 @@ import css from '../../../components/Layout.module.css'
 
 const Module1 = () => {
   return (
-    <div className={css.generalbox}>
+    <div className={css.generalbox}>                 
+     
+
+
       <ul className={css.leftbox}>
+        <h3>Компоненти та колекції. Стилізація</h3>
         <li>
           <Link to='paintings'>Paintings</Link>
         </li>

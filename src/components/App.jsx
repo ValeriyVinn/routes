@@ -37,10 +37,19 @@ import {
   ReactAbstractOneTools,
   ReactAbstractOneJSX,
   ReactAbstractOneComponents,
-  ReactAbstractOneRenderByCondition
+  ReactAbstractOneRenderByCondition,
+  ReactAbstractOneCollections,
+  ReactAbstractOneInlineStyles,
+  ReactAbstractOneVanillaCSS,
+  ReactAbstractOneCSSModules,
+  ReactAbstractOneNormalization,
 } from './Imports/Imports';
 import NodeAbstract from './Node/Abstract/NodeAbstract';
-import Abstract from './React/Abstract/Abstract';
+
+// import ReactAbstractOneVanillaCSS from './React/Abstract/R1-Components-and-Collections-Styling/09-vanilla-CSS';
+// import ReactAbstractOneCSSModules from './React/Abstract/R1-Components-and-Collections-Styling/10-CSS-modules';
+// import ReactAbstractOneNormalization from './React/Abstract/R1-Components-and-Collections-Styling/11-normalization-of-styles';
+import Abstract from './React/Abstract/ReactAbstract';
 
 
 
@@ -75,7 +84,11 @@ const App = () => {
               <Route path="jsx" element={<ReactAbstractOneJSX/>} />
               <Route path="components" element={<ReactAbstractOneComponents/>} />
               <Route path="render-by-condition" element={<ReactAbstractOneRenderByCondition/>} />
-
+              <Route path="collections" element={<ReactAbstractOneCollections/>} />
+              <Route path="inline-styles" element={<ReactAbstractOneInlineStyles/>} />
+              <Route path="vanilla-CSS" element={<ReactAbstractOneVanillaCSS/>} />
+              <Route path="CSS-modules" element={<ReactAbstractOneCSSModules/>} />
+              <Route path="normalization-of-styles" element={<ReactAbstractOneNormalization/>} />
               <Route
                 path="paintings"
                 element={

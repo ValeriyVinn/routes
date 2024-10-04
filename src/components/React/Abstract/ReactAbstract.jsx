@@ -157,11 +157,11 @@ const Abstract = () => {
             <li><Link to="jsx">JSX</Link></li>
             <li><Link to="components">Компоненти</Link></li>
             <li><Link to="render-by-condition">Рендер за умовою</Link></li>
-            <li><Link to="#">Колекції</Link></li>
-            <li><Link to="#">Вбудовані стилі</Link></li>
-            <li><Link to="#">Ванільний CSS</Link></li>
-            <li><Link to="#">CSS-модулі</Link></li>
-            <li><Link to="#">Нормалізація стилів</Link></li>
+            <li><Link to="collections">Колекції</Link></li>
+            <li><Link to="inline-styles">Вбудовані стилі</Link></li>
+            <li><Link to="vanilla-CSS">Ванільний CSS</Link></li>
+            <li><Link to="CSS-modules">CSS-модулі</Link></li>
+            <li><Link to="normalization-of-styles">Нормалізація стилів</Link></li>
           </ul>
         </li>
         <li className={css.module}>

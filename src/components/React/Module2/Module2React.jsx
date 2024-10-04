@@ -3,8 +3,9 @@ import css from '../../../components/Layout.module.css';
 
 const ListOfComponentsReact2 = () => {
   return (
+    
     <div className={css.generalbox}>
-      <ul className={css.leftbox}>
+      <ul className={css.leftbox}><h3>Події та стан. Форми</h3>
         <li>
           <Link to="counter">Counter</Link>
         </li>
