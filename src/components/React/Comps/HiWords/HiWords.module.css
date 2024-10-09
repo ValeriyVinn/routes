@@ -1,0 +1,32 @@
+.hiWordsHeader{
+    color: green;
+    margin-bottom: 10px;
+}
+
+.wordTable {
+    display: inline-block;
+    padding-right: 8px;
+    margin-bottom: 10px;
+}
+
+.word {
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 0;
+    line-height: 1;
+}
+
+.transcription {
+    color: rgb(100, 90, 200);
+    font-size: 22px;
+    font-weight: 700;
+    padding-top: 0;
+    line-height: 1;
+    user-select: none;
+}
+
+.fontSizeChange {
+    display: block;
+    margin: 20px 0px;
+    width: 900px;
+}

@@ -1,0 +1,33 @@
+a {
+  color: white;
+}
+
+.dropdown {
+    position: relative;
+    top: 0;
+    left: -3%;
+  }
+  
+  .dropdown__toggle {
+    border: none;
+    border-radius: 5px;
+    min-width: 150px;
+    padding: 10px;
+    text-align: center;
+    background-color: teal;
+    color: white;
+  }
+  
+  .dropdown__menu {
+    position: absolute;
+    color: white;
+    top: 100%;
+    left: 0;
+    font-weight: 400;
+    border-radius: 0px 0px  5px 5px;
+    width: 500px;
+    padding: 20px;
+    text-align: left;
+    background-color: teal;
+    
+  }

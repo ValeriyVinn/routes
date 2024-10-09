@@ -1,53 +1,60 @@
-import { Component } from 'react';
-import css from './Dropdown.module.css';
+// import { Component } from 'react';
+import Dropdown from "../../Comps/Dropdown/Dropdown";
+import stylesA from './Dropdown.module.css';
 
-class Dropdown extends Component {
-  state = {
-    visible: false,
-  };
-
-  toggle = () => {
-    this.setState(prevState => ({
-      visible: !prevState.visible,
-    }));
-  };
-
-  //   show = () => {
-  //     this.setState({ visible: true });
-  //   };
-
-  //   hide = () => {
-  //     this.setState({ visible: false });
-  //   };
-
-  render() {
-    return (
-      <div className={css.dropdown}>
-        <button
-          type="button"
-          className={css.dropdown__toggle}
-          onClick={this.toggle}
-        >
-          {this.state.visible ? 'Hide' : 'Show'}
-        </button>
-        {/* <button type="button" className={css.dropdown__toggle} onClick={this.hide}>
-          Hide
-        </button> */}
-
-        {this.state.visible && (
-          <div className={css.dropdown__menu}>
-            Lorem ipsum dolor sit amet consectetur mit adipisicing elit. Veniam
-            quos, exercitationem nihil optio sit deserunt. Officiis nemo id,
-            unde fugit eaque, odit nostrum aut explicabo eos esse, omnis ratione
-            quibusdam? Itaque minus sapiente voluptatibus nemo. Fuga sint quae
-            veniam animi autem dolorum? Iste quas, excepturi voluptas laudantium
-            laboriosam totam veniam inventore amet suscipit quisquam molestiae
-            provident adipisci, rem quidem maxime.
-          </div>
-        )}
-      </div>
-    );
-  }
+function ExampleA() {
+  return (
+    <Dropdown
+      dropdownClass={stylesA.dropdown}
+      toggleButtonClass={stylesA.dropdown__toggle}
+      menuClass={stylesA.dropdown__menu}
+    />
+  );
 }
 
-export default Dropdown;
+export default ExampleA
+
+// class Dropdown extends Component {
+//   state = {
+//     visible: false,
+//   };
+
+//   toggle = () => {
+//     this.setState(prevState => ({
+//       visible: !prevState.visible,
+//     }));
+//   };
+
+
+
+//   render() {
+//     const { dropdownClass, toggleButtonClass, menuClass } = this.props;
+//     return (
+//       <div className={dropdownClass}>
+//         <button
+//           type="button"
+//           className={toggleButtonClass}
+//           onClick={this.toggle}
+//         >
+//           {this.state.visible ? 'Hide Menu' : 'Show Menu'}
+//         </button>
+       
+
+//         {this.state.visible && (
+          
+//           <div className={menuClass}>
+//             Lorem ipsum dolor sit amet consectetur mit adipisicing elit. Veniam
+//             quos, exercitationem nihil optio sit deserunt. Officiis nemo id,
+//             unde fugit eaque, odit nostrum aut explicabo eos esse, omnis ratione
+//             quibusdam? Itaque minus sapiente voluptatibus nemo. Fuga sint quae
+//             veniam animi autem dolorum? Iste quas, excepturi voluptas laudantium
+//             laboriosam totam veniam inventore amet suscipit quisquam molestiae
+//             provident adipisci, rem quidem maxime.
+//           </div>
+//         )}
+//       </div>
+//     );
+//   }
+// }
+
+// export default Dropdown;

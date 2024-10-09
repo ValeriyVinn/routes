@@ -46,10 +46,10 @@ import {
 } from './Imports/Imports';
 import NodeAbstract from './Node/Abstract/NodeAbstract';
 
-// import ReactAbstractOneVanillaCSS from './React/Abstract/R1-Components-and-Collections-Styling/09-vanilla-CSS';
-// import ReactAbstractOneCSSModules from './React/Abstract/R1-Components-and-Collections-Styling/10-CSS-modules';
-// import ReactAbstractOneNormalization from './React/Abstract/R1-Components-and-Collections-Styling/11-normalization-of-styles';
 import Abstract from './React/Abstract/ReactAbstract';
+import PetProject from './React/PetProjects/PetProject';
+import Psychology from './React/PetProjects/Psychology/Psychology';
+import Violets from './React/PetProjects/Violets/Violet';
 
 
 
@@ -175,6 +175,12 @@ const App = () => {
                 element={<SecondReactComponent />}
               />
             </Route>
+            <Route path="pet-project" element={<PetProject />} >
+               <Route path="violets" element={<Violets/>} />
+               <Route path="psychology" element={<Psychology/>} />
+
+            </Route>
+
           </Route>
           <Route path="node" element={<NodeComponent />}>
             <Route path="abstract" element={<NodeAbstract />}>

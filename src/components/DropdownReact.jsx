@@ -1,4 +1,4 @@
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import css from '../components/Layout.module.css';
 
@@ -6,18 +6,18 @@ const DropdownReact = () => {
   return (
     <div>
       <ul className={css.hidden__menu}>
-      <li>
-          <Link to='react/abstract' className={css.nav__link }>
+        <li>
+          <Link to="react/abstract" className={css.nav__link}>
             Конспект
           </Link>
         </li>
         <li>
-          <Link to='react/module-one-components' className={css.nav__link }>
+          <Link to="react/module-one-components" className={css.nav__link}>
             Компоненти та коллекції. Стилізація
           </Link>
         </li>
         <li>
-          <Link to='react/module-two-components' >Події та стан. Форми</Link>
+          <Link to="react/module-two-components">Події та стан. Форми</Link>
         </li>
         <li>
           <Link>Життєвий цикл компонента. Робота з REST API</Link>
@@ -26,7 +26,9 @@ const DropdownReact = () => {
           <Link>Хуки</Link>
         </li>
         <li>
-          <Link to='react/router'>React Router. React Router та поділ коду</Link>
+          <Link to="react/router">
+            React Router. React Router та поділ коду
+          </Link>
         </li>
         <li>
           <Link>
@@ -39,10 +41,14 @@ const DropdownReact = () => {
         <li>
           <Link>Реєстрація та логін користувача</Link>
         </li>
+        <li>
+          <Link to="react/pet-project" className={css.nav__link}>
+            Пет-проекти
+          </Link>
+        </li>
       </ul>
     </div>
   );
 };
 
 export default DropdownReact;
-

@@ -1,0 +1,103 @@
+[
+    {
+      "id": "id-1",
+      "url": "./jpg/1.jpg",
+      "title": "Veronica",
+      "price": 500,
+      "author": {
+        "tag": "barvysto",
+        "url": "https://pixabay.com/users/ractapopulous-24766/"
+      },
+      "quantity": 10
+    },
+    {
+      "id": "id-2",
+      "url": "./jpg/2.jpg",
+      "title": "Bird. Animal art abstract",
+      "price": 400,
+      "author": {
+        "tag": "barvysto",
+        "url": "https://pixabay.com/users/ractapopulous-24766/"
+      },
+      "quantity": 15
+    },
+    {
+      "id": "id-3",
+      "url": "./jpg/3.jpg",
+      "title": "White queen",
+      "price": 600,
+      "author": {
+        "tag": "barvysto",
+        "url": "https://pixabay.com/users/ractapopulous-24766/"
+      },
+      "quantity": 5
+    },
+ 
+    {
+      "id": "id-1",
+      "url": "./jpg/4.jpg",
+      "title": "My Dream",
+      "price": 500,
+      "author": {
+        "tag": "barvysto",
+        "url": "https://pixabay.com/users/ractapopulous-24766/"
+      },
+      "quantity": 10
+    },
+    {
+      "id": "id-2",
+      "url": "./jpg/5.jpg",
+      "title": "Tango",
+      "price": 400,
+      "author": {
+        "tag": "barvysto",
+        "url": "https://pixabay.com/users/ractapopulous-24766/"
+      },
+      "quantity": 15
+    },
+    {
+      "id": "id-3",
+      "url": "./jpg/6.jpg",
+      "title": "Tsar Goroh",
+      "price": 600,
+      "author": {
+        "tag": "barvysto",
+        "url": "https://pixabay.com/users/ractapopulous-24766/"
+      },
+      "quantity": 5
+    },
+
+    {
+        "id": "id-1",
+        "url": "./jpg/7.jpg",
+        "title": "Betelgeize",
+        "price": 500,
+        "author": {
+          "tag": "barvysto",
+          "url": "https://pixabay.com/users/ractapopulous-24766/"
+        },
+        "quantity": 10
+      },
+      {
+        "id": "id-2",
+        "url": "./jpg/8.jpg",
+        "title": "Almond",
+        "price": 400,
+        "author": {
+          "tag": "barvysto",
+          "url": "https://pixabay.com/users/ractapopulous-24766/"
+        },
+        "quantity": 15
+      },
+      {
+        "id": "id-3",
+        "url": "./jpg/9.jpg",
+        "title": "Ruffled Skies",
+        "price": 600,
+        "author": {
+          "tag": "barvysto",
+          "url": "https://pixabay.com/users/ractapopulous-24766/"
+        },
+        "quantity": 5
+      }
+  ]

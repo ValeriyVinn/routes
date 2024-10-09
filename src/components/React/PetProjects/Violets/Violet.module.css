@@ -1,0 +1,44 @@
+a {
+  color: blue;
+}
+
+.container {
+  width: 1350px;
+}
+
+
+.fontSize {
+    font-size: 26px;
+}
+
+.fontColor {
+    color: blue;
+    font-style: italic;
+}
+
+.fontWeight {
+    font-weight: 800;
+}
+
+.sectionList {
+  margin-left: 10px;
+  /* list-style: none; */
+  font-size: 24px;
+  
+}
+
+.fontWeight li {
+  margin-left: 130px;
+  list-style:decimal;
+  font-size: 20px;
+  color: initial;
+  font-style: initial;
+  font-size: initial;
+  font-weight: initial;
+}
+
+.item {
+    color: green;
+    
+}
+
