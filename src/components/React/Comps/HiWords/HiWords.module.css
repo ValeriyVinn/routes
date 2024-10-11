@@ -1,19 +1,41 @@
 .hiWordsHeader{
     color: green;
     margin-bottom: 10px;
+    /* margin-left: 20px; */
 }
 
-.wordTable {
+.color {
+color: red;
+}
+
+.wordTable1,
+.wordTable2,
+.wordTable3,
+.wordTable4 {
     display: inline-block;
     padding-right: 8px;
-    margin-bottom: 10px;
+    background-color: rgb(237, 237, 237);
+    border-radius: 5px;
+    /* margin-bottom: 10px; */
+    /* text-indent: 20px; */
+    /* margin-left: 20px; */
+}
+
+.wordTable1:first-child,
+.wordTable2:first-child,
+.wordTable3:first-child,
+.wordTable4:first-child {
+    margin-left: 50px;
 }
 
 .word {
     font-size: 24px;
     font-weight: 600;
     padding-bottom: 0;
+    /* margin-left: 20px; */
     line-height: 1;
+    /* display: inline-block; */
+    /* user-select: none; */
 }
 
 .transcription {
@@ -24,6 +46,19 @@
     line-height: 1;
     user-select: none;
 }
+
+.article {
+    border: 1px solid rgb(100, 90, 200);
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* .paragraph:not(:last-child) {
+    margin-bottom: 20px;
+} */
+
+
 
 .fontSizeChange {
     display: block;

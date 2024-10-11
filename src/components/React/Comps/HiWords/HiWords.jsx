@@ -1,485 +1,289 @@
-// import React from 'react';
-// import css from './HiWords.module.css'
+import React, { useState } from 'react';
+import data from './HiWordsData.json';
+import css from './HiWords.module.css';
+
+const WordTables = () => {
+  const [fontSize, setFontSize] = useState(26);
+
+  const handleFontSizeChange = event => {
+    setFontSize(parseInt(event.target.value));
+  };
+
+  return (
+    <div>
+      <input
+        type="range"
+        min="16"
+        max="36"
+        value={fontSize}
+        onChange={handleFontSizeChange}
+        className={css.fontSizeChange}
+      />
+
+      <article>
+        {data.map((item, index) => (
+          <div key={index} className={css.article}>
+            <h1
+              className={css.hiWordsHeader}
+              style={{ fontSize: `${fontSize + 10}px` }}
+            >
+              {item.header}
+            </h1>
+
+            <div className={css.paragraph}>
+              {item.firstWordParagraph.map((word, i) => (
+                <table key={`first-${index}-${i}`} className={css.wordTable1}>
+                  <tbody>
+                    <tr>
+                      <td
+                        className={css.word}
+                        style={{ fontSize: `${fontSize}px` }}
+                      >
+                        {word}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        className={css.transcription}
+                        style={{ fontSize: `${fontSize - 2}px` }}
+                      >
+                        {item.firstTranscriptionParagraph[i]}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              ))}
+            </div>
+
+            <div className={css.paragraph}>
+              {item.secondWordParagraph.map((word, i) => (
+                <table key={`second-${index}-${i}`} className={css.wordTable2}>
+                  <tbody>
+                    <tr>
+                      <td
+                        className={css.word}
+                        style={{ fontSize: `${fontSize}px` }}
+                      >
+                        {word}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        className={css.transcription}
+                        style={{ fontSize: `${fontSize - 2}px` }}
+                      >
+                        {item.secondTranscriptionParagraph[i]}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              ))}
+            </div>
+
+            <div className={css.paragraph}>
+              {item.thirdWordParagraph.map((word, i) => (
+                <table key={`third-${index}-${i}`} className={css.wordTable3}>
+                  <tbody>
+                    <tr>
+                      <td
+                        className={css.word}
+                        style={{ fontSize: `${fontSize}px` }}
+                      >
+                        {word}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        className={css.transcription}
+                        style={{ fontSize: `${fontSize - 2}px` }}
+                      >
+                        {item.thirdTranscriptionParagraph[i]}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              ))}
+            </div>
+
+            <div className={css.paragraph}>
+              {item.fourthWordParagraph.map((word, i) => (
+                <table key={`fourth-${index}-${i}`} className={css.wordTable4}>
+                  <tbody>
+                    <tr>
+                      <td
+                        className={css.word}
+                        style={{ fontSize: `${fontSize}px` }}
+                      >
+                        {word}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        className={css.transcription}
+                        style={{ fontSize: `${fontSize - 2}px` }}
+                      >
+                        {item.fourthTranscriptionParagraph[i]}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              ))}
+            </div>
+          </div>
+        ))}
+      </article>
+    </div>
+  );
+};
+
+export default WordTables;  
 
 
-
-// const first = ['The', 'storm', 'that', 'had', 'raged', 'through', 'the', 'coastal', 'town', 'finally', 'began', 'to', 'abate.', 'For', 'days,', 'the', 'relentless', 'winds', 'had', 'imposed', 'their', 'will,', 'tearing', 'through', 'homes', 'and', 'streets,', 'leaving', 'the', 'residents', 'haunted', 'by', 'the', 'destruction.', 'As', 'the', 'skies', 'cleared,', 'Mia', 'stood', 'at', 'the', 'shore,', 'watching', 'the', 'waves', 'gently', 'carry', 'the', 'remnants', 'of', 'the', 'storm', 'away']
-// const second =['ðə', 'stɔrm', 'ðæt', 'hæd', 'reɪdʒd', 'θru', 'ðə', 'ˈkoʊstəl', 'taʊn', 'ˈfaɪnəli', 'bɪˈɡæn', 'tu', 'əˈbeɪt.', 'fɔr', 'deɪz,', 'ðə', 'rɪˈlɛntləs', 'wɪndz', 'hæd', 'ɪmˈpoʊzd', 'ðɛr', 'wɪl,', 'ˈtɛrɪŋ', 'θru', 'hoʊmz', 'ænd', 'strits,', 'ˈliːvɪŋ', 'ðə', 'ˈrɛzɪdənts', 'hɔntɪd', 'baɪ', 'ðə', 'dɪˈstrʌkʃən.', 'æz', 'ðə', 'skaɪz', 'klɪrd,', 'ˈmiə', 'stʊd', 'æt', 'ðə', 'ʃɔr,', 'ˈwɑːtʃɪŋ', 'ðə', 'weɪvz', 'ˈdʒɛntli', 'ˈkæri', 'ðə', 'ˈrɛmənənts', 'ʌv', 'ðə', 'stɔrm', 'əˈweɪ.']
+// import React, { useState } from 'react';
+// import data from './HiWordsData.json';
+// import css from './HiWords.module.css';
 
 // const WordTables = () => {
+//   const [fontSize, setFontSize] = useState(26);
+
+//   const handleFontSizeChange = event => {
+//     setFontSize(parseInt(event.target.value));
+//   };
+
 //   return (
-    
 //     <div>
-//       <input type="range" min="16" max="26"/>
-//       {first.map((word, index) => (
-//         <table key={index} className={css.wordTable}>
-//           <tbody>
-//             <tr>
-//               <td className={css.word}>{word}</td>
-//             </tr>
-//             <tr>
-//               <td className={css.transcription}>{second[index]}</td>
-//             </tr>
-//           </tbody>
-//         </table>
-//       ))}
+//       <input
+//         type="range"
+//         min="16"
+//         max="36"
+//         value={fontSize}
+//         onChange={handleFontSizeChange}
+//         className={css.fontSizeChange}
+//       />
+
+//       <article>
+//         {data.map((item, index) => (
+//           <div key={index} className={css.article}>
+//             <h1
+//               className={css.hiWordsHeader}
+//               style={{ fontSize: `${fontSize + 10}px` }}
+//             >
+//               {item.header}
+//             </h1>
+
+//             <div className={css.paragraph}>
+//               {item.firstWordParagraph.map((word, i) => (
+//                 <table key={`first-${index}-${i}`} className={css.wordTable1}>
+//                   <tbody>
+//                     <tr>
+//                       <td
+//                         className={`${css.word} ${
+//                           item.header.includes(word) ? css.color : ''
+//                         }`}
+//                         style={{ fontSize: `${fontSize}px` }}
+//                       >
+//                         {word}
+//                       </td>
+//                     </tr>
+//                     <tr>
+//                       <td
+//                         className={css.transcription}
+//                         style={{ fontSize: `${fontSize - 2}px` }}
+//                       >
+//                         {item.firstTranscriptionParagraph[i]}
+//                       </td>
+//                     </tr>
+//                   </tbody>
+//                 </table>
+//               ))}
+//             </div>
+
+//             <div className={css.paragraph}>
+//               {item.secondWordParagraph.map((word, i) => (
+//                 <table key={`second-${index}-${i}`} className={css.wordTable2}>
+//                   <tbody>
+//                     <tr>
+//                       <td
+//                         className={`${css.word} ${
+//                           item.header.includes(word) ? css.color : ''
+//                         }`}
+//                         style={{ fontSize: `${fontSize}px` }}
+//                       >
+//                         {word}
+//                       </td>
+//                     </tr>
+//                     <tr>
+//                       <td
+//                         className={css.transcription}
+//                         style={{ fontSize: `${fontSize - 2}px` }}
+//                       >
+//                         {item.secondTranscriptionParagraph[i]}
+//                       </td>
+//                     </tr>
+//                   </tbody>
+//                 </table>
+//               ))}
+//             </div>
+
+//             <div className={css.paragraph}>
+//               {item.thirdWordParagraph.map((word, i) => (
+//                 <table key={`third-${index}-${i}`} className={css.wordTable3}>
+//                   <tbody>
+//                     <tr>
+//                       <td
+//                         className={`${css.word} ${
+//                           item.header.includes(word) ? css.color : ''
+//                         }`}
+//                         style={{ fontSize: `${fontSize}px` }}
+//                       >
+//                         {word}
+//                       </td>
+//                     </tr>
+//                     <tr>
+//                       <td
+//                         className={css.transcription}
+//                         style={{ fontSize: `${fontSize - 2}px` }}
+//                       >
+//                         {item.thirdTranscriptionParagraph[i]}
+//                       </td>
+//                     </tr>
+//                   </tbody>
+//                 </table>
+//               ))}
+//             </div>
+
+//             <div className={css.paragraph}>
+//               {item.fourthWordParagraph.map((word, i) => (
+//                 <table key={`fourth-${index}-${i}`} className={css.wordTable4}>
+//                   <tbody>
+//                     <tr>
+//                       <td
+//                         className={`${css.word} ${
+//                           item.header.includes(word) ? css.color : ''
+//                         }`}
+//                         style={{ fontSize: `${fontSize}px` }}
+//                       >
+//                         {word}
+//                       </td>
+//                     </tr>
+//                     <tr>
+//                       <td
+//                         className={css.transcription}
+//                         style={{ fontSize: `${fontSize - 2}px` }}
+//                       >
+//                         {item.fourthTranscriptionParagraph[i]}
+//                       </td>
+//                     </tr>
+//                   </tbody>
+//                 </table>
+//               ))}
+//             </div>
+//           </div>
+//         ))}
+//       </article>
 //     </div>
 //   );
 // };
 
 // export default WordTables;
 
-
-import React, { useState } from 'react';
-import css from './HiWords.module.css';
-
-const first = [
-  "The",
-  "storm",
-  "that",
-  "had",
-  "raged",
-  "through",
-  "the",
-  "coastal",
-  "town",
-  "finally",
-  "began",
-  "to",
-  "abate.",
-  "For",
-  "days,",
-  "the",
-  "relentless",
-  "winds",
-  "had",
-  "imposed",
-  "their",
-  "will,",
-  "tearing",
-  "through",
-  "homes",
-  "and",
-  "streets,",
-  "leaving",
-  "the",
-  "residents",
-  "haunted",
-  "by",
-  "the",
-  "destruction.",
-  "As",
-  "the",
-  "skies",
-  "cleared,",
-  "Mia",
-  "stood",
-  "at",
-  "the",
-  "shore,",
-  "watching",
-  "the",
-  "waves",
-  "gently",
-  "carry",
-  "the",
-  "remnants",
-  "of",
-  "the",
-  "storm",
-  "away.",
-  "Though",
-  "the",
-  "worst",
-  "had",
-  "passed,",
-  "the",
-  "damage",
-  "was",
-  "evident.",
-  "Many",
-  "homes",
-  "were",
-  "in",
-  "ruins,",
-  "and",
-  "the",
-  "once-thriving",
-  "community",
-  "seemed",
-  "on",
-  "the",
-  "verge",
-  "of",
-  "decline.",
-  "But",
-  "Mia,",
-  "ever",
-  "the",
-  "optimist,",
-  "knew",
-  "the",
-  "town",
-  "would",
-  "endure.",
-  "The",
-  "people",
-  "here",
-  "had",
-  "always",
-  "abided",
-  "by",
-  "their",
-  "own",
-  "strength,",
-  "and",
-  "she",
-  "was",
-  "determined",
-  "to",
-  "help",
-  "them",
-  "rebuild.",
-  "She",
-  "engaged",
-  "her",
-  "neighbors,",
-  "rallying",
-  "them",
-  "to",
-  "work",
-  "together,",
-  "lending",
-  "her",
-  "time",
-  "and",
-  "skills",
-  "wherever",
-  "needed.",
-  "The",
-  "collective",
-  "efforts",
-  "slowly",
-  "began",
-  "to",
-  "benefit",
-  "everyone,",
-  "as",
-  "damaged",
-  "homes",
-  "were",
-  "repaired",
-  "and",
-  "hope",
-  "was",
-  "restored.",
-  "The",
-  "town",
-  "wasn’t",
-  "just",
-  "being",
-  "rebuilt—it",
-  "was",
-  "transforming,",
-  "merging",
-  "the",
-  "old",
-  "with",
-  "the",
-  "new,",
-  "creating",
-  "something",
-  "stronger.",
-  "As",
-  "Mia",
-  "looked",
-  "around",
-  "at",
-  "the",
-  "progress,",
-  "she",
-  "realized",
-  "that",
-  "the",
-  "storm",
-  "had",
-  "not",
-  "only",
-  "tested",
-  "their",
-  "resilience",
-  "but",
-  "also",
-  "brought",
-  "them",
-  "closer.",
-  "The",
-  "hardships",
-  "they",
-  "endured",
-  "had",
-  "forged",
-  "a",
-  "deeper",
-  "bond,",
-  "one",
-  "that",
-  "would",
-  "carry",
-  "them",
-  "forward,",
-  "no",
-  "matter",
-  "what",
-  "storms",
-  "lay",
-  "ahead."
-]
-const second =[
-  "ðə",
-  "stɔrm",
-  "ðæt",
-  "hæd",
-  "reɪdʒd",
-  "θru",
-  "ðə",
-  "ˈkoʊstəl",
-  "taʊn",
-  "ˈfaɪnəli",
-  "bɪˈɡæn",
-  "tu",
-  "əˈbeɪt.",
-  "fɔr",
-  "deɪz,",
-  "ðə",
-  "rɪˈlɛntləs",
-  "wɪndz",
-  "hæd",
-  "ɪmˈpoʊzd",
-  "ðɛr",
-  "wɪl,",
-  "ˈtɛrɪŋ",
-  "θru",
-  "hoʊmz",
-  "ænd",
-  "strits,",
-  "ˈliːvɪŋ",
-  "ðə",
-  "ˈrɛzɪdənts",
-  "hɔntɪd",
-  "baɪ",
-  "ðə",
-  "dɪˈstrʌkʃən.",
-  "æz",
-  "ðə",
-  "skaɪz",
-  "klɪrd,",
-  "ˈmiə",
-  "stʊd",
-  "æt",
-  "ðə",
-  "ʃɔr,",
-  "ˈwɑːtʃɪŋ",
-  "ðə",
-  "weɪvz",
-  "ˈdʒɛntli",
-  "ˈkæri",
-  "ðə",
-  "ˈrɛmənənts",
-  "ʌv",
-  "ðə",
-  "stɔrm",
-  "əˈweɪ.",
-  "ðoʊ",
-  "ðə",
-  "wɜrst",
-  "hæd",
-  "pæst,",
-  "ðə",
-  "ˈdæmɪdʒ",
-  "wəz",
-  "ˈɛvɪdənt.",
-  "ˈmɛni",
-  "hoʊmz",
-  "wɜr",
-  "ɪn",
-  "ˈruɪnz,",
-  "ænd",
-  "ðə",
-  "wʌns-ˈθraɪvɪŋ",
-  "kəˈmjunɪti",
-  "siːmd",
-  "ɑn",
-  "ðə",
-  "vɜrdʒ",
-  "ʌv",
-  "dɪˈklaɪn.",
-  "bʌt",
-  "ˈmiə,",
-  "ˈɛvər",
-  "ðə",
-  "ˈɑptɪmɪst,",
-  "nu",
-  "ðə",
-  "taʊn",
-  "wʊd",
-  "ɪnˈdʊr.",
-  "ðə",
-  "ˈpipəl",
-  "hɪr",
-  "hæd",
-  "ˈɔlweɪz",
-  "əˈbaɪd",
-  "baɪ",
-  "ðɛr",
-  "oʊn",
-  "strɛŋkθ,",
-  "ænd",
-  "ʃi",
-  "wəz",
-  "dɪˈtɜrmɪnd",
-  "tu",
-  "hɛlp",
-  "ðɛm",
-  "rɪˈbɪld.",
-  "ʃi",
-  "ɪnˈɡeɪdʒd",
-  "hər",
-  "ˈneɪbərz,",
-  "ˈrælɪɪŋ",
-  "ðɛm",
-  "tu",
-  "wɜrk",
-  "təˈɡɛðər,",
-  "lɛndɪŋ",
-  "hər",
-  "taɪm",
-  "ænd",
-  "skɪlz",
-  "ˈwɛrɛvər",
-  "ˈnidɪd.",
-  "ðə",
-  "kəˈlɛktɪv",
-  "ˈɛfərts",
-  "ˈsloʊli",
-  "bɪˈɡæn",
-  "tu",
-  "ˈbɛnɪfɪt",
-  "ˈɛvriˌwʌn,",
-  "æz",
-  "ˈdæmɪdʒd",
-  "hoʊmz",
-  "wɜr",
-  "rɪˈpɛrd",
-  "ænd",
-  "hoʊp",
-  "wəz",
-  "rɪˈstɔrd.",
-  "ðə",
-  "taʊn",
-  "ˈwɑzənt",
-  "dʒʌst",
-  "ˈbiːɪŋ",
-  "ˈrɪˌbɪlt—ɪt",
-  "wəz",
-  "trænsˈfɔrmɪŋ,",
-  "ˈmɜrdʒɪŋ",
-  "ði",
-  "oʊld",
-  "wɪð",
-  "ðə",
-  "nju,",
-  "kriˈeɪtɪŋ",
-  "ˈsʌmθɪŋ",
-  "ˈstrɔŋɡər.",
-  "æz",
-  "ˈmiə",
-  "lʊkt",
-  "əˈraʊnd",
-  "æt",
-  "ðə",
-  "ˈprɔɡrɛs,",
-  "ʃi",
-  "ˈriːəlaɪzd",
-  "ðæt",
-  "ðə",
-  "stɔrm",
-  "hæd",
-  "nɑt",
-  "ˈoʊnli",
-  "ˈtɛstɪd",
-  "ðɛr",
-  "rɪˈzɪljəns",
-  "bʌt",
-  "ˈɔlsoʊ",
-  "brɔt",
-  "ðɛm",
-  "ˈkloʊsər.",
-  "ðə",
-  "ˈhɑrdʃɪps",
-  "ðeɪ",
-  "ɪnˈdʊrd",
-  "hæd",
-  "fɔrdʒd",
-  "ə",
-  "ˈdɪpər",
-  "bɑnd,",
-  "wʌn",
-  "ðæt",
-  "wʊd",
-  "ˈkæri",
-  "ðɛm",
-  "ˈfɔrwərd,",
-  "noʊ",
-  "ˈmætər",
-  "wʌt",
-  "stɔrmz",
-  "leɪ",
-  "əˈhɛd."
-]
-
-const WordTables = () => {
-  const [fontSize, setFontSize] = useState(26); // початковий розмір шрифту .word
-
-  const handleFontSizeChange = (event) => {
-    setFontSize(parseInt(event.target.value));
-  };
-
-  return (
-    <div>
-      <input 
-        type="range" 
-        min="16" 
-        max="36" 
-        value={fontSize} 
-        onChange={handleFontSizeChange} 
-        className={css.fontSizeChange}
-      />
-      <h1 className={css.hiWordsHeader} style={{ fontSize: `${fontSize + 10}px` }}>Abate,  abide,  benefit,  carry,  decline,  engage,  haunt,  impose,  lend,  merge.</h1>
-      {first.map((word, index) => (
-        <table key={index} className={css.wordTable}>
-          <tbody>
-            <tr>
-              <td 
-                className={css.word} 
-                style={{ fontSize: `${fontSize}px` }} // динамічний розмір для .word
-              >
-                {word}
-              </td>
-            </tr>
-            <tr>
-              <td 
-                className={css.transcription} 
-                style={{ fontSize: `${fontSize - 2}px` }} // динамічний розмір для .transcription
-              >
-                {second[index]}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      ))}
-    </div>
-  );
-};
-
-export default WordTables;
