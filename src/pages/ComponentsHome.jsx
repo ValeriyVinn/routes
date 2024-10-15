@@ -1,13 +1,18 @@
-import WordTables from "components/React/Comps/HiWords/HiWords"
-import css from "../pages/ComponentsHome.module.css"
+import WordTables from 'components/React/Comps/HiWords/HiWords';
+import TongueTwisters from 'components/React/Comps/TongueTwisters/TongueTwisters';
+import css from '../pages/ComponentsHome.module.css';
 
 
 const ComponentsHome = () => {
-   return (<>
-   <h1 className={css.color}>Home</h1>
-   
-   <WordTables/>
-   </>)
-}
+  return (
+    <>
+      <h1 className={css.color}>Home</h1>
+<TongueTwisters/>
+      <WordTables />
+      
+      
+    </>
+  );
+};
 
-export default ComponentsHome
+export default ComponentsHome;

@@ -27,19 +27,31 @@
 //     console.log('navy')
 // })
 
-console.log('wɪð ˈvɪktəri ɪn saɪt, əˈlinə nu ðɪs wəz nɑt ʤəst əˈbaʊt ˈkæpʧərɪŋ ə mæn ɔr ˈɡeɪnɪŋ ˈtrɛʒər. ɪt wəz əˈbaʊt sɪˈkjʊrɪŋ ə ˈfjuʧər fɔr hɜr ˈpipəl, wʌn ðæt kəd ˈoʊnli bi əˈʧivd ɪf ðeɪ rɪˈmeɪnd strɔŋ, juˈnaɪtɪd, ænd ˈfɪrlɪs. ænd təˈnaɪt, ðeɪ wʊd du ʤəst ðæt.'.split(" "))
+// const first = ('lioʊ hæd ˈɔlweɪz drimd ʌv ˈklaɪmɪŋ ðə ˈmaʊntən ðæt lumd oʊvər hɪz ˈvɪlɪʤ. wʌn deɪ, hi ˈfaɪnəli dɪˈsaɪdɪd tu maʊnt æn ˌɛkspəˈdɪʃən tu əbˈteɪn ðə vju frʌm ɪts pik. hɪz frɛndz wɜr ˈhɛzɪtənt æt fɜrst, bʌt lioʊ ˈmænəʤd tu pərˈsweɪd ðɛm, ˈpeɪntɪŋ ˈvɪvɪd ˈpɪkʧərz ʌv ðə ˈbjuti ðæt əˈweɪtɪd ðɛm æt ðə ˈsʌmət.'.split(" "))
 
 
 
 
 
-const first = ['As', 'Mia', 'looked', 'around', 'at', 'the', 'progress,', 'she', 'realized', 'that', 'the', 'storm', 'had', 'not', 'only', 'tested', 'their', 'resilience', 'but', 'also', 'brought', 'them', 'closer.', 'The', 'hardships', 'they', 'endured', 'had', 'forged', 'a', 'deeper', 'bond,', 'one', 'that', 'would', 'carry', 'them', 'forward,', 'no', 'matter', 'what', 'storms', 'lay', 'ahead.']
-
-const second =['æz', 'ˈmiə', 'lʊkt', 'əˈraʊnd', 'æt', 'ðə', 'ˈprɔɡrɛs,', 'ʃi', 'ˈriːəlaɪzd', 'ðæt', 'ðə', 'stɔrm', 'hæd', 'nɑt', 'ˈoʊnli', 'ˈtɛstɪd', 'ðɛr', 'rɪˈzɪljəns', 'bʌt', 'ˈɔlsoʊ', 'brɔt', 'ðɛm', 'ˈkloʊsər.', 'ðə', 'ˈhɑrdʃɪps', 'ðeɪ', 'ɪnˈdʊrd', 'hæd', 'fɔrdʒd', 'ə', 'ˈdɪpər', 'bɑnd,', 'wʌn', 'ðæt', 'wʊd', 'ˈkæri', 'ðɛm', 'ˈfɔrwərd,', 'noʊ', 'ˈmætər', 'wʌt', 'stɔrmz', 'leɪ', 'əˈhɛd.']
-console.log(first.length)
-console.log(second.length)
+//  first = ['As', 'Mia', 'looked', 'around', 'at', 'the', 'progress,', 'she', 'realized', 'that', 'the', 'storm', 'had', 'not', 'only', 'tested', 'their', 'resilience', 'but', 'also', 'brought', 'them', 'closer.', 'The', 'hardships', 'they', 'endured', 'had', 'forged', 'a', 'deeper', 'bond,', 'one', 'that', 'would', 'carry', 'them', 'forward,', 'no', 'matter', 'what', 'storms', 'lay', 'ahead.']
 
 
-// const word = "Навчайся без перерви та отримуй досягнення. У тебе вийде!".split(' ')
-// console.log(word[5])
 
+// const newFirst = first.map(word => `"${word}"`);
+
+// console.log(newFirst);
+
+
+
+
+const textarea = document.getElementById('string');
+const array = document.querySelector(".array")
+  
+document.getElementById('getText').addEventListener('click', () => {
+   const enteredText = textarea.value.split(" ");
+// const enteredTextSplited = enteredText.split(" ")
+const receivedText = enteredText.map(word => ` "${word}"`)
+
+const output = array.insertAdjacentHTML("beforebegin", receivedText);
+return output
+});

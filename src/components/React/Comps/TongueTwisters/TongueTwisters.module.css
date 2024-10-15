@@ -1,0 +1,41 @@
+.article {
+  border: 1px solid green;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px auto;
+  width: 98%;
+  /* background-color: yellow; */
+  background-color: rgb(247, 246, 246);
+}
+
+.chart {
+  display: flex;
+}
+
+.description {
+  margin-left: 30px;
+}
+
+dd {
+  font-size: 28px;
+  line-height: 1.1;
+  border-bottom: 1px solid lightgrey;
+}
+dt {
+  line-height: 1.1;
+}
+
+p {
+  text-transform: uppercase;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  /* color: rgb(0, 208, 0);
+     */
+  color: red;
+  /* font-weight: 500; */
+}

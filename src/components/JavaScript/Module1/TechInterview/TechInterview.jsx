@@ -1,15 +1,27 @@
-
+import css from './TechInterview.module.css'
 const TechInterview = () => {
   return (
     <>
       <h5>Які типи даних присутні в JavaScript?</h5>
-      <p>
+      <ul>
+        <li className={css.uk}>        Існує 8 типів даних. 7 примітивних та 1 складний тип даних. Примітивні
+        типи: number, string, boolean, symbol, bigInt, null, undefined. Складний
+        тип - object. Він використовується для колекцій даних та для оголошення
+        більш складних сутностей. Також він передається за посиланням, а прості
+        типи даних за значенням.</li>
+        <li className={css.en}>There are eight data types. Seven primitive and one complex data type. Primitive types: number, string, boolean, symbol, bigInt, null, undefined. Complex type - object. It is used for collections of data and for declaring more complex entities. It is also passed by reference, and simple data types by value.</li>
+        <li className={css.tr}>ðɛr ɑr eɪt deɪtə taɪps. sɛvən prɪmətɪv ænd wʌn kɑmplɛks deɪtə taɪp. prɪmətɪv taɪps: nʌmbər, strɪŋ, buliən, sɪmbəl, bɪɡˌɪnt, nʌl, ʌndɪfaɪnd. kɑmplɛks taɪp - ɑbdʒɛkt. ɪt ɪz juzd fɔr kəˈlɛkʃənz ʌv deɪtə ænd fɔr dɪˈklɛrɪŋ mɔr kɑmplɛks ɛntɪtiz. ɪt ɪz ɔlsoʊ pæst baɪ rɛfərəns, ænd sɪmpəl deɪtə taɪps baɪ vælju.</li>
+      </ul>
+      <p className={css.uk}>
         Існує 8 типів даних. 7 примітивних та 1 складний тип даних. Примітивні
         типи: number, string, boolean, symbol, bigInt, null, undefined. Складний
         тип - object. Він використовується для колекцій даних та для оголошення
         більш складних сутностей. Також він передається за посиланням, а прості
         типи даних за значенням.
       </p>
+      <p className={css.en}>There are eight data types. Seven primitive and one complex data type. Primitive types: number, string, boolean, symbol, bigInt, null, undefined. Complex type - object. It is used for collections of data and for declaring more complex entities. It is also passed by reference, and simple data types by value.</p>
+      <p className={css.tr}>
+ðɛr ɑr eɪt deɪtə taɪps. sɛvən prɪmətɪv ænd wʌn kɑmplɛks deɪtə taɪp. prɪmətɪv taɪps: nʌmbər, strɪŋ, buliən, sɪmbəl, bɪɡˌɪnt, nʌl, ʌndɪfaɪnd. kɑmplɛks taɪp - ɑbdʒɛkt. ɪt ɪz juzd fɔr kəˈlɛkʃənz ʌv deɪtə ænd fɔr dɪˈklɛrɪŋ mɔr kɑmplɛks ɛntɪtiz. ɪt ɪz ɔlsoʊ pæst baɪ rɛfərəns, ænd sɪmpəl deɪtə taɪps baɪ vælju.</p>
       <h5>Що таке NaN?</h5>
       <p>
         NaN (not a number) - це значення, що отримується в результаті виконання

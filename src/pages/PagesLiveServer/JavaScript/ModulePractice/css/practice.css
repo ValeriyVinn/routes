@@ -347,3 +347,44 @@ pre {
     padding: 5px 10px;
     color: navy;
 }
+
+/* Grid markup */
+
+
+
+
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr; /* три рядки автоматичної висоти */
+  /* grid-template-rows: 70px 1000px 50px 50px; */
+  gap: 5px;
+}
+
+.grid-item:nth-child(1) {
+  grid-column: 1 / -1; /* Перший елемент займає всю ширину (100%) */
+}
+
+.grid-item:nth-child(5) {
+  grid-column: 1 / -1; /* Перший елемент займає всю ширину (100%) */
+}
+
+.grid-item {
+  background-color: lightblue;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.array {
+  min-height: 200px;
+}
+.section-output {
+    font-size: 28px;
+
+}
+
+
+
+
