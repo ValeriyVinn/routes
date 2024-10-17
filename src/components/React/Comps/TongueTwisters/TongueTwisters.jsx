@@ -155,57 +155,8 @@ const TongueTwisters = () => {
       </div>
 
       <div className={css.article}>
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/0RXzfRcjk-s?si=jiCCpSOnvRBqTacE`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
+      <h2>Vowel sound /ʌ/ as in "us"</h2>
 
-      <div className={css.article}>
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/OLG3cCLcNiI?si=dpq6nNTcQbE4ZTBT`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/m1mDSUSwNls?si=Ft_iVJ8nt4eF8gsm`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
         <iframe
           width="560"
           height="315"
@@ -223,6 +174,8 @@ const TongueTwisters = () => {
       </div>
 
       <div className={css.article}>
+      <h2>Vowel sound /ɑ/ as in "got"</h2>
+
         <iframe
           width="560"
           height="315"
@@ -240,10 +193,12 @@ const TongueTwisters = () => {
       </div>
 
       <div className={css.article}>
+                <h2>Vowel sound /ɛ/ as in "bed"</h2>
+
         <iframe
           width="560"
           height="315"
-          src={`https://www.youtube.com/embed/lkM6CKBM2ns?si=cgiCYRNpZRGj0z6l`}
+          src={`https://www.youtube.com/embed/OLG3cCLcNiI?si=dpq6nNTcQbE4ZTBT`}
           style={{
             border: '1px solid blue',
             borderRadius: '5px',
@@ -257,10 +212,30 @@ const TongueTwisters = () => {
       </div>
 
       <div className={css.article}>
+      <h2>Vowel sound /ə/ (schwa) as in "ago"</h2>
+
         <iframe
           width="560"
           height="315"
-          src={`https://www.youtube.com/embed/moLTR-dLQQY?si=MjUnKsAHfyrdWAR_`}
+          src={`https://www.youtube.com/embed/m1mDSUSwNls?si=Ft_iVJ8nt4eF8gsm`}
+          style={{
+            border: '1px solid blue',
+            borderRadius: '5px',
+            overflow: 'hidden',
+            padding: '5px',
+          }}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="YouTube Video"
+        ></iframe>
+      </div>  
+
+      <div className={css.article}>
+        <h2>Vowel sound /æ/ as in "cat"</h2>
+        <iframe
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/mynucZiy-Ug?si=nrz4oxjXwtNFA5Kg`}
           style={{
             border: '1px solid blue',
             borderRadius: '5px',
@@ -274,23 +249,8 @@ const TongueTwisters = () => {
       </div>
 
       <div className={css.article}>
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/4kPJLHiiGdU?si=c_h-vINE2OZFqFWG`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
+      <h2>Vowel sound /ɔ/ as in "on"</h2>
 
-      <div className={css.article}>
         <iframe
           width="560"
           height="315"
@@ -308,10 +268,31 @@ const TongueTwisters = () => {
       </div>
 
       <div className={css.article}>
+      <h2>Vowel sound /ʊ/ as in "put"</h2>
+
         <iframe
           width="560"
           height="315"
-          src={`https://www.youtube.com/embed/8uD-GuuSgyk?si=kXB9u6BJG4TWwfLo`}
+          src={`https://www.youtube.com/embed/moLTR-dLQQY?si=MjUnKsAHfyrdWAR_`}
+          style={{
+            border: '1px solid blue',
+            borderRadius: '5px',
+            overflow: 'hidden',
+            padding: '5px',
+          }}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="YouTube Video"
+        ></iframe>
+      </div>
+      
+      <div className={css.article}>
+      <h2>Vowel sound /u/ as in "blue"</h2>
+
+        <iframe
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/lkM6CKBM2ns?si=cgiCYRNpZRGj0z6l`}
           style={{
             border: '1px solid blue',
             borderRadius: '5px',
@@ -325,6 +306,8 @@ const TongueTwisters = () => {
       </div>
 
       <div className={css.article}>
+      <h2>Vowel sound /aʊ/ as in "cloud"</h2>
+
         <iframe
           width="560"
           height="315"
@@ -342,6 +325,65 @@ const TongueTwisters = () => {
       </div>
 
       <div className={css.article}>
+      <h2>Vowel sound /oʊ/ as in "go"</h2>
+
+        <iframe
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/4kPJLHiiGdU?si=c_h-vINE2OZFqFWG`}
+          style={{
+            border: '1px solid blue',
+            borderRadius: '5px',
+            overflow: 'hidden',
+            padding: '5px',
+          }}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="YouTube Video"
+        ></iframe>
+      </div>
+
+      <div className={css.article}>
+      <h2>Vowel sound /aɪ/ as in "like"</h2>
+
+        <iframe
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/8uD-GuuSgyk?si=kXB9u6BJG4TWwfLo`}
+          style={{
+            border: '1px solid blue',
+            borderRadius: '5px',
+            overflow: 'hidden',
+            padding: '5px',
+          }}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="YouTube Video"
+        ></iframe>
+      </div>    
+
+      <div className={css.article}>
+      <h2>Vowel sound /eɪ/ as in "make"</h2>
+
+        <iframe
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/0RXzfRcjk-s?si=jiCCpSOnvRBqTacE`}
+          style={{
+            border: '1px solid blue',
+            borderRadius: '5px',
+            overflow: 'hidden',
+            padding: '5px',
+          }}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="YouTube Video"
+        ></iframe>
+      </div>
+
+      <div className={css.article}>
+      <h2>Vowel sound /ɔɪ/ as in "boy"</h2>
+
         <iframe
           width="560"
           height="315"
@@ -358,22 +400,8 @@ const TongueTwisters = () => {
         ></iframe>
       </div>
 
-      <div className={css.article}>
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/mynucZiy-Ug?si=nrz4oxjXwtNFA5Kg`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
+      
+      
     </div>
   );
 };
