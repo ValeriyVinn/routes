@@ -38,10 +38,34 @@
       </section> -->
 
 <section class="section">
-  <input type="text" class="valued">
+  <!-- <input type="text" class="valued"> -->
+
+  <div class="code-container">
+    <button class="copy-button" onclick="copyCode()">Копіювати</button>
+  <pre><code id="code-snippet">const value = 5 * undefined; // Invalid operation
+console.log(value); // NaN</code></pre>
+    <div id="copy-message" class="message">Код скопійовано!</div>
+  </div>
+
 </section>
 
+<script>
+   function copyCode() {
+    const code = document.getElementById('code-snippet').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+      const message = document.getElementById('copy-message');
+      message.style.display = 'block';
+      message.textContent = 'Код скопійовано!';
 
+      // Приховати повідомлення через 3 секунди
+      setTimeout(() => {
+        message.style.display = 'none';
+      }, 3000);
+    }).catch(err => {
+      console.error('Не вдалося скопіювати', err);
+    });
+  }
+</script>
 
       <section class="section">
 <textarea name="" id="string" cols="200" rows="10"></textarea>

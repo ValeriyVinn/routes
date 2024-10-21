@@ -1,16 +1,149 @@
-import React from 'react';
+// import React from 'react';
+// import { useState } from 'react';
+// import css from './TongueTwisters.module.css';
+// import videoData from './videoData.json';
+// import Modal from './Modal';
+
+// const TongueTwisters = () => {
+//   const [isModalOpen, setModalOpen] = useState(false);
+//   const [selectedVideo, setSelectedVideo] = useState(null);
+
+//   const openModal = video => {
+//     setSelectedVideo(video);
+//     setModalOpen(true);
+//   };
+
+//   const closeModal = () => {
+//     setModalOpen(false);
+//     setSelectedVideo(null);
+//   };
+
+//   return (
+//     <div>
+
+//       {videoData.map(video => (
+//         <div className={css.article} key={video.id}>
+//           <div className={css.chart}>
+//           <h2>{video.title}</h2>
+
+//           <button
+//             className={css.btnWatchVideo}
+//             onClick={() => openModal(video)}
+//           >
+//             Watch Video
+//           </button>
+//           </div>
+
+//           <p>{video.text}</p>
+//         </div>
+//       ))}
+
+//       {isModalOpen && selectedVideo && (
+//         <Modal closeModal={closeModal}>
+//           <iframe
+//             width="560"
+//             height="315"
+//             src={selectedVideo.src}
+//             style={{
+//               border: '1px solid blue',
+//               borderRadius: '5px',
+//               overflow: 'hidden',
+//               padding: '5px',
+//             }}
+//             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//             allowFullScreen
+//             title="YouTube Video"
+//           ></iframe>
+//         </Modal>
+//       )}
+//     </div>
+//   );
+// };
+// export default TongueTwisters;
+
+import React, { useState, useEffect } from 'react';
 import css from './TongueTwisters.module.css';
+import videoData from './videoData.json';
+import Modal from './Modal';
 
 const TongueTwisters = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [openAccordions, setOpenAccordions] = useState([]);
+
+  // Відновлення стану акордеона при завантаженні сторінки
+  useEffect(() => {
+    const savedState = videoData.map(
+      (_, i) => localStorage.getItem(`accordion-${i}`) === 'true'
+    );
+    setOpenAccordions(savedState);
+  }, []);
+
+  const openModal = video => {
+    setSelectedVideo(video);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedVideo(null);
+  };
+
+  const toggleAccordion = index => {
+    const updatedAccordions = [...openAccordions];
+    updatedAccordions[index] = !openAccordions[index];
+
+    // Збереження стану в localStorage
+    localStorage.setItem(`accordion-${index}`, updatedAccordions[index]);
+
+    setOpenAccordions(updatedAccordions);
+  };
+
   return (
     <div>
-      <div className={css.article}>
-        <h2>Vowel sound /i/ as in "be"</h2>
-        <div className={css.chart}>
+      {videoData.map((video, index) => (
+        <div className={css.article} key={video.id}>
+          <div className={css.chart}>
+            <h2>{video.title}</h2>
+
+            <button
+              className={css.btnWatchVideo}
+              onClick={() => openModal(video)}
+            >
+              Watch Video
+            </button>
+          </div>
+
+          {/* Акордеон */}
+          <button
+            className={`${css.accordion} ${openAccordions[index] ? 'active' : ''}`}
+            onClick={() => toggleAccordion(index)}
+          >
+            Examples
+          </button>
+          <div
+            className={css.panel}
+            style={{
+              maxHeight: openAccordions[index] ? '1000px' : '0',
+              overflow: 'hidden',
+              transition: 'max-height 0.3s ease',
+            }}
+          >
+            {video.accordeon.map((item, i) => (
+              <p key={i}>{item}</p>
+            ))}
+          </div>
+
+          <p className={css.paragraph}> {video.text} </p>
+        </div>
+      ))}
+
+      {isModalOpen && selectedVideo && (
+        <Modal closeModal={closeModal}>
           <iframe
             width="560"
             height="315"
-            src={`https://www.youtube.com/embed/PIu5WDIco0I?si=0u-vn_RIcPab4mnI`}
+            src={selectedVideo.src}
             style={{
               border: '1px solid blue',
               borderRadius: '5px',
@@ -21,388 +154,10 @@ const TongueTwisters = () => {
             allowFullScreen
             title="YouTube Video"
           ></iframe>
-          <dl className={css.description}>
-            <dt>"Y": </dt>
-            <dd>
-              ver<span className={css.red}>y</span> , sorr
-              <span className={css.red}>y</span>
-            </dd>
-            <dt>"E":</dt>
-            <dd>
-              {' '}
-              b<span className={css.red}>e</span>, th
-              <span className={css.red}>e</span>me
-            </dd>
-            <dt>"I": </dt>
-            <dd>
-              rad<span className={css.red}>i</span>o, pol
-              <span className={css.red}>i</span>ce
-            </dd>
-            <dt>"EA": </dt>
-            <dd>
-              pl<span className={css.red}>ea</span>se,{' '}
-              <span className={css.red}>ea</span>t
-            </dd>
-            <dt>"EE": </dt>
-            <dd>
-              s<span className={css.red}>ee</span>, k
-              <span className={css.red}>ee</span>p
-            </dd>
-            <dt>"IE": </dt>
-            <dd>
-              f<span className={css.red}>ie</span>ld, bel
-              <span className={css.red}>ie</span>ve
-            </dd>
-            <dt>"EY":</dt>
-            <dd>
-              {' '}
-              k<span className={css.red}>ey</span>, mon
-              <span className={css.red}>ey</span>
-            </dd>
-            <dt>etc.:</dt>
-            <dd>
-              {' '}
-              s<span className={css.red}>ei</span>ze, p
-              <span className={css.red}>eo</span>ple{' '}
-            </dd>
-          </dl>
-        </div>
-        <p>
-          A qu<span className={css.green}>ee</span>n{' '}
-          <span className={css.green}>ea</span>ts gr
-          <span className={css.green}>ee</span>n cr
-          <span className={css.green}>ea</span>m
-        </p>
-        <p>
-          Mayb<span className={css.green}>e</span> gr
-          <span className={css.green}>ee</span>n sk
-          <span className={css.green}>i</span>s y
-          <span className={css.green}>ie</span>ld sp
-          <span className={css.green}>ee</span>d
-          <span className={css.green}>y</span> sw
-          <span className={css.green}>ee</span>tness in the f
-          <span className={css.green}>ie</span>ld
-        </p>
-        <p>
-          Man<span className={css.green}>y</span> rad
-          <span className={css.green}>i</span>o-sp
-          <span className={css.green}>e</span>c
-          <span className={css.green}>ie</span>s{' '}
-          <span className={css.green}>ea</span>t p
-          <span className={css.green}>eo</span>ple`s gr
-          <span className={css.green}>ee</span>n mon
-          <span className={css.green}>ey</span> in a cit
-          <span className={css.green}>y</span>
-        </p>
-        <p>
-          I`m f<span className={css.green}>ee</span>l{' '}
-          <span className={css.green}>ea</span>s
-          <span className={css.green}>y</span> cos not bus
-          <span className={css.green}>y</span>
-        </p>
-        <p>Any baby-idea really need three money-people</p>
-      </div>
-
-      <div className={css.article}>
-        <h2>Vowel sound /ɪ/ as in "it"</h2>
-        <div className={css.chart}>
-          <iframe
-            width="560"
-            height="315"
-            src={`https://www.youtube.com/embed/Ok_HG-0lNCA?si=vCPWEvzYZJE5KP-k`}
-            style={{
-              border: '1px solid blue',
-              borderRadius: '5px',
-              overflow: 'hidden',
-              padding: '5px',
-            }}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title="YouTube Video"
-          ></iframe>
-          <dl className={css.description}>
-            <dt>"I": </dt>
-            <dd>
-              <span className={css.red}>i</span>t, dr
-              <span className={css.red}>i</span>nk
-            </dd>
-            <dt>"E":</dt>
-            <dd>
-              <span className={css.red}>e</span>nough, d
-              <span className={css.red}>e</span>cide
-            </dd>
-            <dt>"A": </dt>
-            <dd>
-              mess<span className={css.red}>a</span>ge, priv
-              <span className={css.red}>a</span>te
-            </dd>
-            <dt>"Y": </dt>
-            <dd>
-              g<span className={css.red}>y</span>m, t
-              <span className={css.red}>y</span>pical
-            </dd>
-            <dt>etc.: </dt>
-            <dd>
-              b<span className={css.red}>ui</span>ld, b
-              <span className={css.red}>u</span>sy
-            </dd>
-          </dl>
-        </div>
-
-        <p>A k<span className={css.green}>i</span>d m<span className={css.green}>i</span>ssed h<span className={css.green}>i</span>s sh<span className={css.green}>i</span>p</p>
-        <p>Kid missed a minute-ticket to visit a gym-windmill</p>
-        <p>The kid missed his ticket to the windmill gym for a minute</p>
-      </div>
-
-      <div className={css.article}>
-      <h2>Vowel sound /ʌ/ as in "us"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/X1utTZqC3AI?si=iFiYRoGCaRNqc18M`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
-      <h2>Vowel sound /ɑ/ as in "got"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/R5CY1UniS68?si=9pL2kZUTmWsIwfwV`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
-                <h2>Vowel sound /ɛ/ as in "bed"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/OLG3cCLcNiI?si=dpq6nNTcQbE4ZTBT`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
-      <h2>Vowel sound /ə/ (schwa) as in "ago"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/m1mDSUSwNls?si=Ft_iVJ8nt4eF8gsm`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>  
-
-      <div className={css.article}>
-        <h2>Vowel sound /æ/ as in "cat"</h2>
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/mynucZiy-Ug?si=nrz4oxjXwtNFA5Kg`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
-      <h2>Vowel sound /ɔ/ as in "on"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/pr_KAu-_Hmo?si=L3gi5N7_dd_4Z0Mk`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
-      <h2>Vowel sound /ʊ/ as in "put"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/moLTR-dLQQY?si=MjUnKsAHfyrdWAR_`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-      
-      <div className={css.article}>
-      <h2>Vowel sound /u/ as in "blue"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/lkM6CKBM2ns?si=cgiCYRNpZRGj0z6l`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
-      <h2>Vowel sound /aʊ/ as in "cloud"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/-V690OA75bA?si=5k4alngWDIaLzY2X`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
-      <h2>Vowel sound /oʊ/ as in "go"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/4kPJLHiiGdU?si=c_h-vINE2OZFqFWG`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
-      <h2>Vowel sound /aɪ/ as in "like"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/8uD-GuuSgyk?si=kXB9u6BJG4TWwfLo`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>    
-
-      <div className={css.article}>
-      <h2>Vowel sound /eɪ/ as in "make"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/0RXzfRcjk-s?si=jiCCpSOnvRBqTacE`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      <div className={css.article}>
-      <h2>Vowel sound /ɔɪ/ as in "boy"</h2>
-
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/ZfjPBN22mK8?si=rTCOCUyNVex7Yw-w`}
-          style={{
-            border: '1px solid blue',
-            borderRadius: '5px',
-            overflow: 'hidden',
-            padding: '5px',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube Video"
-        ></iframe>
-      </div>
-
-      
-      
+        </Modal>
+      )}
     </div>
   );
 };
+
 export default TongueTwisters;

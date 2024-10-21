@@ -1,0 +1,41 @@
+
+.container {
+    display: block;
+    width: 80%;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin-left: 30px;
+    padding: 10px;
+}
+
+dt {
+    color: blue;
+}
+
+.code {
+    border-radius: 3px;
+    padding: 5px;
+    /* background-color: rgb(200, 220, 255);
+    outline: 1px solid rgb(190, 190, 255); */
+    /* color: navy; */
+  
+    background-color: rgb(241, 240, 240);
+    /* background-color: black;
+    color: white; */
+    border: 1px solid rgb(199, 199, 199);
+  
+    margin-bottom: 5px;
+    overflow-x: auto;
+  }
+
+ h6 {
+    font-weight: 600;
+ }
+
+ul {
+    list-style-type: initial;
+    
+}
+
+
+

@@ -1,0 +1,42 @@
+/* Modal.module.css */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: none;
+    /* text-align: center; */
+    /* justify-content: center; */
+    color: blue;
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    /* border: 1px solid blue; */
+    border-radius: 50%;
+  }
+  
+  /* .btnWatchVideo {
+    background-color: red;
+  } */

@@ -35,6 +35,11 @@ const LayoutComponents = () => {
             <DropdownNode/>
             
           </li>
+          <li className={`${css.name__menu} ${css.menu__style}`}>
+            <NavLink to="interview">Technical Interview</NavLink>
+            {/* <DropdownNode/> */}
+            
+          </li>
         </ul>
       </header>
 

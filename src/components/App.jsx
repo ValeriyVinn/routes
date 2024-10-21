@@ -1,3 +1,4 @@
+import TecnicalInterviewComponent from 'pages/PagesInterview';
 import NodeComponent from 'pages/PagesNode';
 import { Routes, Route } from 'react-router-dom';
 
@@ -50,6 +51,10 @@ import Abstract from './React/Abstract/ReactAbstract';
 import PetProject from './React/PetProjects/PetProject';
 import Psychology from './React/PetProjects/Psychology/Psychology';
 import Violets from './React/PetProjects/Violets/Violet';
+import HtmlCssHire from './TechnicalInterview/html-css-hire';
+import JavaScriptHire from './TechnicalInterview/java-script-hire';
+import NodeHire from './TechnicalInterview/node-hire';
+import ReactHire from './TechnicalInterview/react-hire';
 
 
 
@@ -195,6 +200,18 @@ const App = () => {
             </Route>
 
           </Route>
+
+
+          <Route path="interview" element={<TecnicalInterviewComponent />}>
+            {/* <Route path="abstract" element={<NodeAbstract />}> */}
+              <Route path="html-css-hire" element={<HtmlCssHire/>} />
+              <Route path="java-sctipt-hire" element={<JavaScriptHire/>} />
+              <Route path="react-hire" element={<ReactHire/>} />
+              <Route path="node-hire" element={<NodeHire/>} />
+            {/* </Route> */}
+
+          </Route>
+
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

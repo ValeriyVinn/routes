@@ -7,6 +7,10 @@ li {
     font-size: 24px;
 }
 
+p {
+    text-transform: none;
+}
+
 .uk {
     background-color: white;
 }

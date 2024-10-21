@@ -55,3 +55,16 @@ const receivedText = enteredText.map(word => ` "${word}"`)
 const output = array.insertAdjacentHTML("beforebegin", receivedText);
 return output
 });
+
+
+// ! copy-section
+
+function copyCode() {
+   const code = document.getElementById('code-snippet').textContent;
+   navigator.clipboard.writeText(code).then(() => {
+     alert('Код скопійовано!');
+   }).catch(err => {
+     console.error('Не вдалося скопіювати', err);
+   });
+ }
+
